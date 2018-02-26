@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2018 年 2 月 26 日 07:52
+-- Generation Time: 2018 年 2 月 26 日 08:08
 -- サーバのバージョン： 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -162,7 +162,7 @@ CREATE TABLE `tags` (
 --
 
 CREATE TABLE `users` (
-  `user` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `user_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `pasward` varchar(255) NOT NULL,
@@ -239,7 +239,7 @@ ALTER TABLE `tags`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user`);
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -309,7 +309,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
