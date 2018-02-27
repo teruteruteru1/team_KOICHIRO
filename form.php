@@ -18,13 +18,13 @@
 		<!-- Font -->
 		
 		
-        <link rel="stylesheet" href="aseets/css/normalize.css">
-        <link rel="stylesheet" href="aseets/css/main.css">
-        <link rel="stylesheet" href="aseets/css/font-awesome.min.css">
-        <link rel="stylesheet" href="aseets/css/animate.css">
-        <link rel="stylesheet" href="aseets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="aseets/css/style.css">
-        <link rel="stylesheet" href="aseets/css/responsive.css">
+        <link rel="stylesheet" href="assets/css/normalize.css">
+        <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/animate.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/responsive.css">	
         <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 		
 		
@@ -83,7 +83,7 @@
 				 
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<img src="aseets/img/add_img/Top_Blog1_P9172109.jpg" alt="Sider Big Image">
+							<img src="assets/img/add_img/Top_Blog1_P9172109.jpg" alt="Sider Big Image">
 							<div class="carousel-caption">
 								<h1 class="wow fadeInLeft">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
 								<div class="slider-btn wow fadeIn">
@@ -92,7 +92,7 @@
 							</div>
 						</div>
 						<div class="item">
-							<img src="aseets/img/add_img/Top_Blog2_IMG_7607.jpg" alt="Top Blog1 Image">
+							<img src="assets/img/add_img/Top_Blog2_IMG_7607.jpg" alt="Top Blog1 Image">
 							<div class="carousel-caption">
 								<h1 class="wow fadeInLeft">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
 								<div class="slider-btn wow fadeIn">
@@ -115,7 +115,7 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="about-image wow fadeInLeft">
-							<img src="img/add_img/Single-Blog1-P9172057.jpg" alt="Single Blog1" />
+							<img src="assets/img/add_img/Single-Blog1-P9172057.jpg" alt="Single Blog1" />
 						</div>
 					</div>
 					<div class="col-sm-6">
@@ -156,7 +156,7 @@
 					<!-- Single Blog2 -->
 					<div class="col-sm-4">
 						<div class="single-blog">
-							<img src="img/add_img/Single_Blog2_1518359667602.jpg" alt="Single Blog2" />
+							<img src="assets/img/add_img/Single_Blog2_1518359667602.jpg" alt="Single Blog2" />
 							<h4><a href="blog.html">セブ　カワサンフォールへ</a></h4>
 							<p> 朝4時にホテルを出発し、マイクロバスに乗って、オスロブ、カワサン滝へ行ってきました。
 								水温はとても冷たかったですが、綺麗な空気と綺麗な水に感動しました。
@@ -169,7 +169,7 @@
 					<!-- Single Blog3 -->
 					<div class="col-sm-4">
 						<div class="single-blog">
-							<img src="img/add_img/Single_Blog3_1519138076376.jpg" alt="Single Blog3" />
+							<img src="assets/img/add_img/Single_Blog3_1519138076376.jpg" alt="Single Blog3" />
 							<h4><a href="blog.html">３度目のグアム</a></h4>
 							<p>2017年7月3日成田発、7月6日成田着のデルタ航空利用。
 								常夏の島グアムで買い物三昧、遊び三昧、グルメ三昧の旅！ショッピング施設も充実していますし、
@@ -183,7 +183,7 @@
 					<!-- Single Blog4 -->
 					<div class="col-sm-4">
 						<div class="single-blog">
-							<img src="img/add_img/Single_Blog4_IMG_20180216_175141.jpg" alt="Single Blog4" />
+							<img src="assets/img/add_img/Single_Blog4_IMG_20180216_175141.jpg" alt="Single Blog4" />
 							<h4><a href="blog.html">はじめてのセブ</a></h4>
 							<p>毎年、年に一度自分へのご褒美の念を込めてグアムに行くのですが、今年の旅行はいつもとは違う
 							旅行をしてみたいと思い、フィリピン、セブに行くことにしました。3月のセブはとても暑く空港到着から
@@ -219,7 +219,7 @@
 					
 					<div class="thumb">
 						<a href="#">
-							<img src="img/add_img/theme_food_IMG_7336.jpg" alt="Feature Image" />
+							<img src="assets/img/add_img/theme_food_IMG_7336.jpg" alt="Feature Image" />
 						</a>
 						
 						<div class="thumb-rollover">
@@ -233,7 +233,7 @@
 					
 					<div class="thumb">
 						<a href="#">
-							<img src="img/add_img/theme_sightseeing_IMG_7630.jpg" alt="Feature Image" />
+							<img src="assets/img/add_img/theme_sightseeing_IMG_7630.jpg" alt="Feature Image" />
 						</a>
 						<div class="thumb-rollover">
 							<div class="project-title">
@@ -245,7 +245,7 @@
 					
 					<div class="thumb">
 						<a href="#">
-							<img src="img/add_img/theme_sport_outdoor_outdoaDSC_1043.jpg" alt="Feature Image" />
+							<img src="assets/img/add_img/theme_sport_outdoor_outdoaDSC_1043.jpg" alt="Feature Image" />
 						</a>
 						
 						<div class="thumb-rollover">
@@ -258,7 +258,7 @@
 					
 					<div class="thumb">
 						<a href="#">
-							<img src="img/add_img/theme_sport_outdoor_outdoaDSC_1043.jpg" alt="Feature Image" />
+							<img src="assets/img/add_img/theme_sport_outdoor_outdoaDSC_1043.jpg" alt="Feature Image" />
 						</a>
 						
 						<div class="thumb-rollover">
@@ -271,7 +271,7 @@
 					
 					<div class="thumb">
 						<a href="#">
-							<img src="img/protfolio5.jpg" alt="Feature Image" />
+							<img src="assets/img/protfolio5.jpg" alt="Feature Image" />
 						</a>
 						
 						<div class="thumb-rollover">
@@ -502,15 +502,15 @@
 		
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script>window.jQuery || document.write('<script src="aseets/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
-        <script src="aseets/js/plugins.js"></script>
-        <script src="aseets/js/bootstrap.min.js"></script>
-        <script src="aseets/js/jquery.mousewheel-3.0.6.pack.js"></script>
-        <script src="aseets/js/paralax.js"></script>
-        <script src="aseets/js/jquery.smooth-scroll.js"></script>
-        <script src="aseets/js/jquery.sticky.js"></script>
-        <script src="aseets/js/wow.min.js"></script>
-        <script src="aseets/js/main.js"></script>
+        <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="assets/js/plugins.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.mousewheel-3.0.6.pack.js"></script>
+        <script src="assets/js/paralax.js"></script>
+        <script src="assets/js/jquery.smooth-scroll.js"></script>
+        <script src="assets/js/jquery.sticky.js"></script>
+        <script src="assets/js/wow.min.js"></script>
+        <script src="assets/js/main.js"></script>
         
 		
 		<script type="text/javascript">
@@ -528,7 +528,7 @@
 			});
 		</script>
 		
-		<script src="aseets/js/custom.js"></script>
+		<script src="assets/js/custom.js"></script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
