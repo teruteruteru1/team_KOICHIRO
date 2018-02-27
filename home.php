@@ -258,7 +258,7 @@
 					
 					<div class="thumb">
 						<a href="#">
-							<img src="assets/img/add_img/theme_sport_outdoor_outdoaDSC_1043.jpg" alt="Feature Image" />
+							<img src="assets/img/add_img/theme_sport_outdoor_DSC_1043 (1).jpg" alt="Feature Image" />
 						</a>
 						
 						<div class="thumb-rollover">
@@ -284,7 +284,7 @@
 					
 					<div class="thumb">
 						<a href="#">
-							<img src="img/protfolio6.jpg" alt="Feature Image" />
+							<img src="assets/img/protfolio6.jpg" alt="Feature Image" />
 						</a>
 						
 						<div class="thumb-rollover">
@@ -297,7 +297,7 @@
 					
 					<div class="thumb">
 						<a href="#">
-							<img src="img/protfolio7.jpg" alt="Feature Image" />
+							<img src="assets/img/theme_resort_1519138015328.jpg" alt="Feature Image" />
 						</a>
 						
 						<div class="thumb-rollover">
@@ -310,7 +310,7 @@
 					
 					<div class="thumb">
 						<a href="#">
-							<img src="img/protfolio8.jpg" alt="Feature Image" />
+							<img src="assets/img/add_img/theme_ather_1519138253418.jpg" alt="Feature Image" />
 						</a>
 						
 						<div class="thumb-rollover">
