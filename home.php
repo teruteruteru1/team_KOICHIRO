@@ -233,7 +233,7 @@
 					
 					<div class="thumb">
 						<a href="#">
-							<img src="assets/img/add_img/theme_sightseeing_IMG_7630.jpg" alt="Feature Image" />
+							<img src="assets/img/add_img/theme_sightseeing_P9131618.jpg" alt="Feature Image" />
 						</a>
 						<div class="thumb-rollover">
 							<div class="project-title">
@@ -245,7 +245,7 @@
 					
 					<div class="thumb">
 						<a href="#">
-							<img src="assets/img/add_img/theme_sport_outdoor_outdoaDSC_1043.jpg" alt="Feature Image" />
+							<img src="assets/img/add_img/theme_shopping_IMG_20180216_144151.jpg" alt="Feature Image" />
 						</a>
 						
 						<div class="thumb-rollover">
@@ -258,7 +258,7 @@
 					
 					<div class="thumb">
 						<a href="#">
-							<img src="assets/img/add_img/theme_sport_outdoor_DSC_1043 (1).jpg" alt="Feature Image" />
+							<img src="assets/img/add_img/theme_sport_outdoor_DSC_1043.jpg" alt="Feature Image" />
 						</a>
 						
 						<div class="thumb-rollover">
@@ -271,12 +271,12 @@
 					
 					<div class="thumb">
 						<a href="#">
-							<img src="assets/img/protfolio5.jpg" alt="Feature Image" />
+							<img src="assets/img/add_img/theme_hotel_IMG_20180218_112635.jpg" alt="Feature Image" />
 						</a>
 						
 						<div class="thumb-rollover">
 							<div class="project-title">
-								<h2>宿・ホテル</h2>
+								<h2>ホテル</h2>
 								<!-- <h5>Category: Web Design</h5> -->
 							</div>
 						</div>
@@ -284,7 +284,7 @@
 					
 					<div class="thumb">
 						<a href="#">
-							<img src="assets/img/protfolio6.jpg" alt="Feature Image" />
+							<img src="assets/img/add_img/theme_relaxation_1519138253418.jpg" alt="Feature Image" />
 						</a>
 						
 						<div class="thumb-rollover">
@@ -297,7 +297,7 @@
 					
 					<div class="thumb">
 						<a href="#">
-							<img src="assets/img/theme_resort_1519138015328.jpg" alt="Feature Image" />
+							<img src="assets/img/add_img/theme_resort_1519138015328.jpg" alt="Feature Image" />
 						</a>
 						
 						<div class="thumb-rollover">
@@ -310,7 +310,7 @@
 					
 					<div class="thumb">
 						<a href="#">
-							<img src="assets/img/add_img/theme_ather_1519138253418.jpg" alt="Feature Image" />
+							<img src="assets/img/add_img/theme_ather_1519138162591.jpg" alt="Feature Image" />
 						</a>
 						
 						<div class="thumb-rollover">
