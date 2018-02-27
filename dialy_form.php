@@ -1,3 +1,8 @@
+<?php 
+    session_start();
+
+ ?> 
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -169,8 +174,8 @@
     	</div>
 
     	<!-- 追加ボタン -->
-<!--     	<button type="button" class="btn bg-white mt10 miw100 add_btn" value="" name="">入力欄追加</button>
- -->    	
+    	<button type="button" class="btn bg-white mt10 miw100 add_btn" value="" name="">入力欄追加</button>
+    	
         <div class="parent">
               <div class="field" style="padding-bottom:8px; margin-bottom:20px;">
               	<div>
