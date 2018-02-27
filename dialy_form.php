@@ -182,7 +182,7 @@
               	        	コメント 写真とコメントを追加してください <input type="file" name="input_img_name" accept="image/*">
 　				</div>
                 	<textarea name="content" cols="40" rows="5"></textarea><br>
-                	<button type="button" class="btn bg-white mt10 miw100 add_btn" value="" name="">入力欄追加</button>
+                	<!-- <button type="button" class="btn bg-white mt10 miw100 add_btn" value="" name="">入力欄追加</button> -->
                      <button type="button" class="btn trash_btn ml10" value="" name="">
                         削除
                      </button>
