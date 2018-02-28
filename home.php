@@ -2,76 +2,76 @@
 
 <!doctype html>
 <html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 		
-		<!-- Font -->
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-		<!-- Font -->
+	<!-- Font -->
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<!-- Font -->
 		
 		
-        <link rel="stylesheet" href="assets/css/normalize.css">
-        <link rel="stylesheet" href="assets/css/main.css">
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-        <link rel="stylesheet" href="assets/css/animate.css">
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/responsive.css">	
-        <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-		
-		
-    </head>
-    <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-		
-		<!-- Header Start -->
-		<header id="home">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">	
+    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
+
+	</head>
+	<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+	<!-- Header Start -->
+	<header id="home">
 			
-			<!-- Main Menu Start -->
-			<div class="main-menu">
-				<div class="navbar-wrapper">
-					<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-						<div class="container">
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-									<span class="sr-only">Toggle Navigation</span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-								</button>
-								
-								<a href="#" class="navbar-brand"><img src="img/logo.png" alt="Logo" /></a>							
-							</div>
+		<!-- Main Menu Start -->
+		<div class="main-menu">
+			<div class="navbar-wrapper">
+				<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+					<div class="container">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle Navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
 							
-							<div class="navbar-collapse collapse">
-								<ul class="nav navbar-nav navbar-right">
-<!-- 									<li><a href="#home">Home</a></li>
-									<li><a href="#about">About</a></li>
-									<li><a href="#features">Services</a></li>
-									<li><a href="#feature-work">Portfolio</a></li>
-									<li><a href="#testimonials">Testimonials</a></li> -->
-									<li><a href="#signin">ログイン</a></li>
-									<li><a href="#signup">ユーザー登録</a></li>
-									<li><a href="#signout">ログアウト</a></li>
-									<li><a href="#mypage">マイページ</a></li>
-								</ul>
-							</div>
-							
+							<a href="#" class="navbar-brand"><img src="img/logo.png" alt="Logo" /></a>							
 						</div>
+						
+						<div class="navbar-collapse collapse">
+							<ul class="nav navbar-nav navbar-right">
+<!-- 									<li><a href="#home">Home</a></li>
+								<li><a href="#about">About</a></li>
+								<li><a href="#features">Services</a></li>
+								<li><a href="#feature-work">Portfolio</a></li>
+								<li><a href="#testimonials">Testimonials</a></li> -->
+								<li><a href="#signin">ログイン</a></li>
+								<li><a href="#signup">ユーザー登録</a></li>
+								<li><a href="#signout">ログアウト</a></li>
+								<li><a href="#mypage">マイページ</a></li>
+							</ul>
+						</div>
+						
 					</div>
 				</div>
 			</div>
-			<!-- Main Menu End -->
+		</div>
+		<!-- Main Menu End -->
 			
 			<!-- top Blog -->
 			<div class="slider">
@@ -85,18 +85,18 @@
 						<div class="item active">
 							<img src="assets/img/add_img/Top_Blog1_P9172109.jpg" alt="Sider Big Image">
 							<div class="carousel-caption">
-								<h1 class="wow fadeInLeft">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
+								<h1 class="wow fadeInLeft">イタリア旅行 おすすめスポット 2泊3日</h1>
 								<div class="slider-btn wow fadeIn">
-									<a href="#" class="btn btn-learn">Learn More</a>
+									<a href="#" class="btn btn-learn">詳細をみる</a>
 								</div>
 							</div>
 						</div>
 						<div class="item">
 							<img src="assets/img/add_img/Top_Blog2_IMG_7607.jpg" alt="Top Blog1 Image">
 							<div class="carousel-caption">
-								<h1 class="wow fadeInLeft">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
+								<h1 class="wow fadeInLeft">【イタリア】ベネチアのカラフルな姉妹島「ブラーノ」と「ムラーノ」</h1>
 								<div class="slider-btn wow fadeIn">
-									<a href="#" class="btn btn-learn">Learn More</a>
+									<a href="#" class="btn btn-learn">詳細をみる</a>
 								</div>
 							</div>
 						</div>
@@ -107,6 +107,50 @@
 			
 		</header>
 		<!-- Header End -->
+
+		<!-- surch start -->
+		<div class="col-sm-6">
+			<div class="single-footer">
+				<form action="">
+					<div class="form-group">
+						<center><input type="email" class="form-control my-form" id="exampleInputEmail1" placeholder="キーワード検索"></center>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+		<div class="contact">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<form id="contactform" action="" method="post" class="validateform" name="send-contact">
+							<div class="row">
+								<div class="col-lg-4 field">
+									<input type="text" name="name" placeholder="* 目的地" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
+									<div class="validation">
+									</div>
+								</div>
+								<div class="col-lg-4 field">
+									<input type="text" name="email" placeholder="* 季節" data-rule="email" data-msg="Please enter a valid email" />
+									<div class="validation">
+									</div>
+								</div>
+								<div class="col-lg-4 field">
+									<input type="text" name="subject" placeholder="予算（半角で入力してください）" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
+									<div class="validation">
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- surch end -->
+			
+
+
+
 		
 		
 		<!-- Single Blog1 -->
@@ -128,7 +172,7 @@
 								ただ、そのいずれもが随分昔のことであり、短時間立ち寄っただけであり、今のデジカメの時代と違って余り写真も残っていない。
 								ましてや、出張の時にはカメラを持参していたかどうかも定かでない。
 							</p>
-							<a href="#" class="btn btn-read-more">Read More</a>
+							<a href="#" class="btn btn-read-more">続きを読む</a>
 						</div>
 					</div>
 				</div>
@@ -161,7 +205,7 @@
 							<p> 朝4時にホテルを出発し、マイクロバスに乗って、オスロブ、カワサン滝へ行ってきました。
 								水温はとても冷たかったですが、綺麗な空気と綺麗な水に感動しました。
 							</p>
-							<a href="#">Read More>></a>
+							<a href="#">続きを読む>></a>
 						</div>
 					</div>
 					<!-- Single Blog2 -->
@@ -175,7 +219,7 @@
 								常夏の島グアムで買い物三昧、遊び三昧、グルメ三昧の旅！ショッピング施設も充実していますし、
 								以前に行ったときにはなかった新しくできたレストランもたくさんありました！
 							</p>
-							<a href="#">Read More>></a>
+							<a href="#">続きを読む>></a>
 						</div>
 					</div>
 					<!-- Single Blog3 -->
@@ -188,7 +232,7 @@
 							<p>毎年、年に一度自分へのご褒美の念を込めてグアムに行くのですが、今年の旅行はいつもとは違う
 							旅行をしてみたいと思い、フィリピン、セブに行くことにしました。3月のセブはとても暑く空港到着から
 							汗だくです。早くビールが飲みたい..</p>
-							<a href="#">Read More>></a>
+							<a href="#">続きを読む>></a>
 						</div>
 					</div>
 					<!-- Single Blog4 -->
@@ -337,7 +381,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="title">
-							<h3>Contact <span>Us</span></h3>
+							<h3>連絡 <span>はこちらへ</span></h3>
 						</div>
 					</div>
 				</div>
@@ -351,30 +395,30 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-12">
-							<h4>Please Contact With Us For Any Kind Of Information</strong></h4>
+							<h4>どんなことでもお気軽にご連絡ください</strong></h4>
 							<form id="contactform" action="" method="post" class="validateform" name="send-contact">
 								<div class="row">
 									<div class="col-lg-4 field">
-										<input type="text" name="name" placeholder="* Your Name" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
+										<input type="text" name="name" placeholder="* お名前" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
 										<div class="validation">
 										</div>
 									</div>
 									<div class="col-lg-4 field">
-										<input type="text" name="email" placeholder="* Your Email" data-rule="email" data-msg="Please enter a valid email" />
+										<input type="text" name="email" placeholder="* メールアドレス" data-rule="email" data-msg="Please enter a valid email" />
 										<div class="validation">
 										</div>
 									</div>
 									<div class="col-lg-4 field">
-										<input type="text" name="subject" placeholder="Subject" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
+										<input type="text" name="subject" placeholder="内容について" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
 										<div class="validation">
 										</div>
 									</div>
 									<div class="col-lg-12 margintop10 field">
-										<textarea rows="12" name="message" class="input-block-level" placeholder="* Your message here..." data-rule="required" data-msg="Please write something"></textarea>
+										<textarea rows="12" name="message" class="input-block-level" placeholder="* ご用件をこちらへご記入ください" data-rule="required" data-msg="Please write something"></textarea>
 										<div class="validation">
 										</div>
 										<p>
-											<button class="btn btn-theme margintop10 pull-left" type="submit">Submit message</button>
+											<button class="btn btn-theme margintop10 pull-left" type="submit">送信</button>
 											
 										</p>
 									</div>
@@ -440,7 +484,7 @@
 					<!-- Single Footer -->
 					
 					<!-- Single Footer -->
-					<div class="col-sm-3">
+					<!-- <div class="col-sm-3">
 						<div class="single-footer">
 							<h4>Recent Projects</h4>
 							<ul class="projects">
@@ -452,7 +496,7 @@
 								<li><img src="img/project.png" alt="Reccent Project" /></li>
 							</ul>
 						</div>
-					</div>
+					</div> -->
 					<!-- Single Footer -->
 					
 				</div>
@@ -472,13 +516,13 @@
 						<div class="col-sm-5">
 							<div class="footer-menu pull-right">
 								<ul>
-									<li><a href="#">Home</a></li>
-									<li><a href="#">About</a></li>
-									<li><a href="#">Services</a></li>
-									<li><a href="#">Faq</a></li>
-									<li><a href="#">Pricing</a></li>
-									<li><a href="#">Blog</a></li>
-									<li><a href="#">Contact</a></li>
+									<li><a href="#">ホーム</a></li>
+									<li><a href="#">チーム概要</a></li>
+									<li><a href="#">サービス</a></li>
+									<li><a href="#">問い合わせ</a></li>
+									<!-- <li><a href="#">Pricing</a></li> -->
+									<!-- <li><a href="#">Blog</a></li> -->
+									<li><a href="#">連絡先</a></li>
 								</ul>
 							</div>
 						</div>
