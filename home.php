@@ -50,7 +50,7 @@
 								<span class="icon-bar"></span>
 							</button>
 							
-							<a href="#" class="navbar-brand"><img src="img/logo.png" alt="Logo" /></a>							
+							<a href="#" class="navbar-brand"><h1>でれっちょ</h1></a>							
 						</div>
 						
 						<div class="navbar-collapse collapse">
@@ -109,7 +109,8 @@
 		<!-- Header End -->
 
 		<!-- surch start -->
-		<div class="col-sm-6">
+		<br> <!-- 仮処置 -->
+		<div class="col-sm-12">
 			<div class="single-footer">
 				<form action="">
 					<div class="form-group">
@@ -118,40 +119,57 @@
 				</form>
 			</div>
 		</div>
-		
-		<div class="contact">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<form id="contactform" action="" method="post" class="validateform" name="send-contact">
-							<div class="row">
-								<div class="col-lg-4 field">
-									<input type="text" name="name" placeholder="* 目的地" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
-									<div class="validation">
-									</div>
-								</div>
-								<div class="col-lg-4 field">
-									<input type="text" name="email" placeholder="* 季節" data-rule="email" data-msg="Please enter a valid email" />
-									<div class="validation">
-									</div>
-								</div>
-								<div class="col-lg-4 field">
-									<input type="text" name="subject" placeholder="予算（半角で入力してください）" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
-									<div class="validation">
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- surch end -->
-			
+		<div>
+		国
+	        <select name="country">
+	            <option value="Japan" selected="selected" class="msg">国を選択して下さい</option>
+	            <option value="Japan" class="japan">日本</option>
+	            <option value="America" class="America">アメリカ</option>
+	            <option value="Australia" class="Australia">オーストラリア</option>
+	        </select>
+	        
+	        都市
+	        <select name="city">
+	            <option value="Japan" selected="selected" class="msg">都市を選択して下さい</option>
+	            <option value="Tokyo" class="japan">東京</option>
+	            <option value="Kyoto" class="japan">京都</option>
+	            <option value="Osaka" class="japan">大阪</option>
+	            <option value="NY" class="America">ニューヨーク</option>
+	            <option value="LA" class="America">ロサンゼルス</option>
+	            <option value="Sydney" class="Australia">シドニー</option>
+	        </select>
 
+        季節
+        <select name="season">
+            <option value="season" selected="selected" class="msg">季節を選択して下さい</option>
+            <option value="spring" class="spring">春</option>
+            <option value="summer" class="summer">夏</option>
+            <option value="autumn" class="autumn">秋</option>
+            <option value="winter" class="winter">冬</option>
+        </select>
+        
+        予算
+        <select name="budget">
+            <option value="budget" selected="selected" class="msg">予算を選択して下さい</option>
+            <option value="1" class="1"> ~1000円</option>
+            <option value="2" class="2"> 1001~10000</option>
+            <option value="3" class="3"> 10001~20000</option>
+            <option value="4" class="4"> 20001~30000</option>
+            <option value="5" class="5"> 30001~</option>
+        </select>
 
-
-		
+        目的
+        <select name="budget">
+            <option value="theme" selected="selected" class="msg">目的を選択して下さい</option>
+            <option value="gourmet" class="1"> グルメ</option>
+            <option value="sightseeing" class="sightseeing">観光</option>
+            <option value="shopping" class="shopping">ショッピング</option>
+            <option value="sport_outdoor" class="sport_outdoor">スポーツ・アウトドア</option>
+            <option value="hotel" class="hotel">ホテル</option>
+            <option value="relaxation" class="relaxation">リラクゼーション</option>
+            <option value="resort" class="resort">リゾート</option>
+            <option value="ather" class="ather">その他</option>
+        </select>
 		
 		<!-- Single Blog1 -->
 		<section id="about" class="site-padding">
@@ -252,7 +270,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="title">
-							<h3>テーマ<span>から選ぶ</span></h3>
+							<h3>目的<span>から選ぶ</span></h3>
 						</div>
 					</div>
 				</div>
@@ -263,7 +281,7 @@
 					
 					<div class="thumb">
 						<a href="#">
-							<img src="assets/img/add_img/theme_food_IMG_7336.jpg" alt="Feature Image" />
+							<img src="assets/img/add_img/theme_gourmet_IMG_7336.jpg" alt="Feature Image" />
 						</a>
 						
 						<div class="thumb-rollover">
@@ -439,12 +457,14 @@
 				<div class="row">
 				
 					<!-- Single Footer -->
-					<div class="col-sm-3">
+					<div class="col-sm-6">
 						<div class="single-footer">
 							<div class="footer-logo">
-								<img src="img/footer-logo.png" alt="Footer Logo" />
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p>
+								<!-- <a href="#" class="navbar-brand"><h1>でれっちょ</h1></a> -->
+								<a href="#"><h1>でれっちょ</h1></a>
+									<p>旅行コミュニティサイト(旅行記・旅行SNS)</p>
+								<!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p> -->
 							</div>
 						</div>
 					</div>
@@ -454,11 +474,11 @@
 					<!-- Single Footer -->
 					<div class="col-sm-3">
 						<div class="single-footer">
-							<h4>Keep In Touch</h4>
-							<p>44 New Design Street, Melbourne 005 <br />
-							+1 (123) 456-7890-321 <br />
-							info@weburl.com <br />
-							(01) 800 854 633</p>
+							<h4>ご連絡先</h4>
+							<p>XX New Design Street, cebucity XXX <br />
+							+9 (999) 999-999-999 <br />
+							info@XXXX.com <br />
+							(99) 999 999 999</p>
 						</div>
 					</div>
 					<!-- Single Footer -->
@@ -467,15 +487,15 @@
 					<!-- Single Footer -->
 					<div class="col-sm-3">
 						<div class="single-footer">
-							<h4>Suscribe</h4>
-							<p>Enter your Email Address For Subscirbe Our Monthly Newsletters</p>
+							<h4>定期購読</h4>
+							<p>私たちの月刊ニュースレターを購読するためにあなたのメールアドレスを入力してください</p>
 							
 							<form action="">
 								<div class="form-group">
-									<input type="email" class="form-control my-form" id="exampleInputEmail1" placeholder="Enter Your Email Address">
+									<input type="email" class="form-control my-form" id="exampleInputEmail1" placeholder="あなたのメールアドレスを入力してください">
 								</div>
 								<div class="form-group">
-									<button class="btn btn-subscribe">Subscirbe</button>
+									<button class="btn btn-subscribe">定期購読</button>
 								</div>
 							</form>
 							
