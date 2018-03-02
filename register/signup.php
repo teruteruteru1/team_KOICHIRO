@@ -1,9 +1,9 @@
 <?php
     session_start();
 
-    echo '<pre>';
-    var_dump($_POST);
-    echo '</pre>';
+    // echo '<pre>';
+    // var_dump($_POST);
+    // echo '</pre>';
 
     $errors = array();
 
@@ -62,53 +62,64 @@
             exit();
         }
     }
-    echo '<pre>';
-    var_dump($errors);
-    echo '</pre>';
+    // echo '<pre>';
+    // var_dump($errors);
+    // echo '</pre>';
 ?>
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <title></title>
-  <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/animate.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" type="text/css" href="../assets/css/style.css"> -->
+  <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
+
   <link rel="stylesheet" type="text/css" href="../assets/css/signup.css">
 </head>
 <body>
-  <div class="main-menu">
-    <div class="navbar-wrapper">
-      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle Navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+    <div class="main-menu">
+      <div class="navbar-wrapper">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a href="#" class="navbar-brand" style="font-size: 30px;">でれっちょ</a>
+            </div>
             
-            <a href="#" class="navbar-brand"><img src="../asset/img/logo.png" alt="Logo" /></a>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right">
+<!--                  <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Services</a></li>
+                <li><a href="#feature-work">Portfolio</a></li>
+                <li><a href="#testimonials">Testimonials</a></li> -->
+                <li><a href="#signin">ログイン</a></li>
+                <li><a href="#signup">ユーザー登録</a></li>
+                <li><a href="#signout">ログアウト</a></li>
+                <li><a href="#mypage">マイページ</a></li>
+              </ul>
+            </div>
+            
           </div>
-          
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-         <!-- <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#features">Services</a></li>
-              <li><a href="#feature-work">Portfolio</a></li>
-              <li><a href="#testimonials">Testimonials</a></li> -->
-              <li><a href="#signin">ログイン</a></li>
-              <li><a href="#signup">ユーザー登録</a></li>
-              <li><a href="#signout">ログアウト</a></li>
-              <li><a href="#mypage">マイページ</a></li>
-            </ul>
-          </div>
-          
         </div>
       </div>
     </div>
-  </div>
+
 
     <div class="container">
 
@@ -156,7 +167,8 @@
 
       <hr class="colorgraph">
       <div class="row">
-        <div class="col-xs-12 col-md-6"><input type="submit" value="登録" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+        <div class="col-xs-12 col-md-6"><input type="submit" value="登録" class="btn btn-lg btn-block btn-primary" tabindex="7"></div>
+        <!-- <div class="col-xs-12 col-md-6"><button type="submit" class="btn btn-lg btn-block btn-secondary" tabindex="7">登録</button></div> -->
         <div class="col-xs-12 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">ログイン</a></div>
       </div>
     </form>
@@ -184,5 +196,7 @@
   <script type="text/javascript" src="../assets/js/jquery-migrate-1.4.1.js"></script>
   <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
   <script type="text/javascript" src="../assets/js/signup.js"></script>
+  <script type="text/javascript" src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </body>
 </html>
