@@ -61,7 +61,7 @@
 								<li><a href="#feature-work">Portfolio</a></li>
 								<li><a href="#testimonials">Testimonials</a></li> -->
 								<li><a href="#signin">ログイン</a></li>
-								<li><a href="#signup">ユーザー登録</a></li>
+								<li><a href="signup.php">ユーザー登録</a></li>
 								<li><a href="#signout">ログアウト</a></li>
 								<li><a href="#mypage">マイページ</a></li>
 							</ul>

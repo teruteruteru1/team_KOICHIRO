@@ -98,7 +98,7 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a href="#" class="navbar-brand" style="font-size: 30px;">でれっちょ</a>
+              <a href="../home.php" class="navbar-brand" style="font-size: 30px;">でれっちょ</a>
             </div>
             
             <div class="navbar-collapse collapse">
@@ -109,9 +109,9 @@
                 <li><a href="#feature-work">Portfolio</a></li>
                 <li><a href="#testimonials">Testimonials</a></li> -->
                 <li><a href="#signin">ログイン</a></li>
-                <li><a href="#signup">ユーザー登録</a></li>
+                <li><a href="signup.php">ユーザー登録</a></li>
                 <li><a href="#signout">ログアウト</a></li>
-                <li><a href="#mypage">マイページ</a></li>
+                <li><a href="../home.php">マイページ</a></li>
               </ul>
             </div>
             
@@ -182,7 +182,7 @@
                 <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3 text-center">
                     <ul class="list-inline">
                         <li>
-                            <a href="#"><i class="glyphicon glyphicon-home"></i> Home</a>
+                            <a href="../home.php"><i class="glyphicon glyphicon-home"></i> Home</a>
                         </li>
                     </ul>
                     <p class="copyright text-muted small">Designed by XeQt for IEM. Copyright © 2014. All Rights Reserved.</p>
