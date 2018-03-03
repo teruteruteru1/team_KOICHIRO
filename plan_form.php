@@ -1,3 +1,9 @@
+<?php 
+
+
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -36,7 +42,9 @@
 
   
 </head>
-    <body>
+    
+
+<body>
         <!-- Header Start -->
         <header id="home">
             
@@ -71,89 +79,89 @@
                 </div>
             </div>
             <!-- Main Menu End -->
-  <div style="text-align: center;">
-    <form>
-    <div>
-        <br>タイトル<br>
-        <textarea name="content" cols="80" rows="5"></textarea>
-    </div>
-    <div>
-        予算：
-        <input type="text" name="nickname" style="width:100px" placeholder="(例)100000">
-        (円)
-    </div>
-    <div>
-        日数：
-        <input type="text" name="nickname" style="width:100px" placeholder="(例)30">
-        (日)
-    </div>
-   
-        国
-        <select name="country">
-            <option value="Japan" selected="selected" class="msg">国を選択して下さい</option>
-            <option value="Japan" class="japan">日本</option>
-            <option value="America" class="America">アメリカ</option>
-            <option value="Australia" class="Australia">オーストラリア</option>
-        </select>
-        
-        都市
-        <select name="city">
-            <option value="Japan" selected="selected" class="msg">都市を選択して下さい</option>
-            <option value="Tokyo" class="japan">東京</option>
-            <option value="Kyoto" class="japan">京都</option>
-            <option value="Osaka" class="japan">大阪</option>
-            <option value="NY" class="America">ニューヨーク</option>
-            <option value="LA" class="America">ロサンゼルス</option>
-            <option value="Sydney" class="Australia">シドニー</option>
-        </select>
-
-        <div>
-
-            <script type="text/javascript" src="plan_calender.js"></script>
-        
-            出発日時
-            <input type="text" class="datepicker">
-        
-
-        
-            帰宅日時
-            <input type="text" class="datepicker">
-        
-
-        </div>
-
-        <div>
-            旅行記概要
-        </div>
-        <div style="margin:0 auto">
-            <input type="file" style="margin: auto;" name="input_img_name" accept="image/*">
-            <textarea name="content" cols="80" rows="5"></textarea>
-        </div>
-        
-        <div class="parent">
-              <div class="field" style="padding-bottom:8px; margin-bottom:20px;">
-                <div>
-                            コメント<input type="file"style="margin: auto;" style="margin: auto;" name="input_img_name" accept="image/*">
-                            <textarea name="content" cols="80" rows="5"></textarea><br>
-　               </div>
-
-                    
-                    <!-- 修正前 -->
-                    <!-- <button type="button" class="btn bg-white mt10 miw100 add_btn" value="" name="">入力欄追加</button> -->
-                     <!-- <button type="button" class="btn trash_btn ml10" value="" name="">削除</button> -->
-
-              </div>
-
-         </div>
-
-         <button type="button" class="btn bg-white mt10 miw100 add_btn" value="" name="" >追加</button>
-        <button type="button" class="btn trash_btn ml10" value="" name="">削除</button>
 
 
+    <div style="text-align: center;">
+        <form>
+            <div>
+                <br>タイトル<br>
+                <textarea name="content" cols="80" rows="5"></textarea>
+            </div>
+            <div>
+                予算：
+                <input type="text" name="nickname" style="width:100px" placeholder="(例)100000">
+                (円)
+            </div>
+            <div>
+                日数：
+                <input type="text" name="nickname" style="width:100px" placeholder="(例)30">
+                (日)
+            </div>
+           
+            国
+            <select name="country">
+                <option value="Japan" selected="selected" class="msg">国を選択して下さい</option>
+                <option value="Japan" class="japan">日本</option>
+                <option value="America" class="America">アメリカ</option>
+                <option value="Australia" class="Australia">オーストラリア</option>
+            </select>
+            
+            都市
+            <select name="city">
+                <option value="Japan" selected="selected" class="msg">都市を選択して下さい</option>
+                <option value="Tokyo" class="japan">東京</option>
+                <option value="Kyoto" class="japan">京都</option>
+                <option value="Osaka" class="japan">大阪</option>
+                <option value="NY" class="America">ニューヨーク</option>
+                <option value="LA" class="America">ロサンゼルス</option>
+                <option value="Sydney" class="Australia">シドニー</option>
+            </select>
 
-        <input type="submit" value="作成" class="btn btn-primary">
+            <div>
 
-        
+                <script type="text/javascript" src="plan_calender.js"></script>
+            
+                出発日時
+                <input type="text" class="datepicker">
+            
+
+            
+                帰宅日時
+                <input type="text" class="datepicker">
+            
+
+            </div>
+
+            <div>
+                旅行記概要
+            </div>
+            <div style="margin:0 auto">
+                <input type="file" style="margin: auto;" name="input_img_name" accept="image/*">
+                <textarea name="content" cols="80" rows="5"></textarea>
+            </div>
+            
+            <div class="parent">
+                <div class="field" style="padding-bottom:8px; margin-bottom:20px;">
+                    <div>
+                        コメント<input type="file"style="margin: auto;" style="margin: auto;" name="input_img_name" accept="image/*">
+                        <textarea name="content" cols="80" rows="5"></textarea><br>
+    　               </div>                    
+                        <!-- 修正前 -->
+                        <!-- <button type="button" class="btn bg-white mt10 miw100 add_btn" value="" name="">入力欄追加</button> -->
+                         <!-- <button type="button" class="btn trash_btn ml10" value="" name="">削除</button> -->
+
+                </div>
+
+             </div>
+
+             <button type="button" class="btn bg-white mt10 miw100 add_btn" value="" name="" >追加</button>
+             <button type="button" class="btn trash_btn ml10" value="" name="">削除</button>
+
+
+            <br>
+            <input type="submit" value="確認画面へ" class="btn btn-primary">
+
+            
         </form>
     </div>
 
@@ -276,8 +284,11 @@
         <script src="assets/js/wow.min.js"></script>
         <script src="assets/js/main.js"></script>
         
+        <!-- カレンダーのJS -->
         <script src="assets/js/plan_calender.js"></script>
+        <!-- プルダウンのJS -->
         <script src="assets/js/plan_country.js"></script>
+        <!-- コメントを増やすJS -->
         <script src="assets/js/plan_comment.js"></script>
         
     
