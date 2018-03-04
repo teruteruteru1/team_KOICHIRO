@@ -1,7 +1,7 @@
 <?php 
+    session_start();    
 
-
-
+    
  ?>
 
 <!DOCTYPE html>
@@ -46,44 +46,45 @@
 
 <body>
         <!-- Header Start -->
-        <header id="home">
-            
-            <!-- Main Menu Start -->
-            <div class="main-menu">
-                <div class="navbar-wrapper">
-                    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                        <div class="container">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                    <span class="sr-only">Toggle Navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                
-                                <a href="#" class="navbar-brand"><img src="img/logo.png" alt="Logo" /></a>                          
-                            </div>
+    <header id="home">
+        
+        <!-- Main Menu Start -->
+        <div class="main-menu">
+            <div class="navbar-wrapper">    
+                <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle Navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
                             
-                            <div class="navbar-collapse collapse">
-                                <ul class="nav navbar-nav navbar-right">
-
-                                    <li><a href="#signin">ログイン</a></li>
-                                    <li><a href="#signup">ユーザー登録</a></li>
-                                    <li><a href="#signout">ログアウト</a></li>
-                                    <li><a href="#mypage">マイページ</a></li>
-                                </ul>
-                            </div>
-                            
+                            <a href="#" class="navbar-brand"><img src="img/logo.png" alt="Logo" /></a>                          
                         </div>
+                        
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">
+
+                                <li><a href="#signin">ログイン</a></li>
+                                <li><a href="#signup">ユーザー登録</a></li>
+                                <li><a href="#signout">ログアウト</a></li>
+                                <li><a href="#mypage">マイページ</a></li>
+                            </ul>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
+        </div>
+    </header>
             <!-- Main Menu End -->
 
 
     <div style="text-align: center;">
         <form>
-            <div>
+            <div>   
                 <br>タイトル<br>
                 <textarea name="content" cols="80" rows="5"></textarea>
             </div>
@@ -133,7 +134,7 @@
             </div>
 
             <div>
-                旅行記概要
+               <h2>旅行記概要</h2> 
             </div>
             <div style="margin:0 auto">
                 <input type="file" style="margin: auto;" name="input_img_name" accept="image/*">
@@ -143,25 +144,21 @@
             <div class="parent">
                 <div class="field" style="padding-bottom:8px; margin-bottom:20px;">
                     <div>
-                        コメント<input type="file"style="margin: auto;" style="margin: auto;" name="input_img_name" accept="image/*">
+                        コメント
+                        <input type="file"style="margin: auto;" style="margin: auto;" name="input_img_name" accept="image/*">
                         <textarea name="content" cols="80" rows="5"></textarea><br>
-    　               </div>                    
+                    </div>                    
                         <!-- 修正前 -->
                         <!-- <button type="button" class="btn bg-white mt10 miw100 add_btn" value="" name="">入力欄追加</button> -->
                          <!-- <button type="button" class="btn trash_btn ml10" value="" name="">削除</button> -->
 
                 </div>
 
-             </div>
+             </div> <!-- class=parentの外にボタンを出しておく -->
 
-             <button type="button" class="btn bg-white mt10 miw100 add_btn" value="" name="" >追加</button>
-             <button type="button" class="btn trash_btn ml10" value="" name="">削除</button>
-
-
-            <br>
-            <input type="submit" value="確認画面へ" class="btn btn-primary">
-
-            
+             <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >追加</button>
+             <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br>
+             <input type="submit" value="確認画面へ" class="btn btn-primary">            
         </form>
     </div>
 
