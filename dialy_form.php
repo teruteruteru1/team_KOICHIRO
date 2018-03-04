@@ -49,23 +49,6 @@
         });
     </script>
 
-<!-- テキストを追加するスクリプト -->
-    <script>
-		$(function() {
-   			"use strict";
-    		var $content = $('.field:last-child');
-    		$('.add_btn').on('click', function() {
-        		$content.clone(true).appendTo('.parent');
-            $('.parent textarea').each(function(i){
-                $('.parent textarea').attr('name','content'+(i+1));
-            })
-			});
-
-			$(document).on('click','.trash_btn', function() {
-     			 $(this).parents('.field').remove();
-   			 });
-		});
-	</script>
 
 </head>
 
@@ -175,29 +158,49 @@
   		</script>
   	</div> <!-- カレンダー終了 -->
 
-  		<div>
-          	旅行記概要<input type="file" name="input_img_name" accept="image/*"><br>
-          	<textarea name="comment" cols="40" rows="5"></textarea>
-      	</div>
+		<div>
+      	旅行記概要<input type="file" name="input_img_name" accept="image/*"><br>
+      	<textarea name="comment" cols="40" rows="5"></textarea>
+    </div>
 
-      	<!-- 追加ボタン -->
-      	<button type="button" class="btn bg-white mt10 miw100 add_btn" value="" name="">入力欄追加</button>
+    	<!-- 追加ボタン -->
+    	<button type="button" class="btn bg-white mt10 miw100 add_btn" value="" name="">入力欄追加</button>
 
-          <div class="parent">
-                <div class="field" style="padding-bottom:8px; margin-bottom:20px;">
-                	<div>
-                	        	コメント 写真とコメントを追加してください <input type="file" name="input_img_name" accept="image/*">
-                  </div>
-                  <textarea name="content0" cols="40" rows="5"></textarea><br>
-                  	<!-- <button type="button" class="btn bg-white mt10 miw100 add_btn" value="" name="">入力欄追加</button> -->
-                  <button type="button" class="btn trash_btn ml10" value="" name="">削除</button>
-                </div>
-           </div>
-
-
-
+      <div class="parent">
+            <div class="field" style="padding-bottom:8px; margin-bottom:20px;">
+            	<div>
+            	        	コメント 写真とコメントを追加してください <input type="file" name="input_img_name" accept="image/*">
+              </div>
+              <textarea name="content0" cols="40" rows="5"></textarea><br>
+              	<!-- <button type="button" class="btn bg-white mt10 miw100 add_btn" value="" name="">入力欄追加</button> -->
+              <button type="button" class="btn trash_btn ml10" value="" name="">削除</button>
+            </div>
+            
+      </div>
       <input type="submit" value="作成" class="btn btn-primary">
-    </form>
+  </form>
+
+    <!-- テキストを追加するスクリプト -->
+    <!-- ３月４日賞賛しょうさん修正 -->
+    <script>
+        $(function() {
+            "use strict";
+            var $content = $('.field:last-child');
+            $('.add_btn').on('click', function() {
+                $content.clone(true).appendTo('.parent');
+                $('.parent textarea').each(function(i, elem){
+                    $(elem).attr('name','content'+i);
+                })
+          });
+
+          $(document).on('click','.trash_btn', function() {
+               $(this).parents('.field').remove();
+                  $('.parent textarea').each(function(i, elem){
+                      $(elem).attr('name','content'+i);
+                  })
+              });
+          });
+    </script>
 
 </body>
 </html>

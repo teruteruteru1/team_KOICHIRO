@@ -83,19 +83,19 @@
 
 
     <div style="text-align: center;">
-        <form>
+        <form method="POST" action="plan_check.php">
             <div>   
                 <br>タイトル<br>
-                <textarea name="content" cols="80" rows="5"></textarea>
+                <textarea name="title" cols="80" rows="5"></textarea>
             </div>
             <div>
                 予算：
-                <input type="text" name="nickname" style="width:100px" placeholder="(例)100000">
+                <input type="text" name="budget" style="width:100px" placeholder="(例)100000">
                 (円)
             </div>
             <div>
                 日数：
-                <input type="text" name="nickname" style="width:100px" placeholder="(例)30">
+                <input type="text" name="days" style="width:100px" placeholder="(例)30">
                 (日)
             </div>
            
@@ -123,7 +123,7 @@
                 <script type="text/javascript" src="plan_calender.js"></script>
             
                 出発日時
-                <input type="text" class="datepicker">
+                <input type="text" class="datepicker" name=''>
             
 
             
@@ -134,30 +134,28 @@
             </div>
 
             <div>
-               <h2>旅行記概要</h2> 
+               <h2>旅行概要</h2> 
             </div>
-            <div style="margin:0 auto">
-                <input type="file" style="margin: auto;" name="input_img_name" accept="image/*">
-                <textarea name="content" cols="80" rows="5"></textarea>
+            <div style="margin:50px;">
+                <input type="file" style="margin: auto;" name="img_name" accept="image/*">
+                <textarea name="comment" cols="80" rows="5"></textarea>
             </div>
             
             <div class="parent">
                 <div class="field" style="padding-bottom:8px; margin-bottom:20px;">
-                    <div>
-                        コメント
-                        <input type="file"style="margin: auto;" style="margin: auto;" name="input_img_name" accept="image/*">
-                        <textarea name="content" cols="80" rows="5"></textarea><br>
-                    </div>                    
-                        <!-- 修正前 -->
-                        <!-- <button type="button" class="btn bg-white mt10 miw100 add_btn" value="" name="">入力欄追加</button> -->
-                         <!-- <button type="button" class="btn trash_btn ml10" value="" name="">削除</button> -->
-
+                    <!-- <div> -->
+                        写真とコメント
+                        <input type="file" style="margin: auto;" name="pic_name0" accept="image/*">
+                    <!-- </div> -->
+                        <textarea name="content0" cols="40" rows="5"></textarea><br>
+                        <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br><br>
                 </div>
+
 
              </div> <!-- class=parentの外にボタンを出しておく -->
 
              <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >追加</button>
-             <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br>
+            <!--  <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button> --><br>
              <input type="submit" value="確認画面へ" class="btn btn-primary">            
         </form>
     </div>
