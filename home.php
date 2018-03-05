@@ -60,10 +60,10 @@
 								<li><a href="#features">Services</a></li>
 								<li><a href="#feature-work">Portfolio</a></li>
 								<li><a href="#testimonials">Testimonials</a></li> -->
-								<li><a href="#signin">ログイン</a></li>
+								<li><a href="signin.php">ログイン</a></li>
 								<li><a href="register/signup.php">ユーザー登録</a></li>
-								<li><a href="#signout">ログアウト</a></li>
-								<li><a href="#mypage">マイページ</a></li>
+								<li><a href="signout.php">ログアウト</a></li>
+								<li><a href="home.php">マイページ</a></li>
 							</ul>
 						</div>
 						
