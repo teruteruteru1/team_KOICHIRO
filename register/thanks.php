@@ -33,6 +33,7 @@
             
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
+                <li><a href="signin">ログイン</a></li>
                 <li><a href="signup.php">ユーザー登録</a></li>
                 <li><a href="#signout">ログアウト</a></li>
                 <li><a href="../home.php">マイページ</a></li>
