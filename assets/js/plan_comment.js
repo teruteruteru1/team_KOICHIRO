@@ -18,7 +18,7 @@ $(function() {
     var $content = $('.field:last-child');
     $('.add_btn').on('click', function() {
         $content.clone(true).appendTo('.parent');
-        $('.parent pic_name').each(function(i, elem){
+        $('.parent input').each(function(i, elem){
             $(elem).attr('name','pic_name'+i);
         })
         $('.parent textarea').each(function(i, elem){
