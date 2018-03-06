@@ -1,7 +1,7 @@
 <?php ?>
 
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="ja">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -24,8 +24,18 @@
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">	
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/search.css">
+
+    <!-- <link rel="stylesheet" href="assets/css/header.css"> -->
+    <!------ Include the above in your HEAD tag ---------->
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<!------ Include the above in your HEAD tag ---------->
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
 
 
 	</head>
@@ -36,41 +46,62 @@
 
 	<!-- Header Start -->
 	<header id="home">
-			
-		<!-- Main Menu Start -->
+
+<!-- 		<div class="container">
+			<h2>This is just a small snipp from the big free dark theme, <a href="http://getdarkstrap.com">Getdarkstrap.com</a></h2>
+			<hr>
+		</div> -->
+
 		<div class="main-menu">
-			<div class="navbar-wrapper">
-				<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-					<div class="container">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="sr-only">Toggle Navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							
-							<a href="#" class="navbar-brand"><h1>でれっちょ</h1></a>							
-						</div>
-						
-						<div class="navbar-collapse collapse">
-							<ul class="nav navbar-nav navbar-right">
-<!-- 									<li><a href="#home">Home</a></li>
-								<li><a href="#about">About</a></li>
-								<li><a href="#features">Services</a></li>
-								<li><a href="#feature-work">Portfolio</a></li>
-								<li><a href="#testimonials">Testimonials</a></li> -->
-								<li><a href="#signin">ログイン</a></li>
-								<li><a href="#signup">ユーザー登録</a></li>
-								<li><a href="#signout">ログアウト</a></li>
-								<li><a href="#mypage">マイページ</a></li>
-							</ul>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
+		      <div class="navbar-wrapper">
+		        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		          <div class="container">
+		          	<div class="row">
+						<div class="col-sm-6">
+		            	<div class="navbar-header">
+		              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		                <span class="sr-only">Toggle Navigation</span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		              </button>
+		              
+		              
+		              <a href="#" class="navbar-brand" style="font-size: 40px;">でれっちょ</a>             
+		            </div>          
+		            </div>
+		            
+		            <!-- <div class="navbar-collapse collapse">
+		              <ul class="nav navbar-nav navbar-right"> -->
+
+		                <div class="navbar-collapse collapse">
+		                <ul class="nav navbar-nav navbar-right">
+		            
+		<!--                  <li><a href="#home">Home</a></li>
+		                <li><a href="#about">About</a></li>
+		                <li><a href="#features">Services</a></li>
+		                <li><a href="#feature-work">Portfolio</a></li>
+		                <li><a href="#testimonials">Testimonials</a></li> -->
+		                <li><a href="#signin">ログイン</a></li>
+		                <li><a href="#signup">ユーザー登録</a></li>
+		                <li><a href="#signout">ログアウト</a></li>
+		                <li class="dropdown">
+
+		                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">マイページ<span class="caret"></span></a>
+		                  <ul class="dropdown-menu">
+		                    <li><a href="#">クリップ</a></li>
+		                    <li><a href="#">しおり入力</a></li>
+		                    <li><a href="#">投稿記作成</a></li>
+		                    <li><a href="#">自投稿閲覧</a></li>
+		                  </ul>
+		                </li>
+		              </ul>
+		            </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
 		<!-- Main Menu End -->
 			
 			<!-- top Blog -->
@@ -109,68 +140,146 @@
 		<!-- Header End -->
 
 		<!-- surch start -->
-		<br> <!-- 仮処置 -->
-		<div class="col-sm-12">
-			<div class="single-footer">
-				<form action="">
-					<div class="form-group">
-						<center><input type="email" class="form-control my-form" id="exampleInputEmail1" placeholder="キーワード検索"></center>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div>
-		国
-	        <select name="country">
-	            <option value="Japan" selected="selected" class="msg">国を選択して下さい</option>
-	            <option value="Japan" class="japan">日本</option>
-	            <option value="America" class="America">アメリカ</option>
-	            <option value="Australia" class="Australia">オーストラリア</option>
-	        </select>
-	        
-	        都市
-	        <select name="city">
-	            <option value="Japan" selected="selected" class="msg">都市を選択して下さい</option>
-	            <option value="Tokyo" class="japan">東京</option>
-	            <option value="Kyoto" class="japan">京都</option>
-	            <option value="Osaka" class="japan">大阪</option>
-	            <option value="NY" class="America">ニューヨーク</option>
-	            <option value="LA" class="America">ロサンゼルス</option>
-	            <option value="Sydney" class="Australia">シドニー</option>
-	        </select>
+<br> <!-- 仮処置 -->
+<div class="container" id="wrap">
+	  <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form action="r" method="post" accept-charset="utf-8" class="form" role="form">   
+            <!-- 	<legend></legend> -->
 
-        季節
-        <select name="season">
-            <option value="season" selected="selected" class="msg">季節を選択して下さい</option>
-            <option value="spring" class="spring">春</option>
-            <option value="summer" class="summer">夏</option>
-            <option value="autumn" class="autumn">秋</option>
-            <option value="winter" class="winter">冬</option>
-        </select>
-        
-        予算
-        <select name="budget">
-            <option value="budget" selected="selected" class="msg">予算を選択して下さい</option>
-            <option value="1" class="1"> ~1000円</option>
-            <option value="2" class="2"> 1001~10000</option>
-            <option value="3" class="3"> 10001~20000</option>
-            <option value="4" class="4"> 20001~30000</option>
-            <option value="5" class="5"> 30001~</option>
-        </select>
+            	<!-- <div class="container"> -->
+								<!-- <div class="row"> -->
+									<h2>旅行記検索</h2>
+							        
+							        <!-- <form class="classNameHere" role="search"> -->
+							    	<div class="input-group">
+											<input type="text" class="form-control" placeholder="キーワード検索：『エリア』+『目的』など" name="srch-term" id="srch-term">
+												<div class="input-group-btn">
+													<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+												</div>
+										</div>
+										<br>
+									<h4>詳細検索</h4>
 
-        目的
-        <select name="budget">
-            <option value="theme" selected="selected" class="msg">目的を選択して下さい</option>
-            <option value="gourmet" class="1"> グルメ</option>
-            <option value="sightseeing" class="sightseeing">観光</option>
-            <option value="shopping" class="shopping">ショッピング</option>
-            <option value="sport_outdoor" class="sport_outdoor">スポーツ・アウトドア</option>
-            <option value="hotel" class="hotel">ホテル</option>
-            <option value="relaxation" class="relaxation">リラクゼーション</option>
-            <option value="resort" class="resort">リゾート</option>
-            <option value="ather" class="ather">その他</option>
-        </select>
-		
+									<!-- </form> -->
+							        
+							        
+<!-- 								</div>
+							</div> -->
+<!-- 									<div class="col-sm-12">
+										<div class="single-footer">
+											<form action="">
+												<div class="form-group"> -->
+													<!-- <center><input type="email" class="form-control my-form" id="exampleInputEmail1" placeholder="キーワード検索"></center> -->
+
+												<!-- </div>
+											</form>
+										</div>
+									</div> -->
+                    <div class="row">
+                        <div class="col-xs-5 col-md-5">
+                            <!-- <input type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name"  />  -->                       
+						        			<select name="country"　value="" class="form-control input-md" >
+									            <option value="Japan" selected="selected" class="msg">国を選択して下さい</option>
+									            <option value="Japan" class="japan">日本</option>
+									            <option value="America" class="America">アメリカ</option>
+									            <option value="Australia" class="Australia">オーストラリア</option>
+									        </select>
+								        </div>
+
+
+
+								        <!-- city start -->
+								        <div class="col-xs-5 col-md-5">
+                            <!-- <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name"  /> -->                        
+									        <select name="city"　value="" class="form-control input-md" >
+									            <option value="Japan" selected="selected" class="msg">都市を選択して下さい</option>
+									            <option value="Tokyo" class="japan">東京</option>
+									            <option value="Kyoto" class="japan">京都</option>
+									            <option value="Osaka" class="japan">大阪</option>
+									            <option value="NY" class="America">ニューヨーク</option>
+									            <option value="LA" class="America">ロサンゼルス</option>
+									            <option value="Sydney" class="Australia">シドニー</option>
+									        </select>
+								        </div>
+								        <div class="col-md-2">
+	                        <button type="submit" class="btn btn-default btn-primary">探す</button>
+	                      </div>
+								        <!-- city end -->
+
+                    </div>
+
+                    <!-- season start -->
+                    <!-- <input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email"  /> -->
+                    <div class="col-xs-9 col-md-9">
+							        <select name="season" value="" class="form-control input-md">
+							            <option value="season" selected="selected" class="msg">季節を選択して下さい</option>
+							            <option value="spring" class="spring">春</option>
+							            <option value="summer" class="summer">夏</option>
+							            <option value="autumn" class="autumn">秋</option>
+							            <option value="winter" class="winter">冬</option>
+							        </select>
+						        </div>
+						        		<div class="col-md-2">
+	                        <button type="submit" class="btn btn-default btn-primary">探す</button>
+	                      </div>
+
+						        <!-- season end -->
+
+						        <!-- budget start -->
+                    <!-- <input type="password" name="password" value="" class="form-control input-lg" placeholder="Password"  /> -->
+                    <div class="col-xs-9 col-md-9">
+	                    <select name="budget" class="form-control input-md">
+							            <option value="budget" selected="selected" class="msg">予算を選択して下さい</option>
+							            <option value="1" class="1"> ~1000円</option>
+							            <option value="2" class="2"> 1001~10000</option>
+							            <option value="3" class="3"> 10001~20000</option>
+							            <option value="4" class="4"> 20001~30000</option>
+							            <option value="5" class="5"> 30001~</option>
+							        </select>
+										</div>
+											<div class="col-md-2">
+										    <button type="submit" class="btn btn-default btn-primary">探す</button>
+										  </div>
+						        <!-- budget end -->
+
+						        <!-- theme start -->
+                    <!-- <input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password"  />  -->
+                    <div class="col-xs-9 col-md-9">
+	                    <select name="budget" class="form-control input-md">
+							            <option value="theme" selected="selected" class="msg">目的を選択して下さい</option>
+							            <option value="gourmet" class="1"> グルメ</option>
+							            <option value="sightseeing" class="sightseeing">観光</option>
+							            <option value="shopping" class="shopping">ショッピング</option>
+							            <option value="sport_outdoor" class="sport_outdoor">スポーツ・アウトドア</option>
+							            <option value="hotel" class="hotel">ホテル</option>
+							            <option value="relaxation" class="relaxation">リラクゼーション</option>
+							            <option value="resort" class="resort">リゾート</option>
+							            <option value="ather" class="ather">その他</option>
+							        </select> 
+						        </div>
+											<div class="col-md-2">
+										    <button type="submit" class="btn btn-default btn-primary">探す</button>
+										  </div> 
+						        <!-- theme end -->
+                   
+                     <!-- <label>Gender : </label>                    <label class="radio-inline">
+                        <input type="radio" name="gender" value="M" id=male />                        Male
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="gender" value="F" id=female />                        Female
+                    </label>
+                    <br />
+              <span class="help-block">By clicking Create my account, you agree to our Terms and that you have read our Data Use Policy, including our Cookie Use.</span> -->
+              			<div class="col-md-4">
+                    <button class="btn btn-md btn-primary btn-block signup-btn" type="submit">探す</button>
+                    </div>
+            </form>          
+          </div>
+		</div>            
+	</div>
+</div>
+
 		<!-- Single Blog1 -->
 		<section id="about" class="site-padding">
 			<div class="container">
@@ -460,7 +569,7 @@
 					<div class="col-sm-6">
 						<div class="single-footer">
 							<div class="footer-logo">
-								<!-- <a href="#" class="navbar-brand"><h1>でれっちょ</h1></a> -->
+								<!-- <a href="#" class="mod_dropnavi-brand"><h1>でれっちょ</h1></a> -->
 								<a href="#"><h1>でれっちょ</h1></a>
 									<p>旅行コミュニティサイト(旅行記・旅行SNS)</p>
 								<!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
@@ -472,7 +581,7 @@
 					
 					
 					<!-- Single Footer -->
-					<div class="col-sm-3">
+					<!-- <div class="col-sm-3">
 						<div class="single-footer">
 							<h4>ご連絡先</h4>
 							<p>XX New Design Street, cebucity XXX <br />
@@ -480,12 +589,12 @@
 							info@XXXX.com <br />
 							(99) 999 999 999</p>
 						</div>
-					</div>
+					</div> -->
 					<!-- Single Footer -->
 					
 					
 					<!-- Single Footer -->
-					<div class="col-sm-3">
+					<!-- <div class="col-sm-3">
 						<div class="single-footer">
 							<h4>定期購読</h4>
 							<p>私たちの月刊ニュースレターを購読するためにあなたのメールアドレスを入力してください</p>
@@ -500,7 +609,7 @@
 							</form>
 							
 						</div>
-					</div>
+					</div> -->
 					<!-- Single Footer -->
 					
 					<!-- Single Footer -->
