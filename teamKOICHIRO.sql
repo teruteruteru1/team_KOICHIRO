@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2018 年 2 月 26 日 08:08
+-- Generation Time: 2018 年 3 月 06 日 08:24
 -- サーバのバージョン： 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -165,11 +165,19 @@ CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `user_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `pasward` varchar(255) NOT NULL,
-  `image_name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `img_name` varchar(255) NOT NULL,
   `created` datetime NOT NULL,
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- テーブルのデータのダンプ `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_name`, `email`, `password`, `img_name`, `created`, `updated`) VALUES
+(1, 'シロ', 'shiro@gmail.com', '$2y$10$CB/oByVSy2Qhy9HAVxFoZeITUK3CA0cbuA.bCXJEr7sF45W3Jq6wm', '20180303105527shiro.jpg', '2018-03-03 18:10:26', '2018-03-03 10:10:26'),
+(2, '野原しんのすけ', 'shinnosuke@gmail.com', '$2y$10$cZcWrlqkChu2.6xeHikQpuk3QtF5o91pLKCxkH0CwO5KlE7gMNBai', '20180305025925shinnnnosuke.png', '2018-03-05 09:59:31', '2018-03-05 01:59:31');
 
 --
 -- Indexes for dumped tables
@@ -309,7 +317,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
