@@ -1,8 +1,4 @@
 <?php 
-    session_start();  
-    // 暫定的にlearnSNSに接続  
-    // LearnSNSのusersから名前だけ持ってきてみる
-
     
  ?>
 
