@@ -22,7 +22,7 @@ $(function() {
             $(elem).attr('name','pic_name'+i);
         })
         $('.parent textarea').each(function(i, elem){
-            $(elem).attr('name','content'+i);
+            $(elem).attr('name','comment'+i);
         })
     });
 
@@ -32,7 +32,7 @@ $(function() {
                 $(elem).attr('name','pic_name'+i);
             })
             $('.parent textarea').each(function(i, elem){
-                $(elem).attr('name','content'+i);
+                $(elem).attr('name','comment'+i);
             })
     });
 });

@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
+<<<<<<< HEAD
 -- Generation Time: 2018 年 3 月 06 日 08:24
+=======
+-- Generation Time: 2018 年 3 月 05 日 02:59
+>>>>>>> 4420c5f608c0b703f7fd4dc75c5fbe5635f68cab
 -- サーバのバージョン： 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 

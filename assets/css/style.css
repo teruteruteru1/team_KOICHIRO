@@ -660,8 +660,10 @@ ul.projects li {
 		}
 		
 		.btn.btn-lg.btn-block.btn-primary {
-			background: #6d6d6d none repeat scroll 0 0;
-			border: 1px solid #6d6d6d;
+			/*background: #6d6d6d none repeat scroll 0 0;*/
+      background: #428bca none repeat scroll 0 0;
+			/*border: 1px solid #6d6d6d;*/
+      border: 1px solid #428bca;
 			color: #fff;
 			font-size: 16px;
 			font-weight: 600;

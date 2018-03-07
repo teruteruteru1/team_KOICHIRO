@@ -1,7 +1,10 @@
 <?php 
+
+//一回自分に飛ばす。左
+// 
+//////////////////
     session_start();  
-    // 暫定的にlearnSNSに接続  
-    // LearnSNSのusersから名前だけ持ってきてみる
+    
     //step1
     $dsn = 'mysql:dbname=teamKOICHIRO;host=localhost';
     //XAMPPの初期設定値
@@ -12,7 +15,7 @@
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     //ユーザー名を国名として呼び出してみる
-    $sql = 'SELECT name FROM `countries` WHERE 1';
+    $sql = 'SELECT * FROM `countries` WHERE 1';
     $data = array();
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
@@ -25,18 +28,19 @@
         }
         $countries[] = $country;
     }
-    $c = count($countries); 
-    echo $c;
-    echo '<br>';
-    // echo '<pre>'; 
-    // echo '$country = ';
-    // var_dump($country);
-    // echo '</pre>';
+    $count_country = count($countries); 
+    echo $count_country;//国名プルダウン用カントリー
 
-    echo '<pre>';
-    echo '$countries = ';
-    var_dump($countries);
+    echo '<br>';
+    echo '<pre>'; 
+    echo '$country = ';
+    var_dump($country);
     echo '</pre>';
+
+    // echo '<pre>';
+    // echo '$countries = ';
+    // var_dump($countries);
+    // echo '</pre>';
     
 
 
@@ -135,20 +139,24 @@
             </div>
             <div>
                 日数：
-                <input type="text" name="days" style="width:100px" placeholder="(例)30">
+                <input type="text" name="number_days" style="width:100px" placeholder="(例)30">
                 (日)
             </div>
            
-            国
-            <select name="country">
-                <option value="Japan" selected="selected" class="msg">国を選択して下さい</option>
-                <option value="Japan" class="japan">日本</option>
+            国1
+            <select name="country_id">
+                <option value="0" selected="selected" class="msg">国を選択して下さい</option>
+                <?php for($i=0; $i<$count_country ; $i++){ ?>
+                <option value="<?php echo $countries[$i]['country_name']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
+                <?php } ?>
+                <!-- <option value="Japan" class="japan">日本</option>
                 <option value="America" class="America">アメリカ</option>
-                <option value="Australia" class="Australia">オーストラリア</option>
+                <option value="Australia" class="Australia">オーストラリア</option> -->
             </select>
             
-            都市
-            <select name="city">
+            都市1
+            <!-- 中間テーブルから国名を持ってくる？ -->
+            <select name="area_id">
                 <option value="Japan" selected="selected" class="msg">都市を選択して下さい</option>
                 <option value="Tokyo" class="japan">東京</option>
                 <option value="Kyoto" class="japan">京都</option>
@@ -163,12 +171,11 @@
                 <script type="text/javascript" src="plan_calender.js"></script>
             
                 出発日時
-                <input type="text" class="datepicker" name=''>
-            
+                <input type="text" class="datepicker" name="depart_date">         
 
             
                 帰宅日時
-                <input type="text" class="datepicker">
+                <input type="text" class="datepicker" name="arrival_date">
             
 
             </div>
@@ -177,8 +184,8 @@
                <h2>旅行概要</h2> 
             </div>
             <div style="margin:50px;">
-                <input type="file" style="margin: auto;" name="img_name" accept="image/*">
-                <textarea name="comment" cols="80" rows="5"></textarea>
+                <input type="file" style="margin: auto;" name="title_img_name" accept="image/*">
+                <textarea name="title_comment" cols="80" rows="5"></textarea>
             </div>
             
             <div class="parent">
@@ -187,7 +194,7 @@
                         写真とコメント
                         <input type="file" style="margin: auto;" name="pic_name0" accept="image/*">
                     <!-- </div> -->
-                        <textarea name="content0" cols="40" rows="5"></textarea><br>
+                        <textarea name="comment0" cols="40" rows="5"></textarea><br>
                         <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br><br>
                 </div>
 
