@@ -2,7 +2,7 @@
     session_start();  
     require ('dbconnect.php');
 
-//一回自分に飛ばす。確認ヴァーダンプ
+//一回自分に飛ばす。確認ヴァーダンプｂｂｂｂ
     echo '<pre>'; 
     echo '$_POST = ';
     var_dump($_POST);
