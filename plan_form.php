@@ -36,57 +36,6 @@
     var_dump($country);
     echo '</pre>';
 
-// バリデーション
-
-    //$_POSTがからじゃない時
-    //ユーザーがformの送信ボタンを押した時
-      
-
-      if(!empty($_POST)){
-          echo '送信完了<br>';
-          //変数定義
-          $name = $_POST['input_name'];
-          $email = $_POST['input_email'];
-          $password = $_POST['input_password'];
-          //ユーザー名のからチェック]]]
-          if ($name == '') {
-              $errors['name'] = 'blank';
-          }
-          if ($email == '') {
-              $errors['email'] = 'blank';
-          }
-
-          //パスワードの空チェック
-          $str_c = strlen($password);
-          if ($password == '') {
-              $errors['password'] = 'blank';
-          }elseif ($str_c < 4 || 16 < $str_c) {
-              $errors['password'] = 'lenge';
-          }
-
-          //type=fileの情報を受け取るには$_FILESスーパーグローバル変数が必要になる
-          if (!isset($_REQUEST['action'])) {
-              $file_name = $_FILES['input_img_name']['name'];
-          }
-          
-          if (!empty($file_name)) {
-              //jpeg/png/gifの３種類に変更する
-              $file_type = substr($file_name,-3) ;
-              $file_type = strtolower($file_type);
-              if ($file_type != 'jpg' && $file_type != 'png' && $file_type != 'gif') {
-                $errors['img_name'] = 'type';
-              }
-          }else{
-              $errors['img_name'] = 'blank';
-          }
-
-          if (isset($_REQUEST['action'])){
-              $errors['img_name'] = 'rewrite';
-          }
-  
-
-    
-
 
 
     
