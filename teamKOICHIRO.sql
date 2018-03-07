@@ -4,6 +4,7 @@
 --
 -- Host: localhost
 -- Generation Time: 2018 年 3 月 07 日 11:31
+
 -- サーバのバージョン： 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
