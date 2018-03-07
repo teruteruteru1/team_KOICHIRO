@@ -1,4 +1,7 @@
-<?php ?>
+<?php 
+//ちんこ！！！！！！！！！！！！！！	
+
+?>
 
 <!doctype html>
 <html class="no-js" lang="ja">
