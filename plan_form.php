@@ -1,20 +1,19 @@
 <?php 
-
-//一回自分に飛ばす。左
-// 
-//////////////////
     session_start();  
+    require ('dbconnect.php');
+
+//一回自分に飛ばす。確認ヴァーダンプ
+    echo '<pre>'; 
+    echo '$_POST = ';
+    var_dump($_POST);
+    echo '</pre>';
+
+
     
-    //step1
-    $dsn = 'mysql:dbname=teamKOICHIRO;host=localhost';
-    //XAMPPの初期設定値
-    $db_user = 'root';
-    $db_password='';
-    $dbh = new PDO($dsn, $db_user, $db_password);
-    $dbh->query('SET NAMES utf8');
-    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    //ユーザー名を国名として呼び出してみる
+
+
+//プルダウン用の準備    
+//国テーブルから取ってくる
     $sql = 'SELECT * FROM `countries` WHERE 1';
     $data = array();
     $stmt = $dbh->prepare($sql);
@@ -29,7 +28,7 @@
         $countries[] = $country;
     }
     $count_country = count($countries); 
-    echo $count_country;//国名プルダウン用カントリー
+    echo $count_country;//国名プルダウン用カウントカントリー
 
     echo '<br>';
     echo '<pre>'; 
@@ -37,10 +36,55 @@
     var_dump($country);
     echo '</pre>';
 
-    // echo '<pre>';
-    // echo '$countries = ';
-    // var_dump($countries);
-    // echo '</pre>';
+// バリデーション
+
+    //$_POSTがからじゃない時
+    //ユーザーがformの送信ボタンを押した時
+      
+
+      if(!empty($_POST)){
+          echo '送信完了<br>';
+          //変数定義
+          $name = $_POST['input_name'];
+          $email = $_POST['input_email'];
+          $password = $_POST['input_password'];
+          //ユーザー名のからチェック]]]
+          if ($name == '') {
+              $errors['name'] = 'blank';
+          }
+          if ($email == '') {
+              $errors['email'] = 'blank';
+          }
+
+          //パスワードの空チェック
+          $str_c = strlen($password);
+          if ($password == '') {
+              $errors['password'] = 'blank';
+          }elseif ($str_c < 4 || 16 < $str_c) {
+              $errors['password'] = 'lenge';
+          }
+
+          //type=fileの情報を受け取るには$_FILESスーパーグローバル変数が必要になる
+          if (!isset($_REQUEST['action'])) {
+              $file_name = $_FILES['input_img_name']['name'];
+          }
+          
+          if (!empty($file_name)) {
+              //jpeg/png/gifの３種類に変更する
+              $file_type = substr($file_name,-3) ;
+              $file_type = strtolower($file_type);
+              if ($file_type != 'jpg' && $file_type != 'png' && $file_type != 'gif') {
+                $errors['img_name'] = 'type';
+              }
+          }else{
+              $errors['img_name'] = 'blank';
+          }
+
+          if (isset($_REQUEST['action'])){
+              $errors['img_name'] = 'rewrite';
+          }
+  
+
     
 
 
@@ -90,10 +134,10 @@
 
 <body>
         <!-- Header Start -->
-    <header id="home">
+    <!-- <header id="home"> -->
         
         <!-- Main Menu Start -->
-        <div class="main-menu">
+        <!-- <div class="main-menu">
             <div class="navbar-wrapper">    
                 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                     <div class="container">
@@ -122,12 +166,12 @@
                 </div>
             </div>
         </div>
-    </header>
+    </header> -->
             <!-- Main Menu End -->
 
 
     <div style="text-align: center;">
-        <form method="POST" action="plan_check.php">
+        <form method="POST" action="">
             <div>   
                 <br>タイトル<br>
                 <textarea name="title" cols="80" rows="5"></textarea>
@@ -144,7 +188,7 @@
             </div>
            
             国1
-            <select name="country_id">
+            <select name="country_id_1">
                 <option value="0" selected="selected" class="msg">国を選択して下さい</option>
                 <?php for($i=0; $i<$count_country ; $i++){ ?>
                 <option value="<?php echo $countries[$i]['country_name']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
@@ -156,7 +200,55 @@
             
             都市1
             <!-- 中間テーブルから国名を持ってくる？ -->
-            <select name="area_id">
+            <select name="area_id_1">
+                <option value="Japan" selected="selected" class="msg">都市を選択して下さい</option>
+                <option value="Tokyo" class="japan">東京</option>
+                <option value="Kyoto" class="japan">京都</option>
+                <option value="Osaka" class="japan">大阪</option>
+                <option value="NY" class="America">ニューヨーク</option>
+                <option value="LA" class="America">ロサンゼルス</option>
+                <option value="Sydney" class="Australia">シドニー</option>
+            </select>
+            <br>
+
+            国2
+            <select name="country_id_2">
+                <option value="0" selected="selected" class="msg">国を選択して下さい</option>
+                <?php for($i=0; $i<$count_country ; $i++){ ?>
+                <option value="<?php echo $countries[$i]['country_name']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
+                <?php } ?>
+                <!-- <option value="Japan" class="japan">日本</option>
+                <option value="America" class="America">アメリカ</option>
+                <option value="Australia" class="Australia">オーストラリア</option> -->
+            </select>
+            
+            都市2
+            <!-- 中間テーブルから国名を持ってくる？ -->
+            <select name="area_id_2">
+                <option value="Japan" selected="selected" class="msg">都市を選択して下さい</option>
+                <option value="Tokyo" class="japan">東京</option>
+                <option value="Kyoto" class="japan">京都</option>
+                <option value="Osaka" class="japan">大阪</option>
+                <option value="NY" class="America">ニューヨーク</option>
+                <option value="LA" class="America">ロサンゼルス</option>
+                <option value="Sydney" class="Australia">シドニー</option>
+            </select>
+            <br>
+
+            国3
+            <select name="country_id_3">
+                <option value="0" selected="selected" class="msg">国を選択して下さい</option>
+                <?php for($i=0; $i<$count_country ; $i++){ ?>
+                <option value="<?php echo $countries[$i]['country_name']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
+                <?php } ?>
+                <!-- <option value="Japan" class="japan">日本</option>
+                <option value="America" class="America">アメリカ</option>
+                <option value="Australia" class="Australia">オーストラリア</option> -->
+            </select>
+            
+            都市3
+            <!-- 中間テーブルから国名を持ってくる？ -->
+            <select name="area_id_3">
                 <option value="Japan" selected="selected" class="msg">都市を選択して下さい</option>
                 <option value="Tokyo" class="japan">東京</option>
                 <option value="Kyoto" class="japan">京都</option>
@@ -166,23 +258,25 @@
                 <option value="Sydney" class="Australia">シドニー</option>
             </select>
 
-            <div>
+            <br>
+            <br>
 
+            <div> 
+                <!-- カレンダー機能開始 -->
                 <script type="text/javascript" src="plan_calender.js"></script>
             
                 出発日時
-                <input type="text" class="datepicker" name="depart_date">         
-
-            
+                <input type="text" class="datepicker" name="depart_date">
                 帰宅日時
                 <input type="text" class="datepicker" name="arrival_date">
             
 
             </div>
+            <br>
+            <br>
 
-            <div>
-               <h2>旅行概要</h2> 
-            </div>
+
+            <h2>旅行概要</h2>
             <div style="margin:50px;">
                 <input type="file" style="margin: auto;" name="title_img_name" accept="image/*">
                 <textarea name="title_comment" cols="80" rows="5"></textarea>
