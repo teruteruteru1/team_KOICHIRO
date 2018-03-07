@@ -73,9 +73,9 @@
 	              <li><a href="#features">Services</a></li>
 	              <li><a href="#feature-work">Portfolio</a></li>
 	              <li><a href="#testimonials">Testimonials</a></li> -->
--	              <li><a href="#signin">ログイン</a></li>
--	              <li><a href="#signup">ユーザー登録</a></li>
--	              <li><a href="#signout">ログアウト</a></li>
+-	              <li><a href="#">ログイン</a></li>
+-	              <li><a href="#">ユーザー登録</a></li>
+-	              <li><a href="#">ログアウト</a></li>
 	              <li class="dropdown">
 
 		              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">マイページ<span class="caret"></span></a>
