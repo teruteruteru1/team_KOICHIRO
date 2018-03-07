@@ -12,10 +12,10 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 		
-	<!-- Font -->
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-	<!-- Font -->
+		<!-- Font -->
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+		<!-- Font -->
 		
 		
     <link rel="stylesheet" href="assets/css/normalize.css">
@@ -29,16 +29,13 @@
 
     <!-- <link rel="stylesheet" href="assets/css/header.css"> -->
     <!------ Include the above in your HEAD tag ---------->
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-	<!------ Include the above in your HEAD tag ---------->
-<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
-
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		<!------ Include the above in your HEAD tag ---------->
 
 	</head>
+
 	<body>
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -46,105 +43,98 @@
 
 	<!-- Header Start -->
 	<header id="home">
-
-<!-- 		<div class="container">
-			<h2>This is just a small snipp from the big free dark theme, <a href="http://getdarkstrap.com">Getdarkstrap.com</a></h2>
-			<hr>
-		</div> -->
-
 		<div class="main-menu">
-		      <div class="navbar-wrapper">
-		        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		          <div class="container">
-		          	<div class="row">
-						<div class="col-sm-6">
-		            	<div class="navbar-header">
+      <div class="navbar-wrapper">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="container">
+          	<div class="row">
+							<div class="col-sm-6">
+            		<div class="navbar-header">
 		              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 		                <span class="sr-only">Toggle Navigation</span>
 		                <span class="icon-bar"></span>
 		                <span class="icon-bar"></span>
 		                <span class="icon-bar"></span>
 		              </button>
-		              
-		              
-		              <a href="#" class="navbar-brand" style="font-size: 40px;">でれっちょ</a>             
+
+              		<a href="#" class="navbar-brand" style="font-size: 40px;">でれっちょ</a>             
 		            </div>          
-		            </div>
-		            
-		            <!-- <div class="navbar-collapse collapse">
-		              <ul class="nav navbar-nav navbar-right"> -->
+	            </div>
+			            
+	            <!-- <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right"> -->
 
-		                <div class="navbar-collapse collapse">
-		                <ul class="nav navbar-nav navbar-right">
-		            
-		<!--                  <li><a href="#home">Home</a></li>
-		                <li><a href="#about">About</a></li>
-		                <li><a href="#features">Services</a></li>
-		                <li><a href="#feature-work">Portfolio</a></li>
-		                <li><a href="#testimonials">Testimonials</a></li> -->
-		                <li><a href="#signin">ログイン</a></li>
-		                <li><a href="#signup">ユーザー登録</a></li>
-		                <li><a href="#signout">ログアウト</a></li>
-		                <li class="dropdown">
+              <div class="navbar-collapse collapse">
+	              <ul class="nav navbar-nav navbar-right">
+	    
+	<!--                  <li><a href="#home">Home</a></li>
+	              <li><a href="#about">About</a></li>
+	              <li><a href="#features">Services</a></li>
+	              <li><a href="#feature-work">Portfolio</a></li>
+	              <li><a href="#testimonials">Testimonials</a></li> -->
+	              <li><a href="#signin">ログイン</a></li>
+	              <li><a href="#signup">ユーザー登録</a></li>
+	              <li><a href="#signout">ログアウト</a></li>
+	              <li class="dropdown">
 
-		                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">マイページ<span class="caret"></span></a>
-		                  <ul class="dropdown-menu">
-		                    <li><a href="#">クリップ</a></li>
-		                    <li><a href="#">しおり入力</a></li>
-		                    <li><a href="#">投稿記作成</a></li>
-		                    <li><a href="#">自投稿閲覧</a></li>
-		                  </ul>
-		                </li>
+		              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">マイページ<span class="caret"></span></a>
+		              <ul class="dropdown-menu">
+		                <li><a href="#">クリップ</a></li>
+		                <li><a href="#">しおり入力</a></li>
+		                <li><a href="#">投稿記作成</a></li>
+		                <li><a href="#">自投稿閲覧</a></li>
 		              </ul>
-		            </div>
-		            </div>
-		          </div>
+            		</li>
+         				</ul>
+        			</div>
 		        </div>
 		      </div>
 		    </div>
+		  </div>
+		</div>
 		<!-- Main Menu End -->
 			
-			<!-- top Blog -->
-			<div class="slider">
-				<div id="fawesome-carousel" class="carousel slide" data-ride="carousel">
-					<ol class="carousel-indicators indicatior2">
-						<li data-target="#fawesome-carousel" data-slide-to="0" class="active"></li>
-						<li data-target="#fawesome-carousel" data-slide-to="1"></li>
-					</ol>
-				 
-					<div class="carousel-inner" role="listbox">
-						<div class="item active">
-							<img src="assets/img/add_img/Top_Blog1_P9172109.jpg" alt="Sider Big Image">
-							<div class="carousel-caption">
-								<h1 class="wow fadeInLeft">イタリア旅行 おすすめスポット 2泊3日</h1>
-								<div class="slider-btn wow fadeIn">
-									<a href="#" class="btn btn-learn">詳細をみる</a>
-								</div>
+		<!-- top Blog -->
+		<div class="slider">
+			<div id="fawesome-carousel" class="carousel slide" data-ride="carousel">
+				<ol class="carousel-indicators indicatior2">
+					<li data-target="#fawesome-carousel" data-slide-to="0" class="active"></li>
+					<li data-target="#fawesome-carousel" data-slide-to="1"></li>
+				</ol>
+			 
+				<div class="carousel-inner" role="listbox">
+					<div class="item active">
+						<img src="assets/img/add_img/Top_Blog1_P9172109.jpg" alt="Sider Big Image">
+						<div class="carousel-caption">
+							<h1 class="wow fadeInLeft">イタリア旅行 おすすめスポット 2泊3日</h1>
+							<div class="slider-btn wow fadeIn">
+								<a href="#" class="btn btn-learn">詳細をみる</a>
 							</div>
 						</div>
-						<div class="item">
-							<img src="assets/img/add_img/Top_Blog2_IMG_7607.jpg" alt="Top Blog1 Image">
-							<div class="carousel-caption">
-								<h1 class="wow fadeInLeft">【イタリア】ベネチアのカラフルな姉妹島「ブラーノ」と「ムラーノ」</h1>
-								<div class="slider-btn wow fadeIn">
-									<a href="#" class="btn btn-learn">詳細をみる</a>
-								</div>
+					</div>
+					<div class="item">
+						<img src="assets/img/add_img/Top_Blog2_IMG_7607.jpg" alt="Top Blog1 Image">
+						<div class="carousel-caption">
+							<h1 class="wow fadeInLeft">【イタリア】ベネチアのカラフルな姉妹島「ブラーノ」と「ムラーノ」</h1>
+							<div class="slider-btn wow fadeIn">
+								<a href="#" class="btn btn-learn">詳細をみる</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- Top Blog End -->
+		</div>
+		<!-- Top Blog End -->
 			
 		</header>
 		<!-- Header End -->
 
 		<!-- surch start -->
-<br> <!-- 仮処置 -->
-<div class="container" id="wrap">
-	  <div class="row">
+		<br> <!-- 仮処置 -->
+		<div class="container" id="wrap">
+	  	<div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form action="r" method="post" accept-charset="utf-8" class="form" role="form">   
+          <form action="r" method="post" accept-charset="utf-8" class="form" role="form">   
             <!-- 	<legend></legend> -->
 
             	<!-- <div class="container"> -->
@@ -176,6 +166,7 @@
 											</form>
 										</div>
 									</div> -->
+					<!-- country start -->
                     <div class="row">
                         <div class="col-xs-5 col-md-5">
                             <!-- <input type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name"  />  -->                       
@@ -186,6 +177,7 @@
 									            <option value="Australia" class="Australia">オーストラリア</option>
 									        </select>
 								        </div>
+		        	<!-- country end -->
 
 
 
