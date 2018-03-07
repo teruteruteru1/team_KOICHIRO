@@ -73,16 +73,16 @@
 	              <li><a href="#features">Services</a></li>
 	              <li><a href="#feature-work">Portfolio</a></li>
 	              <li><a href="#testimonials">Testimonials</a></li> -->
-	              <li><a href="signin.php">ログイン</a></li>
-	              <li><a href="register/signup.php">ユーザー登録</a></li>
-	              <li><a href="signout.php">ログアウト</a></li>
+	              <li><a href="#">ログイン</a></li>
+	              <li><a href="#">ユーザー登録</a></li>
+	              <li><a href="#">ログアウト</a></li>
 	              <li class="dropdown">
 
 		              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">マイページ<span class="caret"></span></a>
 		              <ul class="dropdown-menu">
 		                <li><a href="#">クリップ</a></li>
-		                <li><a href="plan_form.php">しおり入力</a></li>
-		                <li><a href="dialy_form.php">投稿記作成</a></li>
+		                <li><a href="#">しおり入力</a></li>
+		                <li><a href="#">投稿記作成</a></li>
 		                <li><a href="#">自投稿閲覧</a></li>
 		              </ul>
             		</li>
