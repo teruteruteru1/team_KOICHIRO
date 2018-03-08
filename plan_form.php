@@ -36,6 +36,74 @@
     var_dump($country);
     echo '</pre>';
 
+// バリデーション
+    $errors = array(); //一度戻ってきたときのエラー用
+
+    //$_POSTが空じゃない時
+    //ユーザーがformの送信ボタンを押した時
+      
+
+    if(!empty($_POST)){
+        echo '送信完了<br>';
+        //変数定義
+        $title = $_POST['title'];
+        $budget = $_POST['budget'];
+        $number_days = $_POST['number_days'];
+        $country_id_1 = $_POST['country_id_1'];
+        $country_id_2 = $_POST['country_id_2'];
+        $country_id_3 = $_POST['country_id_3'];
+        $area_id_1 = $_POST['area_id_1'];
+        $area_id_2 = $_POST['area_id_2'];
+        $area_id_3 = $_POST['area_id_3'];
+        $depart_date = $_POST['depart_date'];
+        $arrival_date = $_POST['arrival_date'];
+        $title_comment = $_POST['title_comment'];
+        $title_img_name = $_POST['title_img_name'];
+        //写真たちをぶん回すぜpicturesに保存するデータたち
+        // 条件分岐でぶん回す
+        $pic_name0 = $_POST['pic_name0'];
+        $comment0 = $_POST['comment0'];
+        //ユーザー名のからチェック
+        if ($name == '') {
+            $errors['name'] = 'blank';
+        }
+        if ($email == '') {
+            $errors['email'] = 'blank';
+        }
+    }
+
+    //     //パスワードの空チェック
+    //     $str_c = strlen($password);
+    //     if ($password == '') {
+    //         $errors['password'] = 'blank';
+    //     }elseif ($str_c < 4 || 16 < $str_c) {
+    //         $errors['password'] = 'lenge';
+    //     }
+
+    //     //type=fileの情報を受け取るには$_FILESスーパーグローバル変数が必要になる
+    //     if (!isset($_REQUEST['action'])) {
+    //         $file_name = $_FILES['input_img_name']['name'];
+    //     }
+        
+    //     if (!empty($file_name)) {
+    //         //jpeg/png/gifの３種類に変更する
+    //         $file_type = substr($file_name,-3) ;
+    //         $file_type = strtolower($file_type);
+    //         if ($file_type != 'jpg' && $file_type != 'png' && $file_type != 'gif') {
+    //           $errors['img_name'] = 'type';
+    //         }
+    //     }else{
+    //         $errors['img_name'] = 'blank';
+    //     }
+
+    //     if (isset($_REQUEST['action'])){
+    //         $errors['img_name'] = 'rewrite';
+    //     }
+
+
+    
+
+
 
 
     
@@ -46,7 +114,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
+    <title>plam_f</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -198,7 +266,7 @@
             都市3
             <!-- 中間テーブルから国名を持ってくる？ -->
             <select name="area_id_3">
-                <option value="Japan" selected="selected" class="msg">都市を選択して下さい</option>
+                <option value="0" selected="selected" class="msg">都市を選択して下さい</option>
                 <option value="Tokyo" class="japan">東京</option>
                 <option value="Kyoto" class="japan">京都</option>
                 <option value="Osaka" class="japan">大阪</option>
@@ -239,6 +307,7 @@
                     <!-- </div> -->
                         <textarea name="comment0" cols="40" rows="5"></textarea><br>
                         <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br><br>
+
                 </div>
 
 
