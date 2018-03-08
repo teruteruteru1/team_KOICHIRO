@@ -1,5 +1,6 @@
 <?php 
-//ちんこ！！！！！！！！！！！！！！	
+//ちんこ！！！！！！！！！！！！！！
+//jjjjjjjjjjjjjjjjjjjjjjjj	
 
 ?>
 
@@ -60,6 +61,7 @@
 		                <span class="icon-bar"></span>
 		                <span class="icon-bar"></span>
 		              </button>
+
 
               		<a href="#" class="navbar-brand" style="font-size: 40px;">でれっちょ</a>             
 		            </div>          
