@@ -13,7 +13,7 @@
 
 
 //プルダウン用の準備    
-//国テーブルから取ってくる
+//countriesテーブルから取ってくる
     $sql = 'SELECT * FROM `countries` WHERE 1';
     $data = array();
     $stmt = $dbh->prepare($sql);
@@ -34,6 +34,29 @@
     echo '<pre>'; 
     echo '$country = ';
     var_dump($country);
+    echo '</pre>';
+
+//areasテーブルから取ってくる
+    $sql = 'SELECT * FROM `areas` WHERE 1';
+    $data = array();
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+    //fetchする
+    $areas = array();
+    while (true) {
+        $area = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($area == false) {
+            break;
+        }
+        $areas[] = $area;
+    }
+    $count_area = count($areas); 
+    echo $count_area;//国名プルダウン用カウントカントリー
+
+    echo '<br>';
+    echo '<pre>'; 
+    echo '$area = ';
+    var_dump($area);
     echo '</pre>';
 
 // バリデーション
@@ -208,25 +231,45 @@
             <select name="country_id_1">
                 <option value="0" selected="selected" class="msg">国を選択して下さい</option>
                 <?php for($i=0; $i<$count_country ; $i++){ ?>
-                <option value="<?php echo $countries[$i]['country_name']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
+                 <option value="<?php echo $countries[$i]['country_name']; ?>" class="<?php echo $countries[$i]['id']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
                 <?php } ?>
-                <!-- <option value="Japan" class="japan">日本</option>
-                <option value="America" class="America">アメリカ</option>
-                <option value="Australia" class="Australia">オーストラリア</option> -->
+                
             </select>
             
             都市1
             <!-- 中間テーブルから国名を持ってくる？ -->
             <select name="area_id_1">
-                <option value="Japan" selected="selected" class="msg">都市を選択して下さい</option>
-                <option value="Tokyo" class="japan">東京</option>
-                <option value="Kyoto" class="japan">京都</option>
-                <option value="Osaka" class="japan">大阪</option>
-                <option value="NY" class="America">ニューヨーク</option>
-                <option value="LA" class="America">ロサンゼルス</option>
-                <option value="Sydney" class="Australia">シドニー</option>
+              <option value="0" selected="selected" class="msg">都市を選択して下さい</option>
+              <?php for($i=0; $i<$count_area ; $i++){ ?>
+                <option value="<?php echo $areas[$i]['area_name']; ?>" class="<?php echo $areas[$i]['country_id']; ?>"><?php echo $areas[$i]['area_name']; ?></option>
+              <?php } ?>
+
+              
             </select>
             <br>
+
+            国1.2
+            <select name="country">
+                <option value="0" selected="selected" class="msg">国を選択して下さい</option>                
+                <option value="Japan" class="japan">日本</option>
+                <option value="America" class="America">アメリカ</option>
+                <option value="Australia" class="Australia">オーストラリア</option>
+            </select>
+            
+            都市1.2
+            <!-- 中間テーブルから国名を持ってくる？ -->
+            <select name="city">
+              <option value="0" selected="selected" class="msg">都市を選択して下さい</option>
+              <option value="Tokyo" class="japan">東京</option>
+              <option value="Kyoto" class="japan">京都</option>
+              <option value="Osaka" class="japan">大阪</option>
+              <option value="NY" class="America">ニューヨーク</option>
+              <option value="LA" class="America">ロサンゼルス</option>
+              <option value="Sydney" class="Australia">シドニー</option>
+            </select>
+            <br>
+
+
 
             国2
             <select name="country_id_2">
@@ -442,6 +485,7 @@
         <script src="assets/js/plan_calender.js"></script>
         <!-- プルダウンのJS -->
         <script src="assets/js/plan_country.js"></script>
+        <script src="assets/js/plan_country2.js"></script>
         <!-- コメントを増やすJS -->
         <script src="assets/js/plan_comment.js"></script>
         
@@ -471,20 +515,11 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
-        
-
-
-    
-        
-
-      
-
-
-
-
-
-
 
 
 </body>
 </html>
+
+
+
+
