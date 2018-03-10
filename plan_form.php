@@ -87,6 +87,31 @@
         $pic_name0 = $_POST['pic_name0'];
         $comment0 = $_POST['comment0'];
         //ユーザー名のからチェック
+        if ($title == '') {
+            $errors['title'] = 'blank';
+        }
+        if ($budget == '') {
+            $errors['budget'] = 'blank';
+        }
+        if ($number_days == '') {
+            $errors['number_days'] = 'blank';
+        }
+        if ($country_id_1 == '') {
+            $errors['country_id_1'] = 'blank';
+        }
+        // 国とエリアは１だけ入っていればOK
+        // if ($country_id_2 == '') {
+        //     $errors['country_id_2'] = 'blank';
+        // }
+        // if ($country_id_3 == '') {
+        //     $errors['country_id_3'] = 'blank';
+        // }
+        if ($area_id_1 == '') {
+            $errors['area_id_1'] = 'blank';
+        }
+        if ($email == '') {
+            $errors['email'] = 'blank';
+        }
         if ($name == '') {
             $errors['name'] = 'blank';
         }
