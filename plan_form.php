@@ -228,7 +228,7 @@
             </div>
            
             国1
-            <select name="country_id_1">
+            <select name="country">
                 <option value="0" selected="selected" class="msg">国を選択して下さい</option>
                 <?php for($i=0; $i<$count_country ; $i++){ ?>
                  <option value="<?php echo $countries[$i]['country_name']; ?>" class="<?php echo $countries[$i]['id']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
@@ -238,7 +238,7 @@
             
             都市1
             <!-- 中間テーブルから国名を持ってくる？ -->
-            <select name="area_id_1">
+            <select name="city_">
               <option value="0" selected="selected" class="msg">都市を選択して下さい</option>
               <?php for($i=0; $i<$count_area ; $i++){ ?>
                 <option value="<?php echo $areas[$i]['area_name']; ?>" class="<?php echo $areas[$i]['country_id']; ?>"><?php echo $areas[$i]['area_name']; ?></option>
@@ -249,7 +249,7 @@
             <br>
 
             国1.2
-            <select name="country">
+            <select name="countryhh">
                 <option value="0" selected="selected" class="msg">国を選択して下さい</option>                
                 <option value="Japan" class="japan">日本</option>
                 <option value="America" class="America">アメリカ</option>
@@ -258,7 +258,7 @@
             
             都市1.2
             <!-- 中間テーブルから国名を持ってくる？ -->
-            <select name="city">
+            <select name="cityhh">
               <option value="0" selected="selected" class="msg">都市を選択して下さい</option>
               <option value="Tokyo" class="japan">東京</option>
               <option value="Kyoto" class="japan">京都</option>
