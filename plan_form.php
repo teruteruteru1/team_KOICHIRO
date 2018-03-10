@@ -28,13 +28,9 @@
         $countries[] = $country;
     }
     $count_country = count($countries); 
-    echo $count_country;//国名プルダウン用カウントカントリー
+    //echo $count_country;//国名プルダウン用カウントカントリー
 
-    echo '<br>';
-    echo '<pre>'; 
-    echo '$country = ';
-    var_dump($country);
-    echo '</pre>';
+
 
 //areasテーブルから取ってくる
     $sql = 'SELECT * FROM `areas` WHERE 1';
@@ -51,13 +47,7 @@
         $areas[] = $area;
     }
     $count_area = count($areas); 
-    echo $count_area;//国名プルダウン用カウントカントリー
-
-    echo '<br>';
-    echo '<pre>'; 
-    echo '$area = ';
-    var_dump($area);
-    echo '</pre>';
+    //echo $count_area;//国名プルダウン用カウントカントリーß
 
 // バリデーション
     $errors = array(); //一度戻ってきたときのエラー用
@@ -82,11 +72,8 @@
         $arrival_date = $_POST['arrival_date'];
         $title_comment = $_POST['title_comment'];
         $title_img_name = $_POST['title_img_name'];
-        //写真たちをぶん回すぜpicturesに保存するデータたち
-        // 条件分岐でぶん回す
-        $pic_name0 = $_POST['pic_name0'];
-        $comment0 = $_POST['comment0'];
-        //ユーザー名のからチェック
+        
+        //各空チェック
         if ($title == '') {
             $errors['title'] = 'blank';
         }
@@ -99,26 +86,54 @@
         if ($country_id_1 == '') {
             $errors['country_id_1'] = 'blank';
         }
-        // 国とエリアは１だけ入っていればOK
-        // if ($country_id_2 == '') {
-        //     $errors['country_id_2'] = 'blank';
-        // }
-        // if ($country_id_3 == '') {
-        //     $errors['country_id_3'] = 'blank';
-        // }
         if ($area_id_1 == '') {
             $errors['area_id_1'] = 'blank';
         }
-        if ($email == '') {
-            $errors['email'] = 'blank';
+        if ($depart_date == '') {
+            $errors['depart_date'] = 'blank';
         }
-        if ($name == '') {
-            $errors['name'] = 'blank';
+        if ($arrival_date == '') {
+            $errors['arrival_date'] = 'blank';
         }
-        if ($email == '') {
-            $errors['email'] = 'blank';
+        if ($title_comment == '') {
+            $errors['title_comment'] = 'blank';
         }
+        if ($title_img_name == '') {
+            $errors['title_img_name'] = 'blank';
+        }
+        // メイン画像の空チェック
+        if (!isset($_REQUEST['action'])) {
+              $title_img_name = $_FILES['title_img_name']['name'];
+          }
+          
+          if (!empty($file_name)) {
+              //jpeg/png/gifの３種類に変更する
+              $file_type = substr($file_name,-3) ;
+              $file_type = strtolower($file_type);
+              if ($file_type != 'jpg' && $file_type != 'png' && $file_type != 'gif') {
+                $errors['img_name'] = 'type';
+              }
+          }else{
+              $errors['img_name'] = 'blank';
+          }
+
+          if (isset($_REQUEST['action'])){
+              $errors['img_name'] = 'rewrite';
+          }
+
+        //写真たちをぶん回すぜpicturesに保存するデータたち
+        // 条件分岐でぶん回す
+        // $pic_name0 = $_POST['pic_name0'];
+        // $comment0 = $_POST['comment0'];
+        // if ($email == '') {
+        //     $errors['email'] = 'blank';
+        // }
     }
+
+    echo '<pre>'; 
+    echo '$errors = ';
+    var_dump($errors);
+    echo '</pre>';
 
     //     //パスワードの空チェック
     //     $str_c = strlen($password);
@@ -253,7 +268,7 @@
             </div>
            
             国1
-            <select name="country">
+            <select name="country_id_1">
                 <option value="0" selected="selected" class="msg">国を選択して下さい</option>
                 <?php for($i=0; $i<$count_country ; $i++){ ?>
                  <option value="<?php echo $countries[$i]['country_name']; ?>" class="<?php echo $countries[$i]['id']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
@@ -263,7 +278,7 @@
             
             都市1
             <!-- 中間テーブルから国名を持ってくる？ -->
-            <select name="city_">
+            <select name="area_id_1">
               <option value="0" selected="selected" class="msg">都市を選択して下さい</option>
               <?php for($i=0; $i<$count_area ; $i++){ ?>
                 <option value="<?php echo $areas[$i]['area_name']; ?>" class="<?php echo $areas[$i]['country_id']; ?>"><?php echo $areas[$i]['area_name']; ?></option>
