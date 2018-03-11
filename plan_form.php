@@ -18,7 +18,7 @@
 
 
 //プルダウン用の準備    
-//countriesテーブルから取ってくる
+  //countriesテーブルから取ってくる
     $sql = 'SELECT * FROM `countries` WHERE 1';
     $data = array();
     $stmt = $dbh->prepare($sql);
@@ -37,7 +37,7 @@
 
 
 
-//areasテーブルから取ってくる
+  //areasテーブルから取ってくる
     $sql = 'SELECT * FROM `areas` WHERE 1';
     $data = array();
     $stmt = $dbh->prepare($sql);
@@ -52,7 +52,24 @@
         $areas[] = $area;
     }
     $count_area = count($areas); 
-    //echo $count_area;//国名プルダウン用カウントカントリーß
+    //echo $count_area;//国名プルダウン用カウントカントリー
+
+  //tagsテーブルから取ってくる
+    $sql = 'SELECT * FROM `tags` WHERE 1';
+    $data = array();
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+    //fetchする
+    $tags = array();
+    while (true) {
+        $tag = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($tag == false) {
+            break;
+        }
+        $tags[] = $tag;
+    }
+    $count_tag = count($tags); 
+    echo $count_area;//国名プルダウン用カウントカントリー    
 
 // バリデーション
     $errors = array(); //一度戻ってきたときのエラー用
@@ -173,7 +190,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>plam_f</title>
+    <title>plam_form</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -360,7 +377,7 @@
             <br>
 
             <div> 
-                <!-- カレンダー機能開始 -->
+           <!-- カレンダー機能開始 -->
                 <script type="text/javascript" src="plan_calender.js"></script>
             
                 出発日時
@@ -373,7 +390,7 @@
             <br>
             <br>
 
-
+            <!-- 概要 -->
             <h2>旅行概要</h2>
             <div style="margin:50px;">
               <span>メイン写真を選択してください</span>
@@ -381,6 +398,7 @@
                 <textarea name="title_comment" cols="80" rows="5"></textarea>
             </div>
             
+            <!-- 写真とコメント -->
             <div class="parent">
                 <div class="field" style="padding-bottom:8px; margin-bottom:20px;">
                     <!-- <div> -->
@@ -397,6 +415,26 @@
 
              <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >追加</button>
             <!--  <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button> --><br>
+            <br>
+            <br>
+
+            <!-- タグを選択 -->
+            <p>旅行記につけるタグを選んでください</p>
+            <div>
+              <?php for($i=0; $i<$count_tag ; $i++){ ?>
+                  <?php if($tags[$i]['tag_id']%4 == 0){ ?>
+                  <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $tags[$i]['tag_id'] ?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label><br>
+                  <?php }else{ ?>
+                  <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $tags[$i]['tag_id'] ?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label>
+                  <?php } ?>
+              <?php }?>
+                 
+            </div>
+
+            <!-- 確認画面へ -->
+            <br>
+            <br>
+
              <input type="submit" value="確認画面へ" class="btn btn-primary">            
         </form>
     </div>
