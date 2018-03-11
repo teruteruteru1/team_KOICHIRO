@@ -3,13 +3,18 @@
     require ('dbconnect.php');
 
 //一回自分に飛ばす。確認ヴァーダンプｂｂｂｂ
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
+    echo '<pre>'; 
+    echo '$_FILES = ';
+    var_dump($_FILES);
+    echo '</pre>';
     echo '<pre>'; 
     echo '$_POST = ';
     var_dump($_POST);
     echo '</pre>';
-
-
-    
+     
 
 
 //プルダウン用の準備    
@@ -71,7 +76,6 @@
         $depart_date = $_POST['depart_date'];
         $arrival_date = $_POST['arrival_date'];
         $title_comment = $_POST['title_comment'];
-        $title_img_name = $_POST['title_img_name'];
         
         //各空チェック
         if ($title == '') {
@@ -98,9 +102,7 @@
         if ($title_comment == '') {
             $errors['title_comment'] = 'blank';
         }
-        if ($title_img_name == '') {
-            $errors['title_img_name'] = 'blank';
-        }
+        
         // メイン画像の空チェック
         if (!isset($_REQUEST['action'])) {
               $title_img_name = $_FILES['title_img_name']['name'];
@@ -108,17 +110,17 @@
           
           if (!empty($file_name)) {
               //jpeg/png/gifの３種類に変更する
-              $file_type = substr($file_name,-3) ;
-              $file_type = strtolower($file_type);
-              if ($file_type != 'jpg' && $file_type != 'png' && $file_type != 'gif') {
-                $errors['img_name'] = 'type';
+              $title_img_type = substr($title_img_name,-3) ;
+              $title_img_type = strtolower($title_img_type);
+              if ($title_img_type != 'jpg' && $title_img_type != 'png' && $title_img_type != 'gif') {
+                $errors['title_img_name'] = 'type';
               }
           }else{
-              $errors['img_name'] = 'blank';
+              $errors['title_img_name'] = 'blank';
           }
 
           if (isset($_REQUEST['action'])){
-              $errors['img_name'] = 'rewrite';
+              $errors['title_img_name'] = 'rewrite';
           }
 
         //写真たちをぶん回すぜpicturesに保存するデータたち
@@ -135,13 +137,7 @@
     var_dump($errors);
     echo '</pre>';
 
-    //     //パスワードの空チェック
-    //     $str_c = strlen($password);
-    //     if ($password == '') {
-    //         $errors['password'] = 'blank';
-    //     }elseif ($str_c < 4 || 16 < $str_c) {
-    //         $errors['password'] = 'lenge';
-    //     }
+    
 
     //     //type=fileの情報を受け取るには$_FILESスーパーグローバル変数が必要になる
     //     if (!isset($_REQUEST['action'])) {
@@ -213,8 +209,10 @@
     
 
 <body>
+
         <!-- Header Start -->
-    <!-- <header id="home"> -->
+    <header id="home">
+      <?php require('partial/header.php') ?>
         
         <!-- Main Menu Start -->
         <!-- <div class="main-menu">
@@ -245,13 +243,13 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </header> -->
+        </div> -->
+    </header>
             <!-- Main Menu End -->
 
 
     <div style="text-align: center;">
-        <form method="POST" action="">
+        <form method="POST" action="" enctype="multipart/form-data">
             <div>   
                 <br>タイトル<br>
                 <textarea name="title" cols="80" rows="5"></textarea>
@@ -378,7 +376,8 @@
 
             <h2>旅行概要</h2>
             <div style="margin:50px;">
-                <input type="file" style="margin: auto;" name="title_img_name" accept="image/*">
+              <span>メイン写真を選択してください</span>
+                <input type="file" style="margin: auto;" name="title_img_name" accept="mage/*">
                 <textarea name="title_comment" cols="80" rows="5"></textarea>
             </div>
             
