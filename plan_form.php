@@ -2,7 +2,7 @@
     session_start();  
     require ('dbconnect.php');
 
-//一回自分に飛ばす。確認ヴァーダンプｂｂｂｂ
+//一回自分に飛ばす。確認ヴァーダンプ
     echo '<br>';
     echo '<br>';
     echo '<br>';
@@ -76,11 +76,17 @@
 
     //$_POSTが空じゃない時
     //ユーザーがformの送信ボタンを押した時
-      
+    
+    // $_POSTの数を数える
+    // 各for文に対して、上限をこの変数に設定する  
+    $count_post = count($_POST);
+    echo $count_post;
+    echo 'うんこ';
+    echo '<br>';
 
     if(!empty($_POST)){
         echo '送信完了<br>';
-        //変数定義
+    //変数定義開始
         $title = $_POST['title'];
         $budget = $_POST['budget'];
         $number_days = $_POST['number_days'];
@@ -93,21 +99,46 @@
         $depart_date = $_POST['depart_date'];
         $arrival_date = $_POST['arrival_date'];
         $title_comment = $_POST['title_comment'];
+        //写真たちをぶん回すぜpicturesに保存するデータたち
+        // ループ文でぶん回す
+        $pic_names = array();
+        $comments = array();
+        for($n=0;$n<$count_post;$n++){
+            if(isset($_FILES['pic_name' . $n]['name'])){
+            $pic_number = $_FILES['pic_name' . $n]['name'];
+            $pic_names[] = $pic_number;
+            }
+            if(isset($_POST['comment' . $n])){
+            $comment_number = $_POST['comment' . $n];
+            $comments[] = $comment_number;
+            }    
+        }
+        echo '<pre>'; 
+        echo '$pic_names = ';
+        var_dump($pic_names);
+        echo '</pre>'; 
+        echo '<pre>'; 
+        echo '$comments = ';
+        var_dump($comments);
+        echo '</pre>'; 
 
         //tagはチェックしていないとエラーvalueが飛ばなくてエラーになる
-
-        for($x=1;$x<100;$x++){
+        $tag_number = array();
+        for($x=1;$x<$count_post;$x++){
             $tag_name = 'tag' . $x;
             if(isset($_POST[$tag_name])){ 
-                $tag = $_POST[$tag_name];
-                echo $tag_name . '';
-                echo 'うんこ';
+                $tag_number[] = $_POST[$tag_name];
             }
             
         }
+        echo '<pre>'; 
+        echo '$tag_number = ';
+        var_dump($tag_number);
+        echo '</pre>'; 
+    //変数定義完了
         
-        
-        //各空チェック
+    //各空チェック
+        //いらないものは確認しない
         if ($title == '') {
             $errors['title'] = 'blank';
         }
@@ -132,12 +163,21 @@
         if ($title_comment == '') {
             $errors['title_comment'] = 'blank';
         }
+        // 写真とコメントは一枚だけあればいい
+        if ($pic_names[0] == '') {
+            $errors['pic_names[0]'] = 'blank';
+        }
+        if ($comments[0] == '') {
+            $errors['comments[0]'] = 'blank';
+        }
         
         // メイン画像の空チェック
         if (!isset($_REQUEST['action'])) {
             $title_img_name = $_FILES['title_img_name']['name'];
         }
+    // 空チェク終了
 
+    // 画像拡張子のバリデーション開始
         if (!empty($title_img_name)) {
             //jpeg/png/gifの３種類に変更する
             $title_img_type = substr($title_img_name,-3) ;
@@ -153,13 +193,7 @@
             $errors['title_img_name'] = 'rewrite';
         }
 
-        //写真たちをぶん回すぜpicturesに保存するデータたち
-        // 条件分岐でぶん回す
-        // $pic_name0 = $_POST['pic_name0'];
-        // $comment0 = $_POST['comment0'];
-        // if ($email == '') {
-        //     $errors['email'] = 'blank';
-        // }
+        
         if (empty($errors)) {
             // $date_str = date('YmdHid');
             // $submit_file_name = $date_str . $title_img_name;
@@ -176,18 +210,17 @@
             $_SESSION['plan']['depart_date'] = $depart_date;
             $_SESSION['plan']['arrival_date'] = $arrival_date;
             $_SESSION['plan']['title_comment'] = $title_comment;
-            $_SESSION['plan']['tag1'] = $tag1;
-            $_SESSION['plan']['tag2'] = $tag2;
-            $_SESSION['plan']['tag3'] = $tag3;
-            $_SESSION['plan']['tag4'] = $tag4;
-            $_SESSION['plan']['tag5'] = $tag5;
-            $_SESSION['plan']['tag6'] = $tag6;
-            $_SESSION['plan']['tag7'] = $tag7;
-            $_SESSION['plan']['tag8'] = $tag8;
 
-            echo $_SESSION['plan'];
-    
-            // $_SESSION['register']= $_POST ←これと同じ
+            // $tag_numberの中身は数字だけ
+            for($y=0;$y<$count_post;$y++){
+                $z = $y+1;
+                if(!empty($tag_number[$y])){
+                $_SESSION['plan']['tag' . $z] = $tag_number[$y];
+                }
+            }
+
+            
+
             header('Location: plan_check.php');
             exit();
         }

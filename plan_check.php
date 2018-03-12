@@ -15,32 +15,32 @@
     var_dump($_SESSION);
     echo '</pre>';
     //完成するまで何もしない
-  	// if (!isset($_SESSION['post'])) {
+  	// if (!isset($_SESSION['plan'])) {
   	// 	header('Location: register/signup.php');
   	// 	exit();
 		// }
     
-    $title = $_SESSION['plan']['title'] = $title;
-    $budget = $_SESSION['plan']['budget'] = $budget;
-    $number_days = $_SESSION['plan']['number_days'] = $number_days;
-     = $_SESSION['plan']['country_id_1'] = $country_id_1;
-     = $_SESSION['plan']['country_id_2'] = $country_id_2;
-     = $_SESSION['plan']['country_id_3'] = $country_id_3;
-     = $_SESSION['plan']['area_id_1'] = $area_id_1;
-     = $_SESSION['plan']['area_id_2'] = $area_id_2;
-     = $_SESSION['plan']['area_id_3'] = $area_id_3;
-     = $_SESSION['plan']['depart_date'] = $depart_date;
-     = $_SESSION['plan']['arrival_date'] = $arrival_date;
-     = $_SESSION['plan']['title_comment'] = $title_comment;
-     = $_SESSION['plan']['tag1'] = $tag1;
-     = $_SESSION['plan']['tag2'] = $tag2;
-    $_SESSION['plan']['tag3'] = $tag3;
-    $_SESSION['plan']['tag4'] = $tag4;
-    $_SESSION['plan']['tag5'] = $tag5;
-    $_SESSION['plan']['tag6'] = $tag6;
-    $_SESSION['plan']['tag7'] = $tag7;
-    $_SESSION['plan']['tag8'] = $tag8;
-
+    $title = $_SESSION['plan']['title'];
+    $budget = $_SESSION['plan']['budget'];
+    $number_days = $_SESSION['plan']['number_days'];
+    $country_id_1 = $_SESSION['plan']['country_id_1'];
+    $country_id_2 = $_SESSION['plan']['country_id_2'];
+    $country_id_3 = $_SESSION['plan']['country_id_3'];
+    $area_id_1 = $_SESSION['plan']['area_id_1'];
+    $area_id_2 = $_SESSION['plan']['area_id_2'];
+    $area_id_3 = $_SESSION['plan']['area_id_3'];
+    $depart_date = $_SESSION['plan']['depart_date'];
+    $arrival_date = $_SESSION['plan']['arrival_date'];
+    $title_comment = $_SESSION['plan']['title_comment'];
+    
+    // タグはfor文で回す
+    for($x=1;$x<100;$x++){
+        $tag_name = 'tag' . $x;
+        if(isset($_POST[$tag_name])){ 
+            $tag_number[] = $_SESSION['plan']['$tag_name'];
+        }
+            
+     }
 
 
 
@@ -93,6 +93,7 @@
       <?php require('partial/header.php') ?>
     </header>
             <!-- Main Menu End -->
+    <a href="sessiondelete.php">（仮）セッションを決して入力に戻る</a>
 
 
     
