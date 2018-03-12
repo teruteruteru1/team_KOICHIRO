@@ -69,7 +69,7 @@
         $tags[] = $tag;
     }
     $count_tag = count($tags); 
-    echo $count_area;//国名プルダウン用カウントカントリー    
+    //echo $count_area;//国名プルダウン用カウントカントリー    
 
 // バリデーション
     $errors = array(); //一度戻ってきたときのエラー用
@@ -95,26 +95,17 @@
         $title_comment = $_POST['title_comment'];
 
         //tagはチェックしていないとエラーvalueが飛ばなくてエラーになる
-        // $x = 1;
-        // while(true){
-        //     if(isset($_POST['tag' . $x])){ 
-        //         $tag[] = $_POST['tag . $x'];
-        //     }
-        //     $x = $x+1;
-        //     if ($feed == false) {
-        //     break;
-        //     }
-        // }
-        // if(isset($_POST['tag1'])){
-        //     $tag1 = $_POST['tag1'];
+
+        for($x=1;$x<100;$x++){
+            $tag_name = 'tag' . $x;
+            if(isset($_POST[$tag_name])){ 
+                $tag = $_POST[$tag_name];
+                echo $tag_name . '';
+                echo 'うんこ';
             }
-        $tag2 = $_POST['tag2'];
-        $tag3 = $_POST['tag3'];
-        $tag4 = $_POST['tag4'];
-        $tag5 = $_POST['tag5'];
-        $tag6 = $_POST['tag6'];
-        $tag7 = $_POST['tag7'];
-        $tag8 = $_POST['tag8'];
+            
+        }
+        
         
         //各空チェック
         if ($title == '') {
@@ -147,7 +138,7 @@
             $title_img_name = $_FILES['title_img_name']['name'];
         }
 
-        if (!empty($file_name)) {
+        if (!empty($title_img_name)) {
             //jpeg/png/gifの３種類に変更する
             $title_img_type = substr($title_img_name,-3) ;
             $title_img_type = strtolower($title_img_type);
@@ -193,9 +184,11 @@
             $_SESSION['plan']['tag6'] = $tag6;
             $_SESSION['plan']['tag7'] = $tag7;
             $_SESSION['plan']['tag8'] = $tag8;
+
+            echo $_SESSION['plan'];
     
             // $_SESSION['register']= $_POST ←これと同じ
-            header('Location: check_form.php');
+            header('Location: plan_check.php');
             exit();
         }
 
@@ -277,37 +270,6 @@
         <!-- Header Start -->
     <header id="home">
       <?php require('partial/header.php') ?>
-        
-        <!-- Main Menu Start -->
-        <!-- <div class="main-menu">
-            <div class="navbar-wrapper">    
-                <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="sr-only">Toggle Navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            
-                            <a href="#" class="navbar-brand"><img src="img/logo.png" alt="Logo" /></a>                          
-                        </div>
-                        
-                        <div class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav navbar-right">
-
-                                <li><a href="#signin">ログイン</a></li>
-                                <li><a href="#signup">ユーザー登録</a></li>
-                                <li><a href="#signout">ログアウト</a></li>
-                                <li><a href="#mypage">マイページ</a></li>
-                            </ul>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </header>
             <!-- Main Menu End -->
 
@@ -444,7 +406,7 @@
                 <input type="file" style="margin: auto;" name="title_img_name" accept="mage/*">
                 <textarea name="title_comment" cols="80" rows="5"></textarea>
             </div>
-          <br>  
+            <br>  
             <!-- 写真とコメント -->
             <div class="parent">
                 <div class="field" style="padding-bottom:8px; margin-bottom:20px;">
