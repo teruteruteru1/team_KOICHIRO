@@ -93,6 +93,28 @@
         $depart_date = $_POST['depart_date'];
         $arrival_date = $_POST['arrival_date'];
         $title_comment = $_POST['title_comment'];
+
+        //tagはチェックしていないとエラーvalueが飛ばなくてエラーになる
+        // $x = 1;
+        // while(true){
+        //     if(isset($_POST['tag' . $x])){ 
+        //         $tag[] = $_POST['tag . $x'];
+        //     }
+        //     $x = $x+1;
+        //     if ($feed == false) {
+        //     break;
+        //     }
+        // }
+        // if(isset($_POST['tag1'])){
+        //     $tag1 = $_POST['tag1'];
+            }
+        $tag2 = $_POST['tag2'];
+        $tag3 = $_POST['tag3'];
+        $tag4 = $_POST['tag4'];
+        $tag5 = $_POST['tag5'];
+        $tag6 = $_POST['tag6'];
+        $tag7 = $_POST['tag7'];
+        $tag8 = $_POST['tag8'];
         
         //各空チェック
         if ($title == '') {
@@ -122,23 +144,23 @@
         
         // メイン画像の空チェック
         if (!isset($_REQUEST['action'])) {
-              $title_img_name = $_FILES['title_img_name']['name'];
-          }
-          
-          if (!empty($file_name)) {
-              //jpeg/png/gifの３種類に変更する
-              $title_img_type = substr($title_img_name,-3) ;
-              $title_img_type = strtolower($title_img_type);
-              if ($title_img_type != 'jpg' && $title_img_type != 'png' && $title_img_type != 'gif') {
-                $errors['title_img_name'] = 'type';
-              }
-          }else{
-              $errors['title_img_name'] = 'blank';
-          }
+            $title_img_name = $_FILES['title_img_name']['name'];
+        }
 
-          if (isset($_REQUEST['action'])){
-              $errors['title_img_name'] = 'rewrite';
-          }
+        if (!empty($file_name)) {
+            //jpeg/png/gifの３種類に変更する
+            $title_img_type = substr($title_img_name,-3) ;
+            $title_img_type = strtolower($title_img_type);
+            if ($title_img_type != 'jpg' && $title_img_type != 'png' && $title_img_type != 'gif') {
+              $errors['title_img_name'] = 'type';
+            }
+        }else{
+            $errors['title_img_name'] = 'blank';
+        }
+
+        if (isset($_REQUEST['action'])){
+            $errors['title_img_name'] = 'rewrite';
+        }
 
         //写真たちをぶん回すぜpicturesに保存するデータたち
         // 条件分岐でぶん回す
@@ -147,6 +169,36 @@
         // if ($email == '') {
         //     $errors['email'] = 'blank';
         // }
+        if (empty($errors)) {
+            // $date_str = date('YmdHid');
+            // $submit_file_name = $date_str . $title_img_name;
+            // move_uploaded_file($_FILES['input_img_name']['tmp_name'], '../user_profile_img/' .$submit_file_name);
+            $_SESSION['plan']['title'] = $title;
+            $_SESSION['plan']['budget'] = $budget;
+            $_SESSION['plan']['number_days'] = $number_days;
+            $_SESSION['plan']['country_id_1'] = $country_id_1;
+            $_SESSION['plan']['country_id_2'] = $country_id_2;
+            $_SESSION['plan']['country_id_3'] = $country_id_3;
+            $_SESSION['plan']['area_id_1'] = $area_id_1;
+            $_SESSION['plan']['area_id_2'] = $area_id_2;
+            $_SESSION['plan']['area_id_3'] = $area_id_3;
+            $_SESSION['plan']['depart_date'] = $depart_date;
+            $_SESSION['plan']['arrival_date'] = $arrival_date;
+            $_SESSION['plan']['title_comment'] = $title_comment;
+            $_SESSION['plan']['tag1'] = $tag1;
+            $_SESSION['plan']['tag2'] = $tag2;
+            $_SESSION['plan']['tag3'] = $tag3;
+            $_SESSION['plan']['tag4'] = $tag4;
+            $_SESSION['plan']['tag5'] = $tag5;
+            $_SESSION['plan']['tag6'] = $tag6;
+            $_SESSION['plan']['tag7'] = $tag7;
+            $_SESSION['plan']['tag8'] = $tag8;
+    
+            // $_SESSION['register']= $_POST ←これと同じ
+            header('Location: check_form.php');
+            exit();
+        }
+
     }
 
     echo '<pre>'; 
@@ -154,12 +206,7 @@
     var_dump($errors);
     echo '</pre>';
 
-    
-
-    //     //type=fileの情報を受け取るには$_FILESスーパーグローバル変数が必要になる
-    //     if (!isset($_REQUEST['action'])) {
-    //         $file_name = $_FILES['input_img_name']['name'];
-    //     }
+      
         
     //     if (!empty($file_name)) {
     //         //jpeg/png/gifの３種類に変更する
@@ -397,7 +444,7 @@
                 <input type="file" style="margin: auto;" name="title_img_name" accept="mage/*">
                 <textarea name="title_comment" cols="80" rows="5"></textarea>
             </div>
-            
+          <br>  
             <!-- 写真とコメント -->
             <div class="parent">
                 <div class="field" style="padding-bottom:8px; margin-bottom:20px;">
@@ -423,9 +470,9 @@
             <div>
               <?php for($i=0; $i<$count_tag ; $i++){ ?>
                   <?php if($tags[$i]['tag_id']%4 == 0){ ?>
-                  <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $tags[$i]['tag_id'] ?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label><br>
+                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $tags[$i]['tag_id'] ?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label><br>
                   <?php }else{ ?>
-                  <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $tags[$i]['tag_id'] ?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label>
+                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $tags[$i]['tag_id'] ?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label>
                   <?php } ?>
               <?php }?>
                  
