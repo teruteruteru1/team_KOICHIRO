@@ -70,9 +70,9 @@
         $tags[] = $tag;
     }
     $count_tag = count($tags);
-// プルダウンの準備完了  
+    // プルダウンの準備完了  
 
-// バリデーション
+    // バリデーション
     $errors = array(); //一度戻ってきたときのエラー用
 
     //$_POSTが空じゃない時
@@ -87,7 +87,7 @@
 
     if(!empty($_POST)){
         echo '送信完了<br>';
-    //変数定義開始
+        //変数定義開始
         $title = $_POST['title'];
         $budget = $_POST['budget'];
         $number_days = $_POST['number_days'];
@@ -123,7 +123,7 @@
         var_dump($comments);
         echo '</pre>'; 
 
-        //tagはチェックしていないとエラーvalueが飛ばなくてエラーになる
+        //tagの変数（配列）定義
         $tag_number = array();
         for($x=0;$x<$count_post;$x++){
             $tag_name = 'tag' . $x;
@@ -132,13 +132,14 @@
             }
             
         }
+
         echo '<pre>'; 
         echo '$tag_number = ';
         var_dump($tag_number);
         echo '</pre>'; 
-    //変数定義完了
+        //変数定義完了
         
-    //各空チェック
+        //各空チェック
         //いらないものは確認しない
         if ($title == '') {
             $errors['title'] = 'blank';
@@ -176,9 +177,10 @@
         if (!isset($_REQUEST['action'])) {
             $title_img_name = $_FILES['title_img_name']['name'];
         }
-    // 空チェック終了
+        // 空チェック終了
 
-    // 画像拡張子のバリデーション開始
+        // 画像拡張子のバリデーション開始
+        // メイン画像用
         if (!empty($title_img_name)) {
             //jpeg/png/gifの３種類に変更する
             $title_img_type = substr($title_img_name,-3) ;
@@ -193,6 +195,7 @@
         if (isset($_REQUEST['action'])){
             $errors['title_img_name'] = 'rewrite';
         }
+        // 他の写真
 
     // セッション登録開始
         if (empty($errors)) {
