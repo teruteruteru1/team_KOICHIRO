@@ -18,7 +18,7 @@
 
 
 //プルダウン用の準備    
-  //countriesテーブルから取ってくる
+    //countriesテーブルから取ってくる
     $sql = 'SELECT * FROM `countries` WHERE 1';
     $data = array();
     $stmt = $dbh->prepare($sql);
@@ -37,7 +37,7 @@
 
 
 
-  //areasテーブルから取ってくる
+    //areasテーブルから取ってくる
     $sql = 'SELECT * FROM `areas` WHERE 1';
     $data = array();
     $stmt = $dbh->prepare($sql);
@@ -54,7 +54,7 @@
     $count_area = count($areas); 
     //echo $count_area;//国名プルダウン用カウントカントリー
 
-  //tagsテーブルから取ってくる
+    //tagsテーブルから取ってくる
     $sql = 'SELECT * FROM `tags` WHERE 1';
     $data = array();
     $stmt = $dbh->prepare($sql);
@@ -68,8 +68,8 @@
         }
         $tags[] = $tag;
     }
-    $count_tag = count($tags); 
-    //echo $count_area;//国名プルダウン用カウントカントリー    
+    $count_tag = count($tags);
+// プルダウンの準備完了  
 
 // バリデーション
     $errors = array(); //一度戻ってきたときのエラー用
@@ -99,7 +99,7 @@
         $depart_date = $_POST['depart_date'];
         $arrival_date = $_POST['arrival_date'];
         $title_comment = $_POST['title_comment'];
-        //写真たちをぶん回すぜpicturesに保存するデータたち
+        //写真たちをぶん回すpicturesに保存するデータたち
         // ループ文でぶん回す
         $pic_names = array();
         $comments = array();
@@ -221,7 +221,7 @@
                 if(!empty($comments[$y])){
                 $_SESSION['plan']['comment' . $y] = $comments[$y];
                 }
-                // $tag_numberの中身は数字だけ
+                // タグ  $tag_numberの中身は数字だけ
                 if(!empty($tag_number[$y])){
                 $_SESSION['plan']['tag' . $y] = $tag_number[$y];
                 }
@@ -241,23 +241,6 @@
     echo '</pre>';
 
       
-        
-    //     if (!empty($file_name)) {
-    //         //jpeg/png/gifの３種類に変更する
-    //         $file_type = substr($file_name,-3) ;
-    //         $file_type = strtolower($file_type);
-    //         if ($file_type != 'jpg' && $file_type != 'png' && $file_type != 'gif') {
-    //           $errors['img_name'] = 'type';
-    //         }
-    //     }else{
-    //         $errors['img_name'] = 'blank';
-    //     }
-
-    //     if (isset($_REQUEST['action'])){
-    //         $errors['img_name'] = 'rewrite';
-    //     }
-
-
     
 
 
