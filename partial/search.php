@@ -1,47 +1,40 @@
-	<!-- surch start -->
-		<br> <!-- 仮処置 -->
+	<!-- search start -->
+		<br>
 		<div class="container" id="wrap">
   			<div class="row">
     			<div class="col-md-6 col-md-offset-3">
-					<form action="search.php" method="post" accept-charset="utf-8" class="form" role="form">   
-      				<!-- 	<legend></legend> -->
+					<form action="search.php" method="post" accept-charset="utf-8" class="form" role="form">
 
       				<!-- <div class="container"> -->
 					<!-- <div class="row"> -->
 					<h2>旅行記検索</h2>
-			        
-	        		<!-- <form class="classNameHere" role="search"> -->
 		    		<div class="input-group">
-						<input type="text" class="form-control" placeholder="キーワード検索：『エリア』+『目的』など" name="srch-term" id="srch-term">
+						  <input type="text" class="form-control" placeholder="キーワード検索：『エリア』+『目的』など" name="srch-term" id="srch-term">
 						<div class="input-group-btn">
 							<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 						</div>
 					</div>
 					<br>
-					
-					<h4>詳細検索</h4>
 
-					<!-- </form> -->
+					<h4>詳細検索</h4>
 
 					<!-- country start -->
                     <div class="row">
                         <div class="col-xs-5 col-md-5">
-
-			        			<select name="country" value="" class="form-control input-md" >
-						            <option value="Japan" selected="selected" class="msg">国を選択して下さい</option>
-						            <option value="Japan" class="japan">日本</option>
-						            <option value="America" class="America">アメリカ</option>
-						            <option value="Australia" class="Australia">オーストラリア</option>
-						        </select>
-				        </div>
+			        			      <select name="country" value="" class="form-control input-md" >
+						                <option value="Japan" selected="selected" class="msg">国を選択して下さい</option>
+						                <option value="Japan" class="japan">日本</option>
+						                <option value="America" class="America">アメリカ</option>
+						                <option value="Australia" class="Australia">オーストラリア</option>
+						              </select>
+				                </div>
 	        		<!-- country end -->
 
 
 
 				        <!-- city start -->
 					        <div class="col-xs-5 col-md-5">
-                			<!-- <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name"  /> -->                        
-						        <select name="city"　value="" class="form-control input-md" >
+						        <select name="city" value="" class="form-control input-md" >
 						            <option value="Japan" selected="selected" class="msg">都市を選択して下さい</option>
 						            <option value="Tokyo" class="japan">東京</option>
 						            <option value="Kyoto" class="japan">京都</option>
@@ -52,13 +45,12 @@
 						        </select>
 					        </div>
 					        <div class="col-md-2">
-	                        	<button type="submit" class="btn btn-default btn-primary">探す</button>
-	                      	</div>
+	                  <button type="submit" class="btn btn-default btn-primary">探す</button>
+	                </div>
 				        <!-- city end -->
                     </div>
 
                     <!-- season start -->
-                    <!-- <input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email"  /> -->
                     <div class="col-xs-9 col-md-9">
 				        <select name="season" value="" class="form-control input-md">
 				            <option value="season" selected="selected" class="msg">季節を選択して下さい</option>
@@ -75,7 +67,6 @@
 	        		<!-- season end -->
 
 		        	<!-- budget start -->
-                    <!-- <input type="password" name="password" value="" class="form-control input-lg" placeholder="Password"  /> -->
                     <div class="col-xs-9 col-md-9">
 	                    <select name="budget" class="form-control input-md">
 				            <option value="budget" selected="selected" class="msg">予算を選択して下さい</option>
@@ -92,7 +83,6 @@
 	        		<!-- budget end -->
 
 			        <!-- theme start -->
-                    <!-- <input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password"  />  -->
                     <div class="col-xs-9 col-md-9">
 	                    <select name="budget" class="form-control input-md">
 				            <option value="theme" selected="selected" class="msg">目的を選択して下さい</option>
@@ -104,27 +94,19 @@
 				            <option value="relaxation" class="relaxation">リラクゼーション</option>
 				            <option value="resort" class="resort">リゾート</option>
 				            <option value="ather" class="ather">その他</option>
-				        </select> 
+				        </select>
 			        </div>
 						<div class="col-md-2">
 					    	<button type="submit" class="btn btn-default btn-primary">探す</button>
-						</div> 
+						</div>
 	        		<!-- theme end -->
-                   
-					<!-- <label>Gender : </label>                    <label class="radio-inline">
-						<input type="radio" name="gender" value="M" id=male />                        Male
-	                    </label>
-	                    <label class="radio-inline">
-	                        <input type="radio" name="gender" value="F" id=female />                        Female
-	                    </label>
-	                    <br />
-	              		<span class="help-block">By clicking Create my account, you agree to our Terms and that you have read our Data Use Policy, including our Cookie Use.</span> -->
-              			<div class="col-md-4">
+
+              			<div class="col-md-12">
                     		<button class="btn btn-md btn-primary btn-block signup-btn" type="submit">探す</button>
                     	</div>
-		            </form>          
-				</div>            
+		            </form>
+				</div>
 			</div>
 		</div>
-		<!-- surch end -->
+		<!-- search end -->
 

@@ -29,6 +29,21 @@ img{
 	max-width:100%;
 }
 
+#back {
+    z-index: 2000;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#enlarged_image {
+    z-index: 2100;
+    position: fixed;
+}
+
 h1, h2, h3, h4, h5, h6{
 	font-weight:bold;
 	text-rendering:optimizelegiblity;
