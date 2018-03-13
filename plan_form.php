@@ -124,7 +124,7 @@
 
         //tagはチェックしていないとエラーvalueが飛ばなくてエラーになる
         $tag_number = array();
-        for($x=1;$x<$count_post;$x++){
+        for($x=0;$x<$count_post;$x++){
             $tag_name = 'tag' . $x;
             if(isset($_POST[$tag_name])){ 
                 $tag_number[] = $_POST[$tag_name];
@@ -163,19 +163,19 @@
         if ($title_comment == '') {
             $errors['title_comment'] = 'blank';
         }
-        // 写真とコメントは一枚だけあればいい
-        if ($pic_names[0] == '') {
-            $errors['pic_names[0]'] = 'blank';
-        }
-        if ($comments[0] == '') {
-            $errors['comments[0]'] = 'blank';
-        }
+        // 写真とコメントはなくてもいい？
+        // if ($pic_names[0] == '') {
+        //     $errors['pic_names[0]'] = 'blank';
+        // }
+        // if ($comments[0] == '') {
+        //     $errors['comments[0]'] = 'blank';
+        // }
         
         // メイン画像の空チェック
         if (!isset($_REQUEST['action'])) {
             $title_img_name = $_FILES['title_img_name']['name'];
         }
-    // 空チェク終了
+    // 空チェック終了
 
     // 画像拡張子のバリデーション開始
         if (!empty($title_img_name)) {
@@ -193,7 +193,7 @@
             $errors['title_img_name'] = 'rewrite';
         }
 
-        
+    // セッション登録開始
         if (empty($errors)) {
             // $date_str = date('YmdHid');
             // $submit_file_name = $date_str . $title_img_name;
@@ -211,11 +211,19 @@
             $_SESSION['plan']['arrival_date'] = $arrival_date;
             $_SESSION['plan']['title_comment'] = $title_comment;
 
-            // $tag_numberの中身は数字だけ
+            
             for($y=0;$y<$count_post;$y++){
-                $z = $y+1;
+                // 写真
+                if(!empty($pic_names[$y])){
+                $_SESSION['plan']['pic_name' . $y] = $pic_names[$y];
+                }
+                // コメント
+                if(!empty($comments[$y])){
+                $_SESSION['plan']['comment' . $y] = $comments[$y];
+                }
+                // $tag_numberの中身は数字だけ
                 if(!empty($tag_number[$y])){
-                $_SESSION['plan']['tag' . $z] = $tag_number[$y];
+                $_SESSION['plan']['tag' . $y] = $tag_number[$y];
                 }
             }
 
@@ -465,9 +473,9 @@
             <div>
               <?php for($i=0; $i<$count_tag ; $i++){ ?>
                   <?php if($tags[$i]['tag_id']%4 == 0){ ?>
-                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $tags[$i]['tag_id'] ?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label><br>
+                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label><br>
                   <?php }else{ ?>
-                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $tags[$i]['tag_id'] ?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label>
+                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label>
                   <?php } ?>
               <?php }?>
                  

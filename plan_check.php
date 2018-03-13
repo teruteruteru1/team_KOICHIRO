@@ -19,7 +19,16 @@
   	// 	header('Location: register/signup.php');
   	// 	exit();
 		// }
-    
+
+		// $_POSTの数を数える
+    // 各for文に対して、上限をこの変数に設定する  
+    $count_session = count($_SESSION['plan']);
+    echo $count_session;
+    echo '<br>';
+    echo 'うんこ';
+    echo '<br>';
+ 
+ // 変数定義開始  
     $title = $_SESSION['plan']['title'];
     $budget = $_SESSION['plan']['budget'];
     $number_days = $_SESSION['plan']['number_days'];
@@ -34,14 +43,35 @@
     $title_comment = $_SESSION['plan']['title_comment'];
     
     // タグはfor文で回す
-    for($x=1;$x<100;$x++){
+    $pic_names = array();
+    $comments = array();
+    $tag_number = array();
+    for($x=0;$x<$count_session;$x++){
+    	  // tag 
         $tag_name = 'tag' . $x;
-        if(isset($_POST[$tag_name])){ 
-            $tag_number[] = $_SESSION['plan']['$tag_name'];
+        if(isset($_SESSION['plan'][$tag_name])){ 
+            $tag_number[] = $_SESSION['plan'][$tag_name];
+            echo 'Big';
         }
-            
-     }
+        // picture
+        $pic_name = 'pic_name' . $x;
+        if(isset($_SESSION['plan'][$pic_name])){        
+        		$pic_names[] = $_SESSION['plan'][$pic_name];
+            echo 'Dick';
+        }
+        // pcomments
+        $comment = 'comment' . $x;
+        if(isset($_SESSION['plan'][$comment])){
+        		$commnets[] = $_SESSION['plan'][$comment];
+            echo 'Lick';
+        }
 
+    }
+    echo '<pre>'; 
+    echo '$tag_number = ';
+    var_dump($tag_number);
+    echo '</pre>';
+    echo $_SESSION['plan']['tag0'];
 
 
  ?>
@@ -93,7 +123,7 @@
       <?php require('partial/header.php') ?>
     </header>
             <!-- Main Menu End -->
-    <a href="sessiondelete.php">（仮）セッションを決して入力に戻る</a>
+    <a href="sessiondelete.php">（仮）セッションを消して入力に戻る</a>
 
 
     
