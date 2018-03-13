@@ -133,7 +133,7 @@
 	                    </label>
 	                    <br />
 	              		<span class="help-block">By clicking Create my account, you agree to our Terms and that you have read our Data Use Policy, including our Cookie Use.</span> -->
-              			<div class="col-md-4">
+              			<div class="col-md-12">
                     		<button class="btn btn-md btn-primary btn-block signup-btn" type="submit">探す</button>
                     	</div>
 		            </form>          

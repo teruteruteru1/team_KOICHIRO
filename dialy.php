@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title></title>
-    <meta name="description" content="">
+    <meta name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -28,13 +28,14 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="assets/css/search.css">
+    <!-- <link rel="stylesheet" href="assets/css/dialy_photo_main.css"> -->
     <link rel="stylesheet" href="assets/css/header.css">
-    
-    <!------ Include the above in your HEAD tag ---------->
+
+    <!--- Include the above in your HEAD tag -->
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-		<!------ Include the above in your HEAD tag ---------->
+		<!--- Include the above in your HEAD tag -->
 
 	</head>
 
@@ -43,70 +44,45 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-		<!-- Header start -->
-		<header>
-			<?php Include('partial/header.php'); ?>
-		</header>
-		<!-- Header end -->
+	<!-- Header start -->
+	<header>
+		<?php Include('partial/header.php'); ?>
+	</header>
+	<!-- Header end -->
+				
+		<!-- Single Blog1 -->
+		<section id="about" class="site-padding">
 			
-		<!-- top Blog -->
-		<div class="slider">
-			<div id="fawesome-carousel" class="carousel slide" data-ride="carousel">
-				<ol class="carousel-indicators indicatior2">
-					<li data-target="#fawesome-carousel" data-slide-to="0" class="active"></li>
-					<li data-target="#fawesome-carousel" data-slide-to="1"></li>
-				</ol>
-			 
-				<div class="carousel-inner" role="listbox">
-					<div class="item active">
-						<img src="assets/img/add_img/Top_Blog1_P9172109.jpg" alt="Sider Big Image">
-						<div class="carousel-caption">
-							<h1 class="wow fadeInLeft">イタリア旅行 おすすめスポット 2泊3日</h1>
-							<div class="slider-btn wow fadeIn">
-								<a href="#" class="btn btn-learn">詳細をみる</a>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<img src="assets/img/add_img/Top_Blog2_IMG_7607.jpg" alt="Top Blog1 Image">
-						<div class="carousel-caption">
-							<h1 class="wow fadeInLeft">【イタリア】ベネチアのカラフルな姉妹島「ブラーノ」と「ムラーノ」</h1>
-							<div class="slider-btn wow fadeIn">
-								<a href="#" class="btn btn-learn">詳細をみる</a>
-							</div>
+			<div class="container ">
+				<div class="row">
+					<div class="col-sm-12 center">
+						<div class="title">
+							<h2>３度目のイタリア</h2>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- Top Blog End -->
 
-		
-		<!-- search start -->
-		<?php Include('partial/search.php'); ?>
-		<!-- search end -->
-
-		
-		<!-- Single Blog1 -->
-		<section id="about" class="site-padding">
 			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
+				<div id="popup-background">
+					<div class="col-sm-6" >
 						<div class="about-image wow fadeInLeft">
-							<img src="assets/img/add_img/Single-Blog1-P9172057.jpg" alt="Single Blog1" />
+							<img id="popup-item" src="assets/img/add_img/Single-Blog1-P9172057.jpg" alt="Single Blog1" />
+							<!-- ポップアップ用の背景とimg -->
+
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="about-text wow fadeInRight">
-							<h3>2017.9 イタリア旅行記</h3>
-							<p>いよいよ今回のイタリア旅行記も、最終回を迎えることになった。もう一度、出発までの顛末や計画も書いておこう。
+							
+							<p>いよいよ待ち待ったイタリア旅行〜
 								今から35年ほど前に仕事でミラノに出張した際に、週末の空き時間を利用してベネツィア・フィレンツェに
 								一泊二日で出掛けたことがある。
 								また、その数年前に女房と一緒にヨーロッパ旅行をした時に、ローマで一日だけ観光を行った。
 								ただ、そのいずれもが随分昔のことであり、短時間立ち寄っただけであり、今のデジカメの時代と違って余り写真も残っていない。
 								ましてや、出張の時にはカメラを持参していたかどうかも定かでない。
 							</p>
-							<a href="#" class="btn btn-read-more">続きを読む</a>
+							<!-- <a href="#" class="btn btn-read-more">続きを読む</a> -->
 						</div>
 					</div>
 				</div>
@@ -116,68 +92,12 @@
 		<!-- Single Blog1 end -->
 		
 		
+
+		<!-- search start -->
+		<?php Include('partial/search.php'); ?>
+		<!-- search end -->
 		
-		<!-- From the Blog-->
 		
-		<section id="blog" class="site-padding">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="title">
-							<h3>Latest From The <span>Blog</span></h3>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-				
-					<!-- Single Blog2 -->
-					<div class="col-sm-4">
-						<div class="single-blog">
-							<img src="assets/img/add_img/Single_Blog2_1518359667602.jpg" alt="Single Blog2" />
-							<h4><a href="blog.html">セブ　カワサンフォールへ</a></h4>
-							<p> 朝4時にホテルを出発し、マイクロバスに乗って、オスロブ、カワサン滝へ行ってきました。
-								水温はとても冷たかったですが、綺麗な空気と綺麗な水に感動しました。
-							</p>
-							<a href="#">続きを読む>></a>
-						</div>
-					</div>
-					<!-- Single Blog2 -->
-					
-					<!-- Single Blog3 -->
-					<div class="col-sm-4">
-						<div class="single-blog">
-							<img src="assets/img/add_img/Single_Blog3_1519138076376.jpg" alt="Single Blog3" />
-							<h4><a href="blog.html">３度目のグアム</a></h4>
-							<p>2017年7月3日成田発、7月6日成田着のデルタ航空利用。
-								常夏の島グアムで買い物三昧、遊び三昧、グルメ三昧の旅！ショッピング施設も充実していますし、
-								以前に行ったときにはなかった新しくできたレストランもたくさんありました！
-							</p>
-							<a href="#">続きを読む>></a>
-						</div>
-					</div>
-					<!-- Single Blog3 -->
-					
-					<!-- Single Blog4 -->
-					<div class="col-sm-4">
-						<div class="single-blog">
-							<img src="assets/img/add_img/Single_Blog4_IMG_20180216_175141.jpg" alt="Single Blog4" />
-							<h4><a href="blog.html">はじめてのセブ</a></h4>
-							<p>毎年、年に一度自分へのご褒美の念を込めてグアムに行くのですが、今年の旅行はいつもとは違う
-							旅行をしてみたいと思い、フィリピン、セブに行くことにしました。3月のセブはとても暑く空港到着から
-							汗だくです。早くビールが飲みたい..</p>
-							<a href="#">続きを読む>></a>
-						</div>
-					</div>
-					<!-- Single Blog4 -->
-					
-					
-				</div>
-				
-			</div>
-		</section>
-		
-		<!-- From the Blog-->
 
 		<!-- Featured Work -->
 		
