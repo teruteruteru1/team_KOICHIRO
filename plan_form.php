@@ -109,7 +109,7 @@
         //写真たちをぶん回すpicturesに保存するデータたち
         // ループ文でぶん回す
         if (!isset($_REQUEST['action'])){
-          // 一度戻ってきたら同じ処理を二回行わない
+            // 一度戻ってきたら同じ処理を二回行わない
             $pic_names = array();
             $comments = array();
             for($n=0;$n<$count_post;$n++){
@@ -208,7 +208,7 @@
                 $pic_type = substr($pic_names[$b],-3) ;
                 $pic_type = strtolower($pic_type);
                 if ($pic_type != 'jpg' && $pic_type != 'png' && $pic_type != 'gif') {
-                  $errors['pic_names' . $b] = 'type';
+                    $errors['pic_names' . $b] = 'type';
                 }
             }
 
@@ -241,19 +241,19 @@
             for($y=0;$y<$count_post;$y++){
                 // 写真
                 if(!empty($pic_names[$y])){
-                $_SESSION['plan']['pic_name' . $y] = $pic_names[$y];
+                    $submit_pic_name = $date_str . $pic_name . $y;
+                    move_uploaded_file($_FILES['pic_name' . $y]['tmp_name'], 'pictures/' .$submit_pic_name);
+                    // $_SESSION['plan']['pic_name' . $y] = $pic_names[$y];
                 }
                 // コメント
                 if(!empty($comments[$y])){
-                $_SESSION['plan']['comment' . $y] = $comments[$y];
+                    $_SESSION['plan']['comment' . $y] = $comments[$y];
                 }
                 // タグ  $tag_numberの中身は数字だけ
                 if(!empty($tag_number[$y])){
-                $_SESSION['plan']['tag' . $y] = $tag_number[$y];
+                    $_SESSION['plan']['tag' . $y] = $tag_number[$y];
                 }
-            }
-
-            
+            }           
 
             header('Location: plan_check.php');
             exit();

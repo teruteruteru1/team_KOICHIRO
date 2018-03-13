@@ -60,7 +60,7 @@
         		$pic_names[] = $_SESSION['plan'][$pic_name];
             echo 'Dick';
         }
-        // pcomments
+        // comments
         $comment = 'comment' . $x;
         if(isset($_SESSION['plan'][$comment])){
         		$commnets[] = $_SESSION['plan'][$comment];
