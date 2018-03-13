@@ -118,12 +118,37 @@
 
 <body>
 
-        <!-- Header Start -->
-    <header id="home">
-      <?php require('partial/header.php') ?>
-    </header>
-            <!-- Main Menu End -->
-    <a href="sessiondelete.php">（仮）セッションを消して入力に戻る</a>
+  <!-- Header Start -->
+  <header id="home">
+    <?php require('partial/header.php') ?>
+  </header>
+          <!-- Main Menu End -->
+  <!-- 戻るボタン仮 -->
+  <a href="sessiondelete.php">（仮）セッションを消して入力に戻る</a>
+
+  <!-- ほんちゃん開始  コピペだけ3/10-->
+
+  <div class="container">
+    <div class="row">
+    	name <?php echo htmlspecialchars($name) . '<br>'; ?><br>
+    	email <?php echo htmlspecialchars($email) . '<br>' ?><br>
+    	password ●●●●●●●●●●●●●●<br>
+      <!-- ここにコンテンツ -->
+      <img src="../user_profile_img/<?php echo $_SESSION['register']['img_name'] ?>" width="100">
+      <br>
+   	</div>
+
+    <form method="POST" action="check.php">
+    	<input type="hidden" name="kubo" value="kaori">
+      <a href="signup.php?action=rewrite"><strong>戻る</strong></a><br>
+      <!-- パラメータをつけることで、$_GET/$_REQUESTが使える -->
+    	<input type="submit" value="ユーザー登録">
+
+    </form>
+
+	</div>
+
+
 
 
     

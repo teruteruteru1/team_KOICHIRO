@@ -2,7 +2,7 @@
     session_start();  
     require ('dbconnect.php');
 
-//一回自分に飛ばす。確認ヴァーダンプ
+    //一回自分に飛ばす。確認ヴァーダンプ
     echo '<br>';
     echo '<br>';
     echo '<br>';
@@ -17,7 +17,8 @@
      
 
 
-//プルダウン用の準備    
+//プルダウン用の準備 
+                                          //ここらへんは切り取る   
     //countriesテーブルから取ってくる
     $sql = 'SELECT * FROM `countries` WHERE 1';
     $data = array();
