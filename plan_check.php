@@ -1,6 +1,7 @@
 <?php 
 		session_start();  
     require ('dbconnect.php'); 
+    require ('assets/functions.php');
 
  //作るもの
 //①飛び先
