@@ -1,9 +1,5 @@
-<<<<<<< HEAD
+
 <?php 
-//ちんこ！！！！！！！！！！！！！！	
-=======
-<?php 	
->>>>>>> 86f542f9a0d7a76de4d0b36674285a7225206798
 
 ?>
 
@@ -93,7 +89,6 @@
 		<?php Include('home_search.php'); ?>
 		<!-- search end -->
 
-		
 		<!-- Single Blog1 -->
 		<section id="about" class="site-padding">
 			<div class="container">
