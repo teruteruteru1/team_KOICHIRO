@@ -138,7 +138,7 @@
 		<div class="container" id="wrap">
 	  	<div class="row">
         <div class="col-md-6 col-md-offset-3">
-          <form action="r" method="post" accept-charset="utf-8" class="form" role="form">   
+          <form action="search.php" method="post" accept-charset="utf-8" class="form" role="form">
             <!-- 	<legend></legend> -->
 
             	<!-- <div class="container"> -->
@@ -157,7 +157,7 @@
 
 									<!-- </form> -->
 							        
-							        
+
 <!-- 								</div>
 							</div> -->
 <!-- 									<div class="col-sm-12">
@@ -173,8 +173,9 @@
 					<!-- country start -->
                     <div class="row">
                         <div class="col-xs-5 col-md-5">
-                            <!-- <input type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name"  />  -->                       
-						        			<select name="country"　value="" class="form-control input-md" >
+                            <!-- <input type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name"  />  -->
+
+						        			<select name="country" value="" class="form-control input-md" >
 									            <option value="Japan" selected="selected" class="msg">国を選択して下さい</option>
 									            <option value="Japan" class="japan">日本</option>
 									            <option value="America" class="America">アメリカ</option>
@@ -188,7 +189,7 @@
 								        <!-- city start -->
 								        <div class="col-xs-5 col-md-5">
                             <!-- <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name"  /> -->                        
-									        <select name="city"　value="" class="form-control input-md" >
+									        <select name="city" value="" class="form-control input-md" >
 									            <option value="Japan" selected="selected" class="msg">都市を選択して下さい</option>
 									            <option value="Tokyo" class="japan">東京</option>
 									            <option value="Kyoto" class="japan">京都</option>
