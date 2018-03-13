@@ -89,8 +89,8 @@
     <?php Include('partial/search.php'); ?>
 
     <section id="about" class="site-padding">
+      <?php for($i=0;$i<$c;$i++){ ?>
       <div class="container">
-        <?php for($i=0;$i<$c;$i++){ ?>
         <div class="row">
           <div class="col-sm-6">
 
@@ -105,8 +105,8 @@
               <a href="show.php?dialy_id=<?php echo $uniqueids[$i]['dialy_id']; ?>" class="btn btn-read-more">続きを読む</a>
           </div>
         </div>
-        <?php } ?>
       </div>
+      <?php } ?>
     </section>
 
     <footer>
