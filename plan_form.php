@@ -2,18 +2,24 @@
     session_start();  
     require ('dbconnect.php');
 
-//一回自分に飛ばす。確認ヴァーダンプｂｂｂｂ
+    //一回自分に飛ばす。確認ヴァーダンプ
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
+    echo '<pre>'; 
+    echo '$_FILES = ';
+    var_dump($_FILES);
+    echo '</pre>';
     echo '<pre>'; 
     echo '$_POST = ';
     var_dump($_POST);
     echo '</pre>';
+     
 
 
-    
-
-
-//プルダウン用の準備    
-//国テーブルから取ってくる
+//プルダウン用の準備 
+                                          //ここらへんは切り取る   
+    //countriesテーブルから取ってくる
     $sql = 'SELECT * FROM `countries` WHERE 1';
     $data = array();
     $stmt = $dbh->prepare($sql);
@@ -28,13 +34,237 @@
         $countries[] = $country;
     }
     $count_country = count($countries); 
-    echo $count_country;//国名プルダウン用カウントカントリー
+    //echo $count_country;//国名プルダウン用カウントカントリー
 
+
+
+    //areasテーブルから取ってくる
+    $sql = 'SELECT * FROM `areas` WHERE 1';
+    $data = array();
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+    //fetchする
+    $areas = array();
+    while (true) {
+        $area = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($area == false) {
+            break;
+        }
+        $areas[] = $area;
+    }
+    $count_area = count($areas); 
+    //echo $count_area;//国名プルダウン用カウントカントリー
+
+    //tagsテーブルから取ってくる
+    $sql = 'SELECT * FROM `tags` WHERE 1';
+    $data = array();
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+    //fetchする
+    $tags = array();
+    while (true) {
+        $tag = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($tag == false) {
+            break;
+        }
+        $tags[] = $tag;
+    }
+    $count_tag = count($tags);
+    // プルダウンの準備完了  
+
+    // バリデーション
+    $errors = array(); //一度戻ってきたときのエラー用
+
+    //$_POSTが空じゃない時
+    //ユーザーがformの送信ボタンを押した時
+    
+    // $_POSTの数を数える
+    // 各for文に対して、上限をこの変数に設定する  
+    $count_post = count($_POST);
+    echo $count_post;
+    echo 'うんこ';
     echo '<br>';
+
+    if(!empty($_POST)){
+        echo '送信完了<br>';
+        //変数定義開始
+        $title = $_POST['title'];
+        $budget = $_POST['budget'];
+        $number_days = $_POST['number_days'];
+        $country_id_1 = $_POST['country_id_1'];
+        $country_id_2 = $_POST['country_id_2'];
+        $country_id_3 = $_POST['country_id_3'];
+        $area_id_1 = $_POST['area_id_1'];
+        $area_id_2 = $_POST['area_id_2'];
+        $area_id_3 = $_POST['area_id_3'];
+        $depart_date = $_POST['depart_date'];
+        $arrival_date = $_POST['arrival_date'];
+        $title_comment = $_POST['title_comment'];
+        //写真たちをぶん回すpicturesに保存するデータたち
+        // ループ文でぶん回す
+        $pic_names = array();
+        $comments = array();
+        for($n=0;$n<$count_post;$n++){
+            if(isset($_FILES['pic_name' . $n]['name'])){
+            $pic_number = $_FILES['pic_name' . $n]['name'];
+            $pic_names[] = $pic_number;
+            }
+            if(isset($_POST['comment' . $n])){
+            $comment_number = $_POST['comment' . $n];
+            $comments[] = $comment_number;
+            }    
+        }
+        echo '<pre>'; 
+        echo '$pic_names = ';
+        var_dump($pic_names);
+        echo '</pre>'; 
+        echo '<pre>'; 
+        echo '$comments = ';
+        var_dump($comments);
+        echo '</pre>'; 
+
+        //tagの変数（配列）定義
+        $tag_number = array();
+        for($x=0;$x<$count_post;$x++){
+            $tag_name = 'tag' . $x;
+            if(isset($_POST[$tag_name])){ 
+                $tag_number[] = $_POST[$tag_name];
+            }
+            
+        }
+
+        echo '<pre>'; 
+        echo '$tag_number = ';
+        var_dump($tag_number);
+        echo '</pre>'; 
+        //変数定義完了
+        
+        //各空チェック
+        //いらないものは確認しない
+        if ($title == '') {
+            $errors['title'] = 'blank';
+        }
+        if ($budget == '') {
+            $errors['budget'] = 'blank';
+        }
+        if ($number_days == '') {
+            $errors['number_days'] = 'blank';
+        }
+        if ($country_id_1 == '') {
+            $errors['country_id_1'] = 'blank';
+        }
+        if ($area_id_1 == '') {
+            $errors['area_id_1'] = 'blank';
+        }
+        if ($depart_date == '') {
+            $errors['depart_date'] = 'blank';
+        }
+        if ($arrival_date == '') {
+            $errors['arrival_date'] = 'blank';
+        }
+        if ($title_comment == '') {
+            $errors['title_comment'] = 'blank';
+        }
+        // 写真とコメントはなくてもいい？
+        // if ($pic_names[0] == '') {
+        //     $errors['pic_names[0]'] = 'blank';
+        // }
+        // if ($comments[0] == '') {
+        //     $errors['comments[0]'] = 'blank';
+        // }
+        
+        // メイン画像の空チェック
+        if (!isset($_REQUEST['action'])) {
+            $title_img_name = $_FILES['title_img_name']['name'];
+        }
+        // 空チェック終了
+
+        // 画像拡張子のバリデーション開始
+
+        // メイン画像用の拡張子チェック
+        if (!empty($title_img_name)) {
+            //jpeg/png/gifの３種類に変更する
+            $title_img_type = substr($title_img_name,-3) ;
+            $title_img_type = strtolower($title_img_type);
+            if ($title_img_type != 'jpg' && $title_img_type != 'png' && $title_img_type != 'gif') {
+              $errors['title_img_name'] = 'type';
+            }
+        }else{
+            $errors['title_img_name'] = 'blank';
+        }
+
+        if (isset($_REQUEST['action'])){
+            $errors['title_img_name'] = 'rewrite';
+        }
+        // 他の写真の拡張子チェック
+        for($b=0;$b<$count_post;$b++){
+            if (!empty($pic_names)) {
+                //jpeg/png/gifの３種類に変更する
+                $title_img_type = substr($pic_names,-3) ;
+                $title_img_type = strtolower($title_img_type);
+                if ($title_img_type != 'jpg' && $title_img_type != 'png' && $title_img_type != 'gif') {
+                  $errors['pic_names'] = 'type';
+                }
+            }else{
+                $errors['pic_names'] = 'blank';
+            }
+
+            if (isset($_REQUEST['action'])){
+                $errors['pic_names'] = 'rewrite';
+            }
+        }
+
+
+        // セッション登録開始
+        if (empty($errors)) {
+            // $date_str = date('YmdHid');
+            // $submit_file_name = $date_str . $title_img_name;
+            // move_uploaded_file($_FILES['input_img_name']['tmp_name'], '../user_profile_img/' .$submit_file_name);
+            $_SESSION['plan']['title'] = $title;
+            $_SESSION['plan']['budget'] = $budget;
+            $_SESSION['plan']['number_days'] = $number_days;
+            $_SESSION['plan']['country_id_1'] = $country_id_1;
+            $_SESSION['plan']['country_id_2'] = $country_id_2;
+            $_SESSION['plan']['country_id_3'] = $country_id_3;
+            $_SESSION['plan']['area_id_1'] = $area_id_1;
+            $_SESSION['plan']['area_id_2'] = $area_id_2;
+            $_SESSION['plan']['area_id_3'] = $area_id_3;
+            $_SESSION['plan']['depart_date'] = $depart_date;
+            $_SESSION['plan']['arrival_date'] = $arrival_date;
+            $_SESSION['plan']['title_comment'] = $title_comment;
+
+            
+            for($y=0;$y<$count_post;$y++){
+                // 写真
+                if(!empty($pic_names[$y])){
+                $_SESSION['plan']['pic_name' . $y] = $pic_names[$y];
+                }
+                // コメント
+                if(!empty($comments[$y])){
+                $_SESSION['plan']['comment' . $y] = $comments[$y];
+                }
+                // タグ  $tag_numberの中身は数字だけ
+                if(!empty($tag_number[$y])){
+                $_SESSION['plan']['tag' . $y] = $tag_number[$y];
+                }
+            }
+
+            
+
+            header('Location: plan_check.php');
+            exit();
+        }
+
+    }
+
     echo '<pre>'; 
-    echo '$country = ';
-    var_dump($country);
+    echo '$errors = ';
+    var_dump($errors);
     echo '</pre>';
+
+      
+    
+
 
 
 
@@ -46,7 +276,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
+    <title>plam_form</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -82,45 +312,16 @@
     
 
 <body>
-        <!-- Header Start -->
-    <!-- <header id="home"> -->
-        
-        <!-- Main Menu Start -->
-        <!-- <div class="main-menu">
-            <div class="navbar-wrapper">    
-                <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="sr-only">Toggle Navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            
-                            <a href="#" class="navbar-brand"><img src="img/logo.png" alt="Logo" /></a>                          
-                        </div>
-                        
-                        <div class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav navbar-right">
 
-                                <li><a href="#signin">ログイン</a></li>
-                                <li><a href="#signup">ユーザー登録</a></li>
-                                <li><a href="#signout">ログアウト</a></li>
-                                <li><a href="#mypage">マイページ</a></li>
-                            </ul>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header> -->
+        <!-- Header Start -->
+    <header id="home">
+      <?php require('partial/header.php') ?>
+    </header>
             <!-- Main Menu End -->
 
 
     <div style="text-align: center;">
-        <form method="POST" action="">
+        <form method="POST" action="" enctype="multipart/form-data">
             <div>   
                 <br>タイトル<br>
                 <textarea name="title" cols="80" rows="5"></textarea>
@@ -140,25 +341,45 @@
             <select name="country_id_1">
                 <option value="0" selected="selected" class="msg">国を選択して下さい</option>
                 <?php for($i=0; $i<$count_country ; $i++){ ?>
-                <option value="<?php echo $countries[$i]['country_name']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
+                 <option value="<?php echo $countries[$i]['country_name']; ?>" class="<?php echo $countries[$i]['id']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
                 <?php } ?>
-                <!-- <option value="Japan" class="japan">日本</option>
-                <option value="America" class="America">アメリカ</option>
-                <option value="Australia" class="Australia">オーストラリア</option> -->
+                
             </select>
             
             都市1
             <!-- 中間テーブルから国名を持ってくる？ -->
             <select name="area_id_1">
-                <option value="Japan" selected="selected" class="msg">都市を選択して下さい</option>
-                <option value="Tokyo" class="japan">東京</option>
-                <option value="Kyoto" class="japan">京都</option>
-                <option value="Osaka" class="japan">大阪</option>
-                <option value="NY" class="America">ニューヨーク</option>
-                <option value="LA" class="America">ロサンゼルス</option>
-                <option value="Sydney" class="Australia">シドニー</option>
+              <option value="0" selected="selected" class="msg">都市を選択して下さい</option>
+              <?php for($i=0; $i<$count_area ; $i++){ ?>
+                <option value="<?php echo $areas[$i]['area_name']; ?>" class="<?php echo $areas[$i]['country_id']; ?>"><?php echo $areas[$i]['area_name']; ?></option>
+              <?php } ?>
+
+              
             </select>
             <br>
+
+            国1.2
+            <select name="countryhh">
+                <option value="0" selected="selected" class="msg">国を選択して下さい</option>                
+                <option value="Japan" class="japan">日本</option>
+                <option value="America" class="America">アメリカ</option>
+                <option value="Australia" class="Australia">オーストラリア</option>
+            </select>
+            
+            都市1.2
+            <!-- 中間テーブルから国名を持ってくる？ -->
+            <select name="cityhh">
+              <option value="0" selected="selected" class="msg">都市を選択して下さい</option>
+              <option value="Tokyo" class="japan">東京</option>
+              <option value="Kyoto" class="japan">京都</option>
+              <option value="Osaka" class="japan">大阪</option>
+              <option value="NY" class="America">ニューヨーク</option>
+              <option value="LA" class="America">ロサンゼルス</option>
+              <option value="Sydney" class="Australia">シドニー</option>
+            </select>
+            <br>
+
+
 
             国2
             <select name="country_id_2">
@@ -198,7 +419,7 @@
             都市3
             <!-- 中間テーブルから国名を持ってくる？ -->
             <select name="area_id_3">
-                <option value="Japan" selected="selected" class="msg">都市を選択して下さい</option>
+                <option value="0" selected="selected" class="msg">都市を選択して下さい</option>
                 <option value="Tokyo" class="japan">東京</option>
                 <option value="Kyoto" class="japan">京都</option>
                 <option value="Osaka" class="japan">大阪</option>
@@ -211,7 +432,7 @@
             <br>
 
             <div> 
-                <!-- カレンダー機能開始 -->
+           <!-- カレンダー機能開始 -->
                 <script type="text/javascript" src="plan_calender.js"></script>
             
                 出発日時
@@ -224,13 +445,15 @@
             <br>
             <br>
 
-
+            <!-- 概要 -->
             <h2>旅行概要</h2>
             <div style="margin:50px;">
-                <input type="file" style="margin: auto;" name="title_img_name" accept="image/*">
+              <span>メイン写真を選択してください</span>
+                <input type="file" style="margin: auto;" name="title_img_name" accept="mage/*">
                 <textarea name="title_comment" cols="80" rows="5"></textarea>
             </div>
-            
+            <br>  
+            <!-- 写真とコメント -->
             <div class="parent">
                 <div class="field" style="padding-bottom:8px; margin-bottom:20px;">
                     <!-- <div> -->
@@ -239,6 +462,7 @@
                     <!-- </div> -->
                         <textarea name="comment0" cols="40" rows="5"></textarea><br>
                         <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br><br>
+
                 </div>
 
 
@@ -246,6 +470,26 @@
 
              <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >追加</button>
             <!--  <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button> --><br>
+            <br>
+            <br>
+
+            <!-- タグを選択 -->
+            <p>旅行記につけるタグを選んでください</p>
+            <div>
+              <?php for($i=0; $i<$count_tag ; $i++){ ?>
+                  <?php if($tags[$i]['tag_id']%4 == 0){ ?>
+                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label><br>
+                  <?php }else{ ?>
+                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label>
+                  <?php } ?>
+              <?php }?>
+                 
+            </div>
+
+            <!-- 確認画面へ -->
+            <br>
+            <br>
+
              <input type="submit" value="確認画面へ" class="btn btn-primary">            
         </form>
     </div>
@@ -373,6 +617,7 @@
         <script src="assets/js/plan_calender.js"></script>
         <!-- プルダウンのJS -->
         <script src="assets/js/plan_country.js"></script>
+        <script src="assets/js/plan_country2.js"></script>
         <!-- コメントを増やすJS -->
         <script src="assets/js/plan_comment.js"></script>
         
@@ -402,20 +647,11 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
-        
-
-
-    
-        
-
-      
-
-
-
-
-
-
 
 
 </body>
 </html>
+
+
+
+
