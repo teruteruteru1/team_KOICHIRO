@@ -196,23 +196,22 @@
         if (isset($_REQUEST['action'])){
             $errors['title_img_name'] = 'rewrite';
         }
-        // 他の写真の拡張子チェック
+        // 他の写真の拡張子チェック $pic_names[]の中身を確認する
         for($b=0;$b<$count_post;$b++){
-            if (!empty($pic_names)) {
+            if (!empty($pic_names[$b])) {
                 //jpeg/png/gifの３種類に変更する
-                $title_img_type = substr($pic_names,-3) ;
-                $title_img_type = strtolower($title_img_type);
-                if ($title_img_type != 'jpg' && $title_img_type != 'png' && $title_img_type != 'gif') {
-                  $errors['pic_names'] = 'type';
+                $pic_type = substr($pic_names[$b],-3) ;
+                $pic_type = strtolower($pic_type);
+                if ($pic_type != 'jpg' && $pic_type != 'png' && $pic_type != 'gif') {
+                  $errors['pic_names' . $b] = 'type';
                 }
-            }else{
-                $errors['pic_names'] = 'blank';
             }
 
-            if (isset($_REQUEST['action'])){
-                $errors['pic_names'] = 'rewrite';
-            }
+            // if (isset($_REQUEST['action'])){
+            //     $errors['pic_names' . $b] = 'rewrite';
+            // }
         }
+        
 
 
         // セッション登録開始
