@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 ?>
 
@@ -13,13 +13,13 @@
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
-		
-		<!-- Font -->
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-		<!-- Font -->
-		
-		
+
+    <!-- Font -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- Font -->
+
+
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -29,26 +29,23 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="assets/css/search.css">
     <link rel="stylesheet" href="assets/css/header.css">
-    
-    <!------ Include the above in your HEAD tag ---------->
+
+    <!-- Include the above in your HEAD tag -->
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-		<!------ Include the above in your HEAD tag ---------->
+		<!-- Include the above in your HEAD tag -->
 
 	</head>
 
 	<body>
-    <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
 
 		<!-- Header start -->
 		<header>
 			<?php Include('partial/header.php'); ?>
 		</header>
 		<!-- Header end -->
-			
+
 		<!-- top Blog -->
 		<div class="slider">
 			<div id="fawesome-carousel" class="carousel slide" data-ride="carousel">
@@ -56,7 +53,7 @@
 					<li data-target="#fawesome-carousel" data-slide-to="0" class="active"></li>
 					<li data-target="#fawesome-carousel" data-slide-to="1"></li>
 				</ol>
-			 
+
 				<div class="carousel-inner" role="listbox">
 					<div class="item active">
 						<img src="assets/img/add_img/Top_Blog1_P9172109.jpg" alt="Sider Big Image">
@@ -81,12 +78,10 @@
 		</div>
 		<!-- Top Blog End -->
 
-		
 		<!-- search start -->
 		<?php Include('partial/search.php'); ?>
 		<!-- search end -->
 
-		
 		<!-- Single Blog1 -->
 		<section id="about" class="site-padding">
 			<div class="container">
@@ -114,11 +109,9 @@
 		</section>
 
 		<!-- Single Blog1 end -->
-		
-		
-		
+
 		<!-- From the Blog-->
-		
+
 		<section id="blog" class="site-padding">
 			<div class="container">
 				<div class="row">
@@ -128,9 +121,9 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="row">
-				
+
 					<!-- Single Blog2 -->
 					<div class="col-sm-4">
 						<div class="single-blog">
@@ -143,7 +136,7 @@
 						</div>
 					</div>
 					<!-- Single Blog2 -->
-					
+
 					<!-- Single Blog3 -->
 					<div class="col-sm-4">
 						<div class="single-blog">
@@ -157,7 +150,7 @@
 						</div>
 					</div>
 					<!-- Single Blog3 -->
-					
+
 					<!-- Single Blog4 -->
 					<div class="col-sm-4">
 						<div class="single-blog">
@@ -170,17 +163,17 @@
 						</div>
 					</div>
 					<!-- Single Blog4 -->
-					
-					
+
+
 				</div>
-				
+
 			</div>
 		</section>
-		
+
 		<!-- From the Blog-->
 
 		<!-- Featured Work -->
-		
+
 		<section id="feature-work" class="protfolio-padding">
 			<div class="container">
 				<div class="row">
@@ -191,24 +184,23 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="featured-list">
 				<div id="grid" class="clearfix">
-					
+
 					<div class="thumb">
 						<a href="#">
 							<img src="assets/img/add_img/theme_gourmet_IMG_7336.jpg" alt="Feature Image" />
 						</a>
-						
+
 						<div class="thumb-rollover">
 							<div class="project-title">
-								<h2>グルメ</h2>		
-								<!-- <h5>Category: Web Design</h5> -->
+								<h2>グルメ</h2>
 							</div>
 						</div>
-						
+
 					</div>
-					
+
 					<div class="thumb">
 						<a href="#">
 							<img src="assets/img/add_img/theme_sightseeing_P9131618.jpg" alt="Feature Image" />
@@ -216,68 +208,63 @@
 						<div class="thumb-rollover">
 							<div class="project-title">
 								<h2>観光</h2>
-								<!-- <h5>Category: Web Design</h5> -->
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="thumb">
 						<a href="#">
 							<img src="assets/img/add_img/theme_shopping_IMG_20180216_144151.jpg" alt="Feature Image" />
 						</a>
-						
+
 						<div class="thumb-rollover">
 							<div class="project-title">
 								<h2>ショッピング</h2>
-								<!-- <h5>Category: Web Design</h5> -->
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="thumb">
 						<a href="#">
 							<img src="assets/img/add_img/theme_sport_outdoor_DSC_1043.jpg" alt="Feature Image" />
 						</a>
-						
+
 						<div class="thumb-rollover">
 							<div class="project-title">
 								<h2>スポーツ・アウトドア</h2>
-								<!-- <h5>Category: Web Design</h5> -->
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="thumb">
 						<a href="#">
 							<img src="assets/img/add_img/theme_hotel_IMG_20180218_112635.jpg" alt="Feature Image" />
 						</a>
-						
+
 						<div class="thumb-rollover">
 							<div class="project-title">
 								<h2>ホテル</h2>
-								<!-- <h5>Category: Web Design</h5> -->
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="thumb">
 						<a href="#">
 							<img src="assets/img/add_img/theme_relaxation_1519138253418.jpg" alt="Feature Image" />
 						</a>
-						
+
 						<div class="thumb-rollover">
 							<div class="project-title">
 								<h2>リラクゼーション</h2>
-								<!-- <h5>Category: Web Design</h5> -->
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="thumb">
 						<a href="#">
 							<img src="assets/img/add_img/theme_resort_1519138015328.jpg" alt="Feature Image" />
 						</a>
-						
+
 						<div class="thumb-rollover">
 							<div class="project-title">
 								<h2>リゾート</h2>
@@ -285,12 +272,12 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="thumb">
 						<a href="#">
 							<img src="assets/img/add_img/theme_ather_1519138162591.jpg" alt="Feature Image" />
 						</a>
-						
+
 						<div class="thumb-rollover">
 							<div class="project-title">
 								<h2>その他</h2>
@@ -298,17 +285,17 @@
 							</div>
 						</div>
 					</div>
-					
-					
+
+
 				</div>
 			</div>
-			
-			
+
+
 		</section>
-		
+
 		<!-- Featured Work -->
 
-		
+
 		<!-- Contact -->
 		<section id="contact-us">
 			<div class="container">
@@ -320,11 +307,11 @@
 					</div>
 				</div>
 			</div>
-		
+
 			<div class="map">
 				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14608.272959726353!2d90.38896245!3d23.744945849999997!3m2!1i1024!2i768!4f13.1!4m3!3e1!4m0!4m0!5e0!3m2!1sen!2sbd!4v1465238371126" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
 			</div>
-		
+
 			<div class="contact">
 				<div class="container">
 					<div class="row">
@@ -353,7 +340,7 @@
 										</div>
 										<p>
 											<button class="btn btn-theme margintop10 pull-left" type="submit">送信</button>
-											
+
 										</p>
 									</div>
 								</div>
@@ -362,16 +349,15 @@
 					</div>
 				</div>
 			</div>
-		</section>		
+		</section>
 		<!-- Contact -->
-		
-		
+
+
 		<!-- footer -->
-		
+
 		<footer>
 			<div class="container">
 				<div class="row">
-				
 					<!-- Single Footer -->
 					<div class="col-sm-6">
 						<div class="single-footer">
@@ -379,67 +365,17 @@
 								<!-- <a href="#" class="mod_dropnavi-brand"><h1>でれっちょ</h1></a> -->
 								<a href="#"><h1>でれっちょ</h1></a>
 									<p>旅行コミュニティサイト(旅行記・旅行SNS)</p>
-								<!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p> -->
+
 							</div>
 						</div>
 					</div>
 					<!-- Single Footer -->
-					
-					
-					<!-- Single Footer -->
-					<!-- <div class="col-sm-3">
-						<div class="single-footer">
-							<h4>ご連絡先</h4>
-							<p>XX New Design Street, cebucity XXX <br />
-							+9 (999) 999-999-999 <br />
-							info@XXXX.com <br />
-							(99) 999 999 999</p>
-						</div>
-					</div> -->
-					<!-- Single Footer -->
-					
-					
-					<!-- Single Footer -->
-					<!-- <div class="col-sm-3">
-						<div class="single-footer">
-							<h4>定期購読</h4>
-							<p>私たちの月刊ニュースレターを購読するためにあなたのメールアドレスを入力してください</p>
-							
-							<form action="">
-								<div class="form-group">
-									<input type="email" class="form-control my-form" id="exampleInputEmail1" placeholder="あなたのメールアドレスを入力してください">
-								</div>
-								<div class="form-group">
-									<button class="btn btn-subscribe">定期購読</button>
-								</div>
-							</form>
-							
-						</div>
-					</div> -->
-					<!-- Single Footer -->
-					
-					<!-- Single Footer -->
-					<!-- <div class="col-sm-3">
-						<div class="single-footer">
-							<h4>Recent Projects</h4>
-							<ul class="projects">
-								<li><img src="img/project.png" alt="Reccent Project" /></li>
-								<li><img src="img/project.png" alt="Reccent Project" /></li>
-								<li><img src="img/project.png" alt="Reccent Project" /></li>
-								<li><img src="img/project.png" alt="Reccent Project" /></li>
-								<li><img src="img/project.png" alt="Reccent Project" /></li>
-								<li><img src="img/project.png" alt="Reccent Project" /></li>
-							</ul>
-						</div>
-					</div> -->
-					<!-- Single Footer -->
-					
+
 				</div>
 			</div>
-			
+
 		</footer>
-		
+
 		<!-- Copyright -->
 		<div class="copyright">
 				<div class="container">
@@ -475,11 +411,8 @@
 					</div>
 				</div>
 			</div>
-		
+
 		<!-- footer -->
-		
-		
-		
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
@@ -491,8 +424,8 @@
         <script src="assets/js/jquery.sticky.js"></script>
         <script src="assets/js/wow.min.js"></script>
         <script src="assets/js/main.js"></script>
-        
-		
+
+
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$('a[href^="#"]').on('click',function (e) {
@@ -507,7 +440,7 @@
 					});
 			});
 		</script>
-		
+
 		<script src="assets/js/custom.js"></script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
