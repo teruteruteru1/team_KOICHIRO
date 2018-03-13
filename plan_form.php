@@ -180,7 +180,8 @@
         // 空チェック終了
 
         // 画像拡張子のバリデーション開始
-        // メイン画像用
+
+        // メイン画像用の拡張子チェック
         if (!empty($title_img_name)) {
             //jpeg/png/gifの３種類に変更する
             $title_img_type = substr($title_img_name,-3) ;
@@ -195,9 +196,26 @@
         if (isset($_REQUEST['action'])){
             $errors['title_img_name'] = 'rewrite';
         }
-        // 他の写真
+        // 他の写真の拡張子チェック
+        for($b=0;$b<$count_post;$b++){
+            if (!empty($pic_names)) {
+                //jpeg/png/gifの３種類に変更する
+                $title_img_type = substr($pic_names,-3) ;
+                $title_img_type = strtolower($title_img_type);
+                if ($title_img_type != 'jpg' && $title_img_type != 'png' && $title_img_type != 'gif') {
+                  $errors['pic_names'] = 'type';
+                }
+            }else{
+                $errors['pic_names'] = 'blank';
+            }
 
-    // セッション登録開始
+            if (isset($_REQUEST['action'])){
+                $errors['pic_names'] = 'rewrite';
+            }
+        }
+
+
+        // セッション登録開始
         if (empty($errors)) {
             // $date_str = date('YmdHid');
             // $submit_file_name = $date_str . $title_img_name;
