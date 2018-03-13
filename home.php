@@ -46,9 +46,10 @@
     <![endif]-->
 
 	<!-- Header start -->
-
-	<?php Include('home_header.php'); ?>
-
+	<header>
+	<?php Include('partial/home_header.php'); ?>
+	</header>
+	
 	<!-- Header end -->
 			
 		<!-- top Blog -->
