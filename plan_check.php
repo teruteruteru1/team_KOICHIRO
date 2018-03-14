@@ -29,7 +29,7 @@
     echo 'うんこ';
     echo '<br>';
  
- 		// 変数定義開始 
+ 		// 変数定義開始
     // dialiesに格納 
     $title = $_SESSION['plan']['title'];
     $budget = $_SESSION['plan']['budget'];
@@ -90,12 +90,33 @@
 
     // POST送信して
     // INSERT開始
+
+    //手順
+    //①dialiesにインサート
+    //②dialiesから日記IDを持ってくる
+    //③pictures, areas_dialies, dialies_tagsにインサートする
+    //
     if (!empty($_POST)) {
+
+        $_SESSION['user']['id'] = 27; // $user_idを偽装
+        
+        // ①
+        // 蜜柑
         $sql = 'INSERT INTO `users` SET `name` =?, `email` =?, `password` =?, `img_name` =?, `created` =NOW() ';
-        $date = array($name, $email, $hash_password, $img_name);// ?がないときは無視する
+        $date = array($name, $email, $hash_password, $img_name);
         $stmt = $dbh->prepare($sql);
         $stmt->execute($date); //読み込んだデータが格納されている
-    
+
+        //② ①で登録したdialiesのIDを取得
+        // 蜜柑
+        $sql = 'SELECT dialy_id FROM `dialies` WHERE `user_id`=? ';//最新のものだけ
+        $data = array($_SESSION['user']['id']);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($data);
+        //フェッチする（select文ありき）
+        $signin_user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //③
 
 
 
@@ -105,6 +126,13 @@
 
 
 
+        //セッションのplanの初期化
+        //SQLを読んだ時点でセッションの中身はいらない
+        $_SESSION['plan'] = array();
+        unset($_SESSION['plan']);
+
+        header('Location: plan.php');
+        exit();
 
 
 
@@ -118,7 +146,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>plam_check</title>
+  <title>plan_check</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
