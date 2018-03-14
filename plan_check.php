@@ -99,22 +99,23 @@
     if (!empty($_POST)) {
 
         $_SESSION['user']['id'] = 27; // $user_idを偽装
+        $flag = 1;
         
         // ①
         // 蜜柑
-        $sql = 'INSERT INTO `users` SET `name` =?, `email` =?, `password` =?, `img_name` =?, `created` =NOW() ';
-        $date = array($name, $email, $hash_password, $img_name);
+        $sql = 'INSERT INTO `dialies` SET `user_id` =?, `depart_date` =?, `arrival_date` =?, `number_days` =?, `budget` =?, `title` =?, `img_name` =?, `title_comment` =?, `flag` =?, `created` =NOW() ';
+        $date = array($_SESSION['user']['id'],$depart_date,$arrival_date,$number_days,$budget,$title,$title_img_name,$title_comment,$flag = 1);
         $stmt = $dbh->prepare($sql);
         $stmt->execute($date); //読み込んだデータが格納されている
 
         //② ①で登録したdialiesのIDを取得
         // 蜜柑
-        $sql = 'SELECT dialy_id FROM `dialies` WHERE `user_id`=? ';//最新のものだけ
-        $data = array($_SESSION['user']['id']);
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute($data);
-        //フェッチする（select文ありき）
-        $signin_user = $stmt->fetch(PDO::FETCH_ASSOC);
+        // $sql = 'SELECT dialy_id FROM `dialies` WHERE `user_id`=? ';//最新のものだけ
+        // $data = array($_SESSION['user']['id']);
+        // $stmt = $dbh->prepare($sql);
+        // $stmt->execute($data);
+        // //フェッチする（select文ありき）
+        // $signin_user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         //③
 
@@ -128,11 +129,11 @@
 
         //セッションのplanの初期化
         //SQLを読んだ時点でセッションの中身はいらない
-        $_SESSION['plan'] = array();
-        unset($_SESSION['plan']);
+        // $_SESSION['plan'] = array();
+        // unset($_SESSION['plan']);
 
-        header('Location: plan.php');
-        exit();
+        // header('Location: plan.php');
+        // exit();
 
 
 
@@ -236,7 +237,7 @@
       <br>
    	</div>
 
-    <form method="POST" action="thanks.php">
+    <form method="POST" action="">
     	<input type="hidden" name="kubo" value="kaori">
       <a href="plan_form.php?action=rewrite"><strong>戻る</strong></a><br>
       <!-- パラメータをつけることで、$_GET/$_REQUESTが使える -->
