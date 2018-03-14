@@ -57,11 +57,11 @@
         <div class="col-xs-9 col-md-9">
 	        <select name="budget" class="form-control input-md">
 				    <option value="budget" selected="selected" class="msg">予算を選択して下さい</option>
-				    <option value="1" class="1"> ~1000円</option>
-				    <option value="2" class="2"> 1001~10000</option>
-				    <option value="3" class="3"> 10001~20000</option>
-				    <option value="4" class="4"> 20001~30000</option>
-				    <option value="5" class="5"> 30001~</option>
+				    <option value="1" class="1"> ~100000円</option>
+				    <option value="2" class="2"> 100001~200000</option>
+				    <option value="3" class="3"> 200001~300000</option>
+				    <option value="4" class="4"> 300001~400000</option>
+				    <option value="5" class="5"> 400001~</option>
 				  </select>
 				</div>
 				<!-- <div class="col-md-2">
@@ -69,7 +69,7 @@
 				</div> -->
 
         <div class="col-xs-9 col-md-9">
-	        <select name="budget" class="form-control input-md">
+	        <select name="theme" class="form-control input-md">
 		        <option value="theme" selected="selected" class="msg">目的を選択して下さい</option>
 		        <option value="gourmet" class="1"> グルメ</option>
 		        <option value="sightseeing" class="sightseeing">観光</option>
@@ -78,7 +78,7 @@
 		        <option value="hotel" class="hotel">ホテル</option>
 		        <option value="relaxation" class="relaxation">リラクゼーション</option>
 		        <option value="resort" class="resort">リゾート</option>
-		        <option value="ather" class="ather">その他</option>
+		        <option value="other" class="ather">その他</option>
 		      </select>
 	      </div>
 
