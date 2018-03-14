@@ -236,14 +236,16 @@
             $_SESSION['plan']['depart_date'] = $depart_date;
             $_SESSION['plan']['arrival_date'] = $arrival_date;
             $_SESSION['plan']['title_comment'] = $title_comment;
+            $_SESSION['plan']['title_img_name'] = $submit_title_img_name;
+
 
             
             for($y=0;$y<$count_post;$y++){
                 // 写真
                 if(!empty($pic_names[$y])){
-                    $submit_pic_name = $date_str . $pic_name . $y;
+                    $submit_pic_name = $date_str . $pic_names[$y];
                     move_uploaded_file($_FILES['pic_name' . $y]['tmp_name'], 'pictures/' .$submit_pic_name);
-                    // $_SESSION['plan']['pic_name' . $y] = $pic_names[$y];
+                    $_SESSION['plan']['pic_name' . $y] = $submit_pic_name;
                 }
                 // コメント
                 if(!empty($comments[$y])){

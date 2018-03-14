@@ -29,7 +29,7 @@
     echo 'うんこ';
     echo '<br>';
  
- // 変数定義開始  
+ 		// 変数定義開始  
     $title = $_SESSION['plan']['title'];
     $budget = $_SESSION['plan']['budget'];
     $number_days = $_SESSION['plan']['number_days'];
@@ -52,19 +52,16 @@
         $tag_name = 'tag' . $x;
         if(isset($_SESSION['plan'][$tag_name])){ 
             $tag_number[] = $_SESSION['plan'][$tag_name];
-            echo 'Big';
         }
         // picture
         $pic_name = 'pic_name' . $x;
         if(isset($_SESSION['plan'][$pic_name])){        
         		$pic_names[] = $_SESSION['plan'][$pic_name];
-            echo 'Dick';
         }
         // comments
         $comment = 'comment' . $x;
         if(isset($_SESSION['plan'][$comment])){
         		$commnets[] = $_SESSION['plan'][$comment];
-            echo 'Lick';
         }
 
     }
@@ -131,19 +128,31 @@
 
   <div class="container">
     <div class="row">
-    	name <?php echo htmlspecialchars($name) . '<br>'; ?><br>
-    	email <?php echo htmlspecialchars($email) . '<br>' ?><br>
-    	password ●●●●●●●●●●●●●●<br>
-      <!-- ここにコンテンツ -->
-      <img src="../user_profile_img/<?php echo $_SESSION['register']['img_name'] ?>" width="100">
+    	title <?php echo h($title) . '<br>'; ?><br>
+    	budget <?php echo h($budget) . '<br>' ?><br>
+    	number_days <?php echo h($number_days) . '<br>' ?><br>
+    	country_id_1 <?php echo h($country_id_1) . '<br>' ?><br>
+    	area_id_1 <?php echo h($area_id_1) . '<br>' ?><br>
+    	country_id_2 <?php echo h($country_id_2) . '<br>' ?><br>
+    	area_id_2 <?php echo h($area_id_2) . '<br>' ?><br>
+    	country_id_3 <?php echo h($country_id_3) . '<br>' ?><br>
+    	area_id_3 <?php echo h($area_id_3) . '<br>' ?><br>
+    	depart_date <?php echo h($depart_date) . '<br>' ?><br>
+    	arrival_date <?php echo h($arrival_date) . '<br>' ?><br>
+    	title_comment <?php echo h($title_comment) . '<br>' ?><br>
+    	budget <?php echo h($budget) . '<br>' ?><br>
+    	budget <?php echo h($budget) . '<br>' ?><br>
+    
+      
+      <img src="title_img/<?php echo $_SESSION['register']['img_name'] ?>" width="100">
       <br>
    	</div>
 
-    <form method="POST" action="check.php">
+    <form method="POST" action="thanks.php">
     	<input type="hidden" name="kubo" value="kaori">
-      <a href="signup.php?action=rewrite"><strong>戻る</strong></a><br>
+      <a href="plan_form.php?action=rewrite"><strong>戻る</strong></a><br>
       <!-- パラメータをつけることで、$_GET/$_REQUESTが使える -->
-    	<input type="submit" value="ユーザー登録">
+    	<input type="submit" value="しおり登録">
 
     </form>
 
