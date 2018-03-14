@@ -133,18 +133,18 @@
         echo '</pre>'; 
 
         //tagの変数（配列）定義
-        $tag_number = array();
+        $tag_names = array();
         for($x=0;$x<$count_post;$x++){
             $tag_name = 'tag' . $x;
             if(isset($_POST[$tag_name])){ 
-                $tag_number[] = $_POST[$tag_name];
+                $tag_names[] = $_POST[$tag_name];
             }
             
         }
 
         echo '<pre>'; 
-        echo '$tag_number = ';
-        var_dump($tag_number);
+        echo '$tag_names = ';
+        var_dump($tag_names);
         echo '</pre>'; 
         //変数定義完了
         
@@ -252,8 +252,8 @@
                     $_SESSION['plan']['comment' . $y] = $comments[$y];
                 }
                 // タグ  $tag_numberの中身は数字だけ
-                if(!empty($tag_number[$y])){
-                    $_SESSION['plan']['tag' . $y] = $tag_number[$y];
+                if(!empty($tag_names[$y])){
+                    $_SESSION['plan']['tag' . $y] = $tag_names[$y];
                 }
             }           
 
@@ -484,9 +484,9 @@
             <div>
               <?php for($i=0; $i<$count_tag ; $i++){ ?>
                   <?php if($tags[$i]['tag_id']%4 == 0){ ?>
-                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label><br>
+                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_name'] ?>"><?php echo $tags[$i]['tag_name'] ?></label><br>
                   <?php }else{ ?>
-                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label>
+                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_name'] ?>"><?php echo $tags[$i]['tag_name'] ?></label>
                   <?php } ?>
               <?php }?>
                  

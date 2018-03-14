@@ -62,13 +62,21 @@
         // comments
         $comment = 'comment' . $x;
         if(isset($_SESSION['plan'][$comment])){
-        		$commnets[] = $_SESSION['plan'][$comment];
+        		$comments[] = $_SESSION['plan'][$comment];
         }
 
     }
-    $c_pictures = count($pic_names);
-    echo $c_pictures . 'うんこ';
+  
+    echo '<pre>'; 
+    echo '$comments = ';
+    var_dump($comments);
+    echo '</pre>';
 
+    echo '<pre>'; 
+    echo '$pic_names = ';
+    var_dump($pic_names);
+    echo '</pre>';
+    
 
     echo '<pre>'; 
     echo '$tag_number = ';
@@ -119,8 +127,7 @@
 </head>
     
 
-<body>
-
+<body
   <!-- Header Start -->
   <header id="home">
     <?php require('partial/header.php') ?>
@@ -138,22 +145,40 @@
         title_comment <?php echo h($title_comment) . '<br>' ?><br>
         <img src="title_img/<?php echo $title_img_name ?>" width="300"><br>
     	<p style="color: blue;">予算</p> 
-       <?php echo h($budget) . '<br>' ?>円<br>
-       <p style="color: blue;">日程</p> 
-    	number_days <?php echo h($number_days) . '<br>' ?><br>
-    	country_id_1 <?php echo h($country_id_1) . '<br>' ?><br>
-    	area_id_1 <?php echo h($area_id_1) . '<br>' ?><br>
-    	country_id_2 <?php echo h($country_id_2) . '<br>' ?><br>
-    	area_id_2 <?php echo h($area_id_2) . '<br>' ?><br>
-    	country_id_3 <?php echo h($country_id_3) . '<br>' ?><br>
-    	area_id_3 <?php echo h($area_id_3) . '<br>' ?><br>
-    	depart_date <?php echo h($depart_date) . '<br>' ?><br>
-    	arrival_date <?php echo h($arrival_date) . '<br>' ?><br>
-    	budget <?php echo h($budget) . '<br>' ?><br>
-    	budget <?php echo h($budget) . '<br>' ?><br>
-    
+       <?php echo h($budget)?>円<br>
+
+      <p style="color: blue;">日程</p> 
+      	日数 <?php echo h($number_days); ?>日<br>
+        出発日 <?php echo h($depart_date);?><br>
+        帰着日 <?php echo h($arrival_date);?><br>
+
+      <p style="color: blue;">国と地域</p> 
+      	国１ <?php echo h($country_id_1);?><br>
+      	都市１ <?php echo h($area_id_1);?><br>
+      	国２ <?php echo h($country_id_2);?><br>
+      	都市２ <?php echo h($area_id_2);?><br>
+      	国３ <?php echo h($country_id_3);?><br>
+      	都市３ <?php echo h($area_id_3);?><br>
+
+      <p style="color: blue;">#タグ</p> 
+        <?php 
+          $count_tags = count($tag_number);
+          echo $count_tags . '<br>' ;
+          for($y=0;$y<$count_tags;$y++){ ?>
+            <p><?php echo $tag_number[$y]; ?></p>          
+        <?php } ?>
       
-      
+      <p style="color: blue;">写真とコメント</p> 
+      <?php 
+          $count_comments = count($comments);
+          echo $count_comments . '<br>' ;
+          for($z=0;$z<$count_comments;$z++){ ?>
+            <img src="pictures/<?php echo $pic_names[$z]; ?>" width="300"><br>
+            <p><?php echo $comments[$z]; ?></p>              
+
+      <?php } ?>
+
+
       <br>
    	</div>
 
