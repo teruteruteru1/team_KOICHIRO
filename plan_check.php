@@ -29,20 +29,22 @@
     echo 'うんこ';
     echo '<br>';
  
- 		// 変数定義開始  
+ 		// 変数定義開始 
+    // dialiesに格納 
     $title = $_SESSION['plan']['title'];
     $budget = $_SESSION['plan']['budget'];
-    $number_days = $_SESSION['plan']['number_days'];
+    $number_days = $_SESSION['plan']['number_days'];    
+    $depart_date = $_SESSION['plan']['depart_date'];
+    $arrival_date = $_SESSION['plan']['arrival_date'];
+    $title_comment = $_SESSION['plan']['title_comment'];
+    $title_img_name = $_SESSION['plan']['title_img_name'];
+    // _areas_dialysに格納
     $country_id_1 = $_SESSION['plan']['country_id_1'];
     $country_id_2 = $_SESSION['plan']['country_id_2'];
     $country_id_3 = $_SESSION['plan']['country_id_3'];
     $area_id_1 = $_SESSION['plan']['area_id_1'];
     $area_id_2 = $_SESSION['plan']['area_id_2'];
     $area_id_3 = $_SESSION['plan']['area_id_3'];
-    $depart_date = $_SESSION['plan']['depart_date'];
-    $arrival_date = $_SESSION['plan']['arrival_date'];
-    $title_comment = $_SESSION['plan']['title_comment'];
-    $title_img_name = $_SESSION['plan']['title_img_name'];
     
     // タグはfor文で回す
     $pic_names = array();
@@ -50,10 +52,12 @@
     $tag_number = array();
     for($x=0;$x<$count_session;$x++){
     	  // tag 
+        // dialys_tagsに格納
         $tag_name = 'tag' . $x;
         if(isset($_SESSION['plan'][$tag_name])){ 
             $tag_number[] = $_SESSION['plan'][$tag_name];
         }
+        // dialys_picturesに格納
         // picture
         $pic_name = 'pic_name' . $x;
         if(isset($_SESSION['plan'][$pic_name])){        
@@ -90,38 +94,38 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>plam_form</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>plam_form</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-    <!-- Font -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <!-- Font -->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">    
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-        
-    <!-- Font -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/normalize.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">    
+  <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+      
+  <!-- Font -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- calender -->
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" >
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" >
-    <!-- calender -->
+  <!-- calender -->
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" >
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" >
+  <!-- calender -->
 
   
 </head>
