@@ -1,5 +1,6 @@
 <?php
 
+
 ?>
 
 <!doctype html>
@@ -128,7 +129,7 @@
 					<div class="col-sm-4">
 						<div class="single-blog">
 							<img src="assets/img/add_img/Single_Blog2_1518359667602.jpg" alt="Single Blog2" />
-							<h4><a href="blog.html">セブ　カワサンフォールへ</a></h4>
+							<h4><a href="blog.html">セブ カワサンフォールへ</a></h4>
 							<p> 朝4時にホテルを出発し、マイクロバスに乗って、オスロブ、カワサン滝へ行ってきました。
 								水温はとても冷たかったですが、綺麗な空気と綺麗な水に感動しました。
 							</p>
