@@ -3,11 +3,11 @@
     require ('dbconnect.php'); 
     require ('assets/functions.php');
 
- //作るもの
-//①飛び先
-//大抵はdiariesに飛ばす
-//写真とコメントはpicturesに飛ばす
-//areaは中間テーブルに飛ばす
+    //作るもの
+    //①飛び先
+    //大抵はdiariesに飛ばす
+    //写真とコメントはpicturesに飛ばす
+    //areaは中間テーブルに飛ばす
 
     echo '<br>';
     echo '<br>';
@@ -42,6 +42,7 @@
     $depart_date = $_SESSION['plan']['depart_date'];
     $arrival_date = $_SESSION['plan']['arrival_date'];
     $title_comment = $_SESSION['plan']['title_comment'];
+    $title_img_name = $_SESSION['plan']['title_img_name'];
     
     // タグはfor文で回す
     $pic_names = array();
@@ -65,6 +66,10 @@
         }
 
     }
+    $c_pictures = count($pic_names);
+    echo $c_pictures . 'うんこ';
+
+
     echo '<pre>'; 
     echo '$tag_number = ';
     var_dump($tag_number);
@@ -128,8 +133,13 @@
 
   <div class="container">
     <div class="row">
-    	title <?php echo h($title) . '<br>'; ?><br>
-    	budget <?php echo h($budget) . '<br>' ?><br>
+      <p style="color: blue;">旅行記概要</p> 
+    	  title <?php echo h($title) . '<br>'; ?><br>
+        title_comment <?php echo h($title_comment) . '<br>' ?><br>
+        <img src="title_img/<?php echo $title_img_name ?>" width="300"><br>
+    	<p style="color: blue;">予算</p> 
+       <?php echo h($budget) . '<br>' ?>円<br>
+       <p style="color: blue;">日程</p> 
     	number_days <?php echo h($number_days) . '<br>' ?><br>
     	country_id_1 <?php echo h($country_id_1) . '<br>' ?><br>
     	area_id_1 <?php echo h($area_id_1) . '<br>' ?><br>
@@ -139,12 +149,11 @@
     	area_id_3 <?php echo h($area_id_3) . '<br>' ?><br>
     	depart_date <?php echo h($depart_date) . '<br>' ?><br>
     	arrival_date <?php echo h($arrival_date) . '<br>' ?><br>
-    	title_comment <?php echo h($title_comment) . '<br>' ?><br>
     	budget <?php echo h($budget) . '<br>' ?><br>
     	budget <?php echo h($budget) . '<br>' ?><br>
     
       
-      <img src="title_img/<?php echo $_SESSION['register']['img_name'] ?>" width="100">
+      
       <br>
    	</div>
 
