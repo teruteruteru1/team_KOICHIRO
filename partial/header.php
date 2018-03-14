@@ -14,8 +14,8 @@
 		              </button>
 
 
-              		<a href="#" class="navbar-brand" style="font-size: 40px;">でれっちょ</a>             
-		            </div>          
+              		<a href="home.php" class="navbar-brand" style="font-size: 40px;">でれっちょ</a>
+		            </div>
 
               <div class="navbar-collapse collapse">
 	              <ul class="nav navbar-nav navbar-right">
