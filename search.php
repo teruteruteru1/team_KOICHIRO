@@ -2,16 +2,19 @@
     session_start();
     require('dbconnect.php');
 
-    // echo '<pre>';
-    // echo '$_POST = ';
-    // var_dump($_POST);
-    // echo '</pre>';
+    echo '<pre>';
+    echo '$_POST = ';
+    var_dump($_POST);
+    echo '</pre>';
 
     $query = '';
     $data = [];
     if (isset($_POST['season'])) {
         $query = $query . 'season=?';
         $data[] = $_POST['season'];
+
+        DATE_FORMAT(%mm% > 1 and %mm% < 5);
+        DATE_FORMAT(event_date, 'm&apos'￼ は月野数字);
     }
 
     if (isset($_POST['budget'])) {
@@ -20,11 +23,19 @@
         $data[] = $_POST['budget'];
     }
 
-    if (isset($POST['city'])) {
+    if (isset($_POST['city'])) {
         $query = $query . ' AND ';
         $query = $query . 'city=?';
         $data[] = $_POST['city'];
     }
+
+    if (isset($_POST['theme'])) {
+        $query = $query . ' AND ';
+        $query = $query . 'theme=?';
+        $data[] = $_POST['theme'];
+    }
+
+
 
     echo '<pre>';
     echo '$query = ';
@@ -36,7 +47,7 @@
     var_dump($data);
     echo '</pre>';
 
-    $sql = 'SELECT d.*, a.area_name, t.tag_name,c.country_name FROM ( ( ( ( ( dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id ) INNER JOIN areas AS a ON ad.area_id = a.area_id ) INNER JOIN dialies_tags AS dt ON d.dialy_id = dt.dialis_id ) INNER JOIN tags AS t ON dt.tag_id = t.tag_id )INNER JOIN countries AS c ON a.country_id=c.country_id )WHERE 1 ORDER BY d.created DESC';
+    $sql = 'SELECT d.*, a.area_name, t.tag_name,c.country_name FROM ( ( ( ( ( dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id ) INNER JOIN areas AS a ON ad.area_id = a.area_id ) INNER JOIN dialies_tags AS dt ON d.dialy_id = dt.dialis_id ) INNER JOIN tags AS t ON dt.tag_id = t.tag_id )INNER JOIN countries AS c ON a.country_id=c.country_id )WHERE  ORDER BY d.created DESC';
 
     // $data = array( );
     $stmt = $dbh->prepare($sql);
@@ -54,7 +65,6 @@
 
     }
 
-
     $tmp = [];
     $dialies = [];
 
@@ -66,7 +76,6 @@
     }
 
     $c = count($dialies);
-
 
     // echo '<pre>';
     // echo '$dialies = ';
@@ -120,7 +129,7 @@
           </div>
           <div class="col-sm-6">
               <h3><?php echo $dialies[$i]['title']; ?></h3>
-              <h4> 国: <?php echo $dialies[$i]['country_name']; ?> エリア: <?php echo $dialies[$i]['area_name']; ?> 時期: 予算: <?php echo $dialies[$i]['budget'] ?></h4>
+              <h4> 国: <?php echo $dialies[$i]['country_name']; ?> エリア: <?php echo $dialies[$i]['area_name']; ?> 時期: 予算: <?php echo $dialies[$i]['budget']; ?></h4>
               <p><?php echo $dialies[$i]['title_comment']; ?></p>
               <a href="travel_dialy.php?dialy_id=<?php echo $dialies[$i]['dialy_id']; ?>" class="btn btn-read-more">続きを読む</a>
           </div>
@@ -223,9 +232,4 @@
         </script>
     </body>
 </html>
-
-
-
-
-
 
