@@ -68,8 +68,8 @@
         if(isset($_SESSION['plan'][$comment])){
         		$comments[] = $_SESSION['plan'][$comment];
         }
-
     }
+
   
     echo '<pre>'; 
     echo '$comments = ';
@@ -88,6 +88,28 @@
     echo '</pre>';
     echo $_SESSION['plan']['tag0'];
 
+    // POST送信して
+    // INSERT開始
+    if (!empty($_POST)) {
+        $sql = 'INSERT INTO `users` SET `name` =?, `email` =?, `password` =?, `img_name` =?, `created` =NOW() ';
+        $date = array($name, $email, $hash_password, $img_name);// ?がないときは無視する
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($date); //読み込んだデータが格納されている
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
 
  ?>
 
@@ -96,7 +118,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>plam_form</title>
+  <title>plam_check</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
