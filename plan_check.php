@@ -126,10 +126,7 @@
         $stmt = $dbh->prepare($sql);
         $stmt->execute($date);
 
-        echo '<pre>';
-        echo '$date = ';
-        var_dump($date);
-        echo '</pre>';
+        
         // areas_dialies②
         if (!empty($area_id_2)) {
             $sql = 'INSERT INTO `areas_dialies` SET `area_id` =?, `dialies_id` =?';
@@ -146,7 +143,10 @@
         }
         
         
-
+        echo '<pre>';
+        echo '$pic_names = ';
+        var_dump($pic_names);
+        echo '</pre>';
         //pictures
         $count_comments = count($comments);
         for($a=0;$a<$count_comments;$a++){
@@ -154,18 +154,19 @@
             $date = array($pic_names[$a],$dialy_id['dialy_id'],$comments[$a]);
             $stmt = $dbh->prepare($sql);
             $stmt->execute($date);
-        }
-
-        
+        }      
 
 
         // //dialies_tags
-        // $count_tags = count($tag_number);
+        $count_tags = count($tag_number);
+        for($b=0;$b<$count_tags;$b++){
+            $sql = 'INSERT INTO `dialies_tags` SET `tag_id` =?, `dialies_id` =?';
+            $date = array($tag_number[$b],$dialy_id['dialy_id']);
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute($date);
+        }
 
-        // $sql = 'INSERT INTO `pictures` SET `pic_name` =?,SET `dialy_id` =?,  `commnet` =?';
-        // $date = array($country_id_1,$dialy_id);
-        // $stmt = $dbh->prepare($sql);
-        // $stmt->execute($date);
+        
     
 
 
@@ -182,6 +183,7 @@
 
         // header('Location: plan.php');
         // exit();
+        
 
 
 
