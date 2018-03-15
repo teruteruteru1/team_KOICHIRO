@@ -73,24 +73,9 @@
     }
 
   
-    echo '<pre>'; 
-    echo '$comments = ';
-    var_dump($comments);
-    echo '</pre>';
+   
 
-    echo '<pre>'; 
-    echo '$pic_names = ';
-    var_dump($pic_names);
-    echo '</pre>';
-    
-
-    echo '<pre>'; 
-    echo '$tag_number = ';
-    var_dump($tag_number);
-    echo '</pre>';
-    
-
-    // POST送信して
+    // 自分にPOST送信して
     // INSERT開始
 
     //手順
@@ -141,6 +126,7 @@
             $stmt = $dbh->prepare($sql);
             $stmt->execute($date);
         }
+        //こいつらはループでどうにかさせてい・・・
         
         
         echo '<pre>';

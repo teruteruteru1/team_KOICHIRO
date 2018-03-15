@@ -19,8 +19,7 @@
 
 
     //プルダウン用の準備 
-    include('partial/db_for_pulldown.php');
-    
+    include('partial/db_for_pulldown.php');   
 
     // バリデーション
     $errors = array(); //一度戻ってきたときのエラー用
@@ -31,8 +30,7 @@
     // $_POSTの数を数える
     // 各for文に対して、上限をこの変数に設定する  
     $count_post = count($_POST);
-    echo $count_post;
-    
+    echo $count_post;    
 
     if(!empty($_POST)){
         echo '送信完了<br>';
@@ -58,7 +56,7 @@
         //写真たちをぶん回すpicturesに保存するデータたち
         // ループ文でぶん回す
         if (!isset($_REQUEST['action'])){
-            // 一度戻ってきたら同じ処理を二回行わない
+            // 一度checkから戻ってきたら同じ処理を二回行わない
             $pic_names = array();
             $comments = array();
             for($n=0;$n<$count_post;$n++){
