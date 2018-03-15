@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="assets/css/search.css">
     <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/travel_dialy.css">
 
     <!--- Include the above in your HEAD tag -->
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -47,6 +48,7 @@
 	<header>
 		<?php Include('partial/header.php'); ?>
 	</header>
+    <br>
 	<!-- Header end -->
 				
 		<!-- Single Blog1 -->
@@ -56,6 +58,8 @@
 					<div class="col-sm-12 center">
 						<div class="title">
 							<h2>３度目のイタリア</h2>
+                            <h4>2018/04/01~2018/04/05</h4>
+                            <hr>
 						</div>
 					</div>
 				</div>
@@ -83,30 +87,19 @@
 					</div>
 				</div>
 			</div>
-			<div>
-				<ul class="newpostfooter nav nav-tabs nav-justified">
-			      <li>
-			        <a href="javascript:void(0)">
-			          <i class="fa fa-thumbs-up"></i>
-			          <span>Like</span>
-			        </a>
-			      </li>
-			      <li>
-			        <a href="javascript:void(0)" title="Leave a comment">
-			          <i class="fa fa-comment-o"></i>
-			          <span>Comment</span>
-			        </a>
-			      </li>
-			      <li>
-			        <a href="javascript:void(0)" title="Send this to friends or post it to your timeline">
-			          <i class="fa fa-share"></i>
-			          <span>Share</span>
-			        </a>
-			      </li>
-			    </ul>
-		    </div>
 		</section>
-		
+
+        <!-- tag start -->
+        <div class="tag">
+            <ul>
+                <li><a href="#">＊イタリア</a></li>
+                <li><a href="#">＊ベネチア</a></li>
+                <li><a href="#">＊世界遺産</a></li>
+                <li><a href="#">＊ピサ</a></li>
+                <li><a href="#">＊パンテオン</a></li>
+            </ul>  
+        </div>
+        <!-- tag end -->
 
 		<!--single dialy1 start-->
         <table border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="ffffff" class="bg_color">
@@ -354,22 +347,42 @@
             <tr class="hide">
                 <td height="25" style="font-size: 25px; line-height: 25px;"> </td>
             </tr>
-            <tr>
+           <!--  <tr>
                 <td height="40" style="font-size: 40px; line-height: 40px;"> </td>
-            </tr>
+            </tr> -->
         </table>
         <!--single dialy3 end-->
 
-
+        <!-- like start -->
+        <div>
+            <ul class="newpostfooter nav nav-tabs nav-justified">
+                <li>
+                    <a href="javascript:void(0)">
+                        <i class="fa fa-thumbs-up"></i>
+                        <span>Like</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" title="Leave a comment">
+                        <i class="fa fa-comment-o"></i>
+                        <span>Comment</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" title="Send this to friends or post it to your timeline">
+                        <i class="fa fa-share"></i>
+                        <span>Share</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- like end -->
 
 		<!-- search start -->
 		<?php Include('partial/search.php'); ?>
 		<!-- search end -->
 		
-		
-
-		<!-- Featured Work -->
-		
+		<!-- Featured Work -->		
 		<section id="feature-work" class="protfolio-padding">
 			<div class="container">
 				<div class="row">
@@ -382,22 +395,18 @@
 			</div>
 			
 			<div class="featured-list">
-				<div id="grid" class="clearfix">
-					
+				<div id="grid" class="clearfix">					
 					<div class="thumb">
 						<a href="#">
 							<img src="assets/img/add_img/theme_gourmet_IMG_7336.jpg" alt="Feature Image" />
-						</a>
-						
+						</a>						
 						<div class="thumb-rollover">
 							<div class="project-title">
 								<h2>グルメ</h2>		
 								<!-- <h5>Category: Web Design</h5> -->
 							</div>
 						</div>
-						
 					</div>
-					
 					<div class="thumb">
 						<a href="#">
 							<img src="assets/img/add_img/theme_sightseeing_P9131618.jpg" alt="Feature Image" />
@@ -568,65 +577,10 @@
 								<!-- <a href="#" class="mod_dropnavi-brand"><h1>でれっちょ</h1></a> -->
 								<a href="#"><h1>でれっちょ</h1></a>
 									<p>旅行コミュニティサイト(旅行記・旅行SNS)</p>
-								<!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p> -->
-							</div>
 						</div>
 					</div>
-					<!-- Single Footer -->
-					
-					
-					<!-- Single Footer -->
-					<!-- <div class="col-sm-3">
-						<div class="single-footer">
-							<h4>ご連絡先</h4>
-							<p>XX New Design Street, cebucity XXX <br />
-							+9 (999) 999-999-999 <br />
-							info@XXXX.com <br />
-							(99) 999 999 999</p>
-						</div>
-					</div> -->
-					<!-- Single Footer -->
-					
-					
-					<!-- Single Footer -->
-					<!-- <div class="col-sm-3">
-						<div class="single-footer">
-							<h4>定期購読</h4>
-							<p>私たちの月刊ニュースレターを購読するためにあなたのメールアドレスを入力してください</p>
-							
-							<form action="">
-								<div class="form-group">
-									<input type="email" class="form-control my-form" id="exampleInputEmail1" placeholder="あなたのメールアドレスを入力してください">
-								</div>
-								<div class="form-group">
-									<button class="btn btn-subscribe">定期購読</button>
-								</div>
-							</form>
-							
-						</div>
-					</div> -->
-					<!-- Single Footer -->
-					
-					<!-- Single Footer -->
-					<!-- <div class="col-sm-3">
-						<div class="single-footer">
-							<h4>Recent Projects</h4>
-							<ul class="projects">
-								<li><img src="img/project.png" alt="Reccent Project" /></li>
-								<li><img src="img/project.png" alt="Reccent Project" /></li>
-								<li><img src="img/project.png" alt="Reccent Project" /></li>
-								<li><img src="img/project.png" alt="Reccent Project" /></li>
-								<li><img src="img/project.png" alt="Reccent Project" /></li>
-								<li><img src="img/project.png" alt="Reccent Project" /></li>
-							</ul>
-						</div>
-					</div> -->
-					<!-- Single Footer -->
-					
 				</div>
 			</div>
-			
 		</footer>
 		
 		<!-- Copyright -->
