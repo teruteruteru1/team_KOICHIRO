@@ -35,13 +35,10 @@
 
 			    <div class="col-xs-5 col-md-5">
 				    <select name="city" value="" class="form-control input-md" >
-				      <option value="" selected="selected" class="msg">都市を選択して下さい</option>
-				      <option value="Tokyo" class="japan">東京</option>
-				      <option value="Kyoto" class="japan">京都</option>
-				      <option value="Osaka" class="japan">大阪</option>
-				      <option value="NY" class="America">ニューヨーク</option>
-				      <option value="LA" class="America">ロサンゼルス</option>
-				      <option value="Sydney" class="Australia">シドニー</option>
+				    	<option value="0" selected="selected" class="msg">都市を選択して下さい</option>
+              <?php for($i=0; $i<$count_area ; $i++){ ?>
+                <option value="<?php echo $areas[$i]['area_name']; ?>" class="<?php echo $areas[$i]['country_id']; ?>"><?php echo $areas[$i]['area_name']; ?></option>
+              <?php } ?>
 				    </select>
 			    </div>
 			    <!-- <div class="col-md-2">
@@ -79,14 +76,9 @@
         <div class="col-xs-9 col-md-9">
 	        <select name="theme" class="form-control input-md">
 		        <option value="" selected="selected" class="msg">目的を選択して下さい</option>
-		        <option value="グルメ" class="1"> グルメ</option>
-		        <option value="観光" class="sightseeing">観光</option>
-		        <option value="ショッピン" class="shopping">ショッピング</option>
-		        <option value="スポーツ・アウトドア" class="sport_outdoor">スポーツ・アウトドア</option>
-		        <option value="ホテル" class="hotel">ホテル</option>
-		        <option value="リラクゼーション" class="relaxation">リラクゼーション</option>
-		        <option value="リゾート" class="resort">リゾート</option>
-		        <option value="その他" class="ather">その他</option>
+		         <?php for($i=0; $i<$count_tag ; $i++){ ?>
+		         <option value="<?php echo $tags[$i]['tag_name'] ?>" class="msg"><?php echo $tags[$i]['tag_name'] ?></option>
+		         <?php }?>
 		      </select>
 	      </div>
 
