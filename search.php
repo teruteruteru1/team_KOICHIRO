@@ -9,31 +9,30 @@
 
     $query = '';
     $data = [];
-    if (isset($_POST['season'])) {
-        $query = $query . 'season=?';
+    if (!empty($_POST['season'])) {
+        $query = $query . 'depart_date=?';
         $data[] = $_POST['season'];
 
-        DATE_FORMAT(%mm% > 1 and %mm% < 5);
-        DATE_FORMAT(event_date, 'm&apos'￼ は月野数字);
     }
 
-    if (isset($_POST['budget'])) {
+    if (!empty($_POST['budget'])) {
         $query = $query . ' AND ';
         $query = $query . 'budget=?';
         $data[] = $_POST['budget'];
     }
 
-    if (isset($_POST['city'])) {
+    if (!empty($_POST['city'])) {
         $query = $query . ' AND ';
         $query = $query . 'city=?';
         $data[] = $_POST['city'];
     }
 
-    if (isset($_POST['theme'])) {
+    if (!empty($_POST['theme'])) {
         $query = $query . ' AND ';
         $query = $query . 'theme=?';
         $data[] = $_POST['theme'];
     }
+
 
 
 
@@ -47,7 +46,21 @@
     var_dump($data);
     echo '</pre>';
 
-    $sql = 'SELECT d.*, a.area_name, t.tag_name,c.country_name FROM ( ( ( ( ( dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id ) INNER JOIN areas AS a ON ad.area_id = a.area_id ) INNER JOIN dialies_tags AS dt ON d.dialy_id = dt.dialis_id ) INNER JOIN tags AS t ON dt.tag_id = t.tag_id )INNER JOIN countries AS c ON a.country_id=c.country_id )WHERE  ORDER BY d.created DESC';
+    $sql = 'SELECT d.*, a.area_name, t.tag_name,c.country_name FROM ( ( ( ( ( dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id ) INNER JOIN areas AS a ON ad.area_id = a.area_id ) INNER JOIN dialies_tags AS dt ON d.dialy_id = dt.dialis_id ) INNER JOIN tags AS t ON dt.tag_id = t.tag_id )INNER JOIN countries AS c ON a.country_id=c.country_id )WHERE 1 ORDER BY d.created DESC';
+
+
+    // 登録ロジック
+    // POST受け取る
+    // 日付データから月だけ取得して変数にいれる
+    // INSERTで各カラムにセット
+
+    // 検索ロジック
+    // POSTで受け取る 04
+        // 04 → 3 ~ 5月が対象になる
+    // 適切なSQL条件文をPHPの文字列で作成
+
+    // SELECT * FROM dialies WHERE 
+
 
     // $data = array( );
     $stmt = $dbh->prepare($sql);
