@@ -26,8 +26,6 @@
     $count_session = count($_SESSION['plan']);
     echo $count_session;
     echo '<br>';
-    echo 'うんこ';
-    echo '<br>';
  
  		// 変数定義開始
     // dialiesに格納 
@@ -86,7 +84,7 @@
     echo '$tag_number = ';
     var_dump($tag_number);
     echo '</pre>';
-    echo $_SESSION['plan']['tag0'];
+    
 
     // POST送信して
     // INSERT開始
@@ -99,26 +97,46 @@
     if (!empty($_POST)) {
 
         $_SESSION['user']['id'] = 27; // $user_idを偽装
-        $flag = 1;
+        $flag = 1; //flagも偽装
         
         // ①
-        // 蜜柑
         $sql = 'INSERT INTO `dialies` SET `user_id` =?, `depart_date` =?, `arrival_date` =?, `number_days` =?, `budget` =?, `title` =?, `img_name` =?, `title_comment` =?, `flag` =?, `created` =NOW() ';
         $date = array($_SESSION['user']['id'],$depart_date,$arrival_date,$number_days,$budget,$title,$title_img_name,$title_comment,$flag = 1);
         $stmt = $dbh->prepare($sql);
-        $stmt->execute($date); //読み込んだデータが格納されている
+        $stmt->execute($date);
 
         //② ①で登録したdialiesのIDを取得
-        // 蜜柑
-        // $sql = 'SELECT dialy_id FROM `dialies` WHERE `user_id`=? ';//最新のものだけ
-        // $data = array($_SESSION['user']['id']);
-        // $stmt = $dbh->prepare($sql);
-        // $stmt->execute($data);
-        // //フェッチする（select文ありき）
-        // $signin_user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $sql = 'SELECT dialy_id FROM `dialies` WHERE `user_id`=? ORDER BY created DESC';//最新のものだけ
+        $data = array($_SESSION['user']['id']);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($data);
+        //フェッチする（select文ありき）
+        $dialy_id = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+        echo $dialy_id['dialy_id'];
 
         //③
+        // areas_dialies
+        $sql = 'INSERT INTO `areas_dialies` SET `area_id` =?, `dialies_id` =?';
+        $date = array($country_id_1,$dialy_id);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($date);
+        // $sql = 'INSERT INTO `areas_dialies` SET `area_id` =?, `dialies_id` =?,';
+        // $date = array($country_id_2,$dialy_id);
+        // $stmt = $dbh->prepare($sql);
+        // $stmt->execute($date);
+        // $sql = 'INSERT INTO `areas_dialies` SET `area_id` =?, `dialies_id` =?,';
+        // $date = array($country_id_3,$dialy_id);
+        // $stmt = $dbh->prepare($sql);
+        // $stmt->execute($date);
 
+        // pictures
+        $sql = 'INSERT INTO `pictures` SET `pic_name` =?,SET `dialy_id` =?,  `commnet` =?';
+        $date = array($country_id_1,$dialy_id);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($date);
+    
 
 
 

@@ -133,18 +133,18 @@
         echo '</pre>'; 
 
         //tagの変数（配列）定義
-        $tag_names = array();
+        $tag_numbers = array();
         for($x=0;$x<$count_post;$x++){
-            $tag_name = 'tag' . $x;
-            if(isset($_POST[$tag_name])){ 
-                $tag_names[] = $_POST[$tag_name];
+            $tag_number = 'tag' . $x;
+            if(isset($_POST[$tag_number])){ 
+                $tag_numbers[] = $_POST[$tag_number];
             }
             
         }
 
         echo '<pre>'; 
-        echo '$tag_names = ';
-        var_dump($tag_names);
+        echo '$tag_numbers = ';
+        var_dump($tag_numbers);
         echo '</pre>'; 
         //変数定義完了
         
@@ -252,8 +252,8 @@
                     $_SESSION['plan']['comment' . $y] = $comments[$y];
                 }
                 // タグ  $tag_numberの中身は数字だけ
-                if(!empty($tag_names[$y])){
-                    $_SESSION['plan']['tag' . $y] = $tag_names[$y];
+                if(!empty($tag_numbers[$y])){
+                    $_SESSION['plan']['tag' . $y] = $tag_numbers[$y];
                 }
             }           
 
@@ -347,7 +347,7 @@
             <select name="country_id_1">
                 <option value="0" selected="selected" class="msg">国を選択して下さい</option>
                 <?php for($i=0; $i<$count_country ; $i++){ ?>
-                 <option value="<?php echo $countries[$i]['country_name']; ?>" class="<?php echo $countries[$i]['id']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
+                 <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['id']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
                 <?php } ?>
                 
             </select>
@@ -357,13 +357,15 @@
             <select name="area_id_1">
               <option value="0" selected="selected" class="msg">都市を選択して下さい</option>
               <?php for($i=0; $i<$count_area ; $i++){ ?>
-                <option value="<?php echo $areas[$i]['area_name']; ?>" class="<?php echo $areas[$i]['country_id']; ?>"><?php echo $areas[$i]['area_name']; ?></option>
+                <option value="<?php echo $areas[$i]['area_id']; ?>" class="<?php echo $areas[$i]['country_id']; ?>"><?php echo $areas[$i]['area_name']; ?></option>
               <?php } ?>
 
               
             </select>
             <br>
-
+            <br>
+            <div>ここから下は選択しないで</div>
+            <br>
             国1.2
             <select name="countryhh">
                 <option value="0" selected="selected" class="msg">国を選択して下さい</option>                
@@ -371,7 +373,7 @@
                 <option value="America" class="America">アメリカ</option>
                 <option value="Australia" class="Australia">オーストラリア</option>
             </select>
-            
+                        
             都市1.2
             <!-- 中間テーブルから国名を持ってくる？ -->
             <select name="cityhh">
@@ -484,9 +486,9 @@
             <div>
               <?php for($i=0; $i<$count_tag ; $i++){ ?>
                   <?php if($tags[$i]['tag_id']%4 == 0){ ?>
-                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_name'] ?>"><?php echo $tags[$i]['tag_name'] ?></label><br>
+                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label><br>
                   <?php }else{ ?>
-                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_name'] ?>"><?php echo $tags[$i]['tag_name'] ?></label>
+                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label>
                   <?php } ?>
               <?php }?>
                  
