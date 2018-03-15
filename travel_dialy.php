@@ -4,15 +4,14 @@
 
 <!doctype html>
 <html class="no-js" lang="ja">
-  <head>
+    <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title></title>
     <meta name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
+    <!-- Place favicon.ico in the root directory -->
 		
 		<!-- Font -->
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
@@ -31,7 +30,7 @@
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/travel_dialy.css">
 
-    <!--- Include the above in your HEAD tag -->
+        <!--- Include the above in your HEAD tag -->
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -69,7 +68,12 @@
 				<div id="popup-background">
 					<div class="col-sm-6" >
 						<div class="about-image wow fadeInLeft">
-							<img id="popup-item" src="assets/img/add_img/Single-Blog1-P9172057.jpg" alt="Single Blog1" />
+							<img id="popup-item" href="#close"　src="assets/img/add_img/Single-Blog1-P9172057.jpg" alt="Single Blog1" />
+<!-- 
+                            <a href="#sample01"><img src="記事の画像URL"></a>
+                            <a id="sample01" href="#close" class="lb"><img src="拡大する画像URL"></a> -->
+
+
 							<!-- ポップアップ用の背景とimg -->
 						</div>
 					</div>
