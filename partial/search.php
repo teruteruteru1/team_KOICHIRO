@@ -43,11 +43,11 @@
 
         <div class="col-xs-9 col-md-9">
 				  <select name="season" value="" class="form-control input-md">
-				    <option value="" selected="selected" class="msg">季節を選択して下さい</option>
-				    <option value="4" class="spring">春</option>
-				    <option value="7" class="summer">夏</option>
-				    <option value="10" class="autumn">秋</option>
-				    <option value="1" class="winter">冬</option>
+				    <option value="" selected="selected" class="msg">時期を選択して下さい</option>
+				    <option value="04" class="spring">３月〜５月</option>
+				    <option value="07" class="summer">６月〜８月</option>
+				    <option value="10" class="autumn">９月〜11月</option>
+				    <option value="12" class="winter">12月〜２月</option>
 				  </select>
 			  </div>
 	      <!-- <div class="col-md-2">
@@ -71,14 +71,14 @@
         <div class="col-xs-9 col-md-9">
 	        <select name="theme" class="form-control input-md">
 		        <option value="" selected="selected" class="msg">目的を選択して下さい</option>
-		        <option value="gourmet" class="1"> グルメ</option>
-		        <option value="sightseeing" class="sightseeing">観光</option>
-		        <option value="shopping" class="shopping">ショッピング</option>
-		        <option value="sport_outdoor" class="sport_outdoor">スポーツ・アウトドア</option>
-		        <option value="hotel" class="hotel">ホテル</option>
-		        <option value="relaxation" class="relaxation">リラクゼーション</option>
-		        <option value="resort" class="resort">リゾート</option>
-		        <option value="other" class="ather">その他</option>
+		        <option value="グルメ" class="1"> グルメ</option>
+		        <option value="観光" class="sightseeing">観光</option>
+		        <option value="ショッピン" class="shopping">ショッピング</option>
+		        <option value="スポーツ・アウトドア" class="sport_outdoor">スポーツ・アウトドア</option>
+		        <option value="ホテル" class="hotel">ホテル</option>
+		        <option value="リラクゼーション" class="relaxation">リラクゼーション</option>
+		        <option value="リゾート" class="resort">リゾート</option>
+		        <option value="その他" class="ather">その他</option>
 		      </select>
 	      </div>
 
