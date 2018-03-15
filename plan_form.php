@@ -2,6 +2,7 @@
     session_start();  
     require ('dbconnect.php');
 
+
     //一回自分に飛ばす。確認ヴァーダンプ
     echo '<br>';
     echo '<br>';
@@ -17,8 +18,8 @@
      
 
 
-//プルダウン用の準備 
-                                          //ここらへんは切り取る   
+    //プルダウン用の準備 
+    //ここらへんは切り取る   
     //countriesテーブルから取ってくる
     $sql = 'SELECT * FROM `countries` WHERE 1';
     $data = array();
@@ -82,8 +83,7 @@
     // 各for文に対して、上限をこの変数に設定する  
     $count_post = count($_POST);
     echo $count_post;
-    echo 'うんこ';
-    echo '<br>';
+    
 
     if(!empty($_POST)){
         echo '送信完了<br>';
@@ -100,19 +100,28 @@
         $depart_date = $_POST['depart_date'];
         $arrival_date = $_POST['arrival_date'];
         $title_comment = $_POST['title_comment'];
+
+        // メイン画像の変数定義
+        if (!isset($_REQUEST['action'])) {
+            $title_img_name = $_FILES['title_img_name']['name'];
+        }
+        
         //写真たちをぶん回すpicturesに保存するデータたち
         // ループ文でぶん回す
-        $pic_names = array();
-        $comments = array();
-        for($n=0;$n<$count_post;$n++){
-            if(isset($_FILES['pic_name' . $n]['name'])){
-            $pic_number = $_FILES['pic_name' . $n]['name'];
-            $pic_names[] = $pic_number;
+        if (!isset($_REQUEST['action'])){
+            // 一度戻ってきたら同じ処理を二回行わない
+            $pic_names = array();
+            $comments = array();
+            for($n=0;$n<$count_post;$n++){
+                if(isset($_FILES['pic_name' . $n]['name'])){
+                    $pic_number = $_FILES['pic_name' . $n]['name'];
+                    $pic_names[] = $pic_number;
+                }
+                if(isset($_POST['comment' . $n])){
+                    $comment_number = $_POST['comment' . $n];
+                    $comments[] = $comment_number;
+                }    
             }
-            if(isset($_POST['comment' . $n])){
-            $comment_number = $_POST['comment' . $n];
-            $comments[] = $comment_number;
-            }    
         }
         echo '<pre>'; 
         echo '$pic_names = ';
@@ -124,18 +133,18 @@
         echo '</pre>'; 
 
         //tagの変数（配列）定義
-        $tag_number = array();
+        $tag_names = array();
         for($x=0;$x<$count_post;$x++){
             $tag_name = 'tag' . $x;
             if(isset($_POST[$tag_name])){ 
-                $tag_number[] = $_POST[$tag_name];
+                $tag_names[] = $_POST[$tag_name];
             }
             
         }
 
         echo '<pre>'; 
-        echo '$tag_number = ';
-        var_dump($tag_number);
+        echo '$tag_names = ';
+        var_dump($tag_names);
         echo '</pre>'; 
         //変数定義完了
         
@@ -173,10 +182,6 @@
         //     $errors['comments[0]'] = 'blank';
         // }
         
-        // メイン画像の空チェック
-        if (!isset($_REQUEST['action'])) {
-            $title_img_name = $_FILES['title_img_name']['name'];
-        }
         // 空チェック終了
 
         // 画像拡張子のバリデーション開始
@@ -187,7 +192,7 @@
             $title_img_type = substr($title_img_name,-3) ;
             $title_img_type = strtolower($title_img_type);
             if ($title_img_type != 'jpg' && $title_img_type != 'png' && $title_img_type != 'gif') {
-              $errors['title_img_name'] = 'type';
+                $errors['title_img_name'] = 'type';
             }
         }else{
             $errors['title_img_name'] = 'blank';
@@ -196,30 +201,29 @@
         if (isset($_REQUEST['action'])){
             $errors['title_img_name'] = 'rewrite';
         }
-        // 他の写真の拡張子チェック
+        // 他の写真の拡張子チェック $pic_names[]の中身を確認する
         for($b=0;$b<$count_post;$b++){
-            if (!empty($pic_names)) {
+            if (!empty($pic_names[$b])) {
                 //jpeg/png/gifの３種類に変更する
-                $title_img_type = substr($pic_names,-3) ;
-                $title_img_type = strtolower($title_img_type);
-                if ($title_img_type != 'jpg' && $title_img_type != 'png' && $title_img_type != 'gif') {
-                  $errors['pic_names'] = 'type';
+                $pic_type = substr($pic_names[$b],-3) ;
+                $pic_type = strtolower($pic_type);
+                if ($pic_type != 'jpg' && $pic_type != 'png' && $pic_type != 'gif') {
+                    $errors['pic_names' . $b] = 'type';
                 }
-            }else{
-                $errors['pic_names'] = 'blank';
             }
 
-            if (isset($_REQUEST['action'])){
-                $errors['pic_names'] = 'rewrite';
-            }
+            // if (isset($_REQUEST['action'])){
+            //     $errors['pic_names' . $b] = 'rewrite';
+            // }
         }
+        
 
 
         // セッション登録開始
         if (empty($errors)) {
-            // $date_str = date('YmdHid');
-            // $submit_file_name = $date_str . $title_img_name;
-            // move_uploaded_file($_FILES['input_img_name']['tmp_name'], '../user_profile_img/' .$submit_file_name);
+            $date_str = date('YmdHid');
+            $submit_title_img_name = $date_str . $title_img_name;
+            move_uploaded_file($_FILES['title_img_name']['tmp_name'], 'title_img/' .$submit_title_img_name);
             $_SESSION['plan']['title'] = $title;
             $_SESSION['plan']['budget'] = $budget;
             $_SESSION['plan']['number_days'] = $number_days;
@@ -232,24 +236,26 @@
             $_SESSION['plan']['depart_date'] = $depart_date;
             $_SESSION['plan']['arrival_date'] = $arrival_date;
             $_SESSION['plan']['title_comment'] = $title_comment;
+            $_SESSION['plan']['title_img_name'] = $submit_title_img_name;
+
 
             
             for($y=0;$y<$count_post;$y++){
                 // 写真
                 if(!empty($pic_names[$y])){
-                $_SESSION['plan']['pic_name' . $y] = $pic_names[$y];
+                    $submit_pic_name = $date_str . $pic_names[$y];
+                    move_uploaded_file($_FILES['pic_name' . $y]['tmp_name'], 'pictures/' .$submit_pic_name);
+                    $_SESSION['plan']['pic_name' . $y] = $submit_pic_name;
                 }
                 // コメント
                 if(!empty($comments[$y])){
-                $_SESSION['plan']['comment' . $y] = $comments[$y];
+                    $_SESSION['plan']['comment' . $y] = $comments[$y];
                 }
                 // タグ  $tag_numberの中身は数字だけ
-                if(!empty($tag_number[$y])){
-                $_SESSION['plan']['tag' . $y] = $tag_number[$y];
+                if(!empty($tag_names[$y])){
+                    $_SESSION['plan']['tag' . $y] = $tag_names[$y];
                 }
-            }
-
-            
+            }           
 
             header('Location: plan_check.php');
             exit();
@@ -276,7 +282,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>plam_form</title>
+    <title>plan_form</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -478,9 +484,9 @@
             <div>
               <?php for($i=0; $i<$count_tag ; $i++){ ?>
                   <?php if($tags[$i]['tag_id']%4 == 0){ ?>
-                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label><br>
+                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_name'] ?>"><?php echo $tags[$i]['tag_name'] ?></label><br>
                   <?php }else{ ?>
-                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label>
+                      <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_name'] ?>"><?php echo $tags[$i]['tag_name'] ?></label>
                   <?php } ?>
               <?php }?>
                  

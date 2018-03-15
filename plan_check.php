@@ -1,12 +1,13 @@
 <?php 
 		session_start();  
     require ('dbconnect.php'); 
+    require ('assets/functions.php');
 
- //作るもの
-//①飛び先
-//大抵はdiariesに飛ばす
-//写真とコメントはpicturesに飛ばす
-//areaは中間テーブルに飛ばす
+    //作るもの
+    //①飛び先
+    //大抵はdiariesに飛ばす
+    //写真とコメントはpicturesに飛ばす
+    //areaは中間テーブルに飛ばす
 
     echo '<br>';
     echo '<br>';
@@ -28,19 +29,22 @@
     echo 'うんこ';
     echo '<br>';
  
- // 変数定義開始  
+ 		// 変数定義開始
+    // dialiesに格納 
     $title = $_SESSION['plan']['title'];
     $budget = $_SESSION['plan']['budget'];
-    $number_days = $_SESSION['plan']['number_days'];
+    $number_days = $_SESSION['plan']['number_days'];    
+    $depart_date = $_SESSION['plan']['depart_date'];
+    $arrival_date = $_SESSION['plan']['arrival_date'];
+    $title_comment = $_SESSION['plan']['title_comment'];
+    $title_img_name = $_SESSION['plan']['title_img_name'];
+    // _areas_dialysに格納
     $country_id_1 = $_SESSION['plan']['country_id_1'];
     $country_id_2 = $_SESSION['plan']['country_id_2'];
     $country_id_3 = $_SESSION['plan']['country_id_3'];
     $area_id_1 = $_SESSION['plan']['area_id_1'];
     $area_id_2 = $_SESSION['plan']['area_id_2'];
     $area_id_3 = $_SESSION['plan']['area_id_3'];
-    $depart_date = $_SESSION['plan']['depart_date'];
-    $arrival_date = $_SESSION['plan']['arrival_date'];
-    $title_comment = $_SESSION['plan']['title_comment'];
     
     // タグはfor文で回す
     $pic_names = array();
@@ -48,30 +52,92 @@
     $tag_number = array();
     for($x=0;$x<$count_session;$x++){
     	  // tag 
+        // dialys_tagsに格納
         $tag_name = 'tag' . $x;
         if(isset($_SESSION['plan'][$tag_name])){ 
             $tag_number[] = $_SESSION['plan'][$tag_name];
-            echo 'Big';
         }
+        // dialys_picturesに格納
         // picture
         $pic_name = 'pic_name' . $x;
         if(isset($_SESSION['plan'][$pic_name])){        
         		$pic_names[] = $_SESSION['plan'][$pic_name];
-            echo 'Dick';
         }
-        // pcomments
+        // comments
         $comment = 'comment' . $x;
         if(isset($_SESSION['plan'][$comment])){
-        		$commnets[] = $_SESSION['plan'][$comment];
-            echo 'Lick';
+        		$comments[] = $_SESSION['plan'][$comment];
         }
-
     }
+
+  
+    echo '<pre>'; 
+    echo '$comments = ';
+    var_dump($comments);
+    echo '</pre>';
+
+    echo '<pre>'; 
+    echo '$pic_names = ';
+    var_dump($pic_names);
+    echo '</pre>';
+    
+
     echo '<pre>'; 
     echo '$tag_number = ';
     var_dump($tag_number);
     echo '</pre>';
     echo $_SESSION['plan']['tag0'];
+
+    // POST送信して
+    // INSERT開始
+
+    //手順
+    //①dialiesにインサート
+    //②dialiesから日記IDを持ってくる
+    //③pictures, areas_dialies, dialies_tagsにインサートする
+    //
+    if (!empty($_POST)) {
+
+        $_SESSION['user']['id'] = 27; // $user_idを偽装
+        $flag = 1;
+        
+        // ①
+        // 蜜柑
+        $sql = 'INSERT INTO `dialies` SET `user_id` =?, `depart_date` =?, `arrival_date` =?, `number_days` =?, `budget` =?, `title` =?, `img_name` =?, `title_comment` =?, `flag` =?, `created` =NOW() ';
+        $date = array($_SESSION['user']['id'],$depart_date,$arrival_date,$number_days,$budget,$title,$title_img_name,$title_comment,$flag = 1);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($date); //読み込んだデータが格納されている
+
+        //② ①で登録したdialiesのIDを取得
+        // 蜜柑
+        // $sql = 'SELECT dialy_id FROM `dialies` WHERE `user_id`=? ';//最新のものだけ
+        // $data = array($_SESSION['user']['id']);
+        // $stmt = $dbh->prepare($sql);
+        // $stmt->execute($data);
+        // //フェッチする（select文ありき）
+        // $signin_user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //③
+
+
+
+
+
+
+
+
+
+        //セッションのplanの初期化
+        //SQLを読んだ時点でセッションの中身はいらない
+        // $_SESSION['plan'] = array();
+        // unset($_SESSION['plan']);
+
+        // header('Location: plan.php');
+        // exit();
+
+
+
+    }
 
 
  ?>
@@ -79,45 +145,44 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>plam_form</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>plan_check</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-    <!-- Font -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <!-- Font -->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">    
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-        
-    <!-- Font -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/normalize.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">    
+  <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+      
+  <!-- Font -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- calender -->
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" >
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" >
-    <!-- calender -->
+  <!-- calender -->
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" >
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" >
+  <!-- calender -->
 
   
 </head>
     
 
-<body>
-
+<body
   <!-- Header Start -->
   <header id="home">
     <?php require('partial/header.php') ?>
@@ -130,19 +195,53 @@
 
   <div class="container">
     <div class="row">
-    	name <?php echo htmlspecialchars($name) . '<br>'; ?><br>
-    	email <?php echo htmlspecialchars($email) . '<br>' ?><br>
-    	password ●●●●●●●●●●●●●●<br>
-      <!-- ここにコンテンツ -->
-      <img src="../user_profile_img/<?php echo $_SESSION['register']['img_name'] ?>" width="100">
+      <p style="color: blue;">旅行記概要</p> 
+    	  title <?php echo h($title) . '<br>'; ?><br>
+        title_comment <?php echo h($title_comment) . '<br>' ?><br>
+        <img src="title_img/<?php echo $title_img_name ?>" width="300"><br>
+    	<p style="color: blue;">予算</p> 
+       <?php echo h($budget)?>円<br>
+
+      <p style="color: blue;">日程</p> 
+      	日数 <?php echo h($number_days); ?>日<br>
+        出発日 <?php echo h($depart_date);?><br>
+        帰着日 <?php echo h($arrival_date);?><br>
+
+      <p style="color: blue;">国と地域</p> 
+      	国１ <?php echo h($country_id_1);?><br>
+      	都市１ <?php echo h($area_id_1);?><br>
+      	国２ <?php echo h($country_id_2);?><br>
+      	都市２ <?php echo h($area_id_2);?><br>
+      	国３ <?php echo h($country_id_3);?><br>
+      	都市３ <?php echo h($area_id_3);?><br>
+
+      <p style="color: blue;">#タグ</p> 
+        <?php 
+          $count_tags = count($tag_number);
+          echo $count_tags . '<br>' ;
+          for($y=0;$y<$count_tags;$y++){ ?>
+            <p><?php echo $tag_number[$y]; ?></p>          
+        <?php } ?>
+      
+      <p style="color: blue;">写真とコメント</p> 
+      <?php 
+          $count_comments = count($comments);
+          echo $count_comments . '<br>' ;
+          for($z=0;$z<$count_comments;$z++){ ?>
+            <img src="pictures/<?php echo $pic_names[$z]; ?>" width="300"><br>
+            <p><?php echo $comments[$z]; ?></p>              
+
+      <?php } ?>
+
+
       <br>
    	</div>
 
-    <form method="POST" action="check.php">
+    <form method="POST" action="">
     	<input type="hidden" name="kubo" value="kaori">
-      <a href="signup.php?action=rewrite"><strong>戻る</strong></a><br>
+      <a href="plan_form.php?action=rewrite"><strong>戻る</strong></a><br>
       <!-- パラメータをつけることで、$_GET/$_REQUESTが使える -->
-    	<input type="submit" value="ユーザー登録">
+    	<input type="submit" value="しおり登録">
 
     </form>
 
