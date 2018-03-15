@@ -49,6 +49,25 @@ background-attachment: fixed;
   background-image: linear-gradient(to bottom, #79bc64, #5e7056);
   text-decoration: none;
 }
+
+.search_result {
+  background: #eee;
+  overflow: hidden;
+  width: 100%;
+}
+
+.search_result p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+    overflow: hidden;
+/*  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;*/
+}
+
+
+
 /*.navbar-default .navbar-brand{
         color:#fff;
         font-size:30px;
