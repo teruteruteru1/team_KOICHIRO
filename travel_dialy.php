@@ -4,14 +4,15 @@
 
 <!doctype html>
 <html class="no-js" lang="ja">
-    <head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title></title>
     <meta name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
+        <!-- Place favicon.ico in the root directory -->
 		
 		<!-- Font -->
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
@@ -30,7 +31,7 @@
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/travel_dialy.css">
 
-        <!--- Include the above in your HEAD tag -->
+    <!--- Include the above in your HEAD tag -->
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -68,12 +69,7 @@
 				<div id="popup-background">
 					<div class="col-sm-6" >
 						<div class="about-image wow fadeInLeft">
-							<img id="popup-item" href="#close"　src="assets/img/add_img/Single-Blog1-P9172057.jpg" alt="Single Blog1" />
-<!-- 
-                            <a href="#sample01"><img src="記事の画像URL"></a>
-                            <a id="sample01" href="#close" class="lb"><img src="拡大する画像URL"></a> -->
-
-
+							<img id="lb" src="assets/img/add_img/Single-Blog1-P9172057.jpg" alt="Single Blog1" />
 							<!-- ポップアップ用の背景とimg -->
 						</div>
 					</div>
@@ -145,7 +141,7 @@
                             <td align="center">
                                 <table border="0" width="400" align="center" cellpadding="0" cellspacing="0" class="container590">
                                     <tr>
-                                        <td align="center" style="color: #888888; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
+                                        <td align="center" style="font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
                                             <div style="line-height: 24px">
                                                 ピサの斜塔。楽しみにしていた１つ。294段、普段あまり運動をしていない妻も難なく上りました。
 												傾きに倣って階段も擦り減っています。
@@ -229,7 +225,7 @@
                             <td align="center">
                                 <table border="0" width="400" align="center" cellpadding="0" cellspacing="0" class="container590">
                                     <tr>
-                                        <td align="center" style="color: #888888; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
+                                        <td align="center" style="font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
                                             <div style="line-height: 24px">
                                                 運河越しに見るサンタ・マリア・デッラ・サルーテ聖堂。イタリア旅行二日目は水の都ベニスへ移動し、サン・マルコ寺院から一日がはじまります。天気は快晴、期待に胸が高まります。
                                             </div>
@@ -312,7 +308,7 @@
                             <td align="center">
                                 <table border="0" width="400" align="center" cellpadding="0" cellspacing="0" class="container590">
                                     <tr>
-                                        <td align="center" style="color: #888888; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
+                                        <td align="center" style="font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
                                             <div style="line-height: 24px">
                                                 現存する古代ローマ建築の中でももっとも完全な形を残す遺跡のパンテオンへ・・・
 												何度か焼失したそうですが118年に再建された建物が残っているというのもすごい！って思いましたが
@@ -638,6 +634,7 @@
         <script src="assets/js/jquery.sticky.js"></script>
         <script src="assets/js/wow.min.js"></script>
         <script src="assets/js/main.js"></script>
+        <script src="assets/js/mochimaru_img.js"></script>
         
 		
 		<script type="text/javascript">
