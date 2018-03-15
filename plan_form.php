@@ -19,60 +19,8 @@
 
 
     //プルダウン用の準備 
-    require('partial/db_for_pulldown.php');
-    //ここらへんは切り取る   
-    // //countriesテーブルから取ってくる
-    // $sql = 'SELECT * FROM `countries` WHERE 1';
-    // $data = array();
-    // $stmt = $dbh->prepare($sql);
-    // $stmt->execute($data);
-    // //fetchする
-    // $countries = array();
-    // while (true) {
-    //     $country = $stmt->fetch(PDO::FETCH_ASSOC);
-    //     if ($country == false) {
-    //         break;
-    //     }
-    //     $countries[] = $country;
-    // }
-    // $count_country = count($countries); 
-    // //echo $count_country;//国名プルダウン用カウントカントリー
-
-
-
-    // //areasテーブルから取ってくる
-    // $sql = 'SELECT * FROM `areas` WHERE 1';
-    // $data = array();
-    // $stmt = $dbh->prepare($sql);
-    // $stmt->execute($data);
-    // //fetchする
-    // $areas = array();
-    // while (true) {
-    //     $area = $stmt->fetch(PDO::FETCH_ASSOC);
-    //     if ($area == false) {
-    //         break;
-    //     }
-    //     $areas[] = $area;
-    // }
-    // $count_area = count($areas); 
-    // //echo $count_area;//国名プルダウン用カウントカントリー
-
-    // //tagsテーブルから取ってくる
-    // $sql = 'SELECT * FROM `tags` WHERE 1';
-    // $data = array();
-    // $stmt = $dbh->prepare($sql);
-    // $stmt->execute($data);
-    // //fetchする
-    // $tags = array();
-    // while (true) {
-    //     $tag = $stmt->fetch(PDO::FETCH_ASSOC);
-    //     if ($tag == false) {
-    //         break;
-    //     }
-    //     $tags[] = $tag;
-    // }
-    // $count_tag = count($tags);
-    // // プルダウンの準備完了  
+    include('partial/db_for_pulldown.php');
+    
 
     // バリデーション
     $errors = array(); //一度戻ってきたときのエラー用

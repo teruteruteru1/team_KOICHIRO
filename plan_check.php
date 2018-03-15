@@ -43,6 +43,10 @@
     $area_id_1 = $_SESSION['plan']['area_id_1'];
     $area_id_2 = $_SESSION['plan']['area_id_2'];
     $area_id_3 = $_SESSION['plan']['area_id_3'];
+
+    echo '<br>';
+    echo 'teshirogi<br>';
+    echo $area_id_1;
     
     // タグはfor文で回す
     $pic_names = array();
@@ -113,25 +117,51 @@
         //フェッチする（select文ありき）
         $dialy_id = $stmt->fetch(PDO::FETCH_ASSOC);
 
-
-        echo $dialy_id['dialy_id'];
+        
 
         //③
-        // areas_dialies
-        // $sql = 'INSERT INTO `areas_dialies` SET `area_id` =?, `dialies_id` =?';
-        // $date = array($country_id_1,$dialy_id);
-        // $stmt = $dbh->prepare($sql);
-        // $stmt->execute($date);
-        // // $sql = 'INSERT INTO `areas_dialies` SET `area_id` =?, `dialies_id` =?,';
-        // $date = array($country_id_2,$dialy_id);
-        // $stmt = $dbh->prepare($sql);
-        // $stmt->execute($date);
-        // $sql = 'INSERT INTO `areas_dialies` SET `area_id` =?, `dialies_id` =?,';
-        // $date = array($country_id_3,$dialy_id);
-        // $stmt = $dbh->prepare($sql);
-        // $stmt->execute($date);
+        //areas_dialies①
+        $sql = 'INSERT INTO `areas_dialies` SET `area_id` =?, `dialies_id` =?';
+        $date = array($area_id_1,$dialy_id['dialy_id']);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($date);
 
-        // pictures
+        echo '<pre>';
+        echo '$date = ';
+        var_dump($date);
+        echo '</pre>';
+        // areas_dialies②
+        if (!empty($area_id_2)) {
+            $sql = 'INSERT INTO `areas_dialies` SET `area_id` =?, `dialies_id` =?';
+            $date = array($area_id_2,$dialy_id['dialy_id']);
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute($date);
+        }
+        // areas_dialies③
+        if (!empty($area_id_3)) {
+            $sql = 'INSERT INTO `areas_dialies` SET `area_id` =?, `dialies_id` =?';
+            $date = array($area_id_3,$dialy_id['dialy_id']);
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute($date);
+        }
+        
+        
+
+        //pictures
+        $count_comments = count($comments);
+        for($a=0;$a<$count_comments;$a++){
+            $sql = 'INSERT INTO `pictures` SET `pic_name` =?, `dialy_id` =?, `comment` =?';
+            $date = array($pic_names[$a],$dialy_id['dialy_id'],$comments[$a]);
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute($date);
+        }
+
+        
+
+
+        // //dialies_tags
+        // $count_tags = count($tag_number);
+
         // $sql = 'INSERT INTO `pictures` SET `pic_name` =?,SET `dialy_id` =?,  `commnet` =?';
         // $date = array($country_id_1,$dialy_id);
         // $stmt = $dbh->prepare($sql);
