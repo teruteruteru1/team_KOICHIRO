@@ -101,7 +101,7 @@
         
         // ①
         $sql = 'INSERT INTO `dialies` SET `user_id` =?, `depart_date` =?, `arrival_date` =?, `number_days` =?, `budget` =?, `title` =?, `img_name` =?, `title_comment` =?, `flag` =?, `created` =NOW() ';
-        $date = array($_SESSION['user']['id'],$depart_date,$arrival_date,$number_days,$budget,$title,$title_img_name,$title_comment,$flag = 1);
+        $date = array($_SESSION['user']['id'],$depart_date,$arrival_date,$number_days,$budget,$title,$title_img_name,$title_comment,$flag);
         $stmt = $dbh->prepare($sql);
         $stmt->execute($date);
 
@@ -118,11 +118,11 @@
 
         //③
         // areas_dialies
-        $sql = 'INSERT INTO `areas_dialies` SET `area_id` =?, `dialies_id` =?';
-        $date = array($country_id_1,$dialy_id);
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute($date);
-        // $sql = 'INSERT INTO `areas_dialies` SET `area_id` =?, `dialies_id` =?,';
+        // $sql = 'INSERT INTO `areas_dialies` SET `area_id` =?, `dialies_id` =?';
+        // $date = array($country_id_1,$dialy_id);
+        // $stmt = $dbh->prepare($sql);
+        // $stmt->execute($date);
+        // // $sql = 'INSERT INTO `areas_dialies` SET `area_id` =?, `dialies_id` =?,';
         // $date = array($country_id_2,$dialy_id);
         // $stmt = $dbh->prepare($sql);
         // $stmt->execute($date);
@@ -132,10 +132,10 @@
         // $stmt->execute($date);
 
         // pictures
-        $sql = 'INSERT INTO `pictures` SET `pic_name` =?,SET `dialy_id` =?,  `commnet` =?';
-        $date = array($country_id_1,$dialy_id);
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute($date);
+        // $sql = 'INSERT INTO `pictures` SET `pic_name` =?,SET `dialy_id` =?,  `commnet` =?';
+        // $date = array($country_id_1,$dialy_id);
+        // $stmt = $dbh->prepare($sql);
+        // $stmt->execute($date);
     
 
 
