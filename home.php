@@ -1,5 +1,6 @@
 <?php
 
+
 ?>
 
 <!doctype html>
@@ -74,11 +75,12 @@
 				</div>
 			</div>
 		</div>
+<<<<<<< HEAD
 	</div>
 	<!-- Top Blog End -->
 
 	<!-- search start -->
-	<?php Include('partial/search.php'); ?>
+	<?php Include('partial/search_bar.php'); ?>
 	<!-- search end -->
 
 	<!-- Single Blog1 -->
@@ -88,6 +90,22 @@
 				<div class="col-sm-6">
 					<div class="about-image wow fadeInLeft">
 						<img src="assets/img/add_img/Single-Blog1-P9172057.jpg" alt="Single Blog1" />
+=======
+		<!-- Top Blog End -->
+
+		<!-- search start -->
+		<?php Include('partial/search_bar.php'); ?>
+		<!-- search end -->
+
+		<!-- Single Blog1 -->
+		<section id="about" class="site-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="about-image wow fadeInLeft">
+							<img src="assets/img/add_img/Single-Blog1-P9172057.jpg" alt="Single Blog1" />
+						</div>
+>>>>>>> master
 					</div>
 				</div>
 				<div class="col-sm-6">
@@ -104,6 +122,7 @@
 					</div>
 				</div>
 			</div>
+<<<<<<< HEAD
 		</div>
 	</section>
 	<!-- Single Blog1 end -->
@@ -115,10 +134,24 @@
 				<div class="col-sm-12">
 					<div class="title">
 						<h3>Latest From The <span>Blog</span></h3>
+=======
+		</section>
+		<!-- Single Blog1 end -->
+
+		<!-- From the Blog-->
+		<section id="blog" class="site-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="title">
+							<h3>Latest From The <span>Blog</span></h3>
+						</div>
+>>>>>>> master
 					</div>
 				</div>
 			</div>
 
+<<<<<<< HEAD
 			<div class="row">
 
 				<!-- Single Blog2 -->
@@ -130,6 +163,20 @@
 							水温はとても冷たかったですが、綺麗な空気と綺麗な水に感動しました。
 						</p>
 						<a href="#">続きを読む>></a>
+=======
+				<div class="row">
+
+					<!-- Single Blog2 -->
+					<div class="col-sm-4">
+						<div class="single-blog">
+							<img src="assets/img/add_img/Single_Blog2_1518359667602.jpg" alt="Single Blog2" />
+							<h4><a href="blog.html">セブ カワサンフォールへ</a></h4>
+							<p> 朝4時にホテルを出発し、マイクロバスに乗って、オスロブ、カワサン滝へ行ってきました。
+								水温はとても冷たかったですが、綺麗な空気と綺麗な水に感動しました。
+							</p>
+							<a href="#">続きを読む>></a>
+						</div>
+>>>>>>> master
 					</div>
 				</div>
 				<!-- Single Blog2 -->
@@ -158,6 +205,7 @@
 						汗だくです。早くビールが飲みたい..</p>
 						<a href="#">続きを読む>></a>
 					</div>
+<<<<<<< HEAD
 				</div>
 				<!-- Single Blog4 -->
 			</div>
@@ -172,11 +220,28 @@
 				<div class="col-sm-12">
 					<div class="title">
 						<h3>目的<span>から選ぶ</span></h3>
+=======
+					<!-- Single Blog4 -->
+				</div>
+			</div>
+		</section>
+		<!-- From the Blog-->
+
+		<!-- theme start -->
+		<section id="feature-work" class="protfolio-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="title">
+							<h3>目的<span>から選ぶ</span></h3>
+						</div>
+>>>>>>> master
 					</div>
 				</div>
 			</div>
 		</div>
 
+<<<<<<< HEAD
 		<div class="featured-list">
 			<div id="grid" class="clearfix">
 				<div class="thumb">
@@ -186,6 +251,18 @@
 					<div class="thumb-rollover">
 						<div class="project-title">
 							<h2>グルメ</h2>
+=======
+			<div class="featured-list">
+				<div id="grid" class="clearfix">
+					<div class="thumb">
+						<a href="#">
+							<img src="assets/img/add_img/theme_gourmet_IMG_7336.jpg" alt="Feature Image" />
+						</a>
+						<div class="thumb-rollover">
+							<div class="project-title">
+								<h2>グルメ</h2>
+							</div>
+>>>>>>> master
 						</div>
 					</div>
 				</div>
@@ -201,6 +278,7 @@
 					</div>
 				</div>
 
+<<<<<<< HEAD
 				<div class="thumb">
 					<a href="#">
 						<img src="assets/img/add_img/theme_shopping_IMG_20180216_144151.jpg" alt="Feature Image" />
@@ -208,10 +286,21 @@
 					<div class="thumb-rollover">
 						<div class="project-title">
 							<h2>ショッピング</h2>
+=======
+					<div class="thumb">
+						<a href="#">
+							<img src="assets/img/add_img/theme_shopping_IMG_20180216_144151.jpg" alt="Feature Image" />
+						</a>
+						<div class="thumb-rollover">
+							<div class="project-title">
+								<h2>ショッピング</h2>
+							</div>
+>>>>>>> master
 						</div>
 					</div>
 				</div>
 
+<<<<<<< HEAD
 				<div class="thumb">
 					<a href="#">
 						<img src="assets/img/add_img/theme_sport_outdoor_DSC_1043.jpg" alt="Feature Image" />
@@ -219,6 +308,16 @@
 					<div class="thumb-rollover">
 						<div class="project-title">
 							<h2>スポーツ・アウトドア</h2>
+=======
+					<div class="thumb">
+						<a href="#">
+							<img src="assets/img/add_img/theme_sport_outdoor_DSC_1043.jpg" alt="Feature Image" />
+						</a>
+						<div class="thumb-rollover">
+							<div class="project-title">
+								<h2>スポーツ・アウトドア</h2>
+							</div>
+>>>>>>> master
 						</div>
 					</div>
 				</div>
@@ -234,6 +333,7 @@
 					</div>
 				</div>
 
+<<<<<<< HEAD
 				<div class="thumb">
 					<a href="#">
 						<img src="assets/img/add_img/theme_relaxation_1519138253418.jpg" alt="Feature Image" />
@@ -242,10 +342,21 @@
 					<div class="thumb-rollover">
 						<div class="project-title">
 							<h2>リラクゼーション</h2>
+=======
+					<div class="thumb">
+						<a href="#">
+							<img src="assets/img/add_img/theme_relaxation_1519138253418.jpg" alt="Feature Image" />
+						</a>
+						<div class="thumb-rollover">
+							<div class="project-title">
+								<h2>リラクゼーション</h2>
+							</div>
+>>>>>>> master
 						</div>
 					</div>
 				</div>
 
+<<<<<<< HEAD
 				<div class="thumb">
 					<a href="#">
 						<img src="assets/img/add_img/theme_resort_1519138015328.jpg" alt="Feature Image" />
@@ -255,10 +366,22 @@
 						<div class="project-title">
 							<h2>リゾート</h2>
 							<!-- <h5>Category: Web Design</h5> -->
+=======
+					<div class="thumb">
+						<a href="#">
+							<img src="assets/img/add_img/theme_resort_1519138015328.jpg" alt="Feature Image" />
+						</a>
+						<div class="thumb-rollover">
+							<div class="project-title">
+								<h2>リゾート</h2>
+								<!-- <h5>Category: Web Design</h5> -->
+							</div>
+>>>>>>> master
 						</div>
 					</div>
 				</div>
 
+<<<<<<< HEAD
 				<div class="thumb">
 					<a href="#">
 						<img src="assets/img/add_img/theme_ather_1519138162591.jpg" alt="Feature Image" />
@@ -267,10 +390,21 @@
 						<div class="project-title">
 							<h2>その他</h2>
 							<!-- <h5>Category: Web Design</h5> -->
+=======
+					<div class="thumb">
+						<a href="#">
+							<img src="assets/img/add_img/theme_ather_1519138162591.jpg" alt="Feature Image" />
+						</a>
+						<div class="thumb-rollover">
+							<div class="project-title">
+								<h2>その他</h2>
+							</div>
+>>>>>>> master
 						</div>
 					</div>
 				</div>
 			</div>
+<<<<<<< HEAD
 		</div>
 	</section>
 	<!-- theme end-->
@@ -283,6 +417,20 @@
 				<div class="col-sm-12">
 					<div class="title">
 						<h3>連絡 <span>はこちらへ</span></h3>
+=======
+		</section>
+		<!-- Featured Work -->
+
+
+		<!-- Contact -->
+		<section id="contact-us">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="title">
+							<h3>連絡 <span>はこちらへ</span></h3>
+						</div>
+>>>>>>> master
 					</div>
 				</div>
 			</div>
@@ -313,10 +461,20 @@
 									<input type="text" name="subject" placeholder="内容について" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
 									<div class="validation">
 									</div>
+<<<<<<< HEAD
 								</div>
 								<div class="col-lg-12 margintop10 field">
 									<textarea rows="12" name="message" class="input-block-level" placeholder="* ご用件をこちらへご記入ください" data-rule="required" data-msg="Please write something"></textarea>
 									<div class="validation">
+=======
+									<div class="col-lg-12 margintop10 field">
+										<textarea rows="12" name="message" class="input-block-level" placeholder="* ご用件をこちらへご記入ください" data-rule="required" data-msg="Please write something"></textarea>
+										<div class="validation">
+										</div>
+										<p>
+											<button class="btn btn-theme margintop10 pull-left" type="submit">送信</button>
+										</p>
+>>>>>>> master
 									</div>
 									<p>
 										<button class="btn btn-theme margintop10 pull-left" type="submit">送信</button>
@@ -327,6 +485,7 @@
 					</div>
 				</div>
 			</div>
+<<<<<<< HEAD
 		</div>
 	</section>
 	<!-- Contact -->
@@ -344,9 +503,30 @@
 								<p>旅行コミュニティサイト(旅行記・旅行SNS)</p>
 						</div>
 					</div>
+=======
+		</section>
+		<!-- Contact -->
+
+		<!-- footer -->
+		<footer>
+			<div class="container">
+				<div class="row">
+					<!-- Single Footer -->
+					<div class="col-sm-6">
+						<div class="single-footer">
+							<div class="footer-logo">
+								<!-- <a href="#" class="mod_dropnavi-brand"><h1>でれっちょ</h1></a> -->
+								<a href="#"><h1>でれっちょ</h1></a>
+									<p>旅行コミュニティサイト(旅行記・旅行SNS)</p>
+							</div>
+						</div>
+					</div>
+					<!-- Single Footer -->
+>>>>>>> master
 				</div>
 				<!-- Single Footer -->
 			</div>
+<<<<<<< HEAD
 		</div>
 	</footer>
 
@@ -421,4 +601,80 @@
     </script>
     <!-- footer -->
 </body>
+=======
+		</footer>
+		<!-- Copyright -->
+		<div class="copyright">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="copy-text">
+								<p>All Rights Reserved | Copyright 2016 © <strong><a href="http://www.pfind.com/goodies/bizium/">The Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's Goodies</a></strong></p>
+							</div>
+						</div>
+						<div class="col-sm-5">
+							<div class="footer-menu pull-right">
+								<ul>
+									<li><a href="#">ホーム</a></li>
+									<li><a href="#">チーム概要</a></li>
+									<li><a href="#">サービス</a></li>
+									<li><a href="#">問い合わせ</a></li>
+									<!-- <li><a href="#">Pricing</a></li> -->
+									<!-- <li><a href="#">Blog</a></li> -->
+									<li><a href="#">連絡先</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="social">
+								<ul>
+									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- footer -->
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="assets/js/plugins.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.mousewheel-3.0.6.pack.js"></script>
+        <script src="assets/js/paralax.js"></script>
+        <script src="assets/js/jquery.smooth-scroll.js"></script>
+        <script src="assets/js/jquery.sticky.js"></script>
+        <script src="assets/js/wow.min.js"></script>
+        <script src="assets/js/main.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('a[href^="#"]').on('click',function (e) {
+					e.preventDefault();
+
+					var target = this.hash;
+					var $target = $(target);
+
+					$('html, body').stop().animate({
+						 'scrollTop': $target.offset().top
+					}, 900, 'swing');
+					});
+			});
+		</script>
+
+		<script src="assets/js/custom.js"></script>
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+    </body>
+>>>>>>> master
 </html>
