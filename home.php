@@ -80,7 +80,7 @@
 		<!-- Top Blog End -->
 
 		<!-- search start -->
-		<?php Include('partial/search.php'); ?>
+		<?php Include('partial/search_bar.php'); ?>
 		<!-- search end -->
 
 		<!-- Single Blog1 -->
