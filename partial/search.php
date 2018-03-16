@@ -44,10 +44,23 @@
         <div class="col-xs-9 col-md-9">
 				  <select name="season" value="" class="form-control input-md">
 				    <option value="" selected="selected" class="msg">時期を選択して下さい</option>
-				    <option value="04" class="spring">３月〜５月</option>
+				    <option value="1" class="spring">1月</option>
+				    <option value="2" class="spring">2月</option>
+				    <option value="3" class="spring">3月</option>
+				    <option value="4" class="spring">4月</option>
+				    <option value="5" class="spring">5月</option>
+				    <option value="6" class="spring">6月</option>
+				    <option value="7" class="spring">7月</option>
+				    <option value="8" class="spring">8月</option>
+				    <option value="9" class="spring">9月</option>
+				    <option value="10" class="spring">10月</option>
+				    <option value="11" class="spring">11月</option>
+				    <option value="12" class="spring">12月</option>
+
+				    <!-- <option value="04" class="spring">３月〜５月</option>
 				    <option value="07" class="summer">６月〜８月</option>
 				    <option value="10" class="autumn">９月〜11月</option>
-				    <option value="12" class="winter">12月〜２月</option>
+				    <option value="12" class="winter">12月〜２月</option> -->
 				  </select>
 			  </div>
 	      <!-- <div class="col-md-2">
