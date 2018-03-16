@@ -1,6 +1,7 @@
 <?php
+    //DB接続＋国名やタグ名を持ってきて、プルダウンを作るための配列を作る
 
-		// STEP1
+    // STEP1
     $dsn = 'mysql:dbname=teamKOICHIRO;host=localhost';
     // XAMPPの初期設定値
     $db_user = 'root';
@@ -11,7 +12,7 @@
     $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
     
-
+    //countries テーブルから持ってくる
     $sql = 'SELECT * FROM `countries` WHERE 1';
     $data = array();
     $stmt = $dbh->prepare($sql);
