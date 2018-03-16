@@ -80,7 +80,7 @@
 		<!-- Top Blog End -->
 
 		<!-- search start -->
-		<?php Include('partial/search.php'); ?>
+		<?php Include('partial/search_bar.php'); ?>
 		<!-- search end -->
 
 		<!-- Single Blog1 -->
@@ -108,11 +108,9 @@
 				</div>
 			</div>
 		</section>
-
 		<!-- Single Blog1 end -->
 
 		<!-- From the Blog-->
-
 		<section id="blog" class="site-padding">
 			<div class="container">
 				<div class="row">
@@ -164,17 +162,12 @@
 						</div>
 					</div>
 					<!-- Single Blog4 -->
-
-
 				</div>
-
 			</div>
 		</section>
-
 		<!-- From the Blog-->
 
-		<!-- Featured Work -->
-
+		<!-- theme start -->
 		<section id="feature-work" class="protfolio-padding">
 			<div class="container">
 				<div class="row">
@@ -188,18 +181,15 @@
 
 			<div class="featured-list">
 				<div id="grid" class="clearfix">
-
 					<div class="thumb">
 						<a href="#">
 							<img src="assets/img/add_img/theme_gourmet_IMG_7336.jpg" alt="Feature Image" />
 						</a>
-
 						<div class="thumb-rollover">
 							<div class="project-title">
 								<h2>グルメ</h2>
 							</div>
 						</div>
-
 					</div>
 
 					<div class="thumb">
@@ -217,7 +207,6 @@
 						<a href="#">
 							<img src="assets/img/add_img/theme_shopping_IMG_20180216_144151.jpg" alt="Feature Image" />
 						</a>
-
 						<div class="thumb-rollover">
 							<div class="project-title">
 								<h2>ショッピング</h2>
@@ -229,7 +218,6 @@
 						<a href="#">
 							<img src="assets/img/add_img/theme_sport_outdoor_DSC_1043.jpg" alt="Feature Image" />
 						</a>
-
 						<div class="thumb-rollover">
 							<div class="project-title">
 								<h2>スポーツ・アウトドア</h2>
@@ -253,7 +241,6 @@
 						<a href="#">
 							<img src="assets/img/add_img/theme_relaxation_1519138253418.jpg" alt="Feature Image" />
 						</a>
-
 						<div class="thumb-rollover">
 							<div class="project-title">
 								<h2>リラクゼーション</h2>
@@ -265,7 +252,6 @@
 						<a href="#">
 							<img src="assets/img/add_img/theme_resort_1519138015328.jpg" alt="Feature Image" />
 						</a>
-
 						<div class="thumb-rollover">
 							<div class="project-title">
 								<h2>リゾート</h2>
@@ -278,22 +264,15 @@
 						<a href="#">
 							<img src="assets/img/add_img/theme_ather_1519138162591.jpg" alt="Feature Image" />
 						</a>
-
 						<div class="thumb-rollover">
 							<div class="project-title">
 								<h2>その他</h2>
-								<!-- <h5>Category: Web Design</h5> -->
 							</div>
 						</div>
 					</div>
-
-
 				</div>
 			</div>
-
-
 		</section>
-
 		<!-- Featured Work -->
 
 
@@ -341,7 +320,6 @@
 										</div>
 										<p>
 											<button class="btn btn-theme margintop10 pull-left" type="submit">送信</button>
-
 										</p>
 									</div>
 								</div>
@@ -353,9 +331,7 @@
 		</section>
 		<!-- Contact -->
 
-
 		<!-- footer -->
-
 		<footer>
 			<div class="container">
 				<div class="row">
@@ -366,17 +342,13 @@
 								<!-- <a href="#" class="mod_dropnavi-brand"><h1>でれっちょ</h1></a> -->
 								<a href="#"><h1>でれっちょ</h1></a>
 									<p>旅行コミュニティサイト(旅行記・旅行SNS)</p>
-
 							</div>
 						</div>
 					</div>
 					<!-- Single Footer -->
-
 				</div>
 			</div>
-
 		</footer>
-
 		<!-- Copyright -->
 		<div class="copyright">
 				<div class="container">
@@ -412,7 +384,6 @@
 					</div>
 				</div>
 			</div>
-
 		<!-- footer -->
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -425,8 +396,6 @@
         <script src="assets/js/jquery.sticky.js"></script>
         <script src="assets/js/wow.min.js"></script>
         <script src="assets/js/main.js"></script>
-
-
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$('a[href^="#"]').on('click',function (e) {
