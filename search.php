@@ -2,24 +2,25 @@
     session_start();
     require('dbconnect.php');
 
-    echo '<pre>';
-    echo '$_POST = ';
-    var_dump($_POST);
-    echo '</pre>';
+    // echo '<pre>';
+    // echo '$_POST = ';
+    // var_dump($_POST);
+    // echo '</pre>';
 
     $query = '';
     $data = [];
+
     if (!empty($_POST['season'])) {
+        $query = $query . ' AND ';
         $query = $query . 'depart_date=?';
         $data[] = $_POST['season'];
-
     }
 
-    if (!empty($_POST['budget'])) {
-        $query = $query . ' AND ';
-        $query = $query . 'budget=?';
-        $data[] = $_POST['budget'];
-    }
+    // if (!empty($_POST['budget'])) {
+    //     $query = $query . ' AND ';
+    //     $query = $query . 'budget=?';
+    //     $data[] = $_POST['budget'];
+    // }
 
     if (!empty($_POST['city'])) {
         $query = $query . ' AND ';
@@ -29,24 +30,55 @@
 
     if (!empty($_POST['theme'])) {
         $query = $query . ' AND ';
-        $query = $query . 'theme=?';
+        $query = $query . 'tag_name=?';
         $data[] = $_POST['theme'];
     }
 
+    function Budget_SQL($value) {
+        $return_sql = '';
 
+        if($value == 1) {
+            $return_sql = ' AND budget <= 100000 ';
+        }elseif($value == 2){
+            $return_sql = ' AND (budget >= 100001 AND budget <= 200000) ';
+        }
+        elseif($value == 3){
+            $return_sql = ' AND (budget >= 200001 AND budget <= 300000) ';
+        }
+        elseif($value == 4){
+            $return_sql = ' AND (budget >= 300001 AND budget <= 400000) ';
+        }
+        elseif($value == 5){
+            $return_sql = ' AND budget >= 400001 ';
+        }
+        else {
+        }
 
+        return $return_sql;
+    }
 
-    echo '<pre>';
-    echo '$query = ';
-    var_dump($query);
-    echo '</pre>';
+    $budget_sql = '';
+    if(isset($_POST['budget'])){
+
+        $budget_sql = Budget_SQL($_POST['budget']);
+    }
+
+    // echo '<pre>';
+    // echo '$query = ';
+    // var_dump($query);
+    // echo '</pre>';
 
     echo '<pre>';
     echo '$data = ';
     var_dump($data);
     echo '</pre>';
 
-    $sql = 'SELECT d.*, a.area_name, t.tag_name,c.country_name FROM ( ( ( ( ( dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id ) INNER JOIN areas AS a ON ad.area_id = a.area_id ) INNER JOIN dialies_tags AS dt ON d.dialy_id = dt.dialis_id ) INNER JOIN tags AS t ON dt.tag_id = t.tag_id )INNER JOIN countries AS c ON a.country_id=c.country_id )WHERE 1 ORDER BY d.created DESC';
+    $sql = 'SELECT d.*, a.area_name, t.tag_name,c.country_name FROM ( ( ( ( ( dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id ) INNER JOIN areas AS a ON ad.area_id = a.area_id ) INNER JOIN dialies_tags AS dt ON d.dialy_id = dt.dialis_id ) INNER JOIN tags AS t ON dt.tag_id = t.tag_id )INNER JOIN countries AS c ON a.country_id=c.country_id )WHERE 1 ';
+    $sql = $sql . $budget_sql;
+    $sql = $sql . $query;
+    $sql = $sql . ' ORDER BY d.created DESC ';
+
+    // echo $sql;
 
 
     // 登録ロジック
@@ -59,10 +91,10 @@
         // 04 → 3 ~ 5月が対象になる
     // 適切なSQL条件文をPHPの文字列で作成
 
-    // SELECT * FROM dialies WHERE 
+    // SELECT * FROM dialies WHERE
 
 
-    // $data = array( );
+    // $data = array();
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
 
