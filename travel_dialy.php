@@ -57,11 +57,12 @@
     while ($tag = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $tags[] = $tag;
     }
-    
+    $count_tags = count($tags);
     echo '<pre>'; 
     echo '$tags = ';
     var_dump($tags);
     echo '</pre>'; 
+    
 ?>
 
 <!doctype html>
@@ -151,15 +152,9 @@
         <!-- tag start -->
         <div class="tag">
             <ul>
-              <?php for($y=0;$y<count($tags[]);$y++){ ?>
-              <li><a href="#">＊<?php echo tags[$y]; ?></a></li>
+              <?php for($y=0;$y<$count_tags;$y++){ ?>
+                <li><a href="#">＊<?php echo $tags[$y]['tag_name']; ?></a></li>
               <?php } ?>
-               <!--  <li><a href="#">＊イタリア</a></li>
-                <li><a href="#">＊イタリア</a></li>
-                <li><a href="#">＊ベネチア</a></li>
-                <li><a href="#">＊世界遺産</a></li>
-                <li><a href="#">＊ピサ</a></li>
-                <li><a href="#">＊パンテオン</a></li> -->
             </ul>  
         </div>
         <!-- tag end -->
