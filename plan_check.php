@@ -36,6 +36,10 @@
     $arrival_date = $_SESSION['plan']['arrival_date'];
     $title_comment = $_SESSION['plan']['title_comment'];
     $title_img_name = $_SESSION['plan']['title_img_name'];
+    // 月を抽出
+    $month = substr($depart_date,5,2);
+    echo 'unnko';
+    echo $month;
     // _areas_dialysに格納
     $country_id_1 = $_SESSION['plan']['country_id_1'];
     $country_id_2 = $_SESSION['plan']['country_id_2'];
@@ -89,8 +93,8 @@
         $flag = 1; //flagも偽装
         
         // ①
-        $sql = 'INSERT INTO `dialies` SET `user_id` =?, `depart_date` =?, `arrival_date` =?, `number_days` =?, `budget` =?, `title` =?, `img_name` =?, `title_comment` =?, `flag` =?, `created` =NOW() ';
-        $date = array($_SESSION['user']['id'],$depart_date,$arrival_date,$number_days,$budget,$title,$title_img_name,$title_comment,$flag);
+        $sql = 'INSERT INTO `dialies` SET `user_id` =?, `depart_date` =?, `arrival_date` =?,`month` =?, `number_days` =?, `budget` =?, `title` =?, `img_name` =?, `title_comment` =?, `flag` =?, `created` =NOW() ';
+        $date = array($_SESSION['user']['id'],$depart_date,$arrival_date,$month,$number_days,$budget,$title,$title_img_name,$title_comment,$flag);
         $stmt = $dbh->prepare($sql);
         $stmt->execute($date);
 
