@@ -42,7 +42,7 @@
     while ($picture = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $pictures[] = $picture;
     }
-
+    $count_
     echo '<pre>'; 
     echo '$pictures = ';
     var_dump($pictures);
@@ -57,7 +57,7 @@
     while ($tag = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $tags[] = $tag;
     }
-
+    $count_tag = count($tags);
     echo '<pre>'; 
     echo '$tags = ';
     var_dump($tags);
@@ -151,6 +151,8 @@
         <!-- tag start -->
         <div class="tag">
             <ul>
+
+                <li><a href="#">＊イタリア</a></li>
                 <li><a href="#">＊イタリア</a></li>
                 <li><a href="#">＊ベネチア</a></li>
                 <li><a href="#">＊世界遺産</a></li>
