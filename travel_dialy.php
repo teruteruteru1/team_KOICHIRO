@@ -1,7 +1,55 @@
 <?php 
-    session_start();  
-    require ('dbconnect.php'); 
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
 
+
+    session_start();  
+    require ('dbconnect.php');
+    include('assets/functions.php');
+
+    // flow-chart
+    // ①旅行記投稿者のID取得 dailies+users(名前と画像)
+    // ②picturesの取得
+    // ③tagの取得
+    // ④areaの取得
+    // 他 $_SESSION['user']['id']と$dialy['user_id']を比較して違ったら、機能を変更する
+
+    //dialy idの取得
+    //$dialy_id = $_REQUEST['dialy_id'];
+    $dialy_id = 9; // 開発用にIDを偽装 
+
+    //①旅行記
+    $sql = 'SELECT `dialies`.*,`users`.user_name,`users`.img_name FROM dialies LEFT JOIN users ON `dialies`.`user_id`=`users`.`user_id` WHERE `dialies`.`dialy_id`=?';
+    $data = array($dialy_id);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+    $dialy = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    echo '<pre>'; 
+    echo '$dialy = ';
+    var_dump($dialy);
+    echo '</pre>'; 
+
+    // ②pictures
+    $sql = 'SELECT * FROM pictures WHERE dialy_id=?';
+    $data = array($dialy_id);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+
+    while ($picture = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $pictures[] = $picture;
+    }
+
+    echo '<pre>'; 
+    echo '$pictures = ';
+    var_dump($pictures);
+    echo '</pre>'; 
+
+    // ③タグ
+    $sql = 'SELECT `dialies_tags`.*,`tags`.tag FROM dialies_tags LEFT JOIN tags ON    `dialies_tags`.`tag_id`=`tags`.`tag_id` WHERE `dialies_tags`.`tag_id`=? ';
 
 ?>
 
@@ -10,7 +58,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
+    <title>diary</title>
     <meta name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -59,14 +107,15 @@
 				<div class="row">
 					<div class="col-sm-12 center">
 						<div class="title">
-							<h2>３度目のイタリア</h2>
-                            <h4>2018/04/01~2018/04/05</h4>
+							<h2> <?php echo $dialy['title']; ?></h2>
+                            <h4><?php echo $dialy['depart_date']; ?>~<?php echo $dialy['arrival_date']; ?></h4>
                             <hr>
 						</div>
 					</div>
 				</div>
 			</div>
 
+            <!-- ここから -->
 			<div class="container">
 				<div id="popup-background">
 					<div class="col-sm-6" >
@@ -77,18 +126,14 @@
 					</div>
 					<div class="col-sm-6">
 						<div class="about-text wow fadeInRight">
-							<p>いよいよ待ち待ったイタリア旅行〜
-								今から35年ほど前に仕事でミラノに出張した際に、週末の空き時間を利用してベネツィア・フィレンツェに
-								一泊二日で出掛けたことがある。
-								また、その数年前に女房と一緒にヨーロッパ旅行をした時に、ローマで一日だけ観光を行った。
-								ただ、そのいずれもが随分昔のことであり、短時間立ち寄っただけであり、今のデジカメの時代と違って余り写真も残っていない。
-								ましてや、出張の時にはカメラを持参していたかどうかも定かでない。
+							<p>
 							</p>
 							<!-- <a href="#" class="btn btn-read-more">続きを読む</a> -->
 						</div>
 					</div>
 				</div>
 			</div>
+            <!-- ここまで回す -->
 		</section>
 
         <!-- tag start -->
