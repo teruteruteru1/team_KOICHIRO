@@ -32,6 +32,7 @@
 
  ?>
 
+
 <br>
 <div class="container" id="wrap">
   <div class="row">
@@ -40,7 +41,10 @@
 			  <h2>旅行記検索</h2>
         <input type="hidden" name="action" value="word">
     		<div class="input-group">
-				  <input type="text" class="form-control" placeholder="キーワード検索：『エリア』+『目的』など" name="search-term" id="search-term" size=45>
+				  <input type="text" class="form-control" placeholder="キーワード検索：『エリア』+『目的』など" name="search_term" id="search_term" size=45>
+          <?php if(isset($errors['search_term'])){ ?>
+            <span style="color: red;">検索ワードを入力して下さい</span><br>
+          <?php } ?>
           <button class="btn btn-md btn-primary btn-block signup-btn" type="submit">ワード検索</button>
 			  </div>
       </form>
