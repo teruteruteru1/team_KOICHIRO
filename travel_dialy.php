@@ -1,4 +1,7 @@
 <?php 
+    session_start();  
+    require ('dbconnect.php'); 
+
 
 ?>
 
@@ -13,13 +16,12 @@
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
-		
+
 		<!-- Font -->
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 		<!-- Font -->
-		
-		
+
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -50,7 +52,7 @@
 	</header>
     <br>
 	<!-- Header end -->
-				
+
 		<!-- Single Blog1 -->
 		<section id="about" class="site-padding">
 			<div class="container ">
