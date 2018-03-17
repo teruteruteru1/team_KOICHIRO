@@ -359,19 +359,19 @@
                 <li>
                     <a href="javascript:void(0)">
                         <i class="fa fa-thumbs-up"></i>
-                        <span>Like</span>
+                        <span>いいね</span>
                     </a>
                 </li>
                 <li>
                     <a href="javascript:void(0)" title="Leave a comment">
                         <i class="fa fa-comment-o"></i>
-                        <span>Comment</span>
+                        <span>コメント</span>
                     </a>
                 </li>
                 <li>
                     <a href="javascript:void(0)" title="Send this to friends or post it to your timeline">
-                        <i class="fa fa-share"></i>
-                        <span>Share</span>
+                        <i class="fa fa-thumb-tack"></i>
+                        <span>クリップ</span>
                     </a>
                 </li>
             </ul>
