@@ -49,8 +49,19 @@
     echo '</pre>'; 
 
     // ③タグ
-    $sql = 'SELECT `dialies_tags`.*,`tags`.tag FROM dialies_tags LEFT JOIN tags ON    `dialies_tags`.`tag_id`=`tags`.`tag_id` WHERE `dialies_tags`.`tag_id`=? ';
+    $sql = 'SELECT `dialies_tags`.*,`tags`.tag_name FROM dialies_tags LEFT JOIN tags ON `dialies_tags`.`tag_id`=`tags`.`tag_id` WHERE `dialies_tags`.`dialy_id`=? ';
+    $data = array($dialy_id);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
 
+    while ($tag = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $tags[] = $tag;
+    }
+
+    echo '<pre>'; 
+    echo '$tags = ';
+    var_dump($tags);
+    echo '</pre>'; 
 ?>
 
 <!doctype html>
@@ -115,25 +126,26 @@
 				</div>
 			</div>
 
-            <!-- ここから -->
+            <!-- 概要 -->
 			<div class="container">
 				<div id="popup-background">
 					<div class="col-sm-6" >
 						<div class="about-image wow fadeInLeft">
-							<img id="lb" src="assets/img/add_img/Single-Blog1-P9172057.jpg" alt="Single Blog1" />
+							<img id="lb" src="title_img/<?php echo $dialy['title_img_name']; ?>" alt="Single Blog1" />
 							<!-- ポップアップ用の背景とimg -->
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="about-text wow fadeInRight">
-							<p>
+							<p><?php echo $dialy['title_comment'] ?>
 							</p>
 							<!-- <a href="#" class="btn btn-read-more">続きを読む</a> -->
 						</div>
 					</div>
 				</div>
 			</div>
-            <!-- ここまで回す -->
+            <!-- 概要終了 -->
+
 		</section>
 
         <!-- tag start -->
