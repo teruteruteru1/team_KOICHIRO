@@ -308,7 +308,7 @@
 
     <form method="POST" action="">
     	<input type="hidden" name="kubo" value="kaori">
-      <a href="plan_form.php?action=rewrite"><strong>戻る</strong></a><br>
+      <a href="mochimaru_plan_form.php?action=rewrite"><strong>戻る</strong></a><br>
       <!-- パラメータをつけることで、$_GET/$_REQUESTが使える -->
     	<input type="submit" value="しおり登録">
 
