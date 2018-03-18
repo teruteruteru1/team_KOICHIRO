@@ -9,17 +9,18 @@
 
     $query = '';
     $data = [];
+
     if (!empty($_POST['season'])) {
-        $query = $query . 'depart_date=?';
-        $data[] = $_POST['season'];
-
-    }
-
-    if (!empty($_POST['budget'])) {
         $query = $query . ' AND ';
-        $query = $query . 'budget=?';
-        $data[] = $_POST['budget'];
+        $query = $query . 'month=?';
+        $data[] = $_POST['season'];
     }
+
+    // if (!empty($_POST['budget'])) {
+    //     $query = $query . ' AND ';
+    //     $query = $query . 'budget=?';
+    //     $data[] = $_POST['budget'];
+    // }
 
     if (!empty($_POST['city'])) {
         $query = $query . ' AND ';
@@ -29,42 +30,102 @@
 
     if (!empty($_POST['theme'])) {
         $query = $query . ' AND ';
-        $query = $query . 'theme=?';
+        $query = $query . 't.tag_id=?';
         $data[] = $_POST['theme'];
     }
 
+    function Budget_SQL($value) {
+        $return_sql = '';
+
+        if($value == 1) {
+            $return_sql = ' AND budget <= 100000 ';
+        }elseif($value == 2){
+            $return_sql = ' AND (budget >= 100001 AND budget <= 200000) ';
+        }
+        elseif($value == 3){
+            $return_sql = ' AND (budget >= 200001 AND budget <= 300000) ';
+        }
+        elseif($value == 4){
+            $return_sql = ' AND (budget >= 300001 AND budget <= 400000) ';
+        }
+        elseif($value == 5){
+            $return_sql = ' AND budget >= 400001 ';
+        }
+        else {
+        }
+
+        return $return_sql;
+    }
+
+    $budget_sql = '';
+    if(isset($_POST['budget'])){
+
+        $budget_sql = Budget_SQL($_POST['budget']);
+    }
+
+    // echo '<pre>';
+    // echo '$query = ';
+    // var_dump($query);
+    // echo '</pre>';
+
+    // echo '<pre>';
+    // echo '$data = ';
+    // var_dump($data);
+    // echo '</pre>';
+
+    $search_check = $_POST['action'];
+
+    // echo $search_check;
+
+    // POST送信で絞り込み検索を行なった場合
+    if($search_check == 'selected') {
+        $sql = 'SELECT d.*, a.area_name, t.tag_id,c.country_name FROM ( ( ( ( ( dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id ) INNER JOIN areas AS a ON ad.area_id = a.area_id ) INNER JOIN dialies_tags AS dt ON d.dialy_id = dt.dialy_id ) INNER JOIN tags AS t ON dt.tag_id = t.tag_id )INNER JOIN countries AS c ON a.country_id=c.country_id )WHERE 1 ';
+        $sql = $sql . $budget_sql;
+        $sql = $sql . $query;
+        $sql = $sql . ' ORDER BY d.created DESC ';
+
+        // echo $sql;
+
+        // $data = array();
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($data);
+
+    // POST送信でワード検索を送った場合
+    }elseif($search_check == 'word'){
+        $text1 = $_POST['search_term'];
+        $sql = 'SELECT d.*, a.area_name,t.tag_id,c.country_name,co.comment FROM dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id INNER JOIN areas AS a ON ad.area_id = a.area_id INNER JOIN dialies_tags AS dt ON d.dialy_id = dt.dialy_id  INNER JOIN tags AS t ON dt.tag_id = t.tag_id INNER JOIN countries AS c ON a.country_id=c.country_id INNER JOIN comments AS co ON d.dialy_id = co.dialy_id ';
+
+        // $sql = "SELECT d.*, a.area_name,t.tag_id,c.country_name,co.comment FROM dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id INNER JOIN areas AS a ON ad.area_id = a.area_id INNER JOIN dialies_tags AS dt ON d.dialy_id = dt.dialy_id INNER JOIN tags AS t ON dt.tag_id = t.tag_id INNER JOIN countries AS c ON a.country_id=c.country_id INNER JOIN comments AS co ON d.dialy_id = co.dialy_id WHERE ((d.title_comment LIKE '%旅行%') OR (co.comment LIKE '%旅行%')) AND ((d.title_comment LIKE '%写真%') OR (co.comment LIKE '%写真%'))";
 
 
+        // キーワードが入力されているときはwhere以下を組み立てる
+        if (strlen($text1)>0){
 
-    echo '<pre>';
-    echo '$query = ';
-    var_dump($query);
-    echo '</pre>';
+        // 受け取ったキーワードの全角スペースを半角スペースに変換する
+        $text2 = str_replace("　", " ", $text1);
 
-    echo '<pre>';
-    echo '$data = ';
-    var_dump($data);
-    echo '</pre>';
+        // キーワードを空白で分割する
+        $array = explode(" " ,$text2);
 
-    $sql = 'SELECT d.*, a.area_name, t.tag_name,c.country_name FROM ( ( ( ( ( dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id ) INNER JOIN areas AS a ON ad.area_id = a.area_id ) INNER JOIN dialies_tags AS dt ON d.dialy_id = dt.dialis_id ) INNER JOIN tags AS t ON dt.tag_id = t.tag_id )INNER JOIN countries AS c ON a.country_id=c.country_id )WHERE 1 ORDER BY d.created DESC';
+        // 分割された個々のキーワードをSQLの条件where句に反映する
+        $where = "WHERE ";
 
+        for($i = 0; $i <count($array);$i++){
+            $where = $where . "( d.title_comment LIKE '%$array[$i]%' OR co.comment LIKE '%$array[$i]%') " ;
 
-    // 登録ロジック
-    // POST受け取る
-    // 日付データから月だけ取得して変数にいれる
-    // INSERTで各カラムにセット
+            if ($i <count($array) -1){
+                $where .= " AND ";
+            }
+        }
+            $sql = $sql . $where;
+        }
 
-    // 検索ロジック
-    // POSTで受け取る 04
-        // 04 → 3 ~ 5月が対象になる
-    // 適切なSQL条件文をPHPの文字列で作成
+        echo $sql;
 
-    // SELECT * FROM dialies WHERE 
-
-
-    // $data = array( );
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute($data);
+        $data = array();
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($data);
+    }
 
     $tmp_dialies = array();
 
@@ -128,7 +189,7 @@
       <?php Include('partial/header.php'); ?>
     </header>
 
-    <?php Include('partial/search.php'); ?>
+    <?php Include('partial/search_bar.php'); ?>
 
     <section id="about" class="site-padding">
       <?php for($i=0;$i<$c;$i++){ ?>
