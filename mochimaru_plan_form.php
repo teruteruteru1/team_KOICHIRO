@@ -121,10 +121,10 @@
         if ($number_days == '') {
             $errors['number_days'] = 'blank';
         }
-        if ($country_id_1 == '0') {
+        if ($country_id_1 == 'unselected') {
             $errors['country_id_1'] = 'blank';
         }
-        if ($area_id_1 == '0') {
+        if ($area_id_1 == 'unselected') {
             $errors['area_id_1'] = 'blank';
         }
         if ($depart_date == '') {
@@ -136,6 +136,10 @@
         if ($title_comment == '') {
             $errors['title_comment'] = 'blank';
         }
+        if (!$tag_numbers) {
+            $errors['tag'] = 'blank';
+        }
+
         // 写真とコメントはなくてもいい？
         // if ($pic_names[0] == '') {
         //     $errors['pic_names[0]'] = 'blank';
@@ -354,7 +358,7 @@
 
                 国1
                 <select name="country_id_1">
-                    <option value="0" selected="selected" class="msg">国を選択して下さい</option>
+                    <option value="unselected" selected="selected" class="msg">国を選択して下さい</option>
                     <?php for($i=0; $i<$count_country ; $i++){ ?>
                      <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['id']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
                     <?php } ?>                  
@@ -368,7 +372,7 @@
                 都市1
                 <!-- 中間テーブルから国名を持ってくる？ -->
                 <select name="area_id_1">
-                  <option value="0" selected="selected" class="msg">都市を選択して下さい</option>
+                  <option value="unselected" selected="selected" class="msg">都市を選択して下さい</option>
                   <?php for($i=0; $i<$count_area ; $i++){ ?>
                     <option value="<?php echo $areas[$i]['area_id']; ?>" class="<?php echo $areas[$i]['country_id']; ?>"><?php echo $areas[$i]['area_name']; ?></option>
                   <?php } ?>
@@ -380,7 +384,7 @@
 
                 国2
                 <select name="country_id_2">
-                    <option value="0" selected="selected" class="msg">国を選択して下さい</option>
+                    <option value="unselected" selected="selected" class="msg">国を選択して下さい</option>
                     <?php for($i=0; $i<$count_country ; $i++){ ?>
                      <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['id']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
                     <?php } ?>
@@ -391,7 +395,7 @@
                 都市2
                 <!-- 中間テーブルから国名を持ってくる？ -->
                 <select name="area_id_2">
-                  <option value="0" selected="selected" class="msg">都市を選択して下さい</option>
+                  <option value="unselected" selected="selected" class="msg">都市を選択して下さい</option>
                   <?php for($i=0; $i<$count_area ; $i++){ ?>
                     <option value="<?php echo $areas[$i]['area_id']; ?>" class="<?php echo $areas[$i]['country_id']; ?>"><?php echo $areas[$i]['area_name']; ?></option>
                   <?php } ?>
@@ -400,7 +404,7 @@
 
                 国3
                 <select name="country_id_3">
-                    <option value="0" selected="selected" class="msg">国を選択して下さい</option>
+                    <option value="unselected" selected="selected" class="msg">国を選択して下さい</option>
                     <?php for($i=0; $i<$count_country ; $i++){ ?>
                      <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['id']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
                     <?php } ?>
@@ -411,7 +415,7 @@
                 都市3
                 <!-- 中間テーブルから国名を持ってくる？ -->
                 <select name="area_id_3">
-                  <option value="0" selected="selected" class="msg">都市を選択して下さい</option>
+                  <option value="unselected" selected="selected" class="msg">都市を選択して下さい</option>
                   <?php for($i=0; $i<$count_area ; $i++){ ?>
                     <option value="<?php echo $areas[$i]['area_id']; ?>" class="<?php echo $areas[$i]['country_id']; ?>"><?php echo $areas[$i]['area_name']; ?></option>
                   <?php } ?>
@@ -475,6 +479,9 @@
                       <?php } ?>
                   <?php }?>
                 </div>
+                <?php if (isset($errors['tag'])) {  ?>
+                  <span style="color: red;">旅行記につけるタグを最低一つ選択してください</span><br>
+                <?php }  ?>
                 <br>
             
                 <!-- 確認画面へ -->
