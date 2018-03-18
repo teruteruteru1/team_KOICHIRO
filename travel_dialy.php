@@ -21,6 +21,7 @@
     //$dialy_id = $_REQUEST['dialy_id'];
     $dialy_id = 9; // 開発用にIDを偽装 
 
+
     //①旅行記
     $sql = 'SELECT `dialies`.*,`users`.user_name,`users`.img_name FROM dialies LEFT JOIN users ON `dialies`.`user_id`=`users`.`user_id` WHERE `dialies`.`dialy_id`=?';
     $data = array($dialy_id);
@@ -253,12 +254,18 @@
         <!-- like start -->
         <div>
             <ul class="newpostfooter nav nav-tabs nav-justified">
+                <!-- いいね機能 -->
                 <li>
+                  <form method="POST" action="likes.php" value="<?php echo $dialy_id ?>; ">  <!-- 後で$_REQUESTに変更する -->
                     <a href="javascript:void(0)">
-                        <i class="fa fa-thumbs-up"></i>
-                        <span>いいね</span>
+                      <input type="hidden" name="btn" value="like">
+                      <button type="submit">
+                      <i class="fa fa-thumbs-up"></i>
+                      <span>いいね</span></button>
                     </a>
+                  </form>  
                 </li>
+                <!-- いいね機能終了 -->
                 <li>
                     <a href="javascript:void(0)" title="Leave a comment">
                         <i class="fa fa-comment-o"></i>
