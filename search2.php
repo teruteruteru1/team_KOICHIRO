@@ -3,19 +3,19 @@
     session_start();
     require('dbconnect.php');
 
-    $errors = array();
+    // $errors = array();
 
-    $search_term = $_POST['search_term'];
+    // $search_term = $_POST['search_term'];
 
-    if (!empty($_POST)){
-        if ($search_term == ''){
-            $errors['serch_term'] = 'blank';
-        }
-    }
-    echo '<pre>';
-    echo '$errors = ';
-    var_dump($errors);
-    echo '</pre>';
+    // if (!empty($_POST)){
+    //     if ($search_term == ''){
+    //         $errors['serch_term'] = 'blank';
+    //     }
+    // }
+    // echo '<pre>';
+    // echo '$errors = ';
+    // var_dump($errors);
+    // echo '</pre>';
 
     // echo '<pre>';
     // echo '$_POST = ';
@@ -23,6 +23,7 @@
     // echo '</pre>';
 
     $text1 = $_POST['search_term'];
+    
     $sql = 'SELECT d.*, a.area_name,t.tag_id,c.country_name,co.comment FROM dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id INNER JOIN areas AS a ON ad.area_id = a.area_id INNER JOIN dialies_tags AS dt ON d.dialy_id = dt.dialy_id  INNER JOIN tags AS t ON dt.tag_id = t.tag_id INNER JOIN countries AS c ON a.country_id=c.country_id INNER JOIN comments AS co ON d.dialy_id = co.dialy_id ';
 
   // $sql = "SELECT d.*, a.area_name,t.tag_id,c.country_name,co.comment FROM dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id INNER JOIN areas AS a ON ad.area_id = a.area_id INNER JOIN dialies_tags AS dt ON d.dialy_id = dt.dialy_id INNER JOIN tags AS t ON dt.tag_id = t.tag_id INNER JOIN countries AS c ON a.country_id=c.country_id INNER JOIN comments AS co ON d.dialy_id = co.dialy_id WHERE ((d.title_comment LIKE '%旅行%') OR (co.comment LIKE '%旅行%')) AND ((d.title_comment LIKE '%写真%') OR (co.comment LIKE '%写真%'))";

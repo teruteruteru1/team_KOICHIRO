@@ -37,14 +37,14 @@
 <div class="container" id="wrap">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-			<form action="search2.php" method="post" accept-charset="utf-8" class="form" role="form">
+			<form action="search.php" method="post" accept-charset="utf-8" class="form" role="form">
 			  <h2>旅行記検索</h2>
         <input type="hidden" name="action" value="word">
     		<div class="input-group">
 				  <input type="text" class="form-control" placeholder="キーワード検索：『エリア』+『目的』など" name="search_term" id="search_term" size=45>
-          <?php if(isset($errors['search_term'])){ ?>
+          <!-- <?php if(isset($errors['search_term'])){ ?>
             <span style="color: red;">検索ワードを入力して下さい</span><br>
-          <?php } ?>
+          <?php } ?> -->
           <button class="btn btn-md btn-primary btn-block signup-btn" type="submit">ワード検索</button>
 			  </div>
       </form>
