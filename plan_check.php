@@ -3,6 +3,12 @@
     require ('dbconnect.php'); 
     require ('assets/functions.php');
 
+    //$_SESSION['PLAN']が未定義だったらformへ戻す
+    if(!$_SESSION['plan']){
+        header('Location: plan_form.php');
+        exit();
+    }
+
     //作るもの
     //①飛び先
     //大抵はdiariesに飛ばす
