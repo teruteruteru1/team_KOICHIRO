@@ -9,12 +9,13 @@
     session_start();  
     require ('dbconnect.php');
     include('assets/functions.php');
+    echo $_SESSION['user']['id'];
 
-    // flow-chart
+    // 投稿表示
     // ①旅行記投稿者のID取得 dailies+users(名前と画像)
     // ②picturesの取得
     // ③tagの取得
-    // ④areaの取得
+    // ④areaの取得 ←いらない
     // 他 $_SESSION['user']['id']と$dialy['user_id']を比較して違ったら、機能を変更する
 
     //dialy idの取得
@@ -65,6 +66,16 @@
     var_dump($tags);
     echo '</pre>'; 
     
+    //いいね機能
+    // いいね！データの取得
+    // 下のカウントは本人がいいねしているかどうかの確認のため１or０しか入らない
+    // $sql = 'SELECT COUNT(*) AS cnt FROM likes WHERE `user_id`=? AND `dialy_id`=?';
+    // $data = array($_SESSION['user']['id'], $_REQUEST['feed_id']);
+    // $stmt = $dbh->prepare($sql);
+    // $stmt->execute($data);
+
+
+
 ?>
 
 <!doctype html>
@@ -207,7 +218,6 @@
                                           <td align="center" style="font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
                                               <div style="line-height: 24px">
                                                 <?php echo $pictures[$x]['comment']; ?><br>
-                                                  運河越しに見るサンタ・マリア・デッラ・サルーテ聖堂。イタリア旅行二日目は水の都ベニスへ移動し、サン・マルコ寺院から一日がはじまります。天気は快晴、期待に胸が高まります。
                                               </div>
                                           </td>
                                       </tr>
@@ -258,10 +268,17 @@
                 <li>
                   <form method="POST" action="likes.php" value="<?php echo $dialy_id ?>; ">  <!-- 後で$_REQUESTに変更する -->
                     <a href="javascript:void(0)">
+                      <?//php if ($like['cnt'] == 0) { ?>
                       <input type="hidden" name="btn" value="like">
                       <button type="submit">
                       <i class="fa fa-thumbs-up"></i>
                       <span>いいね</span></button>
+                      <?//php }else{ ?>
+                      <input type="hidden" name="btn" value="unlike">
+                      <button type="submit">
+                      <i class="fa fa-thumbs-up"></i>
+                      <span>いいねを取り消す</span></button>
+                      <?//php } ?>
                     </a>
                   </form>  
                 </li>
