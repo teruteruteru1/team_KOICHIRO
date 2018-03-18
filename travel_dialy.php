@@ -142,13 +142,22 @@
 		<section id="about" class="site-padding">
 			<div class="container ">
 				<div class="row">
-					<div class="col-sm-12 center">
+          <!-- タイトル -->
+					<div class="col-sm-6 center">
 						<div class="title">
 							<h2> <?php echo $dialy['title']; ?></h2>
               <h4><?php echo $dialy['depart_date']; ?>~<?php echo $dialy['arrival_date']; ?></h4>
               <hr>
 						</div>
 					</div>
+          <!-- ユーザー情報 -->
+          <div class="col-sm-6" >
+            <div class="">
+              <img src="user_profile_img/<?php echo $dialy['img_name']; ?> ">
+              <h4><?php echo $dialy['depart_date']; ?>~<?php echo $dialy['arrival_date']; ?></h4>
+              <hr>
+            </div>
+          </div>
 				</div>
 			</div>
 
@@ -168,6 +177,7 @@
 							<!-- <a href="#" class="btn btn-read-more">続きを読む</a> -->
 						</div>
 					</div>
+
 				</div>
 			</div>
             <!-- 概要終了 -->
