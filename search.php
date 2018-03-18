@@ -198,7 +198,7 @@
           <div class="col-sm-6">
 
             <div class="about-image wow fadeInLeft">
-              <img src="pictures/<?php echo $dialies[$i]['img_name']; ?>" alt="Single Blog1" width="600" height="400"/>
+              <img src="pictures/<?php echo $dialies[$i]['title_img_name']; ?>" alt="Single Blog1" width="600" height="400"/>
             </div>
           </div>
           <div class="col-sm-6">
