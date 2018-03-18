@@ -4,17 +4,17 @@
 
 
     //一回自分に飛ばす。確認ヴァーダンプ
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<pre>'; 
-    echo '$_FILES = ';
-    var_dump($_FILES);
-    echo '</pre>';
-    echo '<pre>'; 
-    echo '$_POST = ';
-    var_dump($_POST);
-    echo '</pre>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<pre>'; 
+    // echo '$_FILES = ';
+    // var_dump($_FILES);
+    // echo '</pre>';
+    // echo '<pre>'; 
+    // echo '$_POST = ';
+    // var_dump($_POST);
+    // echo '</pre>';
      
 
 
@@ -89,10 +89,10 @@
             
         }
 
-        echo '<pre>'; 
-        echo '$tag_numbers = ';
-        var_dump($tag_numbers);
-        echo '</pre>'; 
+        // echo '<pre>'; 
+        // echo '$tag_numbers = ';
+        // var_dump($tag_numbers);
+        // echo '</pre>'; 
         //変数定義完了
         
         //各空チェック
@@ -210,10 +210,10 @@
 
     }
 
-    echo '<pre>'; 
-    echo '$errors = ';
-    var_dump($errors);
-    echo '</pre>';
+    // echo '<pre>'; 
+    // echo '$errors = ';
+    // var_dump($errors);
+    // echo '</pre>';
 
       
     
@@ -245,7 +245,8 @@
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">    
+    <link rel="stylesheet" href="assets/css/responsive.css"> 
+    <link rel="stylesheet" href="assets/css/header.css">    
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
         
     <!-- Font -->
@@ -276,8 +277,8 @@
     <div style="text-align: center;">
         <form method="POST" action="" enctype="multipart/form-data">
             <div>   
-                <br>タイトル<br>
-                <textarea name="title" cols="80" rows="5"></textarea>
+                <br>旅のタイトル<br>
+                <textarea name="title" cols="80" rows="1"></textarea>
             </div>
             <div>
                 予算：
@@ -450,7 +451,6 @@
     </div>
 
         <!-- footer -->
-        
         <footer>
             <div class="container">
                 <div class="row">
