@@ -64,7 +64,7 @@
                     // サインイン処理
 
                     // ①セッションにサインインユーザーのidを保存
-                    $_SESSION['user']['id'] = $record['id'];
+                    $_SESSION['user']['id'] = $record['user_id'];
 
                     // header('Location: timeline.php');
                     header('Location: home.php');
