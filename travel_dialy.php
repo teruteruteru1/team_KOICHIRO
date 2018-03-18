@@ -9,7 +9,7 @@
     session_start();  
     require ('dbconnect.php');
     include('assets/functions.php');
-    echo $_SESSION['user']['id'];
+    echo 'userid = ' . $_SESSION['user']['id'];
 
     // 投稿表示
     // ①旅行記投稿者のID取得 dailies+users(名前と画像)
@@ -30,10 +30,10 @@
     $stmt->execute($data);
     $dialy = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    echo '<pre>'; 
-    echo '$dialy = ';
-    var_dump($dialy);
-    echo '</pre>'; 
+    // echo '<pre>'; 
+    // echo '$dialy = ';
+    // var_dump($dialy);
+    // echo '</pre>'; 
 
     // ②pictures
     $sql = 'SELECT * FROM pictures WHERE dialy_id=?';
@@ -46,10 +46,10 @@
     }
     $count_pics = count($pictures);
     
-    echo '<pre>'; 
-    echo '$pictures = ';
-    var_dump($pictures);
-    echo '</pre>'; 
+    // echo '<pre>'; 
+    // echo '$pictures = ';
+    // var_dump($pictures);
+    // echo '</pre>'; 
 
     // ③タグ
     $sql = 'SELECT `dialies_tags`.*,`tags`.tag_name FROM dialies_tags LEFT JOIN tags ON `dialies_tags`.`tag_id`=`tags`.`tag_id` WHERE `dialies_tags`.`dialy_id`=? ';
@@ -61,18 +61,19 @@
         $tags[] = $tag;
     }
     $count_tags = count($tags);
-    echo '<pre>'; 
-    echo '$tags = ';
-    var_dump($tags);
-    echo '</pre>'; 
+    // echo '<pre>'; 
+    // echo '$tags = ';
+    // var_dump($tags);
+    // echo '</pre>'; 
     
-    //いいね機能
+    //いいね機能 ※learn.phpからほぼコピー
     // いいね！データの取得
     // 下のカウントは本人がいいねしているかどうかの確認のため１or０しか入らない
-    // $sql = 'SELECT COUNT(*) AS cnt FROM likes WHERE `user_id`=? AND `dialy_id`=?';
-    // $data = array($_SESSION['user']['id'], $_REQUEST['feed_id']);
-    // $stmt = $dbh->prepare($sql);
-    // $stmt->execute($data);
+    $sql = 'SELECT COUNT(*) AS cnt FROM likes WHERE `user_id`=? AND `dialy_id`=?';
+    $data = array($_SESSION['user']['id'], $dialy_id);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+    $like = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
@@ -266,19 +267,21 @@
             <ul class="newpostfooter nav nav-tabs nav-justified">
                 <!-- いいね機能 -->
                 <li>
-                  <form method="POST" action="likes.php" value="<?php echo $dialy_id ?>; ">  <!-- 後で$_REQUESTに変更する -->
+                  <form method="POST" action="likes.php"> 
+                  <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>"> 
+                    <!-- 後で$_REQUESTに変更する -->
                     <a href="javascript:void(0)">
-                      <?//php if ($like['cnt'] == 0) { ?>
+                      <?php if ($like['cnt'] == 0) { ?>
                       <input type="hidden" name="btn" value="like">
                       <button type="submit">
                       <i class="fa fa-thumbs-up"></i>
                       <span>いいね</span></button>
-                      <?//php }else{ ?>
+                      <?php }else{ ?>
                       <input type="hidden" name="btn" value="unlike">
                       <button type="submit">
                       <i class="fa fa-thumbs-up"></i>
                       <span>いいねを取り消す</span></button>
-                      <?//php } ?>
+                      <?php } ?>
                     </a>
                   </form>  
                 </li>
