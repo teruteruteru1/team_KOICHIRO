@@ -19,6 +19,8 @@
     // 他 $_SESSION['user']['id']と$dialy['user_id']を比較して違ったら、機能を変更する
 
     //dialy idの取得
+    // dialy/id はパラメーターで飛んでくるため。$_REQUESTで取得
+    // そのIDを検索する
     //$dialy_id = $_REQUEST['dialy_id'];
     $dialy_id = 9; // 開発用にIDを偽装 
 
@@ -66,7 +68,7 @@
     // var_dump($tags);
     // echo '</pre>'; 
     
-    //いいね機能 ※learn.phpからほぼコピー
+    //いいね機能 ※learnsnsからほぼコピー
     // いいね！データの取得
     // 下のカウントは本人がいいねしているかどうかの確認のため１or０しか入らない
     $sql = 'SELECT COUNT(*) AS cnt FROM likes WHERE `user_id`=? AND `dialy_id`=?';
@@ -74,6 +76,15 @@
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
     $like = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // fav機能 ※likesと全く同じ
+    // favデータの取得
+    // 下のカウントは本人がいいねしているかどうかの確認のため１or０しか入らない
+    $sql = 'SELECT COUNT(*) AS cnt FROM favs WHERE `user_id`=? AND `dialy_id`=?';
+    $data = array($_SESSION['user']['id'], $dialy_id);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+    $fav = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 
@@ -270,17 +281,17 @@
                   <form method="POST" action="likes.php"> 
                   <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>"> 
                     <!-- 後で$_REQUESTに変更する -->
-                    <a href="javascript:void(0)">
+                    <a href="javascript:void(0)" >
                       <?php if ($like['cnt'] == 0) { ?>
-                      <input type="hidden" name="btn" value="like">
-                      <button type="submit">
-                      <i class="fa fa-thumbs-up"></i>
-                      <span>いいね</span></button>
+                        <input type="hidden" name="btn" value="like">
+                        <button type="submit">
+                        <i class="fa fa-thumbs-up"></i>
+                        <span>いいね</span></button>
                       <?php }else{ ?>
-                      <input type="hidden" name="btn" value="unlike">
-                      <button type="submit">
-                      <i class="fa fa-thumbs-up"></i>
-                      <span>いいねを取り消す</span></button>
+                        <input type="hidden" name="btn" value="unlike">
+                        <button type="submit">
+                        <i class="fa fa-thumbs-up"></i>
+                        <span>いいねを取り消す</span></button>
                       <?php } ?>
                     </a>
                   </form>  
@@ -292,12 +303,27 @@
                         <span>コメント</span>
                     </a>
                 </li>
+
+                <!-- favボタン -->
                 <li>
+                  <form method="POST" action="favs.php"> 
+                  <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>">
                     <a href="javascript:void(0)" title="Send this to friends or post it to your timeline">
+                      <?php if ($fav['cnt'] == 0) { ?>
+                        <input type="hidden" name="btn" value="fav">
+                        <button type="submit">
                         <i class="fa fa-thumb-tack"></i>
                         <span>クリップ</span>
+                      <?php }else{ ?>
+                        <input type="hidden" name="btn" value="unfav">
+                        <button type="submit">
+                        <i class="fa fa-thumb-tack"></i>
+                        <span>クリップを取り消す</span>
+                      <?php } ?>
                     </a>
+                  </form>
                 </li>
+                <!-- favボタン -->
             </ul>
         </div>
         <!-- like end -->
@@ -305,8 +331,8 @@
 		<!-- search start -->
 		<?php Include('partial/search.php'); ?>
 		<!-- search end -->
-		
-		<!-- Featured Work -->		
+
+		<!-- Featured Work -->
 		<section id="feature-work" class="protfolio-padding">
 			<div class="container">
 				<div class="row">
