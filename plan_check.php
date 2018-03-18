@@ -93,7 +93,7 @@
         $flag = 1; //flagも偽装
         
         // ①
-        $sql = 'INSERT INTO `dialies` SET `user_id` =?, `depart_date` =?, `arrival_date` =?,`month` =?, `number_days` =?, `budget` =?, `title` =?, `img_name` =?, `title_comment` =?, `flag` =?, `created` =NOW() ';
+        $sql = 'INSERT INTO `dialies` SET `user_id` =?, `depart_date` =?, `arrival_date` =?,`month` =?, `number_days` =?, `budget` =?, `title` =?, `title_img_name` =?, `title_comment` =?, `flag` =?, `created` =NOW() ';
         $date = array($_SESSION['user']['id'],$depart_date,$arrival_date,$month,$number_days,$budget,$title,$title_img_name,$title_comment,$flag);
         $stmt = $dbh->prepare($sql);
         $stmt->execute($date);
