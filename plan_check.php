@@ -3,7 +3,7 @@
     require ('dbconnect.php'); 
     require ('assets/functions.php');
 
-    //$_SESSION['PLAN']が未定義だったらformへ戻す
+    //$_SESSION['plan']が未定義だったらformへ戻す
     if(!$_SESSION['plan']){
         header('Location: plan_form.php');
         exit();

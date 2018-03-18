@@ -4,25 +4,24 @@
 
 
     //一回自分に飛ばす。確認ヴァーダンプ
-    // echo '<br>';
-    // echo '<br>';
-    // echo '<br>';
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
     // echo '<pre>'; 
     // echo '$_FILES = ';
     // var_dump($_FILES);
     // echo '</pre>';
-    // echo '<pre>'; 
-    // echo '$_POST = ';
-    // var_dump($_POST);
-    // echo '</pre>';
+    echo '<pre>'; 
+    echo '$_POST = ';
+    var_dump($_POST);
+    echo '</pre>';
      
 
 
     //プルダウン用の準備 
     include('partial/db_for_pulldown.php');   
 
-    // バリデーション
-    $errors = array(); //一度戻ってきたときのエラー用
+    
 
     //$_POSTが空じゃない時
     //ユーザーがformの送信ボタンを押した時
@@ -94,11 +93,27 @@
         // var_dump($tag_numbers);
         // echo '</pre>'; 
         //変数定義完了
+
+        // バリデーション開始
+        $errors = array(); //一度戻ってきたときのエラー用
+
+        //数字チェック
+        //数字は空チェックの前に置く
+        //ifで分岐させないといけない =>数字じゃない&&空じゃない時
+        if (!ctype_digit($budget)) {
+            $errors['budget'] = 'number';
+        }
+        if (!ctype_digit($number_days)) {
+            $errors['number_days'] = 'number';
+        }
         
         //各空チェック
         //いらないものは確認しない
         if ($title == '') {
             $errors['title'] = 'blank';
+        }
+        if ($title_img_name == '') {
+            $errors['title_img_name'] = 'blank';
         }
         if ($budget == '') {
             $errors['budget'] = 'blank';
@@ -106,10 +121,10 @@
         if ($number_days == '') {
             $errors['number_days'] = 'blank';
         }
-        if ($country_id_1 == '') {
+        if ($country_id_1 == '0') {
             $errors['country_id_1'] = 'blank';
         }
-        if ($area_id_1 == '') {
+        if ($area_id_1 == '0') {
             $errors['area_id_1'] = 'blank';
         }
         if ($depart_date == '') {
@@ -130,7 +145,6 @@
         // }
         
         // 空チェック終了
-
         // 画像拡張子のバリデーション開始
 
         // メイン画像用の拡張子チェック
@@ -163,10 +177,14 @@
             //     $errors['pic_names' . $b] = 'rewrite';
             // }
         }
+
+        
+
         echo '<pre>'; 
-    echo '$errors = ';
-    var_dump($errors);
-    echo '</pre>';
+        echo '$errors = ';
+        var_dump($errors);
+        echo '</pre>';
+
 
 
         // セッション登録開始
@@ -283,6 +301,9 @@
                     <br>
                     <div class="dialytittle col-sm-10" style="text-align: left;"> 
                         <p><h3>旅のタイトル</h3></p>
+                        <?php if (isset($errors['title'])) {  ?>
+                          <span style="color: red;">タイトルを入力してください</span><br>
+                        <?php }  ?>
                     </div>
                     <textarea name="title" cols="100" rows="1"></textarea>
                 </div>  
@@ -290,7 +311,16 @@
 
             <div id="b-box">
                 <div style="margin:10px;">
-                    <span>メイン写真を選択してください</span>
+                    <span>メイン写真を選択してください</span> <br>
+                      <?php if (isset($errors['title_img_name']) && $errors['title_img_name'] == 'blank') {  ?>
+                        <span style="color: red;">プロフィール画像を選択してください</span><br>
+                      <?php }  ?>
+                      <?php if (isset($errors['title_img_type']) && $errors['title_img_type'] == 'type') {  ?>
+                        <span style="color: red;">拡張子をjpg png gif にしてください</span><br>
+                      <?php }  ?>
+                      <?php if (isset($errors['title_img_name']) && $errors['title_img_name'] == 'rewrite') {  ?>
+                        <span style="color: red;">プロフィール画像を再選択してください</span><br>
+                      <?php }  ?>
                     <input type="file" style="margin: auto;" name="title_img_name" accept="mage/*">
                     <i class="fa fa-camera-retro my-size" aria-hidden="true"></i>
                 </div>
@@ -300,12 +330,25 @@
                 <div>
                     予算：
                     <input type="text" name="budget" style="width:100px" placeholder="(例)100000">
-                    (円)
+                    (円)<br>
+                    <?php if (isset($errors['budget']) && $errors['budget'] == 'blank') {  ?>
+                      <span style="color: red;">予算を入力してください</span><br>
+                    <?php }  ?>
+                    <?php if (isset($errors['budget']) && $errors['budget'] == 'number') {  ?>
+                      <span style="color: red;">数字で入力してください</span><br>
+                    <?php }  ?>
+                    
                 </div>
                 <div>
                     日数：
                     <input type="text" name="number_days" style="width:100px" placeholder="(例)30">
-                    (日)
+                    (日)<br>
+                    <?php if (isset($errors['number_days']) && $errors['number_days'] == 'blank') {  ?>
+                      <span style="color: red;">日数を入力してください</span><br>
+                    <?php }  ?>
+                    <?php if (isset($errors['number_days']) && $errors['number_days'] == 'number') {  ?>
+                      <span style="color: red;">数字で入力してください</span><br>
+                    <?php }  ?>
                 </div>
 
 
@@ -314,10 +357,13 @@
                     <option value="0" selected="selected" class="msg">国を選択して下さい</option>
                     <?php for($i=0; $i<$count_country ; $i++){ ?>
                      <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['id']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
-                    <?php } ?>
-                    
+                    <?php } ?>                  
                 </select>
                 <br>
+                <?php if (isset($errors['country_id_1'])) {  ?>
+                  <span style="color: red;">国を選択してください</span><br>
+                <?php }  ?>
+                
                 
                 都市1
                 <!-- 中間テーブルから国名を持ってくる？ -->
@@ -328,6 +374,9 @@
                   <?php } ?>
                 </select>
                 <br>
+                <?php if (isset($errors['area_id_1'])) {  ?>
+                  <span style="color: red;">地域/都市を選択してください</span><br>
+                <?php }  ?>
 
                 国2
                 <select name="country_id_2">
@@ -375,8 +424,15 @@
                 出発日時
                 <input type="text" class="datepicker" name="depart_date">
                 <br>
+                <?php if (isset($errors['depart_date'])) {  ?>
+                  <span style="color: red;">出発日を選択してください</span><br>
+                <?php }  ?>
                 帰宅日時
                 <input type="text" class="datepicker" name="arrival_date">
+                <br>
+                <?php if (isset($errors['arrival_date'])) {  ?>
+                  <span style="color: red;">帰宅日を選択してください</span><br>
+                <?php }  ?>
 
                 <!-- 概要 -->
                 
@@ -384,7 +440,10 @@
                     <h2>旅の概要</h2>
                     <textarea name="title_comment" cols="40" rows="3"></textarea>
                 </div>
-                <br>  
+                <?php if (isset($errors['title_comment'])) {  ?>
+                  <span style="color: red;">旅行の概要を入力してください</span><br>
+                <?php }  ?>
+                <br> 
                         
             </div>
 
