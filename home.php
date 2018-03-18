@@ -351,39 +351,39 @@
 		</footer>
 		<!-- Copyright -->
 		<div class="copyright">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-4">
-							<div class="copy-text">
-								<p>All Rights Reserved | Copyright 2016 © <strong><a href="http://www.pfind.com/goodies/bizium/">The Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's Goodies</a></strong></p>
-							</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="copy-text">
+							<p>All Rights Reserved | Copyright 2016 © <strong><a href="http://www.pfind.com/goodies/bizium/">The Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's Goodies</a></strong></p>
 						</div>
-						<div class="col-sm-5">
-							<div class="footer-menu pull-right">
-								<ul>
-									<li><a href="#">ホーム</a></li>
-									<li><a href="#">チーム概要</a></li>
-									<li><a href="#">サービス</a></li>
-									<li><a href="#">問い合わせ</a></li>
-									<!-- <li><a href="#">Pricing</a></li> -->
-									<!-- <li><a href="#">Blog</a></li> -->
-									<li><a href="#">連絡先</a></li>
-								</ul>
-							</div>
+					</div>
+					<div class="col-sm-5">
+						<div class="footer-menu pull-right">
+							<ul>
+								<li><a href="#">ホーム</a></li>
+								<li><a href="#">チーム概要</a></li>
+								<li><a href="#">サービス</a></li>
+								<li><a href="#">問い合わせ</a></li>
+								<!-- <li><a href="#">Pricing</a></li> -->
+								<!-- <li><a href="#">Blog</a></li> -->
+								<li><a href="#">連絡先</a></li>
+							</ul>
 						</div>
-						<div class="col-sm-3">
-							<div class="social">
-								<ul>
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-								</ul>
-							</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="social">
+							<ul>
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 		<!-- footer -->
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>

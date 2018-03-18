@@ -1,0 +1,30 @@
+/*plan_form.phpのデザイン修正用に作成*/
+#site-box {
+          width : 750px;
+}
+
+#a-box {    
+	width : 750px;
+}
+
+#b-box {
+          float: left;
+          width: 350px;
+}
+
+#c-box {
+          float: right;
+          width: 350px;
+}
+
+#d-box {  
+	width : 750px;
+}
+
+/*しおりのメイン写真位置に設置*/
+.my-size {
+  font-size: 20em 
+}
+/*しおりのメイン写真位置に設置*/
+
+/*plan_form.phpのデザイン修正用に作成*/
