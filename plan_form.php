@@ -452,7 +452,7 @@
 
         <!-- footer -->
         <footer>
-            <div class="container">
+            <div id="e-box" class="container">
                 <div class="row">
                 
                     <!-- Single Footer -->
