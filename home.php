@@ -2,7 +2,27 @@
     session_start();
     require('dbconnect.php');
 
+    // $max_commcnt = function getmax()
+    // $max_like = function getmax()
 
+
+    // $SQL= 'SELECT * FROM dialies WHERE commnt_count=? OR like_count=?'
+
+    // $date= array($max_commcnt,$max_like);
+    // $stmt = $dbh->prepare($sql);
+    // $stmt->execute($data);
+
+    // $tmp_dialies = array();
+
+    // while (true) {
+    //     $dialy = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    //     if ($dialy == false) {
+    //         break;
+    //     }
+    //     $tmp_dialies[] = $dialy;
+
+    // }
 
 
 
