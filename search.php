@@ -74,7 +74,7 @@
     // echo '</pre>';
 
     $search_check = $_POST['action'];
-    
+
     // echo $search_check;
 
     // POST送信で絞り込み検索を行なった場合
