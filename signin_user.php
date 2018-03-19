@@ -6,7 +6,7 @@
     }
 
     // サインインユーザー取得
-    $sql = 'SELECT * FROM `users` WHERE `id`=?';
+    $sql = 'SELECT * FROM `users` WHERE `user_id`=?';
     $data = array($_SESSION['user']['id']);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);

@@ -4,11 +4,16 @@
     echo '<br>';
     echo '<br>';
     echo '<br>';
+     echo '<pre>'; 
+    echo '$_POST = ';
+    var_dump($_POST);
+    echo '</pre>'; 
 
 
     session_start();  
     require ('dbconnect.php');
     include('assets/functions.php');
+    include('signin_user.php');
     echo 'userid = ' . $_SESSION['user']['id'];
 
     // 投稿表示
@@ -22,7 +27,7 @@
     // dialy/id はパラメーターで飛んでくるため。$_REQUESTで取得
     // そのIDを検索する
     //$dialy_id = $_REQUEST['dialy_id'];
-    $dialy_id = 9; // 開発用にIDを偽装 
+    $dialy_id = 15; // 開発用にIDを偽装 
 
 
     //①旅行記
@@ -85,6 +90,25 @@
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
     $fav = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    
+    // コメント機能開始
+    // 自分のページでPOST送信されたら
+    if (!empty($_POST)) {
+        // 変数定義
+        $comment = $_POST['comment'];
+        // $comment空チェック
+        if ($comment != '') {
+            $sql = 'INSERT INTO `commnets` SET `comment` =?, `user_id` =?, `dialy_id` =?, `created` =NOW() ';
+            $data = array($comment, $signin_user['id'],$dialy_id); //?の中に変数を入れる　それがプリペアードステイトメント
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute($data);
+        }
+ 
+
+
+
+    }
 
 
 
@@ -288,7 +312,7 @@
               <form id="contactform" action="" method="post" class="validateform" name="send-contact">
                 <div class="row">
                   <div class="col-lg-12 margintop10 field">
-                    <textarea rows="12" name="message" class="input-block-level" data-rule="required" data-msg="Please write something"></textarea>
+                    <textarea rows="12" name="comment" class="input-block-level" data-rule="required" data-msg="Please write something"></textarea>
                     <div class="validation">
                     </div>
                     <br>
