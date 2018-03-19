@@ -99,8 +99,8 @@
         $comment = $_POST['comment'];
         // $comment空チェック
         if ($comment != '') {
-            $sql = 'INSERT INTO `commnets` SET `comment` =?, `user_id` =?, `dialy_id` =?, `created` =NOW() ';
-            $data = array($comment, $signin_user['id'],$dialy_id); //?の中に変数を入れる　それがプリペアードステイトメント
+            $sql = 'INSERT INTO `comments` SET `comment` =?, `user_id` =?, `dialy_id` =?, `created` =NOW() ';
+            $data = array($comment, $signin_user['user_id'],$dialy_id); //?の中に変数を入れる　それがプリペアードステイトメント
             $stmt = $dbh->prepare($sql);
             $stmt->execute($data);
         }
