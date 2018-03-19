@@ -253,14 +253,14 @@
         帰着日 <?php echo h($arrival_date);?><br>
 
       <p style="color: blue;">国と地域</p> 
-      	国  １ <?php echo $countries[$country_id_1]['country_name'];?><br>
-      	都市１ <?php echo $areas[$area_id_1]['area_name'];?><br>
+      	国  １ <?php echo $places[$area_id_1]['country_name'];?><br>
+      	都市１ <?php echo $places[$area_id_1]['area_name'];?><br>
 
       	国  ２ 
         <?php if($country_id_2 == 'unselected'){ ?>
           <span style="color: red;">未指定</span><br>
         <?php }else{ ?>
-          <?php echo $countries[$country_id_2]['country_name'];?><br>
+          <?php echo $places[$area_id_2]['country_name'];?><br>
         <?php } ?>
         都市 ２ 
         <?php if($area_id_2 == 'unselected'){ ?>
@@ -272,7 +272,7 @@
         <?php if($country_id_3 == 'unselected'){ ?>
           <span style="color: red;">未指定</span><br>
         <?php }else{ ?>
-          <?php echo $countries[$country_id_3]['country_name'];?><br>
+          <?php echo $places[$area_id_3]['country_name'];?><br>
         <?php } ?>
         都市 ３ 
         <?php if($area_id_3 == 'unselected'){ ?>

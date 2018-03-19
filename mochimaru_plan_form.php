@@ -7,19 +7,43 @@
     echo '<br>';
     echo '<br>';
     echo '<br>';
-    // echo '<pre>'; 
-    // echo '$_FILES = ';
-    // var_dump($_FILES);
-    // echo '</pre>';
+    
     echo '<pre>'; 
-    echo '$_POST = ';
-    var_dump($_POST);
+    echo '$_REQUEST = ';
+    var_dump($_REQUEST);
     echo '</pre>';
      
 
 
     //プルダウン用の準備 
-    include('partial/db_for_pulldown.php');   
+    include('partial/db_for_pulldown.php');  
+
+    $errors = array();
+
+    // plan_check.php から戻ってきたときの処理
+    if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'rewrite') {
+        //$_GET = array ('action' => 'rewrite')
+        //$_POSTを偽装します
+        $_POST['title'] = $_SESSION['plan']['title'];
+        $_POST['budget'] = $_SESSION['plan']['budget'];
+        $_POST['number_days'] = $_SESSION['plan']['number_days'];
+        $_POST['country_id_1'] = $_SESSION['plan']['country_id_1'];
+        $_POST['country_id_2'] = $_SESSION['plan']['country_id_2'];
+        $_POST['country_id_3'] = $_SESSION['plan']['country_id_3'];
+        $_POST['area_id_1'] = $_SESSION['plan']['area_id_1'];
+        $_POST['area_id_2'] = $_SESSION['plan']['area_id_2'];
+        $_POST['area_id_3'] = $_SESSION['plan']['area_id_3'];
+        $_POST['depart_date'] = $_SESSION['plan']['depart_date'];
+        $_POST['arrival_date'] = $_SESSION['plan']['arrival_date'];
+        $_POST['title_comment'] = $_SESSION['plan']['title_comment'];
+        
+        //バリデーションメッセージ用
+        $errors['rewrite'] = true;
+    }
+    echo '<pre>'; 
+    echo '$_POST = ';
+    var_dump($_POST);
+    echo '</pre>';
 
     
 
@@ -47,6 +71,8 @@
         $arrival_date = $_POST['arrival_date'];
         $title_comment = $_POST['title_comment'];
 
+        echo $title . 'うんこ';
+
         // メイン画像の変数定義
         if (!isset($_REQUEST['action'])) {
             $title_img_name = $_FILES['title_img_name']['name'];
@@ -69,14 +95,14 @@
                 }    
             }
         }
-        echo '<pre>'; 
-        echo '$pic_names = ';
-        var_dump($pic_names);
-        echo '</pre>'; 
-        echo '<pre>'; 
-        echo '$comments = ';
-        var_dump($comments);
-        echo '</pre>'; 
+        // echo '<pre>'; 
+        // echo '$pic_names = ';
+        // var_dump($pic_names);
+        // echo '</pre>'; 
+        // echo '<pre>'; 
+        // echo '$comments = ';
+        // var_dump($comments);
+        // echo '</pre>'; 
 
         //tagの変数（配列）定義
         $tag_numbers = array();
@@ -95,7 +121,7 @@
         //変数定義完了
 
         // バリデーション開始
-        $errors = array(); //一度戻ってきたときのエラー用
+        
 
         //数字チェック
         //数字は空チェックの前に置く
@@ -302,7 +328,7 @@
                           <span style="color: red;">タイトルを入力してください</span><br>
                         <?php }  ?>
                     </div>
-                    <textarea name="title" cols="100" rows="1"></textarea>
+                    <textarea name="title" cols="100" rows="1" value="<?php echo $title ?>"></textarea>
                 </div>  
             </div>
 
@@ -310,7 +336,7 @@
                 <div style="margin:10px;">
                     <span>メイン写真を選択してください</span> <br>
                       <?php if (isset($errors['title_img_name']) && $errors['title_img_name'] == 'blank') {  ?>
-                        <span style="color: red;">プロフィール画像を選択してください</span><br>
+                        <span style="color: red;">トップに置く画像を選択してください</span><br>
                       <?php }  ?>
                       <?php if (isset($errors['title_img_type']) && $errors['title_img_type'] == 'type') {  ?>
                         <span style="color: red;">拡張子をjpg png gif にしてください</span><br>
@@ -487,6 +513,9 @@
                 <!-- 確認画面へ -->
                 <input type="submit" value="確認画面へ" class="btn btn-primary">            
             </div>
+            <!-- 仮機能 -->
+            <p>仮のボタン</p>  
+             <a href="sessiondelete.php">（仮）セッションを消して入力に戻る</a>
         </form>
     </div>
     <br>
