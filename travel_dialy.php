@@ -4,10 +4,7 @@
     echo '<br>';
     echo '<br>';
     echo '<br>';
-     echo '<pre>'; 
-    echo '$_POST = ';
-    var_dump($_POST);
-    echo '</pre>'; 
+    
 
 
     session_start();  
@@ -104,11 +101,24 @@
             $stmt = $dbh->prepare($sql);
             $stmt->execute($data);
         }
- 
-
-
-
     }
+
+    //コメントデータを全件取得
+    $sql = 'SELECT comments.*, users.user_name,users.img_name FROM comments LEFT JOIN users ON comments.user_id =users.user_id WHERE dialy_id =? ORDER BY comments.created DESC ';
+    $data = array($dialy_id);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+    //fetchする
+    $comments = array();
+
+    //省略形
+    while ($comment = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $comments[] = $comment;
+    }
+    echo '<pre>'; 
+    echo '$comments = ';
+    var_dump($comments);
+    echo '</pre>'; 
 
 
 
