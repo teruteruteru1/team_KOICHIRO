@@ -279,11 +279,32 @@
               </tr>
           </table>
         <?php } ?>
-        
 
+        <div class="contact">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <h4>この旅に関するコメントを入力する</strong></h4>
+              <form id="contactform" action="" method="post" class="validateform" name="send-contact">
+                <div class="row">
+                  <div class="col-lg-12 margintop10 field">
+                    <textarea rows="12" name="message" class="input-block-level" data-rule="required" data-msg="Please write something"></textarea>
+                    <div class="validation">
+                    </div>
+                    <br>
+                    <p>
+                      <button class="btn btn-theme margintop10 " type="submit">コメントする</button>
+                    </p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
         
-
-        <!-- like start -->
+        
+      <!-- like start -->
         <div>
             <ul class="newpostfooter nav nav-tabs nav-justified">
                 <!-- いいね機能 -->
@@ -307,12 +328,6 @@
                   </form>  
                 </li>
                 <!-- いいね機能終了 -->
-                <li>
-                    <a href="javascript:void(0)" title="Leave a comment">
-                        <i class="fa fa-comment-o"></i>
-                        <span>コメント</span>
-                    </a>
-                </li>
 
                 <!-- favボタン -->
                 <li>
@@ -456,17 +471,11 @@
 							</div>
 						</div>
 					</div>
-					
-					
 				</div>
 			</div>
-			
-			
 		</section>
-		
 		<!-- Featured Work -->
 
-		
 		<!-- Contact -->
 		<section id="contact-us">
 			<div class="container">
