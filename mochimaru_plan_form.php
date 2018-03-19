@@ -239,14 +239,7 @@
     // echo '$errors = ';
     // var_dump($errors);
     // echo '</pre>';
-
-      
-    
-
-
-
-
-    
+       
  ?>
 
 <!DOCTYPE html>
@@ -353,14 +346,21 @@
                     <?php if (isset($errors['number_days']) && $errors['number_days'] == 'number') {  ?>
                       <span style="color: red;">数字で入力してください</span><br>
                     <?php }  ?>
+     
+
                 </div>
+                <!-- テスト -->
+                <!-- <br>
+                <br>   -->
+
+                <!-- テスト -->
 
 
                 国1
                 <select name="country_id_1">
                     <option value="unselected" selected="selected" class="msg">国を選択して下さい</option>
                     <?php for($i=0; $i<$count_country ; $i++){ ?>
-                     <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['id']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
+                     <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
                     <?php } ?>                  
                 </select>
                 <br>
@@ -374,7 +374,7 @@
                 <select name="area_id_1">
                   <option value="unselected" selected="selected" class="msg">都市を選択して下さい</option>
                   <?php for($i=0; $i<$count_area ; $i++){ ?>
-                    <option value="<?php echo $areas[$i]['area_id']; ?>" class="<?php echo $areas[$i]['country_id']; ?>"><?php echo $areas[$i]['area_name']; ?></option>
+                    <option value="<?php echo $places[$i]['area_id']; ?>" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name']; ?></option>
                   <?php } ?>
                 </select>
                 <br>

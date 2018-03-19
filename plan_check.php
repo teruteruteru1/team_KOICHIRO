@@ -64,7 +64,7 @@
     $comments = array();
     $tag_number = array();
     for($x=0;$x<$count_session;$x++){
-    	  // tag 
+    	// tag 
         // dialys_tagsに格納
         $tag_name = 'tag' . $x;
         if(isset($_SESSION['plan'][$tag_name])){ 
@@ -238,8 +238,6 @@
   <!-- 戻るボタン仮 -->
   <a href="sessiondelete.php">（仮）セッションを消して入力に戻る</a>
 
-  <!-- ほんちゃん開始  コピペだけ3/10-->
-
   <div class="container">
     <div class="row">
       <p style="color: blue;">旅行記概要</p> 
@@ -289,6 +287,7 @@
           $count_tags = count($tag_number);
           echo $count_tags . '<br>' ;
           for($y=0;$y<$count_tags;$y++){ ?>
+            <p><?php echo $tag_number[$y]; ?></p> 
             <p><?php echo $tag_number[$y]; ?></p>          
         <?php } ?>
       
