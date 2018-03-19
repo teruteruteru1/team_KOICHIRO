@@ -115,6 +115,7 @@
     while ($comment = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $comments[] = $comment;
     }
+    $c_count = count($comments);
     echo '<pre>'; 
     echo '$comments = ';
     var_dump($comments);
@@ -336,6 +337,20 @@
           </div>
         </div>
       </div>
+      <!-- コメント表示開始 -->
+      <div class="col-xs-9">
+        <?php for($i=0;$i<$c_count;$i++){ ?>          
+          <div>
+            <img src="user_profile_img/<?php echo $comments[$i]['img_name']; ?> " width="60">
+            <?php echo $comments[$i]['user_name'] ?><br>
+            <br>
+            <?php echo $comments[$i]['comment'] ?>
+            <br>
+          </div>
+          <hr>
+        <?php } ?>
+      </div>
+      <!-- コメント表示終了 -->
         
         
       <!-- like start -->
