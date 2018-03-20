@@ -4,11 +4,13 @@
     echo '<br>';
     echo '<br>';
     echo '<br>';
+    
 
 
     session_start();  
     require ('dbconnect.php');
     include('assets/functions.php');
+    include('signin_user.php');
     echo 'userid = ' . $_SESSION['user']['id'];
 
     // 投稿表示
@@ -22,7 +24,7 @@
     // dialy/id はパラメーターで飛んでくるため。$_REQUESTで取得
     // そのIDを検索する
     //$dialy_id = $_REQUEST['dialy_id'];
-    $dialy_id = 9; // 開発用にIDを偽装 
+    $dialy_id = 15; // 開発用にIDを偽装 
 
 
     //①旅行記
@@ -85,6 +87,39 @@
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
     $fav = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    
+    // コメント機能開始
+    // 自分のページでPOST送信されたら
+    if (!empty($_POST)) {
+        // 変数定義
+        $comment = $_POST['comment'];
+        // $comment空チェック
+        if ($comment != '') {
+            $sql = 'INSERT INTO `comments` SET `comment` =?, `user_id` =?, `dialy_id` =?, `created` =NOW() ';
+            $data = array($comment, $signin_user['user_id'],$dialy_id); //?の中に変数を入れる　それがプリペアードステイトメント
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute($data);
+        }
+    }
+
+    //コメントデータを全件取得
+    $sql = 'SELECT comments.*, users.user_name,users.img_name FROM comments LEFT JOIN users ON comments.user_id =users.user_id WHERE dialy_id =? ORDER BY comments.created DESC ';
+    $data = array($dialy_id);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+    //fetchする
+    $comments = array();
+
+    //省略形
+    while ($comment = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $comments[] = $comment;
+    }
+    $c_count = count($comments);
+    echo '<pre>'; 
+    echo '$comments = ';
+    var_dump($comments);
+    echo '</pre>'; 
 
 
 
@@ -288,7 +323,7 @@
               <form id="contactform" action="" method="post" class="validateform" name="send-contact">
                 <div class="row">
                   <div class="col-lg-12 margintop10 field">
-                    <textarea rows="12" name="message" class="input-block-level" data-rule="required" data-msg="Please write something"></textarea>
+                    <textarea rows="12" name="comment" class="input-block-level" data-rule="required" data-msg="Please write something"></textarea>
                     <div class="validation">
                     </div>
                     <br>
@@ -302,6 +337,20 @@
           </div>
         </div>
       </div>
+      <!-- コメント表示開始 -->
+      <div class="col-xs-9">
+        <?php for($i=0;$i<$c_count;$i++){ ?>          
+          <div>
+            <img src="user_profile_img/<?php echo $comments[$i]['img_name']; ?> " width="60">
+            <?php echo $comments[$i]['user_name'] ?><br>
+            <br>
+            <?php echo $comments[$i]['comment'] ?>
+            <br>
+          </div>
+          <hr>
+        <?php } ?>
+      </div>
+      <!-- コメント表示終了 -->
         
         
       <!-- like start -->
