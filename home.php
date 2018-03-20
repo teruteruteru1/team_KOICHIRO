@@ -19,7 +19,7 @@
         $tmp_dialies[] = $dialy;
 
     }
-    echo $sql;
+    // echo $sql;
 
     $tmp = [];
     $dialies = [];
@@ -33,10 +33,10 @@
 
     $c = count($dialies);
 
-    echo '<pre>';
-    echo '$dialies = ';
-    var_dump($dialies);
-    echo '</pre>';
+    // echo '<pre>';
+    // echo '$dialies = ';
+    // var_dump($dialies);
+    // echo '</pre>';
 
 ?>
 
@@ -106,7 +106,7 @@
 						<img src="pictures/<?php echo htmlspecialchars($dialies[0]['pic_name']); ?>" alt="Top Blog1 Image">
 						<!-- <img src="assets/img/add_img/Top_Blog2_IMG_7607.jpg" alt="Top Blog1 Image"> -->
 						<div class="carousel-caption">
-							<p class="wow fadeInLeft"><?php echo htmlspecialchars($dialies[0]['title_comment']); ?></p>
+							<h1 class="wow fadeInLeft"><?php echo htmlspecialchars($dialies[0]['title']); ?></h1>
 							<div class="slider-btn wow fadeIn">
 								<a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[0]['dialy_id']); ?>" class="btn btn-learn">詳細をみる</a>
 							</div>
@@ -123,11 +123,11 @@
 
 		<!-- Single Blog1 -->
 		<section id="about" class="site-padding">
-			<div class="container">
+			<div class="container search_result">
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="about-image wow fadeInLeft">
-							<img src="pictures/<?php echo htmlspecialchars($dialies[1]['title_img_name']); ?>" alt="Single Blog1" />
+							<img src="pictures/<?php echo htmlspecialchars($dialies[1]['title_img_name']); ?>" alt="Single Blog1" width="600" height="400"/>
 						</div>
 					</div>
 					<div class="col-sm-6">
@@ -158,7 +158,7 @@
 					<!-- Single Blog2 -->
 					<div class="col-sm-4">
 						<div class="single-blog">
-							<img src="pictures/<?php echo htmlspecialchars($dialies[2]['title_img_name']); ?>" alt="Single Blog2" />
+							<img src="pictures/<?php echo htmlspecialchars($dialies[2]['title_img_name']); ?>" alt="Single Blog2" width="400" height="270"/>
 							<h4><a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[2]['dialy_id']); ?>"><?php echo htmlspecialchars($dialies[2]['title']); ?></a></h4>
 							<p><?php echo htmlspecialchars($dialies[2]['title_comment']); ?></p>
 							<a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[2]['dialy_id']); ?>">続きを読む>></a>
@@ -169,7 +169,7 @@
 					<!-- Single Blog3 -->
 					<div class="col-sm-4">
 						<div class="single-blog">
-							<img src="pictures/<?php echo htmlspecialchars($dialies[3]['title_img_name']); ?>" alt="Single Blog3" />
+							<img src="pictures/<?php echo htmlspecialchars($dialies[3]['title_img_name']); ?>" alt="Single Blog3" width="400" height="270"/>
 							<h4><a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[3]['dialy_id']); ?>"><?php echo htmlspecialchars($dialies[3]['title']); ?></a></h4>
 							<p><?php echo htmlspecialchars($dialies[3]['title_comment']); ?></p>
 							<a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[3]['dialy_id']); ?>">続きを読む>></a>
@@ -180,7 +180,7 @@
 					<!-- Single Blog4 -->
 					<div class="col-sm-4">
 						<div class="single-blog">
-							<img src="pictures/<?php echo htmlspecialchars($dialies[4]['title_img_name']); ?>" alt="Single Blog4" />
+							<img src="pictures/<?php echo htmlspecialchars($dialies[4]['title_img_name']); ?>" alt="Single Blog4" width="400" height="270"/>
 							<h4><a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[4]['dialy_id']); ?>"><?php echo htmlspecialchars($dialies[4]['title']); ?></a></h4>
 							<p><?php echo htmlspecialchars($dialies[4]['title_comment']); ?></p>
 							<a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[4]['dialy_id']); ?>">続きを読む>></a>
