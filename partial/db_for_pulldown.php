@@ -48,6 +48,28 @@
     $count_area = count($areas); 
     //echo $count_area;//国名プルダウン用カウントカントリー
 
+    //areasとcountriesをくっつける
+    $sql = 'SELECT `areas`.*,`countries`.country_name FROM areas LEFT JOIN countries ON `areas`.`country_id`=`countries`.`country_id` WHERE 1';
+    $data = array();
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+    while (true) {
+        $place = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($place == false) {
+            break;
+        }
+        $places[] = $place;
+    }
+
+    
+
+    // echo '<pre>'; 
+    // echo '$places = ';
+    // var_dump($places);
+    // echo '</pre>';
+
+
+
     //tagsテーブルから取ってくる
     $sql = 'SELECT * FROM `tags` WHERE 1';
     $data = array();
