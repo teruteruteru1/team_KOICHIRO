@@ -7,6 +7,10 @@
     var_dump($_POST);
     echo '</pre>';
 
+    //tagから飛んできたときの処理
+    //by 手代木
+    
+
     $query = '';
     $data = [];
 
