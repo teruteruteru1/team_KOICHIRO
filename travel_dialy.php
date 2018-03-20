@@ -229,6 +229,7 @@
         <div class="row">
           <div class="like col-sm-12">
             <ul>
+
                 <!-- いいね機能 -->
                 <li>
                   <form method="POST" action="likes.php"> 
@@ -371,6 +372,7 @@
           </table>
         <?php } ?>
 
+
         <div class="container">
           <div class="row">
             <div class="like col-sm-12" style="text-align: center;">
@@ -423,95 +425,48 @@
         </div>
           <!-- like end -->
 
-        <div class="contact">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12">
-              <h4>この旅に関するコメントを入力する</strong></h4>
-              <form id="contactform" action="" method="post" class="validateform" name="send-contact">
-                <div class="row">
-                  <div class="col-lg-12 margintop10 field">
-                    <textarea rows="12" name="comment" class="input-block-level" data-rule="required" data-msg="Please write something"></textarea>
-                    <div class="validation">
-                    </div>
-                    <br>
-                    <p>
-                      <button class="btn btn-theme margintop10 center-block" type="submit">コメントする</button>
-                    </p>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-<<<<<<< HEAD
-=======
-      <!-- コメント表示開始 -->
-      <div class="col-xs-9">
-        <?php for($i=0;$i<$c_count;$i++){ ?>          
-          <div>
-            <img src="user_profile_img/<?php echo $comments[$i]['img_name']; ?> " width="60">
-            <?php echo $comments[$i]['user_name'] ?><br>
-            <br>
-            <?php echo $comments[$i]['comment'] ?>
-            <br>
-          </div>
-          <hr>
-        <?php } ?>
-      </div>
-      <!-- コメント表示終了 -->
-        
-        
-      <!-- like start -->
-        <div>
-            <ul class="newpostfooter nav nav-tabs nav-justified">
-                <!-- いいね機能 -->
-                <li>
-                  <form method="POST" action="likes.php"> 
-                  <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>"> 
-                    <!-- 後で$_REQUESTに変更する -->
-                    <a href="javascript:void(0)" >
-                      <?php if ($like['cnt'] == 0) { ?>
-                        <input type="hidden" name="btn" value="like">
-                        <button type="submit">
-                        <i class="fa fa-thumbs-up"></i>
-                        <span>いいね</span></button>
-                      <?php }else{ ?>
-                        <input type="hidden" name="btn" value="unlike">
-                        <button type="submit">
-                        <i class="fa fa-thumbs-up"></i>
-                        <span>いいねを取り消す</span></button>
-                      <?php } ?>
-                    </a>
-                  </form>  
-                </li>
-                <!-- いいね機能終了 -->
 
-                <!-- favボタン -->
-                <li>
-                  <form method="POST" action="favs.php"> 
-                  <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>">
-                    <a href="javascript:void(0)" title="Send this to friends or post it to your timeline">
-                      <?php if ($fav['cnt'] == 0) { ?>
-                        <input type="hidden" name="btn" value="fav">
-                        <button type="submit">
-                        <i class="fa fa-thumb-tack"></i>
-                        <span>クリップ</span>
-                      <?php }else{ ?>
-                        <input type="hidden" name="btn" value="unfav">
-                        <button type="submit">
-                        <i class="fa fa-thumb-tack"></i>
-                        <span>クリップを取り消す</span>
+      
+        <div class="contact">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-9">
+                <h4>この旅に関するコメントを入力する</strong></h4>
+                <form id="contactform" action="" method="post" class="validateform" name="send-contact">
+                  <div class="row">
+                    <div class="col-lg-9 margintop10 field">
+                      <textarea rows="12" name="comment" class="input-block-level" data-rule="required" data-msg="Please write something"></textarea>
+                      <div class="validation">
+                      </div>
+                      <br>
+                      <p>
+                        <button class="btn btn-theme margintop10 " type="submit">コメントする</button>
+                      </p>                      
+                    </div>
+                    <!-- コメント表示開始 -->
+                    <div class="col-sm-3">
+                      <?php for($i=0;$i<$c_count;$i++){ ?>          
+                        <div>
+                          <img src="user_profile_img/<?php echo $comments[$i]['img_name']; ?> " width="60">
+                          <?php echo $comments[$i]['user_name'] ?><br>
+                          <br>
+                          <?php echo $comments[$i]['comment'] ?>
+                          <br>
+                        </div>
+                        <hr>
                       <?php } ?>
-                    </a>
-                  </form>
-                </li>
-                <!-- favボタン -->
-            </ul>
+                    </div>
+                    <!-- コメント表示終了 -->
+                  </div>
+                </form>
+              </div>
+            </div>
+           
+          </div>
         </div>
-        <!-- like end -->
->>>>>>> master
+      
+        
+      
 
 		<!-- search start -->
 		<?php Include('partial/search.php'); ?>
