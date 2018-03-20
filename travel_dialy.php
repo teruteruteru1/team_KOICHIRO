@@ -314,45 +314,7 @@
               </tr>
           </table>
         <?php } ?>
-
-        <div class="contact">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12">
-              <h4>この旅に関するコメントを入力する</strong></h4>
-              <form id="contactform" action="" method="post" class="validateform" name="send-contact">
-                <div class="row">
-                  <div class="col-lg-12 margintop10 field">
-                    <textarea rows="12" name="comment" class="input-block-level" data-rule="required" data-msg="Please write something"></textarea>
-                    <div class="validation">
-                    </div>
-                    <br>
-                    <p>
-                      <button class="btn btn-theme margintop10 " type="submit">コメントする</button>
-                    </p>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- コメント表示開始 -->
-      <div class="col-xs-9">
-        <?php for($i=0;$i<$c_count;$i++){ ?>          
-          <div>
-            <img src="user_profile_img/<?php echo $comments[$i]['img_name']; ?> " width="60">
-            <?php echo $comments[$i]['user_name'] ?><br>
-            <br>
-            <?php echo $comments[$i]['comment'] ?>
-            <br>
-          </div>
-          <hr>
-        <?php } ?>
-      </div>
-      <!-- コメント表示終了 -->
-        
-        
+          
       <!-- like start -->
         <div>
             <ul class="newpostfooter nav nav-tabs nav-justified">
@@ -401,6 +363,46 @@
             </ul>
         </div>
         <!-- like end -->
+
+        <div class="contact">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-9">
+                <h4>この旅に関するコメントを入力する</strong></h4>
+                <form id="contactform" action="" method="post" class="validateform" name="send-contact">
+                  <div class="row">
+                    <div class="col-lg-12 margintop10 field">
+                      <textarea rows="12" name="comment" class="input-block-level" data-rule="required" data-msg="Please write something"></textarea>
+                      <div class="validation">
+                      </div>
+                      <br>
+                      <p>
+                        <button class="btn btn-theme margintop10 " type="submit">コメントする</button>
+                      </p>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- コメント表示開始 -->
+            <div class="col-sm-3">
+              <?php for($i=0;$i<$c_count;$i++){ ?>          
+                <div>
+                  <img src="user_profile_img/<?php echo $comments[$i]['img_name']; ?> " width="60">
+                  <?php echo $comments[$i]['user_name'] ?><br>
+                  <br>
+                  <?php echo $comments[$i]['comment'] ?>
+                  <br>
+                </div>
+                <hr>
+              <?php } ?>
+            </div>
+            <!-- コメント表示終了 -->
+          </div>
+        </div>
+      
+        
+      
 
 		<!-- search start -->
 		<?php Include('partial/search.php'); ?>
