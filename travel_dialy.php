@@ -104,7 +104,7 @@
     }
 
     //コメントデータを全件取得
-    $sql = 'SELECT comments.*, users.user_name,users.img_name FROM comments LEFT JOIN users ON comments.user_id =users.user_id WHERE dialy_id =? ORDER BY comments.created DESC ';
+    $sql = 'SELECT comments.*, users.user_name,users.img_name FROM comments LEFT JOIN users ON comments.user_id =users.user_id WHERE dialy_id =? ORDER BY comments.created ASC ';
     $data = array($dialy_id);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
@@ -406,7 +406,7 @@
                       <a href="javascript:void(0)" title="Send this to friends or post it to your timeline">
                         <?php if ($fav['cnt'] == 0) { ?>
                           <input type="hidden" name="btn" value="fav">
-                          <button class="btn btn-success"　type="submit">
+                          <button class="btn btn-success" type="submit">
                           <i class="fa fa-thumb-tack" style="color: #FFFFFF"></i>
                           <span style="color: #FFFFFF;">クリップ</span>
                         <?php }else{ ?>
@@ -430,6 +430,7 @@
         <div class="contact">
           <div class="container">
             <div class="row">
+              <!--  グリッド機能は row の中を１２個に分ける -->
               <div class="col-sm-9">
                 <h4>この旅に関するコメントを入力する</strong></h4>
                 <form id="contactform" action="" method="post" class="validateform" name="send-contact">
@@ -447,10 +448,13 @@
                     <div class="col-sm-3">
                       <?php for($i=0;$i<$c_count;$i++){ ?>          
                         <div>
+                          <h6>コメント<?php echo $i+1 ?> </h6>
                           <img src="user_profile_img/<?php echo $comments[$i]['img_name']; ?> " width="60">
                           <?php echo $comments[$i]['user_name'] ?><br>
                           <br>
                           <?php echo $comments[$i]['comment'] ?>
+                          <br>
+                          <?php echo $comments[$i]['created'] ?>
                           <br>
                         </div>
                         <hr>

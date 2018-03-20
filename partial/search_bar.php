@@ -41,7 +41,7 @@
 			  <h2>旅行記検索</h2>
         <input type="hidden" name="action" value="word">
     		<div class="input-group">
-				  <input type="text" class="form-control" placeholder="キーワード検索：『エリア』+『目的』など" name="search_term" id="search_term" size=45>
+				  <input type="text" class="form-control" placeholder="複数ワードでも検索可能です" name="search_term" id="search_term" size=45>
           <!-- <?php if(isset($errors['search_term'])){ ?>
             <span style="color: red;">検索ワードを入力して下さい</span><br>
           <?php } ?> -->
@@ -59,7 +59,7 @@
 			      <select name="country" value="" class="form-control input-md" >
 			      	<option value="0" selected="selected" class="msg">国を選択して下さい</option>
                 <?php for($i=0; $i<$count_country ; $i++){ ?>
-                 <option value="<?php echo $countries[$i]['country_name']; ?>" class="<?php echo $countries[$i]['id']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
+                 <option value="<?php echo $countries[$i]['country_name']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
                 <?php } ?>
 				    </select>
 			  </div>
@@ -68,7 +68,7 @@
 				    <select name="city" value="" class="form-control input-md" >
 				    	<option value="0" selected="selected" class="msg">都市を選択して下さい</option>
               <?php for($i=0; $i<$count_area ; $i++){ ?>
-                <option value="<?php echo $areas[$i]['area_name']; ?>" class="<?php echo $areas[$i]['country_id']; ?>"><?php echo $areas[$i]['area_name']; ?></option>
+                <option value="<?php echo $areas[$i]['area_name']; ?>" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $areas[$i]['area_name']; ?></option>
               <?php } ?>
 				    </select>
 			    </div>
