@@ -147,11 +147,11 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="assets/css/search.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/travel_dialy.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <!--- Include the above in your HEAD tag -->
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -186,11 +186,20 @@
 						</div>
 					</div>
           <!-- ユーザー情報 -->
-          <div class="col-sm-6" >
-            <div class="">
-              <img src="user_profile_img/<?php echo $dialy['img_name']; ?> ">
-              <h4><?php echo $dialy['depart_date']; ?>~<?php echo $dialy['arrival_date']; ?></h4>
-              <hr>
+
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="span4 well">
+                <div class="row">
+                  <div class="user_profile">
+                    <a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="user_profile_img/<?php echo $dialy['img_name']; ?> "></a>
+                    <h4><?php echo $dialy['depart_date']; ?>~<?php echo $dialy['arrival_date']; ?></h4>
+                  </div>
+                  <div class="span3">
+                    <p><strong>名前</strong></p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 				</div>
@@ -212,24 +221,71 @@
 							<!-- <a href="#" class="btn btn-read-more">続きを読む</a> -->
 						</div>
 					</div>
-
 				</div>
 			</div>
             <!-- 概要終了 -->
-
 		</section>
-
-        <!-- tag start -->
-        <div class="tag">
+      <div class="container">
+        <div class="row">
+          <div class="like col-sm-12">
             <ul>
-              <?php for($y=0;$y<$count_tags;$y++){ ?>
-                <li><a href="#">＊<?php echo $tags[$y]['tag_name']; ?></a></li>
-              <?php } ?>
-            </ul>  
+                <!-- いいね機能 -->
+                <li>
+                  <form method="POST" action="likes.php"> 
+                  <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>"> 
+                    <!-- 後で$_REQUESTに変更する -->
+                    <a href="javascript:void(0)" >
+                      <?php if ($like['cnt'] == 0) { ?>
+                        <input type="hidden" name="btn" value="like">
+                        <button class="btn btn-primary" type="submit">
+                        <i class="fa fa-thumbs-up"></i>
+                        <span>いいね</span></button>
+                      <?php }else{ ?>
+                        <input type="hidden" name="btn" value="unlike">
+                        <button class="btn btn-primary" type="submit">
+                        <i class="fa fa-thumbs-up"></i>
+                        <span>いいねを取り消す</span></button>
+                      <?php } ?>
+                    </a>
+                  </form>  
+                </li>
+                <!-- いいね機能終了 -->
+
+                <!-- favボタン -->
+                <li>
+                  <form method="POST" action="favs.php"> 
+                  <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>">
+                    <a href="javascript:void(0)" title="Send this to friends or post it to your timeline">
+                      <?php if ($fav['cnt'] == 0) { ?>
+                        <input type="hidden" name="btn" value="fav">
+                        <button class="btn btn-success"　type="submit">
+                        <i class="fa fa-thumb-tack" style="color: #FFFFFF"></i>
+                        <span style="color: #FFFFFF;">クリップ</span>
+                      <?php }else{ ?>
+                        <input type="hidden" name="btn" value="unfav">
+                        <button class="btn btn-success" type="submit">
+                        <i class="fa fa-thumb-tack" style="color: #FFFFFF"></i>
+                        <span style="color: #FFFFFF;">クリップを取り消す</span>
+                      <?php } ?>
+                    </a>
+                  </form>
+                </li>
+                <!-- favボタン -->
+            </ul>
+          </div>
+          <!-- like end -->
+
+          <!-- tag start -->
+          <div class="tag col-sm-12">
+              <ul>
+                <?php for($y=0;$y<$count_tags;$y++){ ?>
+                  <li><a href="#">＊<?php echo $tags[$y]['tag_name']; ?></a></li>
+                <?php } ?>
+              </ul>  
+          </div>
+          <!-- tag end -->
         </div>
-        <!-- tag end -->
-
-
+      </div>
 
         <!--single dialy start-->
         <?php for($x=0;$x<$count_pics;$x++){ ?>
@@ -315,6 +371,58 @@
           </table>
         <?php } ?>
 
+        <div class="container">
+          <div class="row">
+            <div class="like col-sm-12" style="text-align: center;">
+              <ul>
+                  <!-- いいね機能 -->
+                  <li>
+                    <form method="POST" action="likes.php"> 
+                    <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>"> 
+                      <!-- 後で$_REQUESTに変更する -->
+                      <a href="javascript:void(0)" >
+                        <?php if ($like['cnt'] == 0) { ?>
+                          <input type="hidden" name="btn" value="like">
+                          <button class="btn btn-primary" type="submit">
+                          <i class="fa fa-thumbs-up"></i>
+                          <span>いいね</span></button>
+                        <?php }else{ ?>
+                          <input type="hidden" name="btn" value="unlike">
+                          <button class="btn btn-primary" type="submit">
+                          <i class="fa fa-thumbs-up"></i>
+                          <span>いいねを取り消す</span></button>
+                        <?php } ?>
+                      </a>
+                    </form>  
+                  </li>
+                  <!-- いいね機能終了 -->
+
+                  <!-- favボタン -->
+                  <li>
+                    <form method="POST" action="favs.php"> 
+                    <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>">
+                      <a href="javascript:void(0)" title="Send this to friends or post it to your timeline">
+                        <?php if ($fav['cnt'] == 0) { ?>
+                          <input type="hidden" name="btn" value="fav">
+                          <button class="btn btn-success"　type="submit">
+                          <i class="fa fa-thumb-tack" style="color: #FFFFFF"></i>
+                          <span style="color: #FFFFFF;">クリップ</span>
+                        <?php }else{ ?>
+                          <input type="hidden" name="btn" value="unfav">
+                          <button class="btn btn-success" type="submit">
+                          <i class="fa fa-thumb-tack" style="color: #FFFFFF"></i>
+                          <span style="color: #FFFFFF;">クリップを取り消す</span>
+                        <?php } ?>
+                      </a>
+                    </form>
+                  </li>
+                  <!-- favボタン -->
+              </ul>
+            </div>
+          </div>
+        </div>
+          <!-- like end -->
+
         <div class="contact">
         <div class="container">
           <div class="row">
@@ -328,7 +436,7 @@
                     </div>
                     <br>
                     <p>
-                      <button class="btn btn-theme margintop10 " type="submit">コメントする</button>
+                      <button class="btn btn-theme margintop10 center-block" type="submit">コメントする</button>
                     </p>
                   </div>
                 </div>
@@ -337,6 +445,8 @@
           </div>
         </div>
       </div>
+<<<<<<< HEAD
+=======
       <!-- コメント表示開始 -->
       <div class="col-xs-9">
         <?php for($i=0;$i<$c_count;$i++){ ?>          
@@ -401,6 +511,7 @@
             </ul>
         </div>
         <!-- like end -->
+>>>>>>> master
 
 		<!-- search start -->
 		<?php Include('partial/search.php'); ?>
