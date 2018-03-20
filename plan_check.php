@@ -3,6 +3,14 @@
     require ('dbconnect.php'); 
     require ('assets/functions.php');
 
+    //$_SESSION['plan']が未定義だったらformへ戻す
+    if(!$_SESSION['plan']){
+        header('Location: plan_form.php');
+        exit();
+    }
+    //国とタグを表示する準備 
+    include('partial/db_for_pulldown.php');  
+
     //作るもの
     //①飛び先
     //大抵はdiariesに飛ばす
@@ -15,11 +23,8 @@
     echo '$_SESSION = ';
     var_dump($_SESSION);
     echo '</pre>';
-    //完成するまで何もしない
-  	// if (!isset($_SESSION['plan'])) {
-  	// 	header('Location: register/signup.php');
-  	// 	exit();
-		// }
+    
+    
 
 		// $_POSTの数を数える
     // 各for文に対して、上限をこの変数に設定する  
@@ -51,13 +56,15 @@
     echo '<br>';
     echo 'teshirogi<br>';
     echo $area_id_1;
+    echo 'teshirogi<br>';
+    echo $country_id_1;
     
     // タグはfor文で回す
     $pic_names = array();
     $comments = array();
     $tag_number = array();
     for($x=0;$x<$count_session;$x++){
-    	  // tag 
+    	// tag 
         // dialys_tagsに格納
         $tag_name = 'tag' . $x;
         if(isset($_SESSION['plan'][$tag_name])){ 
@@ -93,7 +100,7 @@
         $flag = 1; //flagも偽装
         
         // ①
-        $sql = 'INSERT INTO `dialies` SET `user_id` =?, `depart_date` =?, `arrival_date` =?,`month` =?, `number_days` =?, `budget` =?, `title` =?, `img_name` =?, `title_comment` =?, `flag` =?, `created` =NOW() ';
+        $sql = 'INSERT INTO `dialies` SET `user_id` =?, `depart_date` =?, `arrival_date` =?,`month` =?, `number_days` =?, `budget` =?, `title` =?, `title_img_name` =?, `title_comment` =?, `flag` =?, `created` =NOW() ';
         $date = array($_SESSION['user']['id'],$depart_date,$arrival_date,$month,$number_days,$budget,$title,$title_img_name,$title_comment,$flag);
         $stmt = $dbh->prepare($sql);
         $stmt->execute($date);
@@ -150,7 +157,7 @@
         // //dialies_tags
         $count_tags = count($tag_number);
         for($b=0;$b<$count_tags;$b++){
-            $sql = 'INSERT INTO `dialies_tags` SET `tag_id` =?, `dialies_id` =?';
+            $sql = 'INSERT INTO `dialies_tags` SET `tag_id` =?, `dialy_id` =?';
             $date = array($tag_number[$b],$dialy_id['dialy_id']);
             $stmt = $dbh->prepare($sql);
             $stmt->execute($date);
@@ -231,8 +238,6 @@
   <!-- 戻るボタン仮 -->
   <a href="sessiondelete.php">（仮）セッションを消して入力に戻る</a>
 
-  <!-- ほんちゃん開始  コピペだけ3/10-->
-
   <div class="container">
     <div class="row">
       <p style="color: blue;">旅行記概要</p> 
@@ -248,18 +253,41 @@
         帰着日 <?php echo h($arrival_date);?><br>
 
       <p style="color: blue;">国と地域</p> 
-      	国１ <?php echo h($country_id_1);?><br>
-      	都市１ <?php echo h($area_id_1);?><br>
-      	国２ <?php echo h($country_id_2);?><br>
-      	都市２ <?php echo h($area_id_2);?><br>
-      	国３ <?php echo h($country_id_3);?><br>
-      	都市３ <?php echo h($area_id_3);?><br>
+      	国  １ <?php echo $places[$area_id_1]['country_name'];?><br>
+      	都市１ <?php echo $places[$area_id_1]['area_name'];?><br>
+
+      	国  ２ 
+        <?php if($country_id_2 == 'unselected'){ ?>
+          <span style="color: red;">未指定</span><br>
+        <?php }else{ ?>
+          <?php echo $places[$area_id_2]['country_name'];?><br>
+        <?php } ?>
+        都市 ２ 
+        <?php if($area_id_2 == 'unselected'){ ?>
+          <span style="color: red;">未指定</span><br>
+        <?php }else{ ?>
+          <?php echo $areas[$area_id_2]['area_name'];?><br>
+        <?php } ?>
+        国  ３ 
+        <?php if($country_id_3 == 'unselected'){ ?>
+          <span style="color: red;">未指定</span><br>
+        <?php }else{ ?>
+          <?php echo $places[$area_id_3]['country_name'];?><br>
+        <?php } ?>
+        都市 ３ 
+        <?php if($area_id_3 == 'unselected'){ ?>
+          <span style="color: red;">未指定</span><br>
+        <?php }else{ ?>
+          <?php echo $areas[$area_id_3]['area_name'];?><br>
+        <?php } ?>
+
 
       <p style="color: blue;">#タグ</p> 
         <?php 
           $count_tags = count($tag_number);
           echo $count_tags . '<br>' ;
           for($y=0;$y<$count_tags;$y++){ ?>
+            <p><?php echo $tag_number[$y]; ?></p> 
             <p><?php echo $tag_number[$y]; ?></p>          
         <?php } ?>
       
@@ -279,7 +307,7 @@
 
     <form method="POST" action="">
     	<input type="hidden" name="kubo" value="kaori">
-      <a href="plan_form.php?action=rewrite"><strong>戻る</strong></a><br>
+      <a href="mochimaru_plan_form.php?action=rewrite"><strong>戻る</strong></a><br>
       <!-- パラメータをつけることで、$_GET/$_REQUESTが使える -->
     	<input type="submit" value="しおり登録">
 

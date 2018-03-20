@@ -2,7 +2,7 @@
 
 session_start();
 unset($_SESSION['plan']);
-header('Location: plan_form.php');
+header('Location: mochimaru_plan_form.php');
 exit();
 
  ?>
