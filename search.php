@@ -2,10 +2,10 @@
     session_start();
     require('dbconnect.php');
 
-    // echo '<pre>';
-    // echo '$_POST = ';
-    // var_dump($_POST);
-    // echo '</pre>';
+    echo '<pre>';
+    echo '$_POST = ';
+    var_dump($_POST);
+    echo '</pre>';
 
     //tagから飛んできたときの処理
     //by 手代木
@@ -195,7 +195,9 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- search.phpだけ -->
     <link rel="stylesheet" href="assets/css/search.css">
+    <!-- search.phpだけ -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -301,6 +303,10 @@
         <script src="assets/js/jquery.sticky.js"></script>
         <script src="assets/js/wow.min.js"></script>
         <script src="assets/js/main.js"></script>
+        <!-- プルダウンのJS -->
+        <script src="assets/js/plan_country.js"></script>
+        <script src="assets/js/plan_country2.js"></script>
+        <!-- プルダウン用js -->
         <script type="text/javascript">
 
       $(document).ready(function(){
