@@ -44,9 +44,12 @@
 				$stmt = $dbh->prepare($sql);
 				$stmt->execute($data);
 
-				echo 'クリップ取り消し完了';
+				//echo 'クリップ取り消し完了';
 
 		}
+
+		header('Location: travel_dialy.php?dialy_id=' . $_POST['dialy_id']);
+		exit();
 
 		//fav数カウント→feeds tableのlike_countカラムへ更新
 		// $sql = 'SELECT COUNT(*) AS cnt FROM `favs` WHERE `dialy_id` =?';
@@ -62,13 +65,13 @@
 		// $stmt = $dbh->prepare($sql);
 		// $stmt->execute($data);
 
-		$url = parse_url($_SERVER['HTTP_REFERER']);
+		//$url = parse_url($_SERVER['HTTP_REFERER']);
 		// echo '<pre>'; 
-  // 	echo '$yrl = ';
-  // 	var_dump($url);
-  // 	echo '</pre>'; 
+	  //echo '$yrl = ';
+	  //var_dump($url);
+	  //echo '</pre>'; 
   
-  	$path = explode('/',$url['path']);
+  	//$path = explode('/',$url['path']);
   	// echo '<pre>'; 
   	// echo '$path = ';
   	// var_dump($path);

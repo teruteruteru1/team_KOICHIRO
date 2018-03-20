@@ -60,19 +60,21 @@
 		$stmt = $dbh->prepare($sql);
 		$stmt->execute($data);
 
-		//header関数を使うより先に出力があるとエラーになることがある（htmlやecho)
-		// header('Location: show.php?feed_id=' . $_POST['feed_id']);
-		// exit();
+		header('Location: travel_dialy.php?dialy_id=' . $_POST['dialy_id']);
+		exit();
+
+		//いいね機能を他のページに実装したら発動する
+
 
 		//echo $_SERVER['HTTP_REFERER'];
 
-		$url = parse_url($_SERVER['HTTP_REFERER']);
+		//$url = parse_url($_SERVER['HTTP_REFERER']);
 		// echo '<pre>'; 
-  // 	echo '$yrl = ';
-  // 	var_dump($url);
-  // 	echo '</pre>'; 
+	  // echo '$yrl = ';
+	  // var_dump($url);
+	  // echo '</pre>'; 
   
-  	$path = explode('/',$url['path']);
+  	//$path = explode('/',$url['path']);
   	// echo '<pre>'; 
   	// echo '$path = ';
   	// var_dump($path);
