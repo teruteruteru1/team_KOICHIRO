@@ -36,6 +36,7 @@
         $_POST['depart_date'] = $_SESSION['plan']['depart_date'];
         $_POST['arrival_date'] = $_SESSION['plan']['arrival_date'];
         $_POST['title_comment'] = $_SESSION['plan']['title_comment'];
+        //---------------------未完----------------------
         
         //バリデーションメッセージ用
         $errors['rewrite'] = true;
@@ -45,6 +46,23 @@
     var_dump($_POST);
     echo '</pre>';
 
+    //変数を空定義
+    //ページに飛んできたときにとりあえず変数を空にする
+    $title = '';
+    $budget = '';
+    $number_days = '';
+    $country_id_1 = '';
+    $country_id_2 = '';
+    $country_id_3 = '';
+    $area_id_1 = '';
+    $area_id_2 = '';
+    $area_id_3 = '';
+    $depart_date = '';
+    $arrival_date = '';
+    $title_comment = '';
+    $ = '';
+    $ = '';
+    //---------------------未完----------------------
     
 
     //$_POSTが空じゃない時
