@@ -97,7 +97,7 @@
         // $comment空チェック
         if ($comment != '') {
             $sql = 'INSERT INTO `comments` SET `comment` =?, `user_id` =?, `dialy_id` =?, `created` =NOW() ';
-            $data = array($comment, $signin_user['user_id'],$dialy_id); //?の中に変数を入れる　それがプリペアードステイトメント
+            $data = array($comment, $signin_user['user_id'],$dialy_id); //?の中に変数を入れるそれがプリペアードステイトメント
             $stmt = $dbh->prepare($sql);
             $stmt->execute($data);
         }
@@ -259,7 +259,7 @@
                     <a href="javascript:void(0)" title="Send this to friends or post it to your timeline">
                       <?php if ($fav['cnt'] == 0) { ?>
                         <input type="hidden" name="btn" value="fav">
-                        <button class="btn btn-success"　type="submit">
+                        <button class="btn btn-success" type="submit">
                         <i class="fa fa-thumb-tack" style="color: #FFFFFF"></i>
                         <span style="color: #FFFFFF;">クリップ</span>
                       <?php }else{ ?>
