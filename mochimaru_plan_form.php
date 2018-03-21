@@ -65,10 +65,10 @@
         //バリデーションメッセージ用
         $errors['rewrite'] = true;
     }
-    echo '<pre>'; 
-    echo '$_POST = ';
-    var_dump($_POST);
-    echo '</pre>';
+    // echo '<pre>'; 
+    // echo '$_POST = ';
+    // var_dump($_POST);
+    // echo '</pre>';
 
     //変数を空定義
     //ページに飛んできたときにとりあえず変数を空にする
@@ -367,7 +367,7 @@
     <!-- Header end -->
 
     <div id="site-box" style="text-align: center;">
-        <form method="POST" action="" enctype="multipart/form-data">
+        <form method="POST" action="mochimaru_plan_form.php" enctype="multipart/form-data">
 
             <!-- title start -->
             <div id="a-box" style="text-align: center;">
@@ -395,7 +395,7 @@
                         <span style="color: red;">拡張子をjpg png gif にしてください</span><br>
                       <?php }  ?>
                       <?php if (isset($errors['title_img_name']) && $errors['title_img_name'] == 'rewrite') {  ?>
-                        <span style="color: red;">プロフィール画像を再選択してください</span><br>
+                        <span style="color: red;">メイン画像を再選択してください</span><br>
                       <?php }  ?>
                     <input type="file" style="margin: auto;" name="title_img_name" accept="mage/*">
                     <i class="fa fa-camera-retro my-size" aria-hidden="true"></i>
@@ -570,19 +570,20 @@
                 <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >写真を追加する</button>
                 <br>
               <?php }else{ ?>
-                  <?php for($e=0;$e<$count_comments;$e++){ ?>
-                    <div class="parent">
+                  <div class="parent">
+                    <?php for($e=0;$e<$count_comments;$e++){ ?>
                       <!-- <div class="field" style="padding-bottom:8px; margin-bottom:20px;"> -->
                       <div class="field" style="text-align: center;">
                         <p>旅の写真を選んでください</p>
                         <!-- <div> -->
-                        <input type="file" style="margin: auto;" name="pic_name0" accept="image/*">
+                        <input type="file" style="margin: auto;" name="pic_name . <?php echo $e; ?>" accept="image/*">
                         <!-- </div> -->
-                        <textarea name="comment0" cols="40" rows="5"></textarea><br>
+                        <textarea name="comment . <?php echo $e; ?>" cols="40" rows="5"><?php echo $action_comments[$e]; ?></textarea><br>
                         <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br><br>
                       </div>
-                    </div> <!-- class=parentの外にボタンを出しておく -->
-                  <?php } ?>
+                    <?php } ?>
+                  </div> <!-- class=parentの外にボタンを出しておく -->
+                  
                   <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >写真を追加する</button>
                   <br>
               <?php } ?>
