@@ -50,7 +50,7 @@
         }
         $count_comments = count($action_comments);  
 
-        // $_SESSIONを消す
+
 
         //---------------------未完----------------------
         echo '<pre>'; 
@@ -84,6 +84,7 @@
     $depart_date = '';
     $arrival_date = '';
     $title_comment = '';
+    $title_img_name = '';
     // $ = '';
     // $ = '';
     // //---------------------未完----------------------
@@ -138,11 +139,11 @@
                 }    
             }
         }
-        echo '<pre>'; 
-        echo '$pic_names = ';
-        var_dump($pic_names);
-        echo '</pre>'; 
         // echo '<pre>'; 
+        // echo '$pic_names = ';
+        // var_dump($pic_names);
+        // echo '</pre>'; 
+        // // echo '<pre>'; 
         // echo '$comments = ';
         // var_dump($comments);
         // echo '</pre>'; 
@@ -261,7 +262,13 @@
 
 
         // セッション登録開始
-         if (empty($errors)) {
+        // $_SESSIONを消す
+        if (!isset($_REQUEST['action'])) {
+            unset($_SESSION['plan']);
+        }
+        
+
+        if (empty($errors)) {
             $date_str = date('YmdHid');
             $submit_title_img_name = $date_str . $title_img_name;
             move_uploaded_file($_FILES['title_img_name']['tmp_name'], 'title_img/' .$submit_title_img_name);
@@ -300,7 +307,7 @@
 
             header('Location: plan_check.php');
             exit();
-         }
+        }
 
     }
 
@@ -546,7 +553,8 @@
                 <!-- 写真とコメント -->
                 <!-- 戻ってきたかどうかで表示画面を変更する -->
               
-
+              <?php if(!isset($_REQUEST['action'])){ ?>
+              <!-- 戻ってきてないときはそのまま -->
                 <div class="parent">
                   <!-- <div class="field" style="padding-bottom:8px; margin-bottom:20px;"> -->
                   <div class="field" style="text-align: center;">
@@ -561,6 +569,23 @@
 
                 <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >写真を追加する</button>
                 <br>
+              <?php }else{ ?>
+                  <?php for($e=0;$e<$count_comments;$e++){ ?>
+                    <div class="parent">
+                      <!-- <div class="field" style="padding-bottom:8px; margin-bottom:20px;"> -->
+                      <div class="field" style="text-align: center;">
+                        <p>旅の写真を選んでください</p>
+                        <!-- <div> -->
+                        <input type="file" style="margin: auto;" name="pic_name0" accept="image/*">
+                        <!-- </div> -->
+                        <textarea name="comment0" cols="40" rows="5"></textarea><br>
+                        <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br><br>
+                      </div>
+                    </div> <!-- class=parentの外にボタンを出しておく -->
+                  <?php } ?>
+                  <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >写真を追加する</button>
+                  <br>
+              <?php } ?>
 
               <!-- タグを選択 -->
               <p>旅行記につけるタグを選んでください</p>

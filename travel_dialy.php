@@ -370,6 +370,9 @@
               </tr>
           </table>
         <?php } ?>
+        <div>
+          <h6>写真編集ボタン</h6>
+        </div>
 
 
         <div class="container">
