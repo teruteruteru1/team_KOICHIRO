@@ -8,10 +8,10 @@
     echo '<br>';
     echo '<br>';
     
-    echo '<pre>'; 
-    echo '$_REQUEST = ';
-    var_dump($_REQUEST);
-    echo '</pre>';
+    // echo '<pre>'; 
+    // echo '$_REQUEST = ';
+    // var_dump($_REQUEST);
+    // echo '</pre>';
      
 
 
@@ -113,7 +113,7 @@
         $arrival_date = $_POST['arrival_date'];
         $title_comment = $_POST['title_comment'];
 
-        echo $title . 'うんこ';
+        
 
         // メイン画像の変数定義
         if (!isset($_REQUEST['action'])) {
@@ -130,6 +130,7 @@
                 if(isset($_FILES['pic_name' . $n]['name'])){
                     $pic_number = $_FILES['pic_name' . $n]['name'];
                     $pic_names[] = $pic_number;
+                    echo $pic_number;
                 }
                 if(isset($_POST['comment' . $n])){
                     $comment_number = $_POST['comment' . $n];
@@ -137,10 +138,10 @@
                 }    
             }
         }
-        // echo '<pre>'; 
-        // echo '$pic_names = ';
-        // var_dump($pic_names);
-        // echo '</pre>'; 
+        echo '<pre>'; 
+        echo '$pic_names = ';
+        var_dump($pic_names);
+        echo '</pre>'; 
         // echo '<pre>'; 
         // echo '$comments = ';
         // var_dump($comments);
@@ -423,13 +424,19 @@
                 </div>
 
                 国1
+                <!-- $postと同じものがあったら、そこのoptionにselectedを当てる。elseそうじゃなかったらそのまま -->
                 <select name="country_id_1" class="country_select">
-                    <option value="unselected" selected="selected" class="msg">国を選択して下さい</option>
+                    <option value="unselected" selected="" class="msg">国を選択して下さい</option>
                     <?php for($i=0; $i<$count_country ; $i++){ ?>
-                     <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
+                      <?php if (isset($_POST['country_id_1']) && $_POST['country_id_1'] == $countries[$i]['country_id']){ ?>
+                        <option value="<?php echo $countries[$i]['country_id']; ?>" selected="selected" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>                        
+                      <?php }else{ ?>                    
+                        <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
+                      <?php } ?>
                     <?php } ?>                  
                 </select>
                 <br>
+
                 <?php if (isset($errors['country_id_1'])) {  ?>
                   <span style="color: red;">国を選択してください</span><br>
                 <?php }  ?>
@@ -516,20 +523,23 @@
 
             <div id="d-box">
                 <!-- 写真とコメント -->
-              <div class="parent">
-                <!-- <div class="field" style="padding-bottom:8px; margin-bottom:20px;"> -->
-                <div class="field" style="text-align: center;">
-                  <p>旅の写真を選んでください</p>
-                  <!-- <div> -->
-                  <input type="file" style="margin: auto;" name="pic_name0" accept="image/*">
-                  <!-- </div> -->
-                  <textarea name="comment0" cols="40" rows="5"></textarea><br>
-                  <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br><br>
-                </div>
-              </div> <!-- class=parentの外にボタンを出しておく -->
+                <!-- 戻ってきたかどうかで表示画面を変更する -->
+              
 
-              <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >写真を追加する</button>
-              <br>
+                <div class="parent">
+                  <!-- <div class="field" style="padding-bottom:8px; margin-bottom:20px;"> -->
+                  <div class="field" style="text-align: center;">
+                    <p>旅の写真を選んでください</p>
+                    <!-- <div> -->
+                    <input type="file" style="margin: auto;" name="pic_name0" accept="image/*">
+                    <!-- </div> -->
+                    <textarea name="comment0" cols="40" rows="5"></textarea><br>
+                    <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br><br>
+                  </div>
+                </div> <!-- class=parentの外にボタンを出しておく -->
+
+                <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >写真を追加する</button>
+                <br>
 
               <!-- タグを選択 -->
               <p>旅行記につけるタグを選んでください</p>
