@@ -2,20 +2,14 @@
     session_start();
     require('dbconnect.php');
 
-    // echo '<pre>';
-    // echo '$_POST = ';
-    // var_dump($_POST);
-    // echo '</pre>';
-
-    //tagから飛んできたときの処理
-    //by 手代木
-    
+    echo '<pre>';
+    echo '$_POST = ';
+    var_dump($_POST);
+    echo '</pre>';
 
     $query = '';
     $data = [];
 
-    
-    
     if (!empty($_POST['action'])) {
         $search_check = $_POST['action'];
     } else {
@@ -221,7 +215,7 @@
             <div class="col-sm-6">
 
               <div class="about-image wow fadeInLeft">
-                <img src="pictures/<?php echo htmlspecialchars($dialies[$i]['title_img_name']); ?>" alt="Single Blog1" width="600" height="400"/>
+                <img src="title_img/<?php echo htmlspecialchars($dialies[$i]['title_img_name']); ?>" alt="Single Blog1" width="600" height="400"/>
               </div>
             </div>
             <div class="col-sm-6">

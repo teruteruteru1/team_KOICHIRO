@@ -59,17 +59,17 @@
 
 
     <link rel="stylesheet" href="assets/css/normalize.css">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- <link rel="stylesheet" href="assets/css/main.css"> -->
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="assets/css/search.css">
-    <link rel="stylesheet" href="assets/css/header.css">
+    <!-- <link rel="stylesheet" href="assets/css/responsive.css"> -->
+    <!-- <link rel="stylesheet" href="assets/css/search.css"> -->
+    <!-- <link rel="stylesheet" href="assets/css/header.css"> -->
 
     <!-- Include the above in your HEAD tag -->
-		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+		<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 		<!-- Include the above in your HEAD tag -->
@@ -205,85 +205,112 @@
 			</div>
 
 			<div class="featured-list">
-				<div id="grid" class="clearfix">
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_gourmet_IMG_7336.jpg" alt="Feature Image" />
-						</a>
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>グルメ</h2>
-							</div>
-						</div>
-					</div>
 
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_sightseeing_P9131618.jpg" alt="Feature Image" />
-						</a>
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>観光</h2>
-							</div>
-						</div>
-					</div>
+			  <div id="grid" class="clearfix">
+			  	<form method="POST" action="search.php" class="form">
+			  	  <div class="thumb">
+			  	    <input type="hidden" name="action" value="selected">
+			      <input type="hidden" name="theme" value="1">
+			  		  <button type="submit" >
+			  		  	<img src="assets/img/add_img/theme_gourmet_IMG_7336.jpg" alt="Feature Image" />
+			  		  </button>
+			  		  <div class="thumb-rollover">
+			  		  	<div class="project-title">
+			  		  		<h2>グルメ</h2>
+			  		  	</div>
+			  		  </div>
+			  	  </div>
+			 	  </form>
 
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_shopping_IMG_20180216_144151.jpg" alt="Feature Image" />
-						</a>
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>ショッピング</h2>
-							</div>
-						</div>
-					</div>
+			  	<form method="POST" action="search.php" class="form">
+			  	  <div class="thumb">
+			  	    <input type="hidden" name="action" value="selected">
+			        <input type="hidden" name="theme" value="2">
+                <button type="submit">
+							    <img src="assets/img/add_img/theme_sightseeing_P9131618.jpg" alt="Feature Image" />
+							  </button>
+						  <div class="thumb-rollover">
+							  <div class="project-title">
+								  <h2>観光</h2>
+							  </div>
+						  </div>
+					  </div>
+					</form>
 
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_sport_outdoor_DSC_1043.jpg" alt="Feature Image" />
-						</a>
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>スポーツ・アウトドア</h2>
-							</div>
-						</div>
-					</div>
+					<form method="POST" action="search.php" class="form">
+			  	  <div class="thumb">
+			  	    <input type="hidden" name="action" value="selected">
+			        <input type="hidden" name="theme" value="2">
+                <button type="submit">
+							    <img src="assets/img/add_img/theme_shopping_IMG_20180216_144151.jpg" alt="Feature Image" />
+							  </button>
+						  <div class="thumb-rollover">
+							  <div class="project-title">
+								  <h2>観光</h2>
+							  </div>
+						  </div>
+					  </div>
+					</form>
 
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_hotel_IMG_20180218_112635.jpg" alt="Feature Image" />
-						</a>
+					<form method="POST" action="search.php" class="form">
+			  	  <div class="thumb">
+			  	    <input type="hidden" name="action" value="selected">
+			        <input type="hidden" name="theme" value="2">
+                <button type="submit">
+							    <img src="assets/img/add_img/theme_sport_outdoor_DSC_1043.jpg" alt="Feature Image" />
+							  </button>
+						  <div class="thumb-rollover">
+							  <div class="project-title">
+								  <h2>スポーツ・アウトドア</h2>
+							  </div>
+						  </div>
+					  </div>
+					</form>
 
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>ホテル</h2>
-							</div>
-						</div>
-					</div>
+					<form method="POST" action="search.php" class="form">
+			  	  <div class="thumb">
+			  	    <input type="hidden" name="action" value="selected">
+			        <input type="hidden" name="theme" value="2">
+                <button type="submit">
+							    <img src="assets/img/add_img/theme_hotel_IMG_20180218_112635.jpg" alt="Feature Image" />
+							  </button>
+						  <div class="thumb-rollover">
+							  <div class="project-title">
+								  <h2>ホテル</h2>
+							  </div>
+						  </div>
+					  </div>
+					</form>
 
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_relaxation_1519138253418.jpg" alt="Feature Image" />
-						</a>
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>リラクゼーション</h2>
-							</div>
-						</div>
-					</div>
+					<form method="POST" action="search.php" class="form">
+			  	  <div class="thumb">
+			  	    <input type="hidden" name="action" value="selected">
+			        <input type="hidden" name="theme" value="2">
+                <button type="submit">
+							    <img src="assets/img/add_img/theme_relaxation_1519138253418.jpg" alt="Feature Image" />
+							  </button>
+						  <div class="thumb-rollover">
+							  <div class="project-title">
+								  <h2>リラクゼーション</h2>
+							  </div>
+						  </div>
+					  </div>
+					</form>
 
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_resort_1519138015328.jpg" alt="Feature Image" />
-						</a>
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>リゾート</h2>
-								<!-- <h5>Category: Web Design</h5> -->
-							</div>
-						</div>
-					</div>
+					<form method="POST" action="search.php" class="form">
+			  	  <div class="thumb">
+			  	    <input type="hidden" name="action" value="selected">
+			        <input type="hidden" name="theme" value="2">
+                <button type="submit">
+							    <img src="assets/img/add_img/theme_resort_1519138015328.jpg" alt="Feature Image" />
+							  </button>
+						  <div class="thumb-rollover">
+							  <div class="project-title">
+								  <h2>リゾート</h2>
+							  </div>
+						  </div>
+					  </div>
+					</form>
 
 					<div class="thumb">
 						<a href="#">
@@ -295,7 +322,8 @@
 							</div>
 						</div>
 					</div>
-				</div>
+
+				 </div>
 			</div>
 		</section>
 		<!-- Featured Work -->
