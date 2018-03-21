@@ -3,10 +3,10 @@
 		session_start();
 		include('dbconnect.php');
 		require('signin_user.php');
-		echo '<pre>'; 
-    echo '$_REQUEST = ';
-    var_dump($_REQUEST);
-    echo '</pre>';
+		// echo '<pre>'; 
+  //   echo '$_REQUEST = ';
+  //   var_dump($_REQUEST);
+  //   echo '</pre>';
 
 		//パラメーターの取得
 		if (!isset($_REQUEST['comment_id'])) {
@@ -14,7 +14,7 @@
 				exit();
 		}
 
-		//本人確認（投稿者とサインインユーザーが一致しているか）
+		//本人確認（コメントユーザーとサインインユーザーが一致しているか）
 		$sql = 'SELECT * FROM comments WHERE comment_id=?';
     $data = array($_REQUEST['comment_id']);
     $stmt = $dbh->prepare($sql);
