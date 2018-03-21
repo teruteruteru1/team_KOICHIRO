@@ -24,7 +24,6 @@
     // dialy/id はパラメーターで飛んでくるため。$_REQUESTで取得
     // そのIDを検索する
     $dialy_id = $_REQUEST['dialy_id'];
-    $dialy_id = 15; // 開発用にIDを偽装 
 
 
     //①旅行記

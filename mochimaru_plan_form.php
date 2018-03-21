@@ -30,19 +30,17 @@
         $_POST['title'] = $_SESSION['plan']['title'];
         $_POST['budget'] = $_SESSION['plan']['budget'];
         $_POST['number_days'] = $_SESSION['plan']['number_days'];
-        $_POST['country_id_1'] = $_SESSION['plan']['country_id_1'];
-        $_POST['country_id_2'] = $_SESSION['plan']['country_id_2'];
-        $_POST['country_id_3'] = $_SESSION['plan']['country_id_3'];
-        $_POST['area_id_1'] = $_SESSION['plan']['area_id_1'];
-        $_POST['area_id_2'] = $_SESSION['plan']['area_id_2'];
-        $_POST['area_id_3'] = $_SESSION['plan']['area_id_3'];
+        // $_POST['country_id_1'] = $_SESSION['plan']['country_id_1'];
+        // $_POST['country_id_2'] = $_SESSION['plan']['country_id_2'];
+        // $_POST['country_id_3'] = $_SESSION['plan']['country_id_3'];
+        // $_POST['area_id_1'] = $_SESSION['plan']['area_id_1'];
+        // $_POST['area_id_2'] = $_SESSION['plan']['area_id_2'];
+        // $_POST['area_id_3'] = $_SESSION['plan']['area_id_3'];
         $_POST['depart_date'] = $_SESSION['plan']['depart_date'];
         $_POST['arrival_date'] = $_SESSION['plan']['arrival_date'];
         $_POST['title_comment'] = $_SESSION['plan']['title_comment'];
 
         // 写真のコメントたちを一回配列に戻す
-
-        // 
         $action_comments = array();
         for($d=0;$d<$count_session;$d++){
             if (!empty($_SESSION['plan']['comment' . $d])) {
@@ -50,7 +48,9 @@
                 $action_comments[] = $action_comment;
             }              
         }
-        $count_comments = count($action_comments);
+        $count_comments = count($action_comments);  
+
+        // $_SESSIONを消す
 
         //---------------------未完----------------------
         echo '<pre>'; 
@@ -516,39 +516,39 @@
 
             <div id="d-box">
                 <!-- 写真とコメント -->
-                <div class="parent">
-                    <!-- <div class="field" style="padding-bottom:8px; margin-bottom:20px;"> -->
-                    <div class="field" style="text-align: center;">
-                            <p>旅の写真を選んでください</p>
-                            <!-- <div> -->
-                            <input type="file" style="margin: auto;" name="pic_name0" accept="image/*">
-                            <!-- </div> -->
-                            <textarea name="comment0" cols="40" rows="5"></textarea><br>
-                            <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br><br>
-                    </div>
-                 </div> <!-- class=parentの外にボタンを出しておく -->
-
-                 <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >写真を追加する</button>
-                <br>
-
-                <!-- タグを選択 -->
-                <p>旅行記につけるタグを選んでください</p>
-                <div>
-                  <?php for($i=0; $i<$count_tag ; $i++){ ?>
-                      <?php if($tags[$i]['tag_id']%4 == 0){ ?>
-                          <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label><br>
-                      <?php }else{ ?>
-                          <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label>
-                      <?php } ?>
-                  <?php }?>
+              <div class="parent">
+                <!-- <div class="field" style="padding-bottom:8px; margin-bottom:20px;"> -->
+                <div class="field" style="text-align: center;">
+                  <p>旅の写真を選んでください</p>
+                  <!-- <div> -->
+                  <input type="file" style="margin: auto;" name="pic_name0" accept="image/*">
+                  <!-- </div> -->
+                  <textarea name="comment0" cols="40" rows="5"></textarea><br>
+                  <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br><br>
                 </div>
-                <?php if (isset($errors['tag'])) {  ?>
-                  <span style="color: red;">旅行記につけるタグを最低一つ選択してください</span><br>
-                <?php }  ?>
-                <br>
-            
-                <!-- 確認画面へ -->
-                <input type="submit" value="確認画面へ" class="btn btn-primary">            
+              </div> <!-- class=parentの外にボタンを出しておく -->
+
+              <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >写真を追加する</button>
+              <br>
+
+              <!-- タグを選択 -->
+              <p>旅行記につけるタグを選んでください</p>
+              <div>
+                <?php for($i=0; $i<$count_tag ; $i++){ ?>
+                    <?php if($tags[$i]['tag_id']%4 == 0){ ?>
+                        <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label><br>
+                    <?php }else{ ?>
+                        <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label>
+                    <?php } ?>
+                <?php }?>
+              </div>
+              <?php if (isset($errors['tag'])) {  ?>
+                <span style="color: red;">旅行記につけるタグを最低一つ選択してください</span><br>
+              <?php }  ?>
+              <br>
+          
+              <!-- 確認画面へ -->
+              <input type="submit" value="確認画面へ" class="btn btn-primary">            
             </div>
             <!-- 仮機能 -->
             <p>仮のボタン</p>  
