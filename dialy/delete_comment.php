@@ -1,8 +1,8 @@
 <?php 
 
 		session_start();
-		require('dbconnect.php');
-		//require('signin_user.php');
+		include('../dbconnect.php');
+		require('../signin_user.php');
 		// echo '<pre>'; 
   //   echo '$_REQUEST = ';
   //   var_dump($_REQUEST);

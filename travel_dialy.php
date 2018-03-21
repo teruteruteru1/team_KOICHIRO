@@ -231,7 +231,7 @@
 
                 <!-- いいね機能 -->
                 <li>
-                  <form method="POST" action="likes.php"> 
+                  <form method="POST" action="dialy/likes.php"> 
                   <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>"> 
                     <!-- 後で$_REQUESTに変更する -->
                     <a href="javascript:void(0)" >
@@ -253,7 +253,7 @@
 
                 <!-- favボタン -->
                 <li>
-                  <form method="POST" action="favs.php"> 
+                  <form method="POST" action="dialy/favs.php"> 
                   <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>">
                     <a href="javascript:void(0)" title="Send this to friends or post it to your timeline">
                       <?php if ($fav['cnt'] == 0) { ?>
@@ -378,7 +378,7 @@
               <ul>
                   <!-- いいね機能 -->
                   <li>
-                    <form method="POST" action="likes.php"> 
+                    <form method="POST" action="dialy/likes.php"> 
                     <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>"> 
                       <!-- 後で$_REQUESTに変更する -->
                       <a href="javascript:void(0)" >
@@ -400,7 +400,7 @@
 
                   <!-- favボタン -->
                   <li>
-                    <form method="POST" action="favs.php"> 
+                    <form method="POST" action="dialy/favs.php"> 
                     <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>">
                       <a href="javascript:void(0)" title="Send this to friends or post it to your timeline">
                         <?php if ($fav['cnt'] == 0) { ?>
@@ -454,7 +454,7 @@
                           <?php echo $comments[$i]['comment'] ?>
                           <br>
                           <?php if($comments[$i]['user_id'] == $_SESSION['user']['id']){ ?>
-                            <a href="delete_comment.php?comment_id=<?php echo $comments[$i]['comment_id']; ?>&dialy_id=<?php echo $_REQUEST['dialy_id']; ?>" class="btn btn-danger btn-xs">削除</a>
+                            <a href="dialy/delete_comment.php?comment_id=<?php echo $comments[$i]['comment_id']; ?>&dialy_id=<?php echo $_REQUEST['dialy_id']; ?>" class="btn btn-danger btn-xs">削除</a>
                           <?php } ?>
                           <br>
                           <?php echo $comments[$i]['created'] ?>

@@ -26,53 +26,50 @@
     $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
 
-  	if ($_POST['btn'] == 'like') {
+  	if ($_POST['btn'] == 'fav') {
   		  // echo 'user id' . $_SESSION['user']['id'] . 'のユーザーが fees id' . $_POST['feed_id'] . 'のユーザーが投稿にいいね！する';
   
-		  	$sql = 'INSERT INTO `likes` SET `user_id` =?, `dialy_id` =?';
+		  	$sql = 'INSERT INTO `favs` SET `user_id` =?, `dialy_id` =?';
 				$data = array($_SESSION['user']['id'], $_POST['dialy_id']); 
 				$stmt = $dbh->prepare($sql);
 				$stmt->execute($data);
 
-				echo 'いいね登録完了';
+				echo 'クリップ登録完了';
 
-		}elseif ($_POST['btn'] == 'unlike') {
+		}elseif ($_POST['btn'] == 'unfav') {
 				// echo 'user id' . $_SESSION['user']['id'] . 'のユーザーが fees id' . $_POST['feed_id'] . 'のユーザーが投稿にいいね！を取り消す';
 
-				$sql = 'DELETE FROM `likes` WHERE `user_id` =? AND `dialy_id` =?';
+				$sql = 'DELETE FROM `favs` WHERE `user_id` =? AND `dialy_id` =?';
 				$data = array($_SESSION['user']['id'], $_POST['dialy_id']); 
 				$stmt = $dbh->prepare($sql);
 				$stmt->execute($data);
+
+				//echo 'クリップ取り消し完了';
+
 		}
 
-		//いいね数カウント→feeds tableのlike_countカラムへ更新
-		$sql = 'SELECT COUNT(*) AS cnt FROM `likes` WHERE `dialy_id` =?';
-		$data = array($_POST['dialy_id']); 
-		$stmt = $dbh->prepare($sql);
-		$stmt->execute($data);
-		$like = $stmt->fetch(PDO::FETCH_ASSOC);
-
-		// echo '<br>';
-		// echo 'いいね数：'. $like['cnt'];
-
-		$sql = 'UPDATE `dialies` SET `like_count` =?, `updated` = NOW() WHERE `dialy_id`=?';
-		$data = array($like['cnt'],$_POST['dialy_id']); 
-		$stmt = $dbh->prepare($sql);
-		$stmt->execute($data);
-
-		header('Location: travel_dialy.php?dialy_id=' . $_POST['dialy_id']);
+		header('Location: ../travel_dialy.php?dialy_id=' . $_POST['dialy_id']);
 		exit();
 
-		//いいね機能を他のページに実装したら発動する
+		//fav数カウント→feeds tableのlike_countカラムへ更新
+		// $sql = 'SELECT COUNT(*) AS cnt FROM `favs` WHERE `dialy_id` =?';
+		// $data = array($_POST['dialy_id']); 
+		// $stmt = $dbh->prepare($sql);
+		// $stmt->execute($data);
+		// $fav = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-		//echo $_SERVER['HTTP_REFERER'];
+
+		// $sql = 'UPDATE `dialies` SET `fav_count` =?, `updated` = NOW() WHERE `dialy_id`=?';
+		// $data = array($fav['cnt'],$_POST['dialy_id']); 
+		// $stmt = $dbh->prepare($sql);
+		// $stmt->execute($data);
 
 		//$url = parse_url($_SERVER['HTTP_REFERER']);
 		// echo '<pre>'; 
-	  // echo '$yrl = ';
-	  // var_dump($url);
-	  // echo '</pre>'; 
+	  //echo '$yrl = ';
+	  //var_dump($url);
+	  //echo '</pre>'; 
   
   	//$path = explode('/',$url['path']);
   	// echo '<pre>'; 
