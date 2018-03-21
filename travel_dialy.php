@@ -454,7 +454,7 @@
                           <?php echo $comments[$i]['comment'] ?>
                           <br>
                           <?php if($comments[$i]['user_id'] == $_SESSION['user']['id']){ ?>
-                            <a href="delete_comment.php?dialy_id=<?php echo $dialy_id; ?>" class="btn btn-danger btn-xs">削除</a>
+                            <a href="delete_comment.php?comment_id=<?php echo $comments[$i]['comment_id']; ?>&dialy_id=<?php echo $_REQUEST['dialy_id']; ?>" class="btn btn-danger btn-xs">削除</a>
                           <?php } ?>
                           <br>
                           <?php echo $comments[$i]['created'] ?>
