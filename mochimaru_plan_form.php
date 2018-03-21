@@ -22,6 +22,9 @@
 
     // plan_check.php から戻ってきたときの処理
     if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'rewrite') {
+        // for文のためにsesshnno数を数える
+        $count_session = $_SESSION['plan']['count'];
+
         //$_GET = array ('action' => 'rewrite')
         //$_POSTを偽装します
         $_POST['title'] = $_SESSION['plan']['title'];
@@ -36,7 +39,28 @@
         $_POST['depart_date'] = $_SESSION['plan']['depart_date'];
         $_POST['arrival_date'] = $_SESSION['plan']['arrival_date'];
         $_POST['title_comment'] = $_SESSION['plan']['title_comment'];
+
+        // 写真のコメントたちを一回配列に戻す
+
+        // 
+        $action_comments = array();
+        for($d=0;$d<$count_session;$d++){
+            if (!empty($_SESSION['plan']['comment' . $d])) {
+                $action_comment = $_SESSION['plan']['comment' . $d];
+                $action_comments[] = $action_comment;
+            }              
+        }
+        $count_comments = count($action_comments);
+
         //---------------------未完----------------------
+        echo '<pre>'; 
+        echo '$_POST = ';
+        var_dump($_POST);
+        echo '</pre>';
+        echo '<pre>'; 
+        echo '$action_comments = ';
+        var_dump($action_comments);
+        echo '</pre>';
         
         //バリデーションメッセージ用
         $errors['rewrite'] = true;
@@ -60,9 +84,9 @@
     $depart_date = '';
     $arrival_date = '';
     $title_comment = '';
-    $ = '';
-    $ = '';
-    //---------------------未完----------------------
+    // $ = '';
+    // $ = '';
+    // //---------------------未完----------------------
     
 
     //$_POSTが空じゃない時
@@ -236,7 +260,7 @@
 
 
         // セッション登録開始
-        if (empty($errors)) {
+         if (empty($errors)) {
             $date_str = date('YmdHid');
             $submit_title_img_name = $date_str . $title_img_name;
             move_uploaded_file($_FILES['title_img_name']['tmp_name'], 'title_img/' .$submit_title_img_name);
@@ -275,7 +299,7 @@
 
             header('Location: plan_check.php');
             exit();
-        }
+         }
 
     }
 
@@ -336,7 +360,8 @@
 
     <div id="site-box" style="text-align: center;">
         <form method="POST" action="" enctype="multipart/form-data">
-            
+
+            <!-- title start -->
             <div id="a-box" style="text-align: center;">
                 <div> 
                     <br>
@@ -346,10 +371,12 @@
                           <span style="color: red;">タイトルを入力してください</span><br>
                         <?php }  ?>
                     </div>
-                    <textarea name="title" cols="100" rows="1" value="<?php echo $title ?>"></textarea>
+                    <textarea name="title" cols="100" rows="1" value="<?php echo $title ?>"><?php echo $title; ?></textarea>
                 </div>  
             </div>
+            <!-- title end -->
 
+            <!-- main picture start -->
             <div id="b-box">
                 <div style="margin:10px;">
                     <span>メイン写真を選択してください</span> <br>
@@ -366,11 +393,12 @@
                     <i class="fa fa-camera-retro my-size" aria-hidden="true"></i>
                 </div>
             </div>
+            <!-- main picture end -->
 
             <div id="c-box">
                 <div>
                     予算：
-                    <input type="text" name="budget" style="width:100px" placeholder="(例)100000">
+                    <input type="text" name="budget" style="width:100px" placeholder="(例)100000" value="<?php echo $budget ?>">
                     (円)<br>
                     <?php if (isset($errors['budget']) && $errors['budget'] == 'blank') {  ?>
                       <span style="color: red;">予算を入力してください</span><br>
@@ -382,7 +410,7 @@
                 </div>
                 <div>
                     日数：
-                    <input type="text" name="number_days" style="width:100px" placeholder="(例)30">
+                    <input type="text" name="number_days" style="width:100px" placeholder="(例)30" value="<?php echo $number_days ?>">
                     (日)<br>
                     <?php if (isset($errors['number_days']) && $errors['number_days'] == 'blank') {  ?>
                       <span style="color: red;">日数を入力してください</span><br>
@@ -393,12 +421,6 @@
      
 
                 </div>
-                <!-- テスト -->
-                <!-- <br>
-                <br>   -->
-
-                <!-- テスト -->
-
 
                 国1
                 <select name="country_id_1" class="country_select">
@@ -414,7 +436,6 @@
                 
                 
                 都市1
-                <!-- 中間テーブルから国名を持ってくる？ -->
                 <select name="area_id_1" class="area_select">
                   <option value="unselected" selected="selected" class="msg">都市を選択して下さい</option>
                   <?php for($i=0; $i<$count_area ; $i++){ ?>
@@ -437,7 +458,6 @@
                 <br>
                 
                 都市2
-                <!-- 中間テーブルから国名を持ってくる？ -->
                 <select name="area_id_2" class="area_select">
                   <option value="unselected" selected="selected" class="msg">都市を選択して下さい</option>
                   <?php for($i=0; $i<$count_area ; $i++){ ?>
@@ -457,7 +477,6 @@
                 <br>
                 
                 都市3
-                <!-- 中間テーブルから国名を持ってくる？ -->
                 <select name="area_id_3" class="area_select">
                   <option value="unselected" selected="selected" class="msg">都市を選択して下さい</option>
                   <?php for($i=0; $i<$count_area ; $i++){ ?>
@@ -470,13 +489,13 @@
                 <script type="text/javascript" src="plan_calender.js"></script>
             
                 出発日時
-                <input type="text" class="datepicker" name="depart_date">
+                <input type="text" class="datepicker" name="depart_date" value="<?php echo $depart_date; ?>">
                 <br>
                 <?php if (isset($errors['depart_date'])) {  ?>
                   <span style="color: red;">出発日を選択してください</span><br>
                 <?php }  ?>
                 帰宅日時
-                <input type="text" class="datepicker" name="arrival_date">
+                <input type="text" class="datepicker" name="arrival_date" value="<?php echo $arrival_date; ?>">
                 <br>
                 <?php if (isset($errors['arrival_date'])) {  ?>
                   <span style="color: red;">帰宅日を選択してください</span><br>
@@ -486,7 +505,7 @@
                 
                 <div style="margin:10px;">
                     <h2>旅の概要</h2>
-                    <textarea name="title_comment" cols="40" rows="3"></textarea>
+                    <textarea name="title_comment" cols="40" rows="3"> <?php echo $title_comment; ?> </textarea>
                 </div>
                 <?php if (isset($errors['title_comment'])) {  ?>
                   <span style="color: red;">旅行の概要を入力してください</span><br>
@@ -510,7 +529,7 @@
                  </div> <!-- class=parentの外にボタンを出しておく -->
 
                  <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >写真を追加する</button>
-                <!--  <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button> --><br>
+                <br>
 
                 <!-- タグを選択 -->
                 <p>旅行記につけるタグを選んでください</p>

@@ -26,13 +26,15 @@
     
     
 
-		// $_POSTの数を数える
+    // $_SESSIONの数を数える
     // 各for文に対して、上限をこの変数に設定する  
     $count_session = count($_SESSION['plan']);
     echo $count_session;
     echo '<br>';
+    // 編集で戻った時用
+    $_SESSION['plan']['count'] = $count_session;
  
- 		// 変数定義開始
+ 	// 変数定義開始
     // dialiesに格納 
     $title = $_SESSION['plan']['title'];
     $budget = $_SESSION['plan']['budget'];
