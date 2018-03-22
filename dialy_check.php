@@ -9,7 +9,7 @@
         exit();
     }
     //国とタグを表示する準備 
-    include('partial/db_for_pulldown.php');  
+    include('partial/db_for_pulldown.php'); 
 
     //作るもの
     //①飛び先
@@ -34,7 +34,7 @@
     // 編集で戻った時用
     $_SESSION['plan']['count'] = $count_session;
  
- 	// 変数定義開始
+ 	  // 変数定義開始
     // dialiesに格納 
     $title = $_SESSION['plan']['title'];
     $budget = $_SESSION['plan']['budget'];
@@ -165,7 +165,11 @@
             $stmt->execute($date);
         }
 
-        
+        echo '<br>';
+        echo '<pre>'; 
+        echo '$tags = ';
+        var_dump($tags);
+        echo '</pre>';
     
 
 
@@ -180,7 +184,7 @@
         $_SESSION['plan'] = array();
         unset($_SESSION['plan']);
 
-        header('Location: plan.php');
+        header('Location: home.php');
         exit();
         
 
@@ -288,9 +292,8 @@
         <?php 
           $count_tags = count($tag_number);
           echo $count_tags . '<br>' ;
-          for($y=0;$y<$count_tags;$y++){ ?>
-            <p><?php echo $tag_number[$y]; ?></p> 
-            <p><?php echo $tag_number[$y]; ?></p>          
+          for($y=1;$y<$count_tags+1;$y++){ ?>
+            <p><?php echo $tags[$y]['tag_name']; ?></p>         
         <?php } ?>
       
       <p style="color: blue;">写真とコメント</p> 
@@ -309,9 +312,9 @@
 
     <form method="POST" action="">
     	<input type="hidden" name="kubo" value="kaori">
-      <a href="dialy_form.php?action=rewrite"><strong>戻る</strong></a><br>
+      <a href="dialy_form.php?action=rewrite"><strong>再入力</strong></a><br>
       <!-- パラメータをつけることで、$_GET/$_REQUESTが使える -->
-    	<input type="submit" value="しおり登録">
+    	<input type="submit" value="旅行記登録">
 
     </form>
 
