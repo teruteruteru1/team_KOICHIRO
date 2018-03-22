@@ -4,9 +4,9 @@
 
 
     //一回自分に飛ばす。確認ヴァーダンプ
-    // echo '<br>';
-    // echo '<br>';
-    // echo '<br>';
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
     
     // echo '<pre>'; 
     // echo '$_REQUEST = ';
@@ -22,6 +22,9 @@
 
     // plan_check.php から戻ってきたときの処理
     if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'rewrite') {
+        // for文のためにsesshnno数を数える
+        $count_session = $_SESSION['plan']['count'];
+
         //$_GET = array ('action' => 'rewrite')
         //$_POSTを偽装します
         $_POST['title'] = $_SESSION['plan']['title'];
@@ -36,15 +39,55 @@
         $_POST['depart_date'] = $_SESSION['plan']['depart_date'];
         $_POST['arrival_date'] = $_SESSION['plan']['arrival_date'];
         $_POST['title_comment'] = $_SESSION['plan']['title_comment'];
+
+        // 写真のコメントたちを一回配列に戻す
+        $action_comments = array();
+        for($d=0;$d<$count_session;$d++){
+            if (!empty($_SESSION['plan']['comment' . $d])) {
+                $action_comment = $_SESSION['plan']['comment' . $d];
+                $action_comments[] = $action_comment;
+            }              
+        }
+        $count_comments = count($action_comments);  
+
+
+
+        //---------------------未完----------------------
+        echo '<pre>'; 
+        echo '$_POST = ';
+        var_dump($_POST);
+        echo '</pre>';
+        echo '<pre>'; 
+        echo '$action_comments = ';
+        var_dump($action_comments);
+        echo '</pre>';
         
         //バリデーションメッセージ用
         $errors['rewrite'] = true;
     }
-    // echo '<pre>'; 
-    // echo '$_POST = ';
-    // var_dump($_POST);
-    // echo '</pre>';
+    echo '<pre>'; 
+    echo '$_POST = ';
+    var_dump($_POST);
+    echo '</pre>';
 
+    //変数を空定義
+    //ページに飛んできたときにとりあえず変数を空にする
+    $title = '';
+    $budget = '';
+    $number_days = '';
+    $country_id_1 = '';
+    $country_id_2 = '';
+    $country_id_3 = '';
+    $area_id_1 = '';
+    $area_id_2 = '';
+    $area_id_3 = '';
+    $depart_date = '';
+    $arrival_date = '';
+    $title_comment = '';
+    $title_img_name = '';
+    // $ = '';
+    // $ = '';
+    // //---------------------未完----------------------
     
 
     //$_POSTが空じゃない時
@@ -71,7 +114,7 @@
         $arrival_date = $_POST['arrival_date'];
         $title_comment = $_POST['title_comment'];
 
-        echo $title . 'うんこ';
+        
 
         // メイン画像の変数定義
         if (!isset($_REQUEST['action'])) {
@@ -88,6 +131,7 @@
                 if(isset($_FILES['pic_name' . $n]['name'])){
                     $pic_number = $_FILES['pic_name' . $n]['name'];
                     $pic_names[] = $pic_number;
+                    echo $pic_number;
                 }
                 if(isset($_POST['comment' . $n])){
                     $comment_number = $_POST['comment' . $n];
@@ -99,7 +143,7 @@
         // echo '$pic_names = ';
         // var_dump($pic_names);
         // echo '</pre>'; 
-        // echo '<pre>'; 
+        // // echo '<pre>'; 
         // echo '$comments = ';
         // var_dump($comments);
         // echo '</pre>'; 
@@ -218,6 +262,12 @@
 
 
         // セッション登録開始
+        // $_SESSIONを消す
+        if (!isset($_REQUEST['action'])) {
+            unset($_SESSION['plan']);
+        }
+        
+
         if (empty($errors)) {
             $date_str = date('YmdHid');
             $submit_title_img_name = $date_str . $title_img_name;
@@ -265,7 +315,6 @@
     // echo '$errors = ';
     // var_dump($errors);
     // echo '</pre>';
-       
  ?>
 
 <!DOCTYPE html>
@@ -273,7 +322,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>plan_form</title>
+    <title>mo_plan_form</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -511,7 +560,6 @@
              <a href="sessiondelete.php">（仮）セッションを消して入力に戻る</a>
           </form>
         </div>
-        <br>
       </div>
     </div>
   </div>

@@ -28,7 +28,7 @@
 			              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">マイページ<span class="caret"></span></a>
 			              <ul class="dropdown-menu">
 			                <li><a href="#">クリップ</a></li>
-			                <li><a href="plan_form.php">しおり入力</a></li>
+			                <!-- <li><a href="plan_form.php">しおり入力</a></li> -->
 			                <li><a href="dialy_form.php">投稿記作成</a></li>
 			                <li><a href="#">自投稿閲覧</a></li>
 			              </ul>
