@@ -23,8 +23,7 @@
     //dialy idの取得
     // dialy/id はパラメーターで飛んでくるため。$_REQUESTで取得
     // そのIDを検索する
-    //$dialy_id = $_REQUEST['dialy_id'];
-    $dialy_id = 15; // 開発用にIDを偽装 
+    $dialy_id = $_REQUEST['dialy_id'];
 
 
     //①旅行記
@@ -97,14 +96,14 @@
         // $comment空チェック
         if ($comment != '') {
             $sql = 'INSERT INTO `comments` SET `comment` =?, `user_id` =?, `dialy_id` =?, `created` =NOW() ';
-            $data = array($comment, $signin_user['user_id'],$dialy_id); //?の中に変数を入れる　それがプリペアードステイトメント
+            $data = array($comment, $signin_user['user_id'],$dialy_id); //?の中に変数を入れるそれがプリペアードステイトメント
             $stmt = $dbh->prepare($sql);
             $stmt->execute($data);
         }
     }
 
     //コメントデータを全件取得
-    $sql = 'SELECT comments.*, users.user_name,users.img_name FROM comments LEFT JOIN users ON comments.user_id =users.user_id WHERE dialy_id =? ORDER BY comments.created DESC ';
+    $sql = 'SELECT comments.*, users.user_name,users.img_name FROM comments LEFT JOIN users ON comments.user_id =users.user_id WHERE dialy_id =? ORDER BY comments.created ASC ';
     $data = array($dialy_id);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
@@ -229,9 +228,10 @@
         <div class="row">
           <div class="like col-sm-12">
             <ul>
+
                 <!-- いいね機能 -->
                 <li>
-                  <form method="POST" action="likes.php"> 
+                  <form method="POST" action="dialy/likes.php"> 
                   <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>"> 
                     <!-- 後で$_REQUESTに変更する -->
                     <a href="javascript:void(0)" >
@@ -253,12 +253,12 @@
 
                 <!-- favボタン -->
                 <li>
-                  <form method="POST" action="favs.php"> 
+                  <form method="POST" action="dialy/favs.php"> 
                   <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>">
                     <a href="javascript:void(0)" title="Send this to friends or post it to your timeline">
                       <?php if ($fav['cnt'] == 0) { ?>
                         <input type="hidden" name="btn" value="fav">
-                        <button class="btn btn-success"　type="submit">
+                        <button class="btn btn-success" type="submit">
                         <i class="fa fa-thumb-tack" style="color: #FFFFFF"></i>
                         <span style="color: #FFFFFF;">クリップ</span>
                       <?php }else{ ?>
@@ -370,6 +370,10 @@
               </tr>
           </table>
         <?php } ?>
+        <div>
+          <h6>写真編集ボタン</h6>
+        </div>
+
 
         <div class="container">
           <div class="row">
@@ -377,7 +381,7 @@
               <ul>
                   <!-- いいね機能 -->
                   <li>
-                    <form method="POST" action="likes.php"> 
+                    <form method="POST" action="dialy/likes.php"> 
                     <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>"> 
                       <!-- 後で$_REQUESTに変更する -->
                       <a href="javascript:void(0)" >
@@ -399,12 +403,12 @@
 
                   <!-- favボタン -->
                   <li>
-                    <form method="POST" action="favs.php"> 
+                    <form method="POST" action="dialy/favs.php"> 
                     <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>">
                       <a href="javascript:void(0)" title="Send this to friends or post it to your timeline">
                         <?php if ($fav['cnt'] == 0) { ?>
                           <input type="hidden" name="btn" value="fav">
-                          <button class="btn btn-success"　type="submit">
+                          <button class="btn btn-success" type="submit">
                           <i class="fa fa-thumb-tack" style="color: #FFFFFF"></i>
                           <span style="color: #FFFFFF;">クリップ</span>
                         <?php }else{ ?>
@@ -423,98 +427,59 @@
         </div>
           <!-- like end -->
 
-        <div class="contact">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12">
-              <h4>この旅に関するコメントを入力する</strong></h4>
-              <form id="contactform" action="" method="post" class="validateform" name="send-contact">
-                <div class="row">
-                  <div class="col-lg-12 margintop10 field">
-                    <textarea rows="12" name="comment" class="input-block-level" data-rule="required" data-msg="Please write something"></textarea>
-                    <div class="validation">
-                    </div>
-                    <br>
-                    <p>
-                      <button class="btn btn-theme margintop10 center-block" type="submit">コメントする</button>
-                    </p>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-<<<<<<< HEAD
-=======
-      <!-- コメント表示開始 -->
-      <div class="col-xs-9">
-        <?php for($i=0;$i<$c_count;$i++){ ?>          
-          <div>
-            <img src="user_profile_img/<?php echo $comments[$i]['img_name']; ?> " width="60">
-            <?php echo $comments[$i]['user_name'] ?><br>
-            <br>
-            <?php echo $comments[$i]['comment'] ?>
-            <br>
-          </div>
-          <hr>
-        <?php } ?>
-      </div>
-      <!-- コメント表示終了 -->
-        
-        
-      <!-- like start -->
-        <div>
-            <ul class="newpostfooter nav nav-tabs nav-justified">
-                <!-- いいね機能 -->
-                <li>
-                  <form method="POST" action="likes.php"> 
-                  <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>"> 
-                    <!-- 後で$_REQUESTに変更する -->
-                    <a href="javascript:void(0)" >
-                      <?php if ($like['cnt'] == 0) { ?>
-                        <input type="hidden" name="btn" value="like">
-                        <button type="submit">
-                        <i class="fa fa-thumbs-up"></i>
-                        <span>いいね</span></button>
-                      <?php }else{ ?>
-                        <input type="hidden" name="btn" value="unlike">
-                        <button type="submit">
-                        <i class="fa fa-thumbs-up"></i>
-                        <span>いいねを取り消す</span></button>
-                      <?php } ?>
-                    </a>
-                  </form>  
-                </li>
-                <!-- いいね機能終了 -->
 
-                <!-- favボタン -->
-                <li>
-                  <form method="POST" action="favs.php"> 
-                  <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>">
-                    <a href="javascript:void(0)" title="Send this to friends or post it to your timeline">
-                      <?php if ($fav['cnt'] == 0) { ?>
-                        <input type="hidden" name="btn" value="fav">
-                        <button type="submit">
-                        <i class="fa fa-thumb-tack"></i>
-                        <span>クリップ</span>
-                      <?php }else{ ?>
-                        <input type="hidden" name="btn" value="unfav">
-                        <button type="submit">
-                        <i class="fa fa-thumb-tack"></i>
-                        <span>クリップを取り消す</span>
+      
+        <div class="contact">
+          <div class="container">
+            <div class="row">
+              <!--  グリッド機能は row の中を１２個に分ける -->
+              <div class="col-sm-9">
+                <h4>この旅に関するコメントを入力する</strong></h4>
+                <form id="contactform" action="" method="post" class="validateform" name="send-contact">
+                  <div class="row">
+                    <div class="col-lg-9 margintop10 field">
+                      <textarea rows="12" name="comment" class="input-block-level" data-rule="required" data-msg="Please write something"></textarea>
+                      <div class="validation">
+                      </div>
+                      <br>
+                      <p>
+                        <button class="btn btn-theme margintop10 " type="submit">コメントする</button>
+                      </p>                      
+                    </div>
+                    <!-- コメント表示開始 -->
+                    <div class="col-sm-3">
+                      <?php for($i=0;$i<$c_count;$i++){ ?>          
+                        <div>
+                          <h6>コメント<?php echo $i+1 ?> </h6>
+                          <img src="user_profile_img/<?php echo $comments[$i]['img_name']; ?> " width="60">
+                          <?php echo $comments[$i]['user_name'] ?><br>
+                          <br>
+                          <?php echo $comments[$i]['comment'] ?>
+                          <br>
+                          <?php if($comments[$i]['user_id'] == $_SESSION['user']['id']){ ?>
+                            <a href="dialy/delete_comment.php?comment_id=<?php echo $comments[$i]['comment_id']; ?>&dialy_id=<?php echo $_REQUEST['dialy_id']; ?>" class="btn btn-danger btn-xs">削除</a>
+                          <?php } ?>
+                          <br>
+                          <?php echo $comments[$i]['created'] ?>
+                          <br>
+                        </div>
+                        <hr>
                       <?php } ?>
-                    </a>
-                  </form>
-                </li>
-                <!-- favボタン -->
-            </ul>
+                    </div>
+                    <!-- コメント表示終了 -->
+                  </div>
+                </form>
+              </div>
+            </div>
+           
+          </div>
         </div>
-        <!-- like end -->
->>>>>>> master
+      
+        
+      
 
 		<!-- search start -->
-		<?php Include('partial/search.php'); ?>
+		<?php Include('partial/search_bar.php'); ?>
 		<!-- search end -->
 
 		<!-- Featured Work -->
