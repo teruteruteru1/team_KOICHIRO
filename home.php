@@ -59,14 +59,14 @@
 
 
     <link rel="stylesheet" href="assets/css/normalize.css">
-    <!-- <link rel="stylesheet" href="assets/css/main.css"> -->
+    <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- <link rel="stylesheet" href="assets/css/responsive.css"> -->
-    <!-- <link rel="stylesheet" href="assets/css/search.css"> -->
-    <!-- <link rel="stylesheet" href="assets/css/header.css"> -->
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/search.css">
+    <link rel="stylesheet" href="assets/css/header.css">
 
     <!-- Include the above in your HEAD tag -->
 		<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
@@ -94,7 +94,7 @@
 
 				<div class="carousel-inner" role="listbox">
 					<div class="item active">
-						<img src="pictures/<?php echo htmlspecialchars($dialies[0]['title_img_name']); ?>" alt="Sider Big Image">
+						<img src="title_img/<?php echo htmlspecialchars($dialies[0]['title_img_name']); ?>" width="1920" height="1440" alt="Sider Big Image">
 						<div class="carousel-caption">
 							<h1 class="wow fadeInLeft"><?php echo htmlspecialchars($dialies[0]['title']); ?></h1>
 							<div class="slider-btn wow fadeIn">
@@ -103,7 +103,7 @@
 						</div>
 					</div>
 					<div class="item">
-						<img src="pictures/<?php echo htmlspecialchars($dialies[0]['pic_name']); ?>" alt="Top Blog1 Image">
+						<img src="pictures/<?php echo htmlspecialchars($dialies[0]['pic_name']); ?>" width="1920" height="1440" alt="Top Blog1 Image">
 						<!-- <img src="assets/img/add_img/Top_Blog2_IMG_7607.jpg" alt="Top Blog1 Image"> -->
 						<div class="carousel-caption">
 							<h1 class="wow fadeInLeft"><?php echo htmlspecialchars($dialies[0]['title']); ?></h1>
@@ -246,7 +246,7 @@
 							  </button>
 						  <div class="thumb-rollover">
 							  <div class="project-title">
-								  <h2>観光</h2>
+								  <h2>ショッピング</h2>
 							  </div>
 						  </div>
 					  </div>
