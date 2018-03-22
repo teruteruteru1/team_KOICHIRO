@@ -305,7 +305,7 @@
                 }
             }           
 
-            header('Location: plan_check.php');
+            header('Location: dialy_check.php');
             exit();
         }
 
@@ -367,7 +367,7 @@
     <!-- Header end -->
 
     <div id="site-box" style="text-align: center;">
-        <form method="POST" action="teshirogi_plan_form.php" enctype="multipart/form-data">
+        <form method="POST" action="dialy_form.php" enctype="multipart/form-data">
 
             <!-- title start -->
             <div id="a-box" style="text-align: center;">

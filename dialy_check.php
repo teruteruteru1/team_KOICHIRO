@@ -5,7 +5,7 @@
 
     //$_SESSION['plan']が未定義だったらformへ戻す
     if(!$_SESSION['plan']){
-        header('Location: plan_form.php');
+        header('Location: dialy_form.php');
         exit();
     }
     //国とタグを表示する準備 
@@ -175,13 +175,13 @@
 
 
 
-        //セッションのplanの初期化
-        //SQLを読んだ時点でセッションの中身はいらない
-        // $_SESSION['plan'] = array();
-        // unset($_SESSION['plan']);
+        // セッションのplanの初期化
+        // SQLを読んだ時点でセッションの中身はいらない
+        $_SESSION['plan'] = array();
+        unset($_SESSION['plan']);
 
-        // header('Location: plan.php');
-        // exit();
+        header('Location: plan.php');
+        exit();
         
 
 
@@ -309,7 +309,7 @@
 
     <form method="POST" action="">
     	<input type="hidden" name="kubo" value="kaori">
-      <a href="mochimaru_plan_form.php?action=rewrite"><strong>戻る</strong></a><br>
+      <a href="dialy_form.php?action=rewrite"><strong>戻る</strong></a><br>
       <!-- パラメータをつけることで、$_GET/$_REQUESTが使える -->
     	<input type="submit" value="しおり登録">
 
