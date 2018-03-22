@@ -24,7 +24,6 @@
 		              <li><a href="register/signup.php">ユーザー登録</a></li>
 		              <li><a href="signout.php">ログアウト</a></li>
 		              <li class="dropdown">
-
 			              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">マイページ<span class="caret"></span></a>
 			              <ul class="dropdown-menu">
 			                <li><a href="#">クリップ</a></li>
