@@ -1,34 +1,38 @@
 /*plan_form.phpのデザイン修正用に作成*/
 #site-box {
-          width : 750px;
+          /*width : 750px;*/
 }
 
 #a-box {    
-	width : 750px;
+	
 }
 
 #b-box {
-          float: left;
+/*          float: left;
           width: 350px;
           border: 3px solid #EEEEEE;
-          background-color: #CCCCCC
+          background-color: #CCCCCC*/
 }
 
 #c-box {
-          float: right;
-          width: 350px;
+/*          float: right;
+          width: 350px;*/
+          float: center;
+          
+          border: 3px solid #EEEEEE;
+          background-color: #FFFFCC
 }
 
 #d-box {  
-	 clear : both ; width : 750px ;
+	 /*clear : both ; width : ;*/
 }
 
 #e-box {  
-	 clear : both ; width : 750px ;
+	 /*clear : both ; width :  ;*/
 }
 /*しおりのメイン写真位置に設置*/
 .my-size {
-  font-size: 20em 
+  /*font-size: 20em*/ 
 }
 /*しおりのメイン写真位置に設置*/
 
