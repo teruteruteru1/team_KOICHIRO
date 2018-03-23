@@ -1,26 +1,43 @@
 <?php
-		session_start();
-		include('dbconnect.php');
-		
 
-		//user情報取得 テーブルから持ってくる
-    $sql = 'SELECT * FROM `users` WHERE user_id=?';
-    $data = array($_SESSION['user']['id']);
+    session_start();
+    require('dbconnect.php');
+
+    $sql = 'SELECT d.*,p.pic_name FROM dialies AS d LEFT JOIN pictures AS p ON d.dialy_id = p.dialy_id WHERE 1 ORDER BY d.like_count DESC';
+
+    $data = array();
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
-    //fetchする
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    // echo '<br>';
-    // echo '<br>';
-    // echo '<br>';
-    // echo '<br>';
-    // echo '<pre>'; 
-    // echo '$_SESSION = ';
-    // var_dump($_SESSION);
-    // echo '</pre>';
-    // echo '<pre>'; 
-    // echo '$user = ';
-    // var_dump($user);
+
+    $tmp_dialies = array();
+
+    while (true) {
+        $dialy = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($dialy == false) {
+            break;
+        }
+        $tmp_dialies[] = $dialy;
+
+    }
+    // echo $sql;
+
+    $tmp = [];
+    $dialies = [];
+
+    foreach ($tmp_dialies as $daily){
+        if (!in_array($daily['dialy_id'], $tmp)) {
+            $tmp[] = $daily['dialy_id'];
+            $dialies[] = $daily;
+        }
+    }
+
+    $c = count($dialies);
+
+    // echo '<pre>';
+    // echo '$dialies = ';
+    // var_dump($dialies);
+>>>>>>> master
     // echo '</pre>';
 
 ?>
@@ -42,26 +59,25 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <!-- Font -->
 
-
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="assets/css/search.css">
     <link rel="stylesheet" href="assets/css/header.css">
 
     <!-- Include the above in your HEAD tag -->
-		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+		<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 		<!-- Include the above in your HEAD tag -->
 
 	</head>
 
-	<body>
+	<body style="margin-top: 80px;">
 
 		<!-- Header start -->
 		<header>
@@ -79,20 +95,20 @@
 
 				<div class="carousel-inner" role="listbox">
 					<div class="item active">
-						<img src="assets/img/add_img/Top_Blog1_P9172109.jpg" alt="Sider Big Image">
+						<img src="title_img/<?php echo htmlspecialchars($dialies[0]['title_img_name']); ?>" alt="Sider Big Image">
 						<div class="carousel-caption">
-							<h1 class="wow fadeInLeft">イタリア旅行 おすすめスポット 2泊3日</h1>
+							<h1 class="wow fadeInLeft"><?php echo htmlspecialchars($dialies[0]['title']); ?></h1>
 							<div class="slider-btn wow fadeIn">
-								<a href="#" class="btn btn-learn">詳細をみる</a>
+								<a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[0]['dialy_id']); ?>" class="btn btn-learn">詳細をみる</a>
 							</div>
 						</div>
 					</div>
 					<div class="item">
-						<img src="assets/img/add_img/Top_Blog2_IMG_7607.jpg" alt="Top Blog1 Image">
+						<img src="pictures/<?php echo htmlspecialchars($dialies[0]['pic_name']); ?>" alt="Top Blog1 Image">
 						<div class="carousel-caption">
-							<h1 class="wow fadeInLeft">【イタリア】ベネチアのカラフルな姉妹島「ブラーノ」と「ムラーノ」</h1>
+							<h1 class="wow fadeInLeft"><?php echo htmlspecialchars($dialies[0]['title']); ?></h1>
 							<div class="slider-btn wow fadeIn">
-								<a href="#" class="btn btn-learn">詳細をみる</a>
+								<a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[0]['dialy_id']); ?>" class="btn btn-learn">詳細をみる</a>
 							</div>
 						</div>
 					</div>
@@ -107,24 +123,18 @@
 
 		<!-- Single Blog1 -->
 		<section id="about" class="site-padding">
-			<div class="container">
+			<div class="container search_result">
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="about-image wow fadeInLeft">
-							<img src="assets/img/add_img/Single-Blog1-P9172057.jpg" alt="Single Blog1" />
+							<img src="pictures/<?php echo htmlspecialchars($dialies[1]['title_img_name']); ?>" alt="Single Blog1" width="600" height="400"/>
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="about-text wow fadeInRight">
-							<h3>2017.9 イタリア旅行記</h3>
-							<p>いよいよ今回のイタリア旅行記も、最終回を迎えることになった。もう一度、出発までの顛末や計画も書いておこう。
-								今から35年ほど前に仕事でミラノに出張した際に、週末の空き時間を利用してベネツィア・フィレンツェに
-								一泊二日で出掛けたことがある。
-								また、その数年前に女房と一緒にヨーロッパ旅行をした時に、ローマで一日だけ観光を行った。
-								ただ、そのいずれもが随分昔のことであり、短時間立ち寄っただけであり、今のデジカメの時代と違って余り写真も残っていない。
-								ましてや、出張の時にはカメラを持参していたかどうかも定かでない。
-							</p>
-							<a href="#" class="btn btn-read-more">続きを読む</a>
+							<h3><?php echo htmlspecialchars($dialies[1]['title']); ?></h3>
+							<p><?php echo htmlspecialchars($dialies[1]['title_comment']); ?></p>
+							<a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[1]['dialy_id']); ?>" class="btn btn-read-more">続きを読む</a>
 						</div>
 					</div>
 				</div>
@@ -147,40 +157,33 @@
 
 					<!-- Single Blog2 -->
 					<div class="col-sm-4">
-						<div class="single-blog">
-							<img src="assets/img/add_img/Single_Blog2_1518359667602.jpg" alt="Single Blog2" />
-							<h4><a href="blog.html">セブ カワサンフォールへ</a></h4>
-							<p> 朝4時にホテルを出発し、マイクロバスに乗って、オスロブ、カワサン滝へ行ってきました。
-								水温はとても冷たかったですが、綺麗な空気と綺麗な水に感動しました。
-							</p>
-							<a href="#">続きを読む>></a>
+						<div class="single-blog search_result">
+							<img src="pictures/<?php echo htmlspecialchars($dialies[2]['title_img_name']); ?>" alt="Single Blog2" width="400" height="270"/>
+							<h4><a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[2]['dialy_id']); ?>"><?php echo htmlspecialchars($dialies[2]['title']); ?></a></h4>
+							<p><?php echo htmlspecialchars($dialies[2]['title_comment']); ?></p>
+							<a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[2]['dialy_id']); ?>">続きを読む>></a>
 						</div>
 					</div>
 					<!-- Single Blog2 -->
 
 					<!-- Single Blog3 -->
 					<div class="col-sm-4">
-						<div class="single-blog">
-							<img src="assets/img/add_img/Single_Blog3_1519138076376.jpg" alt="Single Blog3" />
-							<h4><a href="blog.html">３度目のグアム</a></h4>
-							<p>2017年7月3日成田発、7月6日成田着のデルタ航空利用。
-								常夏の島グアムで買い物三昧、遊び三昧、グルメ三昧の旅！ショッピング施設も充実していますし、
-								以前に行ったときにはなかった新しくできたレストランもたくさんありました！
-							</p>
-							<a href="#">続きを読む>></a>
+						<div class="single-blog search_result">
+							<img src="pictures/<?php echo htmlspecialchars($dialies[3]['title_img_name']); ?>" alt="Single Blog3" width="400" height="270"/>
+							<h4><a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[3]['dialy_id']); ?>"><?php echo htmlspecialchars($dialies[3]['title']); ?></a></h4>
+							<p><?php echo htmlspecialchars($dialies[3]['title_comment']); ?></p>
+							<a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[3]['dialy_id']); ?>">続きを読む>></a>
 						</div>
 					</div>
 					<!-- Single Blog3 -->
 
 					<!-- Single Blog4 -->
 					<div class="col-sm-4">
-						<div class="single-blog">
-							<img src="assets/img/add_img/Single_Blog4_IMG_20180216_175141.jpg" alt="Single Blog4" />
-							<h4><a href="blog.html">はじめてのセブ</a></h4>
-							<p>毎年、年に一度自分へのご褒美の念を込めてグアムに行くのですが、今年の旅行はいつもとは違う
-							旅行をしてみたいと思い、フィリピン、セブに行くことにしました。3月のセブはとても暑く空港到着から
-							汗だくです。早くビールが飲みたい..</p>
-							<a href="#">続きを読む>></a>
+						<div class="single-blog search_result">
+							<img src="pictures/<?php echo htmlspecialchars($dialies[4]['title_img_name']); ?>" alt="Single Blog4" width="400" height="270"/>
+							<h4><a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[4]['dialy_id']); ?>"><?php echo htmlspecialchars($dialies[4]['title']); ?></a></h4>
+							<p><?php echo htmlspecialchars($dialies[4]['title_comment']); ?></p>
+							<a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[4]['dialy_id']); ?>">続きを読む>></a>
 						</div>
 					</div>
 					<!-- Single Blog4 -->
@@ -189,114 +192,7 @@
 		</section>
 		<!-- From the Blog-->
 
-		<!-- theme start -->
-		<section id="feature-work" class="protfolio-padding">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="title">
-							<h3>目的<span>から選ぶ</span></h3>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="featured-list">
-				<div id="grid" class="clearfix">
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_gourmet_IMG_7336.jpg" alt="Feature Image" />
-						</a>
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>グルメ</h2>
-							</div>
-						</div>
-					</div>
-
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_sightseeing_P9131618.jpg" alt="Feature Image" />
-						</a>
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>観光</h2>
-							</div>
-						</div>
-					</div>
-
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_shopping_IMG_20180216_144151.jpg" alt="Feature Image" />
-						</a>
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>ショッピング</h2>
-							</div>
-						</div>
-					</div>
-
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_sport_outdoor_DSC_1043.jpg" alt="Feature Image" />
-						</a>
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>スポーツ・アウトドア</h2>
-							</div>
-						</div>
-					</div>
-
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_hotel_IMG_20180218_112635.jpg" alt="Feature Image" />
-						</a>
-
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>ホテル</h2>
-							</div>
-						</div>
-					</div>
-
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_relaxation_1519138253418.jpg" alt="Feature Image" />
-						</a>
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>リラクゼーション</h2>
-							</div>
-						</div>
-					</div>
-
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_resort_1519138015328.jpg" alt="Feature Image" />
-						</a>
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>リゾート</h2>
-								<!-- <h5>Category: Web Design</h5> -->
-							</div>
-						</div>
-					</div>
-
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_ather_1519138162591.jpg" alt="Feature Image" />
-						</a>
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>その他</h2>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Featured Work -->
-
+		<?php Include('partial/home_theme.php'); ?>
 
 		<!-- Contact -->
 		<section id="contact-us">
