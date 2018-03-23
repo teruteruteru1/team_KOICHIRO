@@ -37,7 +37,6 @@
     // echo '<pre>';
     // echo '$dialies = ';
     // var_dump($dialies);
->>>>>>> master
     // echo '</pre>';
 
 ?>
