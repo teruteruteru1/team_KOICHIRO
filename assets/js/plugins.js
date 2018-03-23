@@ -21,4 +21,26 @@
     }
 }());
 
+var mathMax = function(numbers) {
+    var maxNumber;
+
+    if (numbers) {
+        if (!Array.isArray) {
+            Array.isArray = function(obj) {
+                return Object.prototype.toString.call(obj) === '[object Array]';
+            };
+        }
+
+        if (Array.isArray(numbers)) {
+            for (var i = 0, len = numbers.length; i < len; i++) {
+                if ((typeof numbers[i] === 'number') && (i === 0 || numbers[i] > maxNumber)) {
+                    maxNumber = numbers[i];
+                }
+            }
+        }
+    }
+
+    return maxNumber;
+};
+
 // Place any jQuery/helper plugins in here.
