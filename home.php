@@ -57,11 +57,11 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <!-- Font -->
 
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="assets/css/search.css">
@@ -93,7 +93,7 @@
 
 				<div class="carousel-inner" role="listbox">
 					<div class="item active">
-						<img src="title_img/<?php echo htmlspecialchars($dialies[0]['title_img_name']); ?>" width="1920" height="1440" alt="Sider Big Image">
+						<img src="title_img/<?php echo htmlspecialchars($dialies[0]['title_img_name']); ?>" alt="Sider Big Image">
 						<div class="carousel-caption">
 							<h1 class="wow fadeInLeft"><?php echo htmlspecialchars($dialies[0]['title']); ?></h1>
 							<div class="slider-btn wow fadeIn">
@@ -102,8 +102,7 @@
 						</div>
 					</div>
 					<div class="item">
-						<img src="pictures/<?php echo htmlspecialchars($dialies[0]['pic_name']); ?>" width="1920" height="1440" alt="Top Blog1 Image">
-						<!-- <img src="assets/img/add_img/Top_Blog2_IMG_7607.jpg" alt="Top Blog1 Image"> -->
+						<img src="pictures/<?php echo htmlspecialchars($dialies[0]['pic_name']); ?>" alt="Top Blog1 Image">
 						<div class="carousel-caption">
 							<h1 class="wow fadeInLeft"><?php echo htmlspecialchars($dialies[0]['title']); ?></h1>
 							<div class="slider-btn wow fadeIn">
@@ -156,7 +155,7 @@
 
 					<!-- Single Blog2 -->
 					<div class="col-sm-4">
-						<div class="single-blog">
+						<div class="single-blog search_result">
 							<img src="pictures/<?php echo htmlspecialchars($dialies[2]['title_img_name']); ?>" alt="Single Blog2" width="400" height="270"/>
 							<h4><a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[2]['dialy_id']); ?>"><?php echo htmlspecialchars($dialies[2]['title']); ?></a></h4>
 							<p><?php echo htmlspecialchars($dialies[2]['title_comment']); ?></p>
@@ -167,7 +166,7 @@
 
 					<!-- Single Blog3 -->
 					<div class="col-sm-4">
-						<div class="single-blog">
+						<div class="single-blog search_result">
 							<img src="pictures/<?php echo htmlspecialchars($dialies[3]['title_img_name']); ?>" alt="Single Blog3" width="400" height="270"/>
 							<h4><a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[3]['dialy_id']); ?>"><?php echo htmlspecialchars($dialies[3]['title']); ?></a></h4>
 							<p><?php echo htmlspecialchars($dialies[3]['title_comment']); ?></p>
@@ -178,7 +177,7 @@
 
 					<!-- Single Blog4 -->
 					<div class="col-sm-4">
-						<div class="single-blog">
+						<div class="single-blog search_result">
 							<img src="pictures/<?php echo htmlspecialchars($dialies[4]['title_img_name']); ?>" alt="Single Blog4" width="400" height="270"/>
 							<h4><a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[4]['dialy_id']); ?>"><?php echo htmlspecialchars($dialies[4]['title']); ?></a></h4>
 							<p><?php echo htmlspecialchars($dialies[4]['title_comment']); ?></p>

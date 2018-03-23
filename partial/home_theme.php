@@ -19,7 +19,7 @@
                 <form method="POST" action="search.php" class="form">
                   <input type="hidden" name="action" value="selected">
                   <input type="hidden" name="theme" value="1">
-                  <button type="submit" class="btn btn-info btn-lg" style="font-size:30px">グルメ</button>
+                  <button type="submit" class="btn btn-info btn-lg">グルメ</button>
                 </form>
               </div>
             </div>
@@ -32,7 +32,7 @@
                 <form method="POST" action="search.php" class="form">
                   <input type="hidden" name="action" value="selected">
                   <input type="hidden" name="theme" value="1">
-                  <button type="submit" class="btn btn-info btn-lg" style="font-size:30px">観光</button>
+                  <button type="submit" class="btn btn-info">観光</button>
                 </form>
               </div>
             </div>
@@ -45,7 +45,7 @@
                 <form method="POST" action="search.php" class="form">
                   <input type="hidden" name="action" value="selected">
                   <input type="hidden" name="theme" value="1">
-                  <button type="submit" class="btn btn-info btn-lg" style="font-size:30px">ショッピング</button>
+                  <button type="submit" class="btn btn-info btn-lg">ショッピング</button>
                 </form>
               </div>
             </div>
@@ -58,7 +58,7 @@
                 <form method="POST" action="search.php" class="form">
                   <input type="hidden" name="action" value="selected">
                   <input type="hidden" name="theme" value="1">
-                  <button type="submit" class="btn btn-info btn-lg" style="font-size:30px">スポーツ・アウトドア</button>
+                  <button type="submit" class="btn btn-info btn-lg">スポーツ・アウトドア</button>
                 </form>
               </div>
             </div>
@@ -71,7 +71,7 @@
                 <form method="POST" action="search.php" class="form">
                   <input type="hidden" name="action" value="selected">
                   <input type="hidden" name="theme" value="1">
-                  <button type="submit" class="btn btn-info btn-lg" style="font-size:30px">ホテル</button>
+                  <button type="submit" class="btn btn-info btn-lg">ホテル</button>
                 </form>
               </div>
             </div>
@@ -84,7 +84,7 @@
                 <form method="POST" action="search.php" class="form">
                   <input type="hidden" name="action" value="selected">
                   <input type="hidden" name="theme" value="1">
-                  <button type="submit" class="btn btn-info btn-lg" style="font-size:30px">リラクゼーション</button>
+                  <button type="submit" class="btn btn-info btn-lg">リラクゼーション</button>
                 </form>
               </div>
             </div>
@@ -97,7 +97,7 @@
                 <form method="POST" action="search.php" class="form">
                   <input type="hidden" name="action" value="selected">
                   <input type="hidden" name="theme" value="1">
-                  <button type="submit" class="btn btn-info btn-lg" style="font-size:30px">リゾート</button>
+                  <button type="submit" class="btn btn-info btn-lg">リゾート</button>
                 </form>
               </div>
             </div>
@@ -110,7 +110,7 @@
                 <form method="POST" action="search.php" class="form">
                   <input type="hidden" name="action" value="selected">
                   <input type="hidden" name="theme" value="1">
-                  <button type="submit" class="btn btn-info btn-lg" style="font-size:30px">その他</button>
+                  <button type="submit" class="btn btn-info btn-lg">その他</button>
                 </form>
               </div>
             </div>

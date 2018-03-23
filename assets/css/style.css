@@ -301,7 +301,7 @@ ul.navbar-nav li a{
   text-align:center;
   margin:auto;
   width:auto;
-  margin-top:30%;
+  /*margin-top:30%;*/
   transition:0.2s;
 }
 
@@ -1072,3 +1072,19 @@ form#commentform textarea {
 #contact-us{
   padding:70px 0;
 }
+
+
+
+div.thumb-rollover div.project-title button {
+  font-size:30px;
+  width: 360px;
+  height: 272px;
+}
+
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+  width: 100%;
+  height: 700px;
+  /*object-fit: contain;*/
+}
+
+
