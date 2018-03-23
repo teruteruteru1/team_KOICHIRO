@@ -47,7 +47,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
+    <title>home</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -314,7 +314,10 @@
         <script src="assets/js/jquery.sticky.js"></script>
         <script src="assets/js/wow.min.js"></script>
         <script src="assets/js/main.js"></script>
-		<script type="text/javascript">
+        <!-- プルダウンのJS -->
+        <script src="assets/js/plan_country.js"></script>
+        <script src="assets/js/plan_country2.js"></script>
+				<script type="text/javascript">
 			$(document).ready(function(){
 				$('a[href^="#"]').on('click',function (e) {
 					e.preventDefault();

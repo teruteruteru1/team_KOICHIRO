@@ -10,7 +10,7 @@
     session_start();  
     require ('dbconnect.php');
     include('assets/functions.php');
-    include('signin_user.php');
+    //include('signin_user.php');
     echo 'userid = ' . $_SESSION['user']['id'];
 
     // 投稿表示
@@ -96,7 +96,7 @@
         // $comment空チェック
         if ($comment != '') {
             $sql = 'INSERT INTO `comments` SET `comment` =?, `user_id` =?, `dialy_id` =?, `created` =NOW() ';
-            $data = array($comment, $signin_user['user_id'],$dialy_id); //?の中に変数を入れるそれがプリペアードステイトメント
+            $data = array($comment,$_SESSION['user']['id'],$dialy_id); //?の中に変数を入れるそれがプリペアードステイトメント
             $stmt = $dbh->prepare($sql);
             $stmt->execute($data);
         }
@@ -115,10 +115,10 @@
         $comments[] = $comment;
     }
     $c_count = count($comments);
-    echo '<pre>'; 
-    echo '$comments = ';
-    var_dump($comments);
-    echo '</pre>'; 
+    // echo '<pre>'; 
+    // echo '$comments = ';
+    // var_dump($comments);
+    // echo '</pre>'; 
 
 
 
@@ -186,21 +186,20 @@
 					</div>
           <!-- ユーザー情報 -->
 
-          <div class="col-sm-6">
-            <div class="row">
+          <div class="col-sm-3">
               <div class="span4 well">
-                <div class="row">
                   <div class="user_profile">
-                    <a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="user_profile_img/<?php echo $dialy['img_name']; ?> "></a>
-                    <h4><?php echo $dialy['depart_date']; ?>~<?php echo $dialy['arrival_date']; ?></h4>
+                    <a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail" ><img src="user_profile_img/<?php echo $dialy['img_name']; ?> "></a>
                   </div>
-                  <div class="span3">
-                    <p><strong>名前</strong></p>
-                  </div>
-                </div>
               </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="span3">
+              <p><strong>名前</strong></p>
+              <h4><?php echo $dialy['user_name']; ?></h4>
             </div>
           </div>
+          
 				</div>
 			</div>
 
@@ -295,7 +294,7 @@
                       <table border="0" align="center" width="590" cellpadding="0" cellspacing="0" class="container590">
                           <tr>
                               <td align="center" class="section-img">
-                                  <a href="" style=" border-style: none !important; display: block; border: 0 !important;"><img src="pictures/<?php echo $pictures[$x]['pic_name']; ?>" alt="" style="display: block; width: 590px;" width="590" border="0" alt="" /></a>
+                                  <a href="" style=" border-style: none !important; display: block; border: 0 !important;"><img src="pictures/<?php echo $pictures[$x]['pic_name']; ?>" alt="" style="display: block; width: 800px;" width="800" border="0" alt="" /></a>
                               </td>
                           </tr>
                           <tr>
