@@ -1,5 +1,4 @@
 <?php
-
     session_start();
     require('dbconnect.php');
 
@@ -313,11 +312,10 @@
         <script src="assets/js/jquery.sticky.js"></script>
         <script src="assets/js/wow.min.js"></script>
         <script src="assets/js/main.js"></script>
-			<!-- プルダウンのJS -->
+        <!-- プルダウンのJS -->
         <script src="assets/js/plan_country.js"></script>
         <script src="assets/js/plan_country2.js"></script>
-
-		<script type="text/javascript">
+				<script type="text/javascript">
 			$(document).ready(function(){
 				$('a[href^="#"]').on('click',function (e) {
 					e.preventDefault();
