@@ -1,5 +1,27 @@
 <?php
+		session_start();
+		include('dbconnect.php');
+		
 
+		//user情報取得 テーブルから持ってくる
+    $sql = 'SELECT * FROM `users` WHERE user_id=?';
+    $data = array($_SESSION['user']['id']);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+    //fetchする
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<pre>'; 
+    // echo '$_SESSION = ';
+    // var_dump($_SESSION);
+    // echo '</pre>';
+    // echo '<pre>'; 
+    // echo '$user = ';
+    // var_dump($user);
+    // echo '</pre>';
 
 ?>
 
@@ -396,6 +418,10 @@
         <script src="assets/js/jquery.sticky.js"></script>
         <script src="assets/js/wow.min.js"></script>
         <script src="assets/js/main.js"></script>
+			<!-- プルダウンのJS -->
+        <script src="assets/js/plan_country.js"></script>
+        <script src="assets/js/plan_country2.js"></script>
+
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$('a[href^="#"]').on('click',function (e) {
