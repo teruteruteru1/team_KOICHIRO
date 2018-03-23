@@ -38,6 +38,8 @@
     // var_dump($dialies);
     // echo '</pre>';
 
+    // なんで？
+
 ?>
 
 <!doctype html>
