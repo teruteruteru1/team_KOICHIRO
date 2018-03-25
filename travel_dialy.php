@@ -430,7 +430,7 @@
 
                   <!-- 写真編集ボタン -->
                   <li>
-                    <a href="dialy/edit_pic.php?action=add" class="btn btn-warning">投稿写真追加</a>
+                    <a href="dialy/edit_pic.php?action=add&dialy_id=<?php echo $dialy_id; ?>" class="btn btn-warning">投稿写真追加</a>
                   </li>
               </ul>
             </div>

@@ -3,17 +3,6 @@
     require ('../dbconnect.php'); 
     require ('../assets/functions.php');
 
-    
-    if (isset($_REQUEST['picture_id'])) {
-        $picture_id = $_REQUEST['picture_id'];
-        // picturesの取得
-        $sql = 'SELECT * FROM pictures WHERE picture_id=?';
-        $data = array($picture_id);
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute($data);
-
-        $picture = $stmt->fetch(PDO::FETCH_ASSOC);
-    }
 
     echo '<br>';
     echo '<br>';
@@ -21,115 +10,42 @@
     echo '<br>';
     echo '<br>';
     echo '<pre>'; 
-    echo '$picture = ';
-    var_dump($picture);
+    echo '$_SESSION = ';
+    var_dump($_SESSION);
     echo '</pre>'; 
+    // echo '<pre>'; 
+    // echo '$_SESSION = ';
+    // var_dump($_SESSION);
+    // echo '</pre>'; 
+
+    // 変数定義開始
+    $count = $_SESSION['add']['count'];
+    $pic_names = array();
+    $comments = array();
+    for($x=0;$x<$count+1;$x++){
+        // dialys_picturesに格納
+        // picture
+        $pic_name = 'pic_name' . $x;
+        if(isset($_SESSION['add'][$pic_name])){        
+            $pic_names[] = $_SESSION['add'][$pic_name];
+        }
+        // comments
+        $comment = 'comment' . $x;
+        if(isset($_SESSION['add'][$comment])){
+            $comments[] = $_SESSION['add'][$comment];
+        }
+    }
     echo '<pre>'; 
-    echo '$_POST = ';
-    var_dump($_POST);
+    echo '$comments = ';
+    var_dump($comments);
     echo '</pre>'; 
-     echo '<pre>'; 
-    echo '$_FILES = ';
-    var_dump($_FILES);
-    echo '</pre>';
-     
-
-    // 編集画面を押して自分に飛ばす
-
-    // 画像を変更する場合
-    if (!empty($_POST) && isset($_POST['edit'])) {
-        $comment = $_POST['comment'];
-
-        if($_FILES['pic_name']['name'] != ''){
-            $file_name = $_FILES['pic_name']['name']; 
-            $file_type = substr($file_name,-3) ;
-            $file_type = strtolower($file_type);
-            if ($file_type != 'jpg' && $file_type != 'png' && $file_type != 'gif') {
-              $errors['img_name'] = 'type';
-            }           
-        }
-
-
-        // バリデーション無しで次に飛ばすｗｗ
-        // SESSION登録
-        if($_FILES['pic_name']['name'] != ''){
-            $date_str = date('YmdHid');
-            $submit_file_name = $date_str . $file_name;
-            move_uploaded_file($_FILES['pic_name']['tmp_name'], '../pictures/' .$submit_file_name);
-            $_SESSION['edit']['img_name'] = $submit_file_name;
-        }
-
-        $_SESSION['edit']['comment'] = $comment;
-        $_SESSION['edit']['picture_id'] = $picture_id;
-
-        header('Location: edit_pic_check.php');
-        exit();
-    }
-
-    // 画像を追加する場合  こいつらファイル分けた方がいいよな・・
-    if(!empty($_POST) && isset($_POST['add'])){
-        // for文の準備
-        $count_post = count($_POST);
-        echo $count_post;
-        // 変数定義
-        //if (!isset($_REQUEST['action'])){
-            // 一度checkから戻ってきたら同じ処理を二回行わない
-            $pic_names = array();
-            $comments = array();
-            for($n=0;$n<$count_post;$n++){
-                if(isset($_FILES['pic_name' . $n]['name'])){
-                    $pic_number = $_FILES['pic_name' . $n]['name'];
-                    $pic_names[] = $pic_number;
-                    echo $pic_number;
-                }
-                if(isset($_POST['comment' . $n])){
-                   $comments[] = $_POST['comment' . $n];
-                }    
-            }
-        //}
-        echo '<pre>'; 
-        echo '$comments = ';
-        var_dump($comments);
-        echo '</pre>';
-        // 拡張子チェック
-        for($b=0;$b<$count_post;$b++){
-            if (!empty($pic_names[$b])) {
-                //jpeg/png/gifの３種類に変更する
-                $pic_type = substr($pic_names[$b],-3) ;
-                $pic_type = strtolower($pic_type);
-                if ($pic_type != 'jpg' && $pic_type != 'png' && $pic_type != 'gif') {
-                    $errors['pic_names' . $b] = 'type';
-                }
-            }
-        }
-        // SESSIONへ入れる
-        for($y=0;$y<$count_post;$y++){
-            // 写真
-            if(!empty($pic_names[$y])){
-                $submit_pic_name = $date_str . $pic_names[$y];
-                move_uploaded_file($_FILES['pic_name' . $y]['tmp_name'], '../pictures/' .$submit_pic_name);
-                $_SESSION['add']['pic_name' . $y] = $submit_pic_name;
-            }
-            // コメント
-            if(!empty($comments[$y])){
-                $_SESSION['add']['comment' . $y] = $comments[$y];
-                $_SESSION['add']['count'] = $y;
-            }
-        }
-
-
-        header('Location: add_pic_check.php?dialy_id=' . $_REQUEST['dialy_id']);
-        exit();
-
-      echo 'addうんこ';
-    }
-   
-
-
-
-
-
+    // 自分にPOST送信して
+    // INSERT開始
     
+
+
+
+ 
 
 
  ?>
@@ -181,49 +97,23 @@
   </header>
 
   <!-- 個別に写真を編集する場合 -->
-  <?php if(isset($_REQUEST['picture_id'])){ ?>
-    <div class="container">
-      <form method="POST" action="" enctype="multipart/form-data">
-        <div class="row">
-          <p>編集</p>
-          <img src="../pictures/<?php echo $picture['pic_name']; ?>" alt="" style="display: block; width: 200px;" width="200" border="0" alt="" />
-          <br>
-          <input type="file" style="margin: auto;" name="pic_name" accept="image/*">
-          <textarea name="comment" cols="40" rows="5"><?php echo $picture['comment']; ?></textarea><br>
-       	</div>
-        <br>
-        <input type="hidden" name="edit" value="edit">
-        <input type="submit" value="変更確認へ" class="btn btn-info">
-        <a href="../travel_dialy.php?dialy_id=<?php echo $picture['dialy_id'] ?>" class="btn btn-primary">旅行記へ戻る</a>
-      </form>
-  	</div>
-  <?php } ?>
-
-  <!-- 写真を追加する場合 -->
-  <?php if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'add'){ ?>
   <div class="container">
-    <form method="POST" action="" enctype="multipart/form-data">
-      <div class="low">
-        <div class="parent" style="margin: 50px;">
-          <p><i class="fa fa-camera-retro"></i>旅の写真を選んでください</p>
-          <div class="field">        
-            <input type="file" style="margin: auto;" name="pic_name0" accept="image/*">
-            <textarea name="comment0" cols="80" rows="5"></textarea><br>
-            <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br><br>
-          </div>
-        </div> 
-        <!-- class=parentの外にボタンを出しておく -->
-        <button type="button" class="btn bg-white mt10 miw100 add_btn" ><p class="btn btn-info">写真・旅行記を追加する</p></button>
-        <br>
-        <input type="hidden" name="add" value="add">
-        <input type="submit" value="追加確認へ" class="btn btn-info">
-        <a href="../travel_dialy.php?dialy_id=<?php echo $picture['dialy_id'] ?>" class="btn btn-primary">旅行記へ戻る</a>
-      </div>
+    <form method="POST" action="">
+      <div class="row">
+        <p style="color: blue;">写真とコメント</p> 
+          <?php 
+            $count_comments = count($comments);
+            for($z=0;$z<$count_comments;$z++){ ?>
+              <img src="pictures/<?php echo $pic_names[$z]; ?>" width="300"><br>
+              <p><?php echo $comments[$z]; ?></p>              
+          <?php } ?>
+      <br>
+      <input type="hidden" name="add" value="add">
+      <input type="submit" value="追加を確定する" class="btn btn-info">
     </form>
-  </div>
-
-  <?php } ?>
+	</div>
   
+
 
 
 
