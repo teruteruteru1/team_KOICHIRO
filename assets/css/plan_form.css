@@ -1,39 +1,63 @@
 /*plan_form.phpのデザイン修正用に作成*/
-#site-box {
-          /*width : 750px;*/
-}
-
-#a-box {    
-	
-}
 
 #b-box {
-/*          float: left;
-          width: 350px;
-          border: 3px solid #EEEEEE;
-          background-color: #CCCCCC*/
+    float: center; 
+    border: 3px solid #EEEEEE;
+    background-color: #FFFFCC;
+    padding:30px;
 }
 
-#c-box {
-/*          float: right;
-          width: 350px;*/
-          float: center;
-          
-          border: 3px solid #EEEEEE;
-          background-color: #FFFFCC
+#dialy_tag {  
+    width: 700px;
+    border: 3px solid #FF9900;
 }
 
-#d-box {  
-	 /*clear : both ; width : ;*/
+textarea{
+    vertical-align:top;
+}
+/*旅行記追加ボタン*/
+.add_btn{
+   position: relative;
+   display: inline-block;
+   font-weight: bold;
+   padding: 0.25em ;
+   margin-bottom: 100px;
+   text-decoration: none;
+   color: #000;   
 }
 
-#e-box {  
-	 /*clear : both ; width :  ;*/
+.add_btn:before{
+   position: absolute;
+   content: '';
+   width: 100%;
+   height: 4px;
+   top:100%;
+   left: 0;
+   border-radius: 3px;
+   background:#67c5ff;
+   transition: .2s;
+   margin-bottom: 100px;
 }
-/*しおりのメイン写真位置に設置*/
-.my-size {
-  /*font-size: 20em*/ 
-}
-/*しおりのメイン写真位置に設置*/
 
-/*plan_form.phpのデザイン修正用に作成*/
+.add_btn:hover:before {
+    top: -webkit-calc(100% - 3px);
+    top: calc(100% - 3px);
+}
+
+/*旅行記削除ボタン*/
+.trash_btn{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    color: #67c5ff;
+    border: dashed 1px #67c5ff;
+    background: #f2fcff;
+    border-radius: 3px;
+    transition: .4s;
+}
+
+.trash_btn:hover {
+    background: #cbedff;
+    color: #000;
+}
+/*plan_form.phpのデザイン修正用に作成
