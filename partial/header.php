@@ -1,7 +1,7 @@
 	<!-- Header Start -->
 <!-- 	<header id="home"> -->
 
-<?php 
+<?php
 		// サインインユーザー取得
     $sql = 'SELECT * FROM `users` WHERE `user_id`=?';
     $data = array($_SESSION['user']['id']);
@@ -9,10 +9,6 @@
     $stmt->execute($data);
 
     $signin_user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    
-    
-
 
 ?>
 		<div class="main-menu">
@@ -42,10 +38,10 @@
 			              <li class="dropdown">
 				              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">マイページ<span class="caret"></span></a>
 				              <ul class="dropdown-menu">
-				                <li><a href="#">クリップ</a></li>
+				                <li><a href="clip_view.php?user_id=<?php echo $signin_user['user_id']; ?>">クリップ</a></li>
 				                <!-- <li><a href="plan_form.php">しおり入力</a></li> -->
 				                <li><a href="dialy_form.php">投稿記作成</a></li>
-				                <li><a href="#">自投稿閲覧</a></li>
+				                <li><a href="own_posts.php?user_id=<?php echo $signin_user['user_id']; ?>">自投稿閲覧</a></li>
 				              </ul>
 		            		</li>
 		            		<li><a style="font-size: 20px"><?php echo $signin_user['user_name']; ?></a></li>

@@ -3,6 +3,7 @@
     require ('dbconnect.php');
 
 
+
     //一回自分に飛ばす。確認ヴァーダンプ
     echo '<br>';
     echo '<br>';
@@ -365,252 +366,259 @@
         <?php require('partial/header.php') ?>
     </header>
     <!-- Header end -->
+    <div id="site-box" class="container">
+        <div class="row">
+            <form method="POST" action="dialy_form.php" enctype="multipart/form-data">
 
-    <div id="site-box" style="text-align: center;">
-        <form method="POST" action="dialy_form.php" enctype="multipart/form-data">
-
-            <!-- title start -->
-            <div id="a-box" style="text-align: center;">
-                <div> 
-                    <br>
-                    <div class="dialytittle col-sm-10" style="text-align: left;"> 
-                        <p><h3>旅のタイトル</h3></p>
+                <!-- title start -->
+                <div id="a-box">
+                    <p><h1>旅のプランを作成する</h1></p>
+                    <div class="dialytittle" style="text-align: left; margin-top: 10px; "> 
+                        
                         <?php if (isset($errors['title'])) {  ?>
                           <span style="color: red;">タイトルを入力してください</span><br>
                         <?php }  ?>
-                    </div>
-                    <textarea name="title" cols="100" rows="1" value="<?php echo $title ?>"><?php echo $title; ?></textarea>
-                </div>  
-            </div>
-            <!-- title end -->
-
-            <!-- main picture start -->
-            <div id="b-box">
-                <div style="margin:10px;">
-                    <span>メイン写真を選択してください</span> <br>
-                      <?php if (isset($errors['title_img_name']) && $errors['title_img_name'] == 'blank') {  ?>
-                        <span style="color: red;">トップに置く画像を選択してください</span><br>
-                      <?php }  ?>
-                      <?php if (isset($errors['title_img_type']) && $errors['title_img_type'] == 'type') {  ?>
-                        <span style="color: red;">拡張子をjpg png gif にしてください</span><br>
-                      <?php }  ?>
-                      <?php if (isset($errors['title_img_name']) && $errors['title_img_name'] == 'rewrite') {  ?>
-                        <span style="color: red;">メイン画像を再選択してください</span><br>
-                      <?php }  ?>
-                    <input type="file" style="margin: auto;" name="title_img_name" accept="mage/*">
-                    <i class="fa fa-camera-retro my-size" aria-hidden="true"></i>
-                </div>
-            </div>
-            <!-- main picture end -->
-
-            <div id="c-box">
-                <div>
-                    予算：
-                    <input type="text" name="budget" style="width:100px" placeholder="(例)100000" value="<?php echo $budget ?>">
-                    (円)<br>
-                    <?php if (isset($errors['budget']) && $errors['budget'] == 'blank') {  ?>
-                      <span style="color: red;">予算を入力してください</span><br>
-                    <?php }  ?>
-                    <?php if (isset($errors['budget']) && $errors['budget'] == 'number') {  ?>
-                      <span style="color: red;">数字で入力してください</span><br>
-                    <?php }  ?>
+                   
                     
+                    </div>
                 </div>
-                <div>
-                    日数：
-                    <input type="text" name="number_days" style="width:100px" placeholder="(例)30" value="<?php echo $number_days ?>">
-                    (日)<br>
-                    <?php if (isset($errors['number_days']) && $errors['number_days'] == 'blank') {  ?>
-                      <span style="color: red;">日数を入力してください</span><br>
-                    <?php }  ?>
-                    <?php if (isset($errors['number_days']) && $errors['number_days'] == 'number') {  ?>
-                      <span style="color: red;">数字で入力してください</span><br>
-                    <?php }  ?>
-     
+                <!-- title end -->
 
-                </div>
-                <!-- 国選択１ -->
-                国1
-                <!-- $postと同じものがあったら、そこのoptionにselectedを当てる。elseそうじゃなかったらそのまま -->
-                <select name="country_id_1" class="country_select">
-                  <option value="unselected" selected="" class="msg">国を選択して下さい</option>
-                  <?php for($i=0; $i<$count_country ; $i++){ ?>
-                    <?php if (isset($_POST['country_id_1']) && $_POST['country_id_1'] == $countries[$i]['country_id']){ ?>
-                      <option value="<?php echo $countries[$i]['country_id']; ?>" selected="selected" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>                        
-                    <?php }else{ ?>                    
-                      <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
-                    <?php } ?>
-                  <?php } ?>                  
-                </select>
-                <br>
-                <?php if (isset($errors['country_id_1'])) {  ?>
-                  <span style="color: red;">国を選択してください</span><br>
-                <?php }  ?>
-                
-                
-                都市1
-                <select name="area_id_1" class="area_select">
-                  <option value="unselected" selected="selected" class="msg">都市を選択して下さい</option>
-                  <?php for($i=0; $i<$count_area ; $i++){ ?>
-                    <?php if (isset($_POST['area_id_1']) && $_POST['area_id_1'] == $areas[$i]['area_id']){ ?>
-                      <option value="<?php echo $places[$i]['area_id']; ?>" selected="selected" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name']; ?></option>
-                    <?php }else{ ?>
-                      <option value="<?php echo $places[$i]['area_id']; ?>" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name']; ?></option>
-                    <?php } ?>
-                  <?php } ?>
-                </select>               
-                <br>
-                <?php if (isset($errors['area_id_1'])) {  ?>
-                  <span style="color: red;">地域/都市を選択してください</span><br>
-                <?php }  ?>
+                <div id="b-box">
+                    <div style="margin: 10px;">
+                        <div>
+                            旅のタイトル:
+                            <textarea name="title" cols="100" rows="1" value="<?php echo $title ?>"><?php echo $title; ?></textarea>
+                        </div>
+                        <!-- カレンダー機能開始 -->
+                        <script type="text/javascript" src="plan_calender.js"></script>
+                        <br>
+                    
+                        旅行予定日時：
+                        <input type="text" class="datepicker" name="depart_date" placeholder="  出発日" value="<?php echo $depart_date; ?>">　〜
+                    
+                        <?php if (isset($errors['depart_date'])) {  ?>
+                          <span style="color: red;">出発日を選択してください</span><br>
+                        <?php }  ?>
 
-                <!-- 国選択２ -->
-                国1
-                <select name="country_id_2" class="country_select">
-                  <option value="unselected" selected="" class="msg">国を選択して下さい</option>
-                  <?php for($i=0; $i<$count_country ; $i++){ ?>
-                    <?php if (isset($_POST['country_id_2']) && $_POST['country_id_2'] == $countries[$i]['country_id']){ ?>
-                      <option value="<?php echo $countries[$i]['country_id']; ?>" selected="selected" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>                        
-                    <?php }else{ ?>                    
-                      <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
-                    <?php } ?>
-                  <?php } ?>                  
-                </select>
-                <br>            
-                都市1
-                <select name="area_id_2" class="area_select">
-                  <option value="unselected" selected="selected" class="msg">都市を選択して下さい</option>
-                  <?php for($i=0; $i<$count_area ; $i++){ ?>
-                    <?php if (isset($_POST['area_id_2']) && $_POST['area_id_2'] == $areas[$i]['area_id']){ ?>
-                      <option value="<?php echo $places[$i]['area_id']; ?>" selected="selected" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name']; ?></option>
-                    <?php }else{ ?>
-                      <option value="<?php echo $places[$i]['area_id']; ?>" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name']; ?></option>
-                    <?php } ?>
-                  <?php } ?>
-                </select>               
-                <br>
-
-                <!-- 国選択３ -->
-                国1
-                <select name="country_id_3" class="country_select">
-                  <option value="unselected" selected="" class="msg">国を選択して下さい</option>
-                  <?php for($i=0; $i<$count_country ; $i++){ ?>
-                    <?php if (isset($_POST['country_id_3']) && $_POST['country_id_3'] == $countries[$i]['country_id']){ ?>
-                      <option value="<?php echo $countries[$i]['country_id']; ?>" selected="selected" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>                        
-                    <?php }else{ ?>                    
-                      <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
-                    <?php } ?>
-                  <?php } ?>                  
-                </select>
-                <br>            
-                都市1
-                <select name="area_id_3" class="area_select">
-                  <option value="unselected" selected="selected" class="msg">都市を選択して下さい</option>
-                  <?php for($i=0; $i<$count_area ; $i++){ ?>
-                    <?php if (isset($_POST['area_id_3']) && $_POST['area_id_3'] == $areas[$i]['area_id']){ ?>
-                      <option value="<?php echo $places[$i]['area_id']; ?>" selected="selected" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name']; ?></option>
-                    <?php }else{ ?>
-                      <option value="<?php echo $places[$i]['area_id']; ?>" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name']; ?></option>
-                    <?php } ?>
-                  <?php } ?>
-                </select>               
-                <br>
-               
-              
-                
-                
-
-                <!-- カレンダー機能開始 -->
-                <script type="text/javascript" src="plan_calender.js"></script>
-            
-                出発日時
-                <input type="text" class="datepicker" name="depart_date" value="<?php echo $depart_date; ?>">
-                <br>
-                <?php if (isset($errors['depart_date'])) {  ?>
-                  <span style="color: red;">出発日を選択してください</span><br>
-                <?php }  ?>
-                帰宅日時
-                <input type="text" class="datepicker" name="arrival_date" value="<?php echo $arrival_date; ?>">
-                <br>
-                <?php if (isset($errors['arrival_date'])) {  ?>
-                  <span style="color: red;">帰宅日を選択してください</span><br>
-                <?php }  ?>
-
-                <!-- 概要 -->
-                
-                <div style="margin:10px;">
-                    <h2>旅の概要</h2>
-                    <textarea name="title_comment" cols="40" rows="3"> <?php echo $title_comment; ?> </textarea>
-                </div>
-                <?php if (isset($errors['title_comment'])) {  ?>
-                  <span style="color: red;">旅行の概要を入力してください</span><br>
-                <?php }  ?>
-                <br> 
+                        <input type="text" class="datepicker" name="arrival_date" placeholder="  帰宅日" value="<?php echo $arrival_date; ?>">
                         
-            </div>
+                        <?php if (isset($errors['arrival_date'])) {  ?>
+                          <span style="color: red;">帰宅日を選択してください</span>
+                        <?php }  ?>
+                        
+                        
+                        日数：
+                        <input type="text" name="number_days" style="width:100px" placeholder="(例)30" value="<?php echo $number_days ?>">
+                        (日)<br>
+                        <?php if (isset($errors['number_days']) && $errors['number_days'] == 'blank') {  ?>
+                          <span style="color: red;">日数を入力してください</span><br>
+                        <?php }  ?>
+                        <?php if (isset($errors['number_days']) && $errors['number_days'] == 'number') {  ?>
+                          <span style="color: red;">数字で入力してください</span><br>
+                        <?php }  ?>
+                    </div>
 
-            
-                <!-- 写真とコメント -->
-                <!-- 戻ってきたかどうかで表示画面を変更する -->
-            <div id="d-box"> 
-              <?php if(!isset($_REQUEST['action'])){ ?>
-              <!-- 戻ってきてないときはそのまま -->
-                <div class="parent">
-                  <!-- <div class="field" style="padding-bottom:8px; margin-bottom:20px;"> -->
-                  <div class="field" style="text-align: center;">
-                    <p>旅の写真を選んでください</p>
-                    <!-- <div> -->
-                    <input type="file" style="margin: auto;" name="pic_name0" accept="image/*">
-                    <!-- </div> -->
-                    <textarea name="comment0" cols="40" rows="5"></textarea><br>
-                    <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br><br>
-                  </div>
-                </div> <!-- class=parentの外にボタンを出しておく -->
+                    <div style="margin: 10px;">
+                        <p>旅行エリア</p>
+                        <div style="margin: 10px;">
+                            <!-- 国選択１ -->
+                            国1:
+                            <!-- $postと同じものがあったら、そこのoptionにselectedを当てる。elseそうじゃなかったらそのまま -->
+                            <select name="country_id_1" class="country_select">
+                              <option value="unselected" selected="" class="msg">国を選択して下さい</option>
+                              <?php for($i=0; $i<$count_country ; $i++){ ?>
+                                <?php if (isset($_POST['country_id_1']) && $_POST['country_id_1'] == $countries[$i]['country_id']){ ?>
+                                  <option value="<?php echo $countries[$i]['country_id']; ?>" selected="selected" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>                        
+                                <?php }else{ ?>                    
+                                  <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
+                                <?php } ?>
+                              <?php } ?>                  
+                            </select>
+                            
+                            <?php if (isset($errors['country_id_1'])) {  ?>
+                              <span style="color: red;">国を選択してください</span><br>
+                            <?php }  ?>
+                            
+                            
+                            都市1:
+                            <select name="area_id_1" class="area_select">
+                              <option value="unselected" selected="selected" class="msg">都市を選択して下さい</option>
+                              <?php for($i=0; $i<$count_area ; $i++){ ?>
+                                <?php if (isset($_POST['area_id_1']) && $_POST['area_id_1'] == $areas[$i]['area_id']){ ?>
+                                  <option value="<?php echo $places[$i]['area_id']; ?>" selected="selected" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name']; ?></option>
+                                <?php }else{ ?>
+                                  <option value="<?php echo $places[$i]['area_id']; ?>" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name']; ?></option>
+                                <?php } ?>
+                              <?php } ?>
+                            </select>               
+                            <br>
+                            <?php if (isset($errors['area_id_1'])) {  ?>
+                              <span style="color: red;">地域/都市を選択してください</span><br>
+                            <?php }  ?>
 
-                <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >写真を追加する</button>
-                <br>
-              <?php }else{ ?>
-                  <div class="parent">
-                    <?php for($e=0;$e<$count_comments;$e++){ ?>
-                      <!-- <div class="field" style="padding-bottom:8px; margin-bottom:20px;"> -->
-                      <div class="field" style="text-align: center;">
-                        <p>旅の写真を選んでください</p>
-                        <!-- <div> -->
-                        <input type="file" style="margin: auto;" name="pic_name . <?php echo $e; ?>" accept="image/*">
-                        <!-- </div> -->
-                        <textarea name="comment . <?php echo $e; ?>" cols="40" rows="5"><?php echo $action_comments[$e]; ?></textarea><br>
-                        <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br><br>
-                      </div>
-                    <?php } ?>
-                  </div> <!-- class=parentの外にボタンを出しておく -->
-                  
-                  <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >写真を追加する</button>
-                  <br>
-              <?php } ?>
+                            <!-- 国選択２ -->
+                            国2:
+                            <select name="country_id_2" class="country_select">
+                              <option value="unselected" selected="" class="msg">国を選択して下さい</option>
+                              <?php for($i=0; $i<$count_country ; $i++){ ?>
+                                <?php if (isset($_POST['country_id_2']) && $_POST['country_id_2'] == $countries[$i]['country_id']){ ?>
+                                  <option value="<?php echo $countries[$i]['country_id']; ?>" selected="selected" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>                        
+                                <?php }else{ ?>                    
+                                  <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
+                                <?php } ?>
+                              <?php } ?>                  
+                            </select>
+                                        
+                            都市2:
+                            <select name="area_id_2" class="area_select">
+                              <option value="unselected" selected="selected" class="msg">都市を選択して下さい</option>
+                              <?php for($i=0; $i<$count_area ; $i++){ ?>
+                                <?php if (isset($_POST['area_id_2']) && $_POST['area_id_2'] == $areas[$i]['area_id']){ ?>
+                                  <option value="<?php echo $places[$i]['area_id']; ?>" selected="selected" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name']; ?></option>
+                                <?php }else{ ?>
+                                  <option value="<?php echo $places[$i]['area_id']; ?>" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name']; ?></option>
+                                <?php } ?>
+                              <?php } ?>
+                            </select>               
+                            <br>
 
-              <!-- タグを選択 -->
-              <p>旅行記につけるタグを選んでください</p>
-              <div>
-                <?php for($i=0; $i<$count_tag ; $i++){ ?>
-                    <?php if($tags[$i]['tag_id']%4 == 0){ ?>
-                        <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label><br>
-                    <?php }else{ ?>
-                        <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label>
-                    <?php } ?>
-                <?php }?>
-              </div>
-              <?php if (isset($errors['tag'])) {  ?>
-                <span style="color: red;">旅行記につけるタグを最低一つ選択してください</span><br>
-              <?php }  ?>
-              <br>
-          
-              <!-- 確認画面へ -->
-              <input type="submit" value="確認画面へ" class="btn btn-primary">            
-            </div>
-            <!-- 仮機能 -->
-            <p>仮のボタン</p>  
-             <a href="sessiondelete.php">（仮）セッションを消して入力に戻る</a>
-        </form>
+                            <!-- 国選択３ -->
+                            国3:
+                            <select name="country_id_3" class="country_select">
+                              <option value="unselected" selected="" class="msg">国を選択して下さい</option>
+                              <?php for($i=0; $i<$count_country ; $i++){ ?>
+                                <?php if (isset($_POST['country_id_3']) && $_POST['country_id_3'] == $countries[$i]['country_id']){ ?>
+                                  <option value="<?php echo $countries[$i]['country_id']; ?>" selected="selected" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>                        
+                                <?php }else{ ?>                    
+                                  <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
+                                <?php } ?>
+                              <?php } ?>                  
+                            </select>
+                                      
+                            都市3:
+                            <select name="area_id_3" class="area_select">
+                              <option value="unselected" selected="selected" class="msg">都市を選択して下さい</option>
+                              <?php for($i=0; $i<$count_area ; $i++){ ?>
+                                <?php if (isset($_POST['area_id_3']) && $_POST['area_id_3'] == $areas[$i]['area_id']){ ?>
+                                  <option value="<?php echo $places[$i]['area_id']; ?>" selected="selected" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name']; ?></option>
+                                <?php }else{ ?>
+                                  <option value="<?php echo $places[$i]['area_id']; ?>" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name']; ?></option>
+                                <?php } ?>
+                              <?php } ?>
+                            </select>
+                        </div>
+                    </div>                 
+
+                    <div style="margin: 10px; ">
+                        予算：
+                        <input type="text" name="budget" style="width:100px" placeholder="(例)100000" value="<?php echo $budget ?>">
+                        (円)<br>
+                        <?php if (isset($errors['budget']) && $errors['budget'] == 'blank') {  ?>
+                          <span style="color: red;">予算を入力してください</span><br>
+                        <?php }  ?>
+                        <?php if (isset($errors['budget']) && $errors['budget'] == 'number') {  ?>
+                          <span style="color: red;">数字で入力してください</span><br>
+                        <?php }  ?>
+                    </div>
+
+                    <!-- タグを選択 -->
+                    <div style="margin: 50px;">
+                        <p><h4>旅行記につけるタグを選んでください</h4></p>
+                        <div id="dialy_tag" class="col-xs-12">
+                        <?php for($i=0; $i<$count_tag ; $i++){ ?>
+                            <?php if($tags[$i]['tag_id']%4 == 0){ ?>
+                                <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label><br>
+                            <?php }else{ ?>
+                                <label class="checkbox-inline"><input type="checkbox" name="tag<?php echo $i?>" value="<?php echo $tags[$i]['tag_id'] ?>"><?php echo $tags[$i]['tag_name'] ?></label>
+                            <?php } ?>
+                        <?php }?>
+                        </div>
+                        <?php if (isset($errors['tag'])) {  ?>
+                        <span style="color: red;">旅行記につけるタグを最低一つ選択してください</span><br>
+                        <?php }  ?>
+                    </div>
+                    <br>
+                </div>
+
+
+                
+
+                    <!-- 概要 -->
+                    <div style="margin-top:120px; text-align: center;">
+                        <h2>旅の概要</h2>
+                        <div style="margin: 10px;">
+                            <textarea name="title_comment" cols="80" rows="6"> <?php echo $title_comment; ?> </textarea>
+                        </div>
+                    
+                        <?php if (isset($errors['title_comment'])) {  ?>
+                          <span style="color: red;">旅行の概要を入力してください</span><br>
+                        <?php }  ?>
+                        <br> 
+
+                        <!-- main picture start -->
+                        <i class="fa fa-camera-retro"></i>
+                        <span>メイン写真を選択してください</span> <br>
+                          <?php if (isset($errors['title_img_name']) && $errors['title_img_name'] == 'blank') {  ?>
+                        <span style="color: red;">トップに置く画像を選択してください</span><br>
+                          <?php }  ?>
+                          <?php if (isset($errors['title_img_type']) && $errors['title_img_type'] == 'type') {  ?>
+                        <span style="color: red;">拡張子をjpg png gif にしてください</span><br>
+                          <?php }  ?>
+                          <?php if (isset($errors['title_img_name']) && $errors['title_img_name'] == 'rewrite') {  ?>
+                        <span style="color: red;">メイン画像を再選択してください</span><br>
+                          <?php }  ?>
+                        <input type="file" style="margin: auto;" name="title_img_name" accept="mage/*">
+                        <i aria-hidden="true"></i>
+                    
+                        <!-- main picture end -->         
+                    
+                        <!-- 写真とコメント -->
+                        <!-- 戻ってきたかどうかで表示画面を変更する -->
+                        <?php if(!isset($_REQUEST['action'])){ ?>
+                        <!-- 戻ってきてないときはそのまま -->
+                        <div class="parent" style="margin: 50px;">
+                            <div class="field">
+                                <p><i class="fa fa-camera-retro"></i>旅の写真を選んでください</p>
+                                <!-- <div> -->
+                                <input type="file" style="margin: auto;" name="pic_name0" accept="image/*">
+                                <!-- </div> -->
+                                <textarea name="comment0" cols="80" rows="5"></textarea><br>
+                                <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br><br>
+                            </div>
+                        </div> 
+                        <!-- class=parentの外にボタンを出しておく -->
+
+                        <button type="button" class="btn bg-white mt10 miw100 add_btn" ><h3>写真・旅行記を追加する</h3></button>
+                        <br>
+                        <?php }else{ ?>
+                        <div class="parent">
+                            <?php for($e=0;$e<$count_comments;$e++){ ?>
+                              <!-- <div class="field" style="padding-bottom:8px; margin-bottom:20px;"> -->
+                              <div class="field">
+                                <p>旅の写真を選んでください</p>
+                                <!-- <div> -->
+                                <input type="file" style="margin: auto;" name="pic_name . <?php echo $e; ?>" accept="image/*">
+                                <!-- </div> -->
+                                <textarea name="comment . <?php echo $e; ?>" cols="40" rows="5"><?php echo $action_comments[$e]; ?></textarea><br>
+                                <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br><br>
+                              </div>
+                            <?php } ?>
+                        </div> <!-- class=parentの外にボタンを出しておく -->
+                          
+                          <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >写真を追加する</button>
+                          <br>
+                      <?php } ?>
+
+
+                  <!-- 確認画面へ -->
+                  <input type="submit" value="確認画面へ" class="btn btn-primary">            
+                </div>
+                <!-- 仮機能 -->
+                <p>仮のボタン</p>  
+                 <a href="sessiondelete.php">（仮）セッションを消して入力に戻る</a>
+            </form>
+        </div>
     </div>
     <br>
 
