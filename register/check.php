@@ -113,8 +113,7 @@
       <div class="form-group">
         <!-- <input type="text" name="input_name" id="name" class="form-control input-lg" tabindex="3"> -->
         <p style="font-size: 20px">ユーザー名: <?php echo htmlspecialchars($name); ?></p><br>
-      <img src="../user_profile_img/<?php echo htmlspecialchars($img_name); ?>" width="100"><br>
-
+        <img src="../user_profile_img/<?php echo htmlspecialchars($img_name); ?>" width="100"><br>
       </div>
       <div class="form-group">
         <!-- <input type="email" name="input_email" id="email" class="form-control input-lg" placeholder="メールアドレス
