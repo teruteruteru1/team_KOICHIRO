@@ -367,11 +367,11 @@
 
   <div class="container" style="margin-top: 60px;">
     <div class="row">
-      <div class="col-xs-8 col-xs-offset-2">
+      <div class="col-xs-12 col-xs-offset-2">
         <!-- コンテンツ -->
-        <div id="site-box">
+        
           <form method="POST" action="" enctype="multipart/form-data">        
-            <div id="a-box">
+            <div id="a-box" class="row">
               <div class="dialytittle "> 
                 <p><h3>旅行プランを作成する</h3></p>
                 <?php if (isset($errors['title'])) {  ?>
@@ -559,7 +559,7 @@
             <p>仮のボタン</p>  
              <a href="sessiondelete.php">（仮）セッションを消して入力に戻る</a>
           </form>
-        </div>
+        
       </div>
     </div>
   </div>
