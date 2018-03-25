@@ -51,9 +51,6 @@
         }
         $count_comments = count($action_comments);  
 
-
-
-        //---------------------未完----------------------
         echo '<pre>'; 
         echo '$_POST = ';
         var_dump($_POST);

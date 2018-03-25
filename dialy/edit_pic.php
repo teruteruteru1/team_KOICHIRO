@@ -1,7 +1,32 @@
 <?php 
     session_start();  
-    require ('dbconnect.php'); 
-    require ('assets/functions.php');
+    require ('../dbconnect.php'); 
+    require ('../assets/functions.php');
+
+    echo $_REQUEST['dialy_id'];
+    $dialy_id = $_REQUEST['dialy_id'];
+
+    // picturesの取得
+    $sql = 'SELECT * FROM pictures WHERE dialy_id=?';
+    $data = array($dialy_id);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+
+    while ($picture = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $pictures[] = $picture;
+    }
+    $count_pics = count($pictures);
+
+    // echo '<pre>'; 
+    // echo '$pictures = ';
+    // var_dump($pictures);
+    // // echo '</pre>'; 
+    // echo '<pre>'; 
+    // echo '$_POST = ';
+    // var_dump($_POST);
+    // echo '</pre>'; 
+
+
 
 
     
@@ -14,7 +39,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>plan_check</title>
+  <title>picture_edit</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -24,14 +49,14 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="assets/css/normalize.css">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-  <link rel="stylesheet" href="assets/css/animate.css">
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">    
-  <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+  <link rel="stylesheet" href="../assets/css/normalize.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../assets/css/animate.css">
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">    
+  <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
       
   <!-- Font -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -49,88 +74,38 @@
 </head>
     
 
-<body
+<body>
   <!-- Header Start -->
   <header id="home">
-    <?php require('partial/header.php') ?>
+    <?php require('../partial/header.php') ?>
   </header>
-          <!-- Main Menu End -->
-  <!-- 戻るボタン仮 -->
-  <a href="sessiondelete.php">（仮）セッションを消して入力に戻る</a>
 
   <div class="container">
     <div class="row">
-      <p style="color: blue;">旅行記概要</p> 
-    	  title <?php echo h($title) . '<br>'; ?><br>
-        title_comment <?php echo h($title_comment) . '<br>' ?><br>
-        <img src="title_img/<?php echo $title_img_name ?>" width="300"><br>
-    	<p style="color: blue;">予算</p> 
-       <?php echo h($budget)?>円<br>
+        <!-- 写真とコメント -->
+        <div class="parent">
+          <h2>変更する写真を選んでください</h2> <br>
+            <?php for($e=0;$e<$count_pics;$e++){ ?>
+              <div class="field">
+                <input type="file" style="margin: auto;" name="pic_name . <?php echo $e; ?>" accept="image/*" value="">
+                <img src="../pictures/<?php echo $pictures[$e]['pic_name']; ?>" alt="" style="display: block; width: 200px;" width="200" border="0" alt="" />
+                <textarea name="comment . <?php echo $e; ?>" cols="40" rows="5"><?php echo $pictures[$e]['comment']; ?></textarea><br>
+                <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button>
+                <p>※削除した写真は再度登録お願いします。</p><br><br>
+              </div>
+            <?php } ?>
+        </div> <!-- class=parentの外にボタンを出しておく -->
+          
+        <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >写真を追加する</button>
+        <br>
 
-      <p style="color: blue;">日程</p> 
-      	日数 <?php echo h($number_days); ?>日<br>
-        出発日 <?php echo h($depart_date);?><br>
-        帰着日 <?php echo h($arrival_date);?><br>
-
-      <p style="color: blue;">国と地域</p> 
-      	国  １ <?php echo $places[$area_id_1]['country_name'];?><br>
-      	都市１ <?php echo $places[$area_id_1]['area_name'];?><br>
-
-      	国  ２ 
-        <?php if($country_id_2 == 'unselected'){ ?>
-          <span style="color: red;">未指定</span><br>
-        <?php }else{ ?>
-          <?php echo $places[$area_id_2]['country_name'];?><br>
-        <?php } ?>
-        都市 ２ 
-        <?php if($area_id_2 == 'unselected'){ ?>
-          <span style="color: red;">未指定</span><br>
-        <?php }else{ ?>
-          <?php echo $areas[$area_id_2]['area_name'];?><br>
-        <?php } ?>
-        国  ３ 
-        <?php if($country_id_3 == 'unselected'){ ?>
-          <span style="color: red;">未指定</span><br>
-        <?php }else{ ?>
-          <?php echo $places[$area_id_3]['country_name'];?><br>
-        <?php } ?>
-        都市 ３ 
-        <?php if($area_id_3 == 'unselected'){ ?>
-          <span style="color: red;">未指定</span><br>
-        <?php }else{ ?>
-          <?php echo $areas[$area_id_3]['area_name'];?><br>
-        <?php } ?>
-
-
-      <p style="color: blue;">#タグ</p> 
-        <?php 
-          $count_tags = count($tag_number);
-          echo $count_tags . '<br>' ;
-          for($y=0;$y<$count_tags;$y++){ ?>
-            <p><?php echo $tag_number[$y]; ?></p> 
-            <p><?php echo $tag_number[$y]; ?></p>          
-        <?php } ?>
-      
-      <p style="color: blue;">写真とコメント</p> 
-      <?php 
-          $count_comments = count($comments);
-          echo $count_comments . '<br>' ;
-          for($z=0;$z<$count_comments;$z++){ ?>
-            <img src="pictures/<?php echo $pic_names[$z]; ?>" width="300"><br>
-            <p><?php echo $comments[$z]; ?></p>              
-
-      <?php } ?>
-
-
+      <br>
       <br>
    	</div>
 
     <form method="POST" action="">
     	<input type="hidden" name="kubo" value="kaori">
-      <a href="mochimaru_plan_form.php?action=rewrite"><strong>戻る</strong></a><br>
-      <!-- パラメータをつけることで、$_GET/$_REQUESTが使える -->
-    	<input type="submit" value="しおり登録">
-
+    	<input type="submit" value="写真を変更する">
     </form>
 
 	</div>
@@ -249,23 +224,23 @@
             </div>
         
         <!-- footer -->
-        <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
-        <script src="assets/js/plugins.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery.mousewheel-3.0.6.pack.js"></script>
-        <script src="assets/js/paralax.js"></script>
-        <script src="assets/js/jquery.smooth-scroll.js"></script>
-        <script src="assets/js/jquery.sticky.js"></script>
-        <script src="assets/js/wow.min.js"></script>
-        <script src="assets/js/main.js"></script>
+        <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="../assets/js/plugins.js"></script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="../assets/js/jquery.mousewheel-3.0.6.pack.js"></script>
+        <script src="../assets/js/paralax.js"></script>
+        <script src="../assets/js/jquery.smooth-scroll.js"></script>
+        <script src="../assets/js/jquery.sticky.js"></script>
+        <script src="../assets/js/wow.min.js"></script>
+        <script src="../assets/js/main.js"></script>
         
         <!-- カレンダーのJS -->
-        <script src="assets/js/plan_calender.js"></script>
+        <script src="../assets/js/plan_calender.js"></script>
         <!-- プルダウンのJS -->
-        <script src="assets/js/plan_country.js"></script>
-        <script src="assets/js/plan_country2.js"></script>
+        <script src="../assets/js/plan_country.js"></script>
+        <script src="../assets/js/plan_country2.js"></script>
         <!-- コメントを増やすJS -->
-        <script src="assets/js/plan_comment.js"></script>
+        <script src="../assets/js/plan_comment.js"></script>
         
     
     <script type="text/javascript">

@@ -11,7 +11,7 @@
     require ('dbconnect.php');
     include('assets/functions.php');
     //include('signin_user.php');
-    echo 'userid = ' . $_SESSION['user']['id'];
+    // echo 'userid = ' . $_SESSION['user']['id'];
 
     // 投稿表示
     // ①旅行記投稿者のID取得 dailies+users(名前と画像)
@@ -63,7 +63,9 @@
     while ($tag = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $tags[] = $tag;
     }
-    $count_tags = count($tags);
+    if(!empty($tags)){
+        $count_tags = count($tags);
+    }
     // echo '<pre>'; 
     // echo '$tags = ';
     // var_dump($tags);
@@ -119,6 +121,7 @@
     // echo '$comments = ';
     // var_dump($comments);
     // echo '</pre>'; 
+
 
 
 
@@ -275,13 +278,16 @@
           <!-- like end -->
 
           <!-- tag start -->
-          <div class="tag col-sm-12">
-              <ul>
-                <?php for($y=0;$y<$count_tags;$y++){ ?>
-                  <li><a href="#">＊<?php echo $tags[$y]['tag_name']; ?></a></li>
-                <?php } ?>
-              </ul>  
-          </div>
+          <!-- tagが未定義んｐ旅行記があるためif追加 -->
+          <?php if(!empty($tags)){ ?>
+            <div class="tag col-sm-12">
+                <ul>
+                  <?php for($y=0;$y<$count_tags;$y++){ ?>
+                    <li><a href="#">＊<?php echo $tags[$y]['tag_name']; ?></a></li>
+                  <?php } ?>
+                </ul>  
+            </div>
+          <?php } ?>
           <!-- tag end -->
         </div>
       </div>
@@ -294,6 +300,7 @@
                       <table border="0" align="center" width="590" cellpadding="0" cellspacing="0" class="container590">
                           <tr>
                               <td align="center" class="section-img">
+                                <!-- 写真 -->
                                   <a href="" style=" border-style: none !important; display: block; border: 0 !important;"><img src="pictures/<?php echo $pictures[$x]['pic_name']; ?>" alt="" style="display: block; width: 800px;" width="800" border="0" alt="" /></a>
                               </td>
                           </tr>
@@ -329,6 +336,7 @@
                                       <tr>
                                           <td align="center" style="font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
                                               <div style="line-height: 24px">
+                                                <!-- 写真のコメント -->
                                                 <?php echo $pictures[$x]['comment']; ?><br>
                                               </div>
                                           </td>
@@ -370,17 +378,7 @@
           </table>
         <?php } ?>
 
-        
-        <!-- 写真編集ボタン -->
-        <div class="container">
-          <div class="row">
-            <h6>写真編集ボタン</h6>
-            <form method="POST" action="dialy/edit_pic.php">
-              <input type="submit" value="投稿写真編集" class="btn btn-warning">
-            </form>
-          </div>
-        </div>
-
+        <!-- いいねfav -->
         <div class="container">
           <div class="row">
             <div class="like col-sm-12" style="text-align: center;">
@@ -426,7 +424,12 @@
                       </a>
                     </form>
                   </li>
-                  <!-- favボタン -->
+                  <!-- favボタン終了 -->
+
+                  <!-- 写真編集ボタン -->
+                  <li>
+                    <a href="dialy/edit_pic.php?dialy_id=<?php echo $dialy_id; ?>" class="btn btn-warning">投稿写真編集</a>
+                  </li>
               </ul>
             </div>
           </div>
@@ -488,124 +491,11 @@
 		<?php Include('partial/search_bar.php'); ?>
 		<!-- search end -->
 
+    <?php Include('partial/home_theme.php'); ?>
+    <!--  -->
+
 		<!-- Featured Work -->
-		<section id="feature-work" class="protfolio-padding">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="title">
-							<h3>目的<span>から選ぶ</span></h3>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="featured-list">
-				<div id="grid" class="clearfix">					
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_gourmet_IMG_7336.jpg" alt="Feature Image" />
-						</a>						
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>グルメ</h2>		
-								<!-- <h5>Category: Web Design</h5> -->
-							</div>
-						</div>
-					</div>
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_sightseeing_P9131618.jpg" alt="Feature Image" />
-						</a>
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>観光</h2>
-								<!-- <h5>Category: Web Design</h5> -->
-							</div>
-						</div>
-					</div>
-					
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_shopping_IMG_20180216_144151.jpg" alt="Feature Image" />
-						</a>
-						
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>ショッピング</h2>
-								<!-- <h5>Category: Web Design</h5> -->
-							</div>
-						</div>
-					</div>
-					
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_sport_outdoor_DSC_1043.jpg" alt="Feature Image" />
-						</a>
-						
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>スポーツ・アウトドア</h2>
-								<!-- <h5>Category: Web Design</h5> -->
-							</div>
-						</div>
-					</div>
-					
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_hotel_IMG_20180218_112635.jpg" alt="Feature Image" />
-						</a>
-						
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>ホテル</h2>
-								<!-- <h5>Category: Web Design</h5> -->
-							</div>
-						</div>
-					</div>
-					
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_relaxation_1519138253418.jpg" alt="Feature Image" />
-						</a>
-						
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>リラクゼーション</h2>
-								<!-- <h5>Category: Web Design</h5> -->
-							</div>
-						</div>
-					</div>
-					
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_resort_1519138015328.jpg" alt="Feature Image" />
-						</a>
-						
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>リゾート</h2>
-								<!-- <h5>Category: Web Design</h5> -->
-							</div>
-						</div>
-					</div>
-					
-					<div class="thumb">
-						<a href="#">
-							<img src="assets/img/add_img/theme_ather_1519138162591.jpg" alt="Feature Image" />
-						</a>
-						
-						<div class="thumb-rollover">
-							<div class="project-title">
-								<h2>その他</h2>
-								<!-- <h5>Category: Web Design</h5> -->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Featured Work -->
+		
 
 		<!-- Contact -->
 		<section id="contact-us">
