@@ -3,6 +3,7 @@
     require ('dbconnect.php');
 
 
+
     //一回自分に飛ばす。確認ヴァーダンプ
     echo '<br>';
     echo '<br>';
