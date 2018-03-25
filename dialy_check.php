@@ -98,7 +98,7 @@
     //
     if (!empty($_POST)) {
 
-        $_SESSION['user']['id'] = 27; // $user_idを偽装
+        //$_SESSION['user']['id'] = 27; // $user_idを偽装
         $flag = 1; //flagも偽装
         
         // ①
@@ -142,10 +142,10 @@
         //こいつらはループでどうにかさせてい・・・
         
         
-        echo '<pre>';
-        echo '$pic_names = ';
-        var_dump($pic_names);
-        echo '</pre>';
+        // echo '<pre>';
+        // echo '$pic_names = ';
+        // var_dump($pic_names);
+        // echo '</pre>';
         //pictures
         $count_comments = count($comments);
         for($a=0;$a<$count_comments;$a++){
@@ -170,21 +170,13 @@
         echo '$tags = ';
         var_dump($tags);
         echo '</pre>';
-    
-
-
-
-
-
-
-
 
         // セッションのplanの初期化
         // SQLを読んだ時点でセッションの中身はいらない
         $_SESSION['plan'] = array();
         unset($_SESSION['plan']);
 
-        header('Location: home.php');
+        header('Location: travel_dialy.php?dialy_id=' . $dialy_id['dialy_id']);
         exit();
         
 
