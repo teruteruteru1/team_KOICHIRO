@@ -90,7 +90,7 @@
     
     // コメント機能開始
     // 自分のページでPOST送信されたら
-    if (!empty($_POST)) {
+    if (!empty($_POST) && isset($_POST['comment'])) {
         // 変数定義
         $comment = $_POST['comment'];
         // $comment空チェック
@@ -369,10 +369,17 @@
               </tr>
           </table>
         <?php } ?>
-        <div>
-          <h6>写真編集ボタン</h6>
-        </div>
 
+        
+        <!-- 写真編集ボタン -->
+        <div class="container">
+          <div class="row">
+            <h6>写真編集ボタン</h6>
+            <form method="POST" action="dialy/edit_pic.php">
+              <input type="submit" value="投稿写真編集" class="btn btn-warning">
+            </form>
+          </div>
+        </div>
 
         <div class="container">
           <div class="row">

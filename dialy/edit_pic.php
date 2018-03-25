@@ -4,7 +4,7 @@
     require ('assets/functions.php');
 
 
-    }
+    
 
 
  ?>
