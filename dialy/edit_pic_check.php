@@ -3,8 +3,28 @@
     require ('../dbconnect.php'); 
     require ('../assets/functions.php');
 
-    echo $_REQUEST['picture_id'];
-    $picture_id = $_REQUEST['picture_id'];
+
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
+    echo '<br>';
+    echo '<pre>'; 
+    echo '$_SESSION = ';
+    var_dump($_SESSION);
+    echo '</pre>'; 
+    // echo '<pre>'; 
+    // echo '$_SESSION = ';
+    // var_dump($_SESSION);
+    // echo '</pre>'; 
+
+    // 変数定義開始
+
+    $picture_id = $_SESSION['edit']['picture_id'];
+    $comment = $_SESSION['edit']['comment'];
+    if(!empty($_SESSION['edit']['img_name'])){
+        $submit_file_name = $_SESSION['edit']['img_name'];
+    }
 
     // picturesの取得
     $sql = 'SELECT * FROM pictures WHERE picture_id=?';
@@ -13,54 +33,42 @@
     $stmt->execute($data);
 
     $picture = $stmt->fetch(PDO::FETCH_ASSOC);
-   
 
-    echo '<pre>'; 
-    echo '$picture = ';
-    var_dump($picture);
-    echo '</pre>'; 
-    echo '<pre>'; 
-    echo '$_POST = ';
-    var_dump($_POST);
-    echo '</pre>'; 
-     
-     echo '<pre>'; 
-        echo '$_FILES = ';
-        var_dump($_FILES);
-        echo '</pre>';
+    // 写真コメント登録
 
-    // 編集画面を押して自分に飛ばす
+    // ①両方変更するとき
+    // ②コメントだけ変更
+    // ※写真だけの変更はない
 
-    // 画像を変更する場合
-    if (!empty($_POST) && isset($_POST['edit'])) {
-        $comment = $_POST['comment'];
+    // ①
+    if (isset($_POST['edit'])){      
+        if (isset($submit_file_name)) {
+            // $sql = 'UPDATE テーブル名 SET 書き換えたいカラム＝内容 WHERE id=?';
+            $sql = 'UPDATE pictures SET pic_name=?, comment=? WHERE picture_id=?';
+            $data = array($submit_file_name, $comment,$picture_id);
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute($data);
+          
+        }else{
+            $sql = 'UPDATE pictures SET comment=? WHERE picture_id=?';
+            $data = array($comment,$picture_id);
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute($data);
 
-        if($_FILES['pic_name']['name'] != ''){
-            $file_name = $_FILES['pic_name']['name']; 
-            $file_type = substr($file_name,-3) ;
-            $file_type = strtolower($file_type);
-            if ($file_type != 'jpg' && $file_type != 'png' && $file_type != 'gif') {
-              $errors['img_name'] = 'type';
-            }           
         }
-
-
-        // バリデーション無しで次に飛ばすｗｗ
-        // SESSION登録
-        if($_FILES['pic_name']['name'] != ''){
-            $date_str = date('YmdHid');
-            $submit_file_name = $date_str . $file_name;
-            move_uploaded_file($_FILES['pic_name']['tmp_name'], '../pictures/' .$submit_file_name);
-            $_SESSION['edit']['img_name'] = $submit_file_name;
-        }
-
-        $_SESSION['edit']['comment'] = $comment;
-        $_SESSION['edit']['picture_id'] = $picture_id;
-
-        header('Location: edit_pic_check.php');
+         // show.phpへ遷移
+        $_SESSION['edit'] = array();
+        unset($_SESSION['edit']);
+        header('Location: ../travel_dialy.php?dialy_id='. $picture['dialy_id']);
         exit();
-    }
+    } 
+
+      
    
+
+    
+    
+    
 
 
 
@@ -118,29 +126,28 @@
   </header>
 
   <!-- 個別に写真を編集する場合 -->
-  <?php if(isset($_REQUEST['picture_id'])){ ?>
-    <div class="container">
-      <form method="POST" action="" enctype="multipart/form-data">
-        <div class="row">
-          <p>編集</p>
-          <img src="../pictures/<?php echo $picture['pic_name']; ?>" alt="" style="display: block; width: 200px;" width="200" border="0" alt="" />
-          <br>
-          <input type="file" style="margin: auto;" name="pic_name" accept="image/*">
-          <textarea name="comment" cols="40" rows="5"><?php echo $picture['comment']; ?></textarea><br>
-       	</div>
+  <div class="container">
+    <form method="POST" action="">
+      <div class="row">
+        <p>確認</p>
+        <?php if(isset($submit_file_name)){ ?>
+            <!-- 変更したら変更したファイルを表示 -->
+            <img src="../pictures/<?php echo h($submit_file_name); ?>" width="300">
+        <?php }else{ ?>
+            <!-- 変更しなかったらそのまま -->
+            <img src="../pictures/<?php echo h($picture['pic_name']); ?>" alt="" style="display: block; width: 200px;" width="200" border="0" alt="" />
+        <?php } ?>
         <br>
-        <input type="hidden" name="edit" value="edit">
-        <input type="submit" value="変更確認へ" class="btn btn-info">
-        <a href="../travel_dialy.php?dialy_id=<?php echo $picture['dialy_id'] ?>" class="btn btn-primary">旅行記へ戻る</a>
-      </form>
-  	</div>
-  <?php } ?>
-  <!-- 写真を追加する場合 -->
-  <?php if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'add'){ ?>
-  <p>追加</p>
-
-  <?php } ?>
+        <!-- <input type="file" style="margin: auto;" name="pic_name" accept="image/*"> -->
+        <textarea name="comment" cols="40" rows="5"><?php echo h($comment); ?></textarea><br>
+     	</div>
+      <br>
+      <input type="hidden" name="edit" value="edit">
+      <input type="submit" value="変更を確定する" class="btn btn-info">
+    </form>
+	</div>
   
+
 
 
 

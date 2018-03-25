@@ -358,7 +358,7 @@
                                               <div style="line-height: 26px;">
                                                   <a href="" style="color: #ffffff; text-decoration: none;">SHOP NOW</a>
                                                   <!-- 後でif文追加 -->
-                                                  <a href="dialy/edit_pic.php?picture_id=<?php echo $pictures[$x]['picture_id']; ?>" class="btn btn-warning">投稿写真編集</a>
+                                                  <a href="dialy/edit_pic.php?picture_id=<?php echo $pictures[$x]['picture_id']; ?>" class="btn btn-info">投稿写真編集</a>
                                               </div>
                                           </td>
                                       </tr>
