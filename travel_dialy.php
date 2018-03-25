@@ -357,6 +357,8 @@
                                           <td align="center" style="color: #ffffff; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 26px;">
                                               <div style="line-height: 26px;">
                                                   <a href="" style="color: #ffffff; text-decoration: none;">SHOP NOW</a>
+                                                  <!-- 後でif文追加 -->
+                                                  <a href="dialy/edit_pic.php?picture_id=<?php echo $pictures[$x]['picture_id']; ?>" class="btn btn-warning">投稿写真編集</a>
                                               </div>
                                           </td>
                                       </tr>
@@ -428,7 +430,7 @@
 
                   <!-- 写真編集ボタン -->
                   <li>
-                    <a href="dialy/edit_pic.php?dialy_id=<?php echo $dialy_id; ?>" class="btn btn-warning">投稿写真編集</a>
+                    <a href="dialy/edit_pic.php?action=add" class="btn btn-warning">投稿写真追加</a>
                   </li>
               </ul>
             </div>

@@ -3,28 +3,51 @@
     require ('../dbconnect.php'); 
     require ('../assets/functions.php');
 
-    echo $_REQUEST['dialy_id'];
-    $dialy_id = $_REQUEST['dialy_id'];
+    echo $_REQUEST['picture_id'];
+    $picture_id = $_REQUEST['picture_id'];
 
     // picturesの取得
-    $sql = 'SELECT * FROM pictures WHERE dialy_id=?';
-    $data = array($dialy_id);
+    $sql = 'SELECT * FROM pictures WHERE picture_id=?';
+    $data = array($picture_id);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
 
-    while ($picture = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $pictures[] = $picture;
-    }
-    $count_pics = count($pictures);
+    $picture = $stmt->fetch(PDO::FETCH_ASSOC);
+   
 
-    // echo '<pre>'; 
-    // echo '$pictures = ';
-    // var_dump($pictures);
-    // // echo '</pre>'; 
-    // echo '<pre>'; 
-    // echo '$_POST = ';
-    // var_dump($_POST);
-    // echo '</pre>'; 
+    echo '<pre>'; 
+    echo '$picture = ';
+    var_dump($picture);
+    echo '</pre>'; 
+    echo '<pre>'; 
+    echo '$_POST = ';
+    var_dump($_POST);
+    echo '</pre>'; 
+    echo '<pre>'; 
+    echo '$FILES = ';
+    var_dump($FILES);
+    echo '</pre>'; 
+
+    // 編集画面を押して自分に飛ばす
+    if (!empty($_POST) && isset($_POST['edit_pic'])) {
+        $count_post = count($_POST);
+
+        $pic_names = array();
+        $comments = array();
+        for($n=0;$n<$count_post;$n++){
+            if(isset($_FILES['pic_name' . $n]['name'])){
+                $pic_number = $_FILES['pic_name' . $n]['name'];
+                $pic_names[] = $pic_number;
+                echo $pic_number;
+            }
+            if(isset($_POST['comment' . $n])){
+                $comment_number = $_POST['comment' . $n];
+                $comments[] = $comment_number;
+            }    
+        }
+
+    }
+
 
 
 
@@ -77,38 +100,28 @@
 <body>
   <!-- Header Start -->
   <header id="home">
-    <?php require('../partial/header.php') ?>
+    <?php require('../partial/header.php'); ?>
   </header>
 
-  <div class="container">
-    <div class="row">
-        <!-- 写真とコメント -->
-        <div class="parent">
-          <h2>変更する写真を選んでください</h2> <br>
-            <?php for($e=0;$e<$count_pics;$e++){ ?>
-              <div class="field">
-                <input type="file" style="margin: auto;" name="pic_name . <?php echo $e; ?>" accept="image/*" value="">
-                <img src="../pictures/<?php echo $pictures[$e]['pic_name']; ?>" alt="" style="display: block; width: 200px;" width="200" border="0" alt="" />
-                <textarea name="comment . <?php echo $e; ?>" cols="40" rows="5"><?php echo $pictures[$e]['comment']; ?></textarea><br>
-                <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button>
-                <p>※削除した写真は再度登録お願いします。</p><br><br>
-              </div>
-            <?php } ?>
-        </div> <!-- class=parentの外にボタンを出しておく -->
-          
-        <button type="button" class="btn bg-white mt10 miw100 add_btn" style="" >写真を追加する</button>
-        <br>
+  <!-- 個別に写真を編集する場合 -->
+  <?php if(isset($_REQUEST['picture_id'])){ ?>
+    <div class="container">
+      <form method="POST" action="" enctype="multipart/form-data">
+        <div class="row">
+            <!-- 写真とコメント -->
+          <p>編集</p>          
+       	</div>
+      
+      	<input type="hidden" name="pic_name" value="kaori">
+      	<input type="submit" value="写真を変更する">
+      </form>
+  	</div>
+  <?php } ?>
+  <!-- 写真を追加する場合 -->
+  <?php if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'add'){ ?>
+  <p>追加</p>
 
-      <br>
-      <br>
-   	</div>
-
-    <form method="POST" action="">
-    	<input type="hidden" name="kubo" value="kaori">
-    	<input type="submit" value="写真を変更する">
-    </form>
-
-	</div>
+  <?php } ?>
 
 
 
