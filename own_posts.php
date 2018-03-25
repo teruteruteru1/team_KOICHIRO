@@ -1,6 +1,89 @@
 <?php
     session_start();
     require('dbconnect.php');
+    require ('signin_user.php');
+
+    $user_id = $_REQUEST['user_id'];
+
+    // echo $user_id;
+
+    // user情報の取得
+    $sql= 'SELECT d.*,u.* FROM dialies as d LEFT JOIN users AS u on d.user_id = u.user_id WHERE u.user_id = ?';
+    $data = array($user_id);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    //旅行記の取得
+    $sql = 'SELECT d.*, a.area_name, c.country_name FROM dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id INNER JOIN areas AS a ON ad.area_id = a.area_id INNER JOIN countries AS c ON a.country_id=c.country_id WHERE user_id = ? ';
+
+    $data = array($user_id);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+
+    $dialies = array();
+
+    while (true) {
+        $dialy = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($dialy == false) {
+            break;
+        }
+        $dialies[] = $dialy;
+    }
+
+    // echo '<pre>';
+    // echo '$dialies = ';
+    // var_dump($dialies);
+    // echo '</pre>';
+
+    $c = count($dialies);
+
+    // 自投稿データ数の取得
+    $sql = 'SELECT COUNT(*) AS cnt FROM dialies WHERE user_id=?';
+    $data = array($user_id);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+
+    $c_own_dialy = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // echo '<pre>';
+    // echo '$c_own_dialy = ';
+    // var_dump($c_own_dialy);
+    // echo '</pre>';
+
+    // user情報の取得
+    $sql= 'SELECT like_count FROM dialies WHERE user_id = ?';
+    $data = array($user_id);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+
+    // $like_total = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $like_total = array();
+
+    while (true) {
+        $like_c = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($like_c == false) {
+            break;
+        }
+        $like_total[] = $like_c;
+    }
+
+    // echo '<pre>';
+    // echo '$like_total = ';
+    // var_dump($like_total);
+    // echo '</pre>';
+
+    $row_sum = array_map(function($row){
+        return array_sum($row);
+    }, $like_total);
+
+    // echo array_sum($row_sum);
+
+
 
  ?>
 
@@ -47,16 +130,51 @@
     </header>
     <!-- Header end -->
 
+    <!-- ユーザー情報 -->
+    <div class="container ">
+      <div class="row">
+        <div class="col-sm-3">
+            <div class="span4 well">
+                <div class="user_profile">
+                   <img src="user_profile_img/<?php echo htmlspecialchars($user['img_name']); ?>" width="100">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="span3">
+            <h3>名前：<?php echo $user['user_name']; ?></h3>
+            <p>投稿数： <?php echo $c_own_dialy['cnt']; ?></p><br>
+            <p>総いいね！数：<?php echo array_sum($row_sum); ?></p>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <section id="about" class="site-padding">
+      <?php if($c==0) { ?>
+        <div class="text-center">
+          <h1>検索結果がありません</h1>
+        </div>
+      <?php } ?>
+      <?php for($i=0;$i<$c;$i++){ ?>
+        <div class="container search_result">
+          <div class="row">
+            <div class="col-sm-6">
 
-
-
-
-
-
-
-
-
+              <div class="about-image wow fadeInLeft">
+                <img src="title_img/<?php echo htmlspecialchars($dialies[$i]['title_img_name']); ?>" alt="Single Blog1" width="600" height="400"/>
+              </div>
+            </div>
+            <div class="col-sm-6">
+                <h3><?php echo htmlspecialchars($dialies[$i]['title']); ?></h3>
+                <h4> 国: <?php echo htmlspecialchars($dialies[$i]['country_name']); ?> エリア: <?php echo htmlspecialchars($dialies[$i]['area_name']); ?> 時期: 予算: <?php echo htmlspecialchars($dialies[$i]['budget']); ?></h4>
+                <p><?php echo htmlspecialchars($dialies[$i]['title_comment']); ?></p>
+                <a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[$i]['dialy_id']); ?>" class="btn btn-read-more">続きを読む</a>
+            </div>
+          </div>
+        </div><br>
+      <?php } ?>
+    </section>
 
     <footer>
       <div class="container">
