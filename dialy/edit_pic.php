@@ -1,10 +1,137 @@
 <?php 
     session_start();  
-    require ('dbconnect.php'); 
-    require ('assets/functions.php');
+    require ('../dbconnect.php'); 
+    require ('../assets/functions.php');
 
+    
+    if (isset($_REQUEST['picture_id'])) {
+        $picture_id = $_REQUEST['picture_id'];
+        // picturesの取得
+        $sql = 'SELECT * FROM pictures WHERE picture_id=?';
+        $data = array($picture_id);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($data);
 
+        $picture = $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<pre>'; 
+    // echo '$picture = ';
+    // var_dump($picture);
+    // echo '</pre>'; 
+    // echo '<pre>'; 
+    // echo '$_POST = ';
+    // var_dump($_POST);
+    // echo '</pre>'; 
+    //  echo '<pre>'; 
+    // echo '$_FILES = ';
+    // var_dump($_FILES);
+    // echo '</pre>';
+     
+
+    // 編集画面を押して自分に飛ばす
+
+    // 画像を変更する場合
+    if (!empty($_POST) && isset($_POST['edit'])) {
+        $comment = $_POST['comment'];
+
+        if($_FILES['pic_name']['name'] != ''){
+            $file_name = $_FILES['pic_name']['name']; 
+            $file_type = substr($file_name,-3) ;
+            $file_type = strtolower($file_type);
+            if ($file_type != 'jpg' && $file_type != 'png' && $file_type != 'gif') {
+              $errors['img_name'] = 'type';
+            }           
+        }
+
+
+        // バリデーション無しで次に飛ばすｗｗ
+        // SESSION登録
+        if($_FILES['pic_name']['name'] != ''){
+            $date_str = date('YmdHid');
+            $submit_file_name = $date_str . $file_name;
+            move_uploaded_file($_FILES['pic_name']['tmp_name'], '../pictures/' .$submit_file_name);
+            $_SESSION['edit']['img_name'] = $submit_file_name;
+        }
+
+        $_SESSION['edit']['comment'] = $comment;
+        $_SESSION['edit']['picture_id'] = $picture_id;
+
+        header('Location: edit_pic_check.php');
+        exit();
+    }
+
+    // 画像を追加する場合  こいつらファイル分けた方がいいよな・・
+    if(!empty($_POST) && isset($_POST['add'])){
+        // for文の準備
+        $count_post = count($_POST);
+        echo $count_post;
+        // 変数定義
+        //if (!isset($_REQUEST['action'])){
+            // 一度checkから戻ってきたら同じ処理を二回行わない
+            $pic_names = array();
+            $comments = array();
+            for($n=0;$n<$count_post;$n++){
+                if(isset($_FILES['pic_name' . $n]['name'])){
+                    $pic_number = $_FILES['pic_name' . $n]['name'];
+                    $pic_names[] = $pic_number;
+                    echo $pic_number;
+                }
+                if(isset($_POST['comment' . $n])){
+                   $comments[] = $_POST['comment' . $n];
+                }    
+            }
+        //}
+        echo '<pre>'; 
+        echo '$comments = ';
+        var_dump($comments);
+        echo '</pre>';
+        // 拡張子チェック
+        for($b=0;$b<$count_post;$b++){
+            if (!empty($pic_names[$b])) {
+                //jpeg/png/gifの３種類に変更する
+                $pic_type = substr($pic_names[$b],-3) ;
+                $pic_type = strtolower($pic_type);
+                if ($pic_type != 'jpg' && $pic_type != 'png' && $pic_type != 'gif') {
+                    $errors['pic_names' . $b] = 'type';
+                }
+            }
+        }
+        // SESSIONへ入れる
+        for($y=0;$y<$count_post;$y++){
+            // 写真
+            if(!empty($pic_names[$y])){
+                $date_str = date('YmdHid');
+                $submit_pic_name = $date_str . $pic_names[$y];
+                move_uploaded_file($_FILES['pic_name' . $y]['tmp_name'], '../pictures/' .$submit_pic_name);
+                $_SESSION['add']['pic_name' . $y] = $submit_pic_name;
+                // echo 'xyz';
+            }
+            // コメント
+            if(!empty($comments[$y])){
+                $_SESSION['add']['comment' . $y] = $comments[$y];
+                $_SESSION['add']['count'] = $y;
+            }
+        }
+
+
+        header('Location: add_pic_check.php?dialy_id=' . $_REQUEST['dialy_id']);
+        exit();
+
+      echo 'addうんこ';
+    }
+   
+
+
+
+
+
+    
 
 
  ?>
@@ -14,7 +141,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>plan_check</title>
+  <title>picture_edit</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -24,14 +151,14 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="assets/css/normalize.css">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-  <link rel="stylesheet" href="assets/css/animate.css">
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">    
-  <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+  <link rel="stylesheet" href="../assets/css/normalize.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../assets/css/animate.css">
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">    
+  <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
       
   <!-- Font -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -49,92 +176,57 @@
 </head>
     
 
-<body
+<body>
   <!-- Header Start -->
   <header id="home">
-    <?php require('partial/header.php') ?>
+    <?php require('../partial/header.php'); ?>
   </header>
-          <!-- Main Menu End -->
-  <!-- 戻るボタン仮 -->
-  <a href="sessiondelete.php">（仮）セッションを消して入力に戻る</a>
 
+  <!-- 個別に写真を編集する場合 -->
+  <?php if(isset($_REQUEST['picture_id'])){ ?>
+    <div class="container">
+      <form method="POST" action="" enctype="multipart/form-data">
+        <div class="row">
+          <p>編集</p>
+          <img src="../pictures/<?php echo $picture['pic_name']; ?>" alt="" style="display: block; width: 200px;" width="200" border="0" alt="" />
+          <br>
+          <input type="file" style="margin: auto;" name="pic_name" accept="image/*">
+          <textarea name="comment" cols="40" rows="5"><?php echo $picture['comment']; ?></textarea><br>
+       	</div>
+        <br>
+        <input type="hidden" name="edit" value="edit">
+        <input type="submit" value="変更確認へ" class="btn btn-info">
+        <a href="../travel_dialy.php?dialy_id=<?php echo $picture['dialy_id'] ?>" class="btn btn-primary">旅行記へ戻る</a>
+      </form>
+  	</div>
+  <?php } ?>
+
+  <!-- 写真を追加する場合 -->
+  <?php if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'add'){ ?>
   <div class="container">
-    <div class="row">
-      <p style="color: blue;">旅行記概要</p> 
-    	  title <?php echo h($title) . '<br>'; ?><br>
-        title_comment <?php echo h($title_comment) . '<br>' ?><br>
-        <img src="title_img/<?php echo $title_img_name ?>" width="300"><br>
-    	<p style="color: blue;">予算</p> 
-       <?php echo h($budget)?>円<br>
-
-      <p style="color: blue;">日程</p> 
-      	日数 <?php echo h($number_days); ?>日<br>
-        出発日 <?php echo h($depart_date);?><br>
-        帰着日 <?php echo h($arrival_date);?><br>
-
-      <p style="color: blue;">国と地域</p> 
-      	国  １ <?php echo $places[$area_id_1]['country_name'];?><br>
-      	都市１ <?php echo $places[$area_id_1]['area_name'];?><br>
-
-      	国  ２ 
-        <?php if($country_id_2 == 'unselected'){ ?>
-          <span style="color: red;">未指定</span><br>
-        <?php }else{ ?>
-          <?php echo $places[$area_id_2]['country_name'];?><br>
-        <?php } ?>
-        都市 ２ 
-        <?php if($area_id_2 == 'unselected'){ ?>
-          <span style="color: red;">未指定</span><br>
-        <?php }else{ ?>
-          <?php echo $areas[$area_id_2]['area_name'];?><br>
-        <?php } ?>
-        国  ３ 
-        <?php if($country_id_3 == 'unselected'){ ?>
-          <span style="color: red;">未指定</span><br>
-        <?php }else{ ?>
-          <?php echo $places[$area_id_3]['country_name'];?><br>
-        <?php } ?>
-        都市 ３ 
-        <?php if($area_id_3 == 'unselected'){ ?>
-          <span style="color: red;">未指定</span><br>
-        <?php }else{ ?>
-          <?php echo $areas[$area_id_3]['area_name'];?><br>
-        <?php } ?>
-
-
-      <p style="color: blue;">#タグ</p> 
-        <?php 
-          $count_tags = count($tag_number);
-          echo $count_tags . '<br>' ;
-          for($y=0;$y<$count_tags;$y++){ ?>
-            <p><?php echo $tag_number[$y]; ?></p> 
-            <p><?php echo $tag_number[$y]; ?></p>          
-        <?php } ?>
-      
-      <p style="color: blue;">写真とコメント</p> 
-      <?php 
-          $count_comments = count($comments);
-          echo $count_comments . '<br>' ;
-          for($z=0;$z<$count_comments;$z++){ ?>
-            <img src="pictures/<?php echo $pic_names[$z]; ?>" width="300"><br>
-            <p><?php echo $comments[$z]; ?></p>              
-
-      <?php } ?>
-
-
-      <br>
-   	</div>
-
-    <form method="POST" action="">
-    	<input type="hidden" name="kubo" value="kaori">
-      <a href="mochimaru_plan_form.php?action=rewrite"><strong>戻る</strong></a><br>
-      <!-- パラメータをつけることで、$_GET/$_REQUESTが使える -->
-    	<input type="submit" value="しおり登録">
-
+    <h3>旅行記写真追加</h3>
+    <form method="POST" action="" enctype="multipart/form-data">
+      <div class="low">
+        <div class="parent" style="margin: 30px;">
+          <p><i class="fa fa-camera-retro"></i>旅の写真を選んでください</p>
+          <div class="field">        
+            <input type="file" style="margin: auto;" name="pic_name0" accept="image/*">
+            <textarea name="comment0" cols="80" rows="5"></textarea><br>
+            <button type="button" class="btn trash_btn ml10"  style="btn btn-warning" value="" name="">削除</button><br><br>
+          </div>
+        </div> 
+        <!-- class=parentの外にボタンを出しておく -->
+        <button type="button" class="btn bg-white mt10 miw100 add_btn" ><p>写真を追加する</p></button>
+        <br>
+        <input type="hidden" name="add" value="add">
+        <input type="submit" value="追加確認へ" class="btn btn-info">
+        <a href="../travel_dialy.php?dialy_id=<?php echo $picture['dialy_id'] ?>" class="btn btn-primary">旅行記へ戻る</a>
+      </div>
     </form>
+  </div>
 
-	</div>
-
+  <?php } ?>
+  
 
 
 
@@ -249,23 +341,23 @@
             </div>
         
         <!-- footer -->
-        <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
-        <script src="assets/js/plugins.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery.mousewheel-3.0.6.pack.js"></script>
-        <script src="assets/js/paralax.js"></script>
-        <script src="assets/js/jquery.smooth-scroll.js"></script>
-        <script src="assets/js/jquery.sticky.js"></script>
-        <script src="assets/js/wow.min.js"></script>
-        <script src="assets/js/main.js"></script>
+        <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="../assets/js/plugins.js"></script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="../assets/js/jquery.mousewheel-3.0.6.pack.js"></script>
+        <script src="../assets/js/paralax.js"></script>
+        <script src="../assets/js/jquery.smooth-scroll.js"></script>
+        <script src="../assets/js/jquery.sticky.js"></script>
+        <script src="../assets/js/wow.min.js"></script>
+        <script src="../assets/js/main.js"></script>
         
         <!-- カレンダーのJS -->
-        <script src="assets/js/plan_calender.js"></script>
+        <script src="../assets/js/plan_calender.js"></script>
         <!-- プルダウンのJS -->
-        <script src="assets/js/plan_country.js"></script>
-        <script src="assets/js/plan_country2.js"></script>
+        <script src="../assets/js/plan_country.js"></script>
+        <script src="../assets/js/plan_country2.js"></script>
         <!-- コメントを増やすJS -->
-        <script src="assets/js/plan_comment.js"></script>
+        <script src="../assets/js/plan_comment.js"></script>
         
     
     <script type="text/javascript">
