@@ -17,12 +17,12 @@
     //写真とコメントはpicturesに飛ばす
     //areaは中間テーブルに飛ばす
 
-    echo '<br>';
-    echo '<br>';
-    echo '<pre>'; 
-    echo '$_SESSION = ';
-    var_dump($_SESSION);
-    echo '</pre>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<pre>'; 
+    // echo '$_SESSION = ';
+    // var_dump($_SESSION);
+    // echo '</pre>';
     
     
 
@@ -176,8 +176,8 @@
         $_SESSION['plan'] = array();
         unset($_SESSION['plan']);
 
-        header('Location: travel_dialy.php?dialy_id=' . $dialy_id['dialy_id']);
-        exit();
+        // header('Location: travel_dialy.php?dialy_id=' . $dialy_id['dialy_id']);
+        // exit();
         
 
 
@@ -232,75 +232,78 @@
   <header id="home">
     <?php require('partial/header.php') ?>
   </header>
-          <!-- Main Menu End -->
+  <!-- Main Menu End -->
   <!-- 戻るボタン仮 -->
   <a href="sessiondelete.php">（仮）セッションを消して入力に戻る</a>
 
   <div class="container">
     <div class="row">
-      <p style="color: blue;">旅行記概要</p> 
-    	  title <?php echo h($title) . '<br>'; ?><br>
-        title_comment <?php echo h($title_comment) . '<br>' ?><br>
-        <img src="title_img/<?php echo $title_img_name ?>" width="300"><br>
-    	<p style="color: blue;">予算</p> 
-       <?php echo h($budget)?>円<br>
+      <p><h4 style="color: blue;">旅のタイトル</h4></p>
+      <?php echo h($title) . '<br>'; ?><br>
 
-      <p style="color: blue;">日程</p> 
-      	日数 <?php echo h($number_days); ?>日<br>
-        出発日 <?php echo h($depart_date);?><br>
-        帰着日 <?php echo h($arrival_date);?><br>
+      <p><h4 style="color: blue;">旅行予定日時</h4></p> 
+    
+        出発日：<?php echo h($depart_date);?><br>
+        帰着日： <?php echo h($arrival_date);?><br>
+        日数： <?php echo h($number_days); ?>日<br>
 
-      <p style="color: blue;">国と地域</p> 
-      	国  １ <?php echo $places[$area_id_1]['country_name'];?><br>
-      	都市１ <?php echo $places[$area_id_1]['area_name'];?><br>
+      <h4 style="color: blue;">国と地域</h4></p> 
+        国  １: <?php echo h($places[$area_id_1]['country_name']);?>
+        都市１: <?php echo h($places[$area_id_1]['area_name']);?><br>
 
-      	国  ２ 
+        国  ２: 
         <?php if($country_id_2 == 'unselected'){ ?>
-          <span style="color: red;">未指定</span><br>
+          <span style="color: red;">未指定</span>
         <?php }else{ ?>
-          <?php echo $places[$area_id_2]['country_name'];?><br>
+          <?php echo h($places[$area_id_2]['country_name']);?>
         <?php } ?>
-        都市 ２ 
+        都市 ２: 
         <?php if($area_id_2 == 'unselected'){ ?>
           <span style="color: red;">未指定</span><br>
         <?php }else{ ?>
-          <?php echo $areas[$area_id_2]['area_name'];?><br>
+          <?php echo h($areas[$area_id_2]['area_name']);?><br>
         <?php } ?>
-        国  ３ 
+        国  ３: 
         <?php if($country_id_3 == 'unselected'){ ?>
-          <span style="color: red;">未指定</span><br>
+          <span style="color: red;">未指定</span>
         <?php }else{ ?>
-          <?php echo $places[$area_id_3]['country_name'];?><br>
+          <?php echo h($places[$area_id_3]['country_name']);?>
         <?php } ?>
-        都市 ３ 
+        都市 ３: 
         <?php if($area_id_3 == 'unselected'){ ?>
           <span style="color: red;">未指定</span><br>
         <?php }else{ ?>
-          <?php echo $areas[$area_id_3]['area_name'];?><br>
+          <?php echo h($areas[$area_id_3]['area_name']);?><br>
         <?php } ?>
 
 
-      <p style="color: blue;">#タグ</p> 
+      <h4 style="color: blue;">#タグ</h4></p> 
         <?php 
           $count_tags = count($tag_number);
-          echo $count_tags . '<br>' ;
+          echo h ($count_tags) . '<br>' ;
           for($y=1;$y<$count_tags+1;$y++){ ?>
-            <p><?php echo $tags[$y]['tag_name']; ?></p>         
+            <p><?php echo h($tags[$y]['tag_name']); ?></h4></p>         
         <?php } ?>
-      
-      <p style="color: blue;">写真とコメント</p> 
-      <?php 
+
+      <h4 style="color: blue;">予算</h4></p> 
+        <?php echo h ($budget)?>円<br>
+
+      <h4 style="color: blue;">旅行記概要</h4></p> 
+        title_comment <?php echo h($title_comment) . '<br>' ?><br>
+        <img src="title_img/<?php echo h($title_img_name) ?>" width="300"><br>
+    
+      <h4 style="color: blue;">写真とコメント</h4></p> 
+        <?php 
           $count_comments = count($comments);
-          echo $count_comments . '<br>' ;
+          echo h($count_comments) . '<br>' ;
           for($z=0;$z<$count_comments;$z++){ ?>
-            <img src="pictures/<?php echo $pic_names[$z]; ?>" width="300"><br>
-            <p><?php echo $comments[$z]; ?></p>              
+            <img src="pictures/<?php echo h($pic_names[$z]); ?>" width="300"><br>
+            <p><?php echo h($comments[$z]); ?></p>              
+        <?php } ?>
 
-      <?php } ?>
 
-
-      <br>
-   	</div>
+    <br>
+ 	  </div>
 
     <form method="POST" action="">
     	<input type="hidden" name="kubo" value="kaori">
@@ -310,122 +313,71 @@
 
     </form>
 
-	</div>
+  </div>
 
 
 
 
     
 
-        <!-- footer -->
-        
+    <!-- footer -->
+    <div id="e-box">
         <footer>
             <div class="container">
                 <div class="row">
-                
                     <!-- Single Footer -->
-                    <div class="col-sm-3">
+                    <div class="col-sm-6">
                         <div class="single-footer">
                             <div class="footer-logo">
-                                <img src="img/footer-logo.png" alt="Footer Logo" />
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p>
+                                <!-- <a href="#" class="mod_dropnavi-brand"><h1>でれっちょ</h1></a> -->
+                                <a href="#"><h1>でれっちょ</h1></a>
+                                    <p>旅行コミュニティサイト(旅行記・旅行SNS)</p>
                             </div>
                         </div>
                     </div>
                     <!-- Single Footer -->
-                    
-                    
-                    <!-- Single Footer -->
-                    <div class="col-sm-3">
-                        <div class="single-footer">
-                            <h4>Keep In Touch</h4>
-                            <p>44 New Design Street, Melbourne 005 <br />
-                            +1 (123) 456-7890-321 <br />
-                            info@weburl.com <br />
-                            (01) 800 854 633</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Copyright -->
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="copy-text">
+                            <p>All Rights Reserved | Copyright 2016 © <strong><a href="http://www.pfind.com/goodies/bizium/">The Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's Goodies</a></strong></p>
                         </div>
                     </div>
-                    <!-- Single Footer -->
-                    
-                    
-                    <!-- Single Footer -->
-                    <div class="col-sm-3">
-                        <div class="single-footer">
-                            <h4>Suscribe</h4>
-                            <p>Enter your Email Address For Subscirbe Our Monthly Newsletters</p>
-                            
-                            <form action="">
-                                <div class="form-group">
-                                    <input type="email" class="form-control my-form" id="exampleInputEmail1" placeholder="Enter Your Email Address">
-                                </div>
-                                <div class="form-group">
-                                    <button class="btn btn-subscribe">Subscirbe</button>
-                                </div>
-                            </form>
-                            
-                        </div>
-                    </div>
-                    <!-- Single Footer -->
-                    
-                    <!-- Single Footer -->
-                    <div class="col-sm-3">
-                        <div class="single-footer">
-                            <h4>Recent Projects</h4>
-                            <ul class="projects">
-                                <li><img src="img/project.png" alt="Reccent Project" /></li>
-                                <li><img src="img/project.png" alt="Reccent Project" /></li>
-                                <li><img src="img/project.png" alt="Reccent Project" /></li>
-                                <li><img src="img/project.png" alt="Reccent Project" /></li>
-                                <li><img src="img/project.png" alt="Reccent Project" /></li>
-                                <li><img src="img/project.png" alt="Reccent Project" /></li>
+                    <div class="col-sm-5">
+                        <div class="footer-menu pull-right">
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Services</a></li>
+                                <li><a href="#">Faq</a></li>
+                                <li><a href="#">Pricing</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Contact</a></li>
                             </ul>
                         </div>
                     </div>
-                    <!-- Single Footer -->
-                    
-                </div>
-            </div>
-            
-        </footer>
-        
-        <!-- Copyright -->
-        <div class="copyright">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="copy-text">
-                                <p>All Rights Reserved | Copyright 2016 © <strong><a href="http://www.pfind.com/goodies/bizium/">The Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's Goodies</a></strong></p>
-                            </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="footer-menu pull-right">
-                                <ul>
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Services</a></li>
-                                    <li><a href="#">Faq</a></li>
-                                    <li><a href="#">Pricing</a></li>
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="social">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                </ul>
-                            </div>
+                    <div class="col-sm-3">
+                        <div class="social">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        
-        <!-- footer -->
+        </div>
+    </div>
+
+    <!-- footer -->
         <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
         <script src="assets/js/plugins.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
@@ -472,9 +424,8 @@
         </script>
 
 
+
 </body>
 </html>
 
-
-
- 
+    
