@@ -358,7 +358,9 @@
                                               <div style="line-height: 26px;">
                                                   <a href="" style="color: #ffffff; text-decoration: none;">SHOP NOW</a>
                                                   <!-- 後でif文追加 -->
-                                                  <a href="dialy/edit_pic.php?picture_id=<?php echo $pictures[$x]['picture_id']; ?>" class="btn btn-info">投稿写真編集</a>
+                                                  <?php if($dialy['user_id'] == $_SESSION['user']['id']){ ?>
+                                                    <a href="dialy/edit_pic.php?picture_id=<?php echo $pictures[$x]['picture_id']; ?>" class="btn btn-info">投稿写真編集</a>
+                                                  <?php } ?>
                                               </div>
                                           </td>
                                       </tr>
@@ -430,7 +432,9 @@
 
                   <!-- 写真編集ボタン -->
                   <li>
-                    <a href="dialy/edit_pic.php?action=add&dialy_id=<?php echo $dialy_id; ?>" class="btn btn-warning">投稿写真追加</a>
+                    <?php if($dialy['user_id'] == $_SESSION['user']['id']){ ?>
+                      <a href="dialy/edit_pic.php?action=add&dialy_id=<?php echo $dialy_id; ?>" class="btn btn-warning">投稿写真追加</a>
+                    <?php } ?>
                   </li>
               </ul>
             </div>
