@@ -29,8 +29,8 @@
     // $_SESSIONの数を数える
     // 各for文に対して、上限をこの変数に設定する  
     $count_session = count($_SESSION['plan']);
-    echo $count_session;
-    echo '<br>';
+    // echo $count_session;
+    // echo '<br>';
     // 編集で戻った時用
     $_SESSION['plan']['count'] = $count_session;
  
@@ -45,8 +45,6 @@
     $title_img_name = $_SESSION['plan']['title_img_name'];
     // 月を抽出
     $month = substr($depart_date,5,2);
-    echo 'unnko';
-    echo $month;
     // _areas_dialysに格納
     $country_id_1 = $_SESSION['plan']['country_id_1'];
     $country_id_2 = $_SESSION['plan']['country_id_2'];
@@ -54,12 +52,6 @@
     $area_id_1 = $_SESSION['plan']['area_id_1'];
     $area_id_2 = $_SESSION['plan']['area_id_2'];
     $area_id_3 = $_SESSION['plan']['area_id_3'];
-
-    echo '<br>';
-    echo 'teshirogi<br>';
-    echo $area_id_1;
-    echo 'teshirogi<br>';
-    echo $country_id_1;
     
     // タグはfor文で回す
     $pic_names = array();

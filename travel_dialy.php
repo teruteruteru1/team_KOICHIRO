@@ -20,7 +20,7 @@
     // ④areaの取得 ←いらない
     // 他 $_SESSION['user']['id']と$dialy['user_id']を比較して違ったら、機能を変更する
 
-    //dialy idの取得
+    // dialy idの取得
     // dialy/id はパラメーターで飛んでくるため。$_REQUESTで取得
     // そのIDを検索する
     $dialy_id = $_REQUEST['dialy_id'];
@@ -132,7 +132,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>diary</title>
+    <title>dialy</title>
     <meta name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -278,7 +278,7 @@
           <!-- like end -->
 
           <!-- tag start -->
-          <!-- tagが未定義んｐ旅行記があるためif追加 -->
+          <!-- tagが未定義の旅行記があるためif追加 -->
           <?php if(!empty($tags)){ ?>
             <div class="tag col-sm-12">
                 <ul>
