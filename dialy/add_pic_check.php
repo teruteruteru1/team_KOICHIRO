@@ -41,7 +41,22 @@
     echo '</pre>'; 
     // 自分にPOST送信して
     // INSERT開始
-    
+    if (!empty($_POST)) {
+        $count_comments = count($comments);
+        for($a=0;$a<$count_comments;$a++){
+            $sql = 'INSERT INTO `pictures` SET `pic_name` =?, `dialy_id` =?, `comment` =?';
+            $date = array($pic_names[$a],$_REQUEST['dialy_id'],$comments[$a]);
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute($date);
+        } 
+
+        $_SESSION['add'] = array();
+        unset($_SESSION['add']);
+
+        header('Location: ../travel_dialy.php?dialy_id=' . $_REQUEST['dialy_id']);
+        exit();
+    }
+
 
 
 
@@ -104,7 +119,7 @@
           <?php 
             $count_comments = count($comments);
             for($z=0;$z<$count_comments;$z++){ ?>
-              <img src="pictures/<?php echo $pic_names[$z]; ?>" width="300"><br>
+              <img src="../pictures/<?php echo $pic_names[$z]; ?>" width="300"><br>
               <p><?php echo $comments[$z]; ?></p>              
           <?php } ?>
       <br>

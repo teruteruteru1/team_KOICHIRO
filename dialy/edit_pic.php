@@ -15,23 +15,23 @@
         $picture = $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<pre>'; 
-    echo '$picture = ';
-    var_dump($picture);
-    echo '</pre>'; 
-    echo '<pre>'; 
-    echo '$_POST = ';
-    var_dump($_POST);
-    echo '</pre>'; 
-     echo '<pre>'; 
-    echo '$_FILES = ';
-    var_dump($_FILES);
-    echo '</pre>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<pre>'; 
+    // echo '$picture = ';
+    // var_dump($picture);
+    // echo '</pre>'; 
+    // echo '<pre>'; 
+    // echo '$_POST = ';
+    // var_dump($_POST);
+    // echo '</pre>'; 
+    //  echo '<pre>'; 
+    // echo '$_FILES = ';
+    // var_dump($_FILES);
+    // echo '</pre>';
      
 
     // 編集画面を押して自分に飛ばす
@@ -106,9 +106,11 @@
         for($y=0;$y<$count_post;$y++){
             // 写真
             if(!empty($pic_names[$y])){
+                $date_str = date('YmdHid');
                 $submit_pic_name = $date_str . $pic_names[$y];
                 move_uploaded_file($_FILES['pic_name' . $y]['tmp_name'], '../pictures/' .$submit_pic_name);
                 $_SESSION['add']['pic_name' . $y] = $submit_pic_name;
+                // echo 'xyz';
             }
             // コメント
             if(!empty($comments[$y])){
@@ -202,9 +204,10 @@
   <!-- 写真を追加する場合 -->
   <?php if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'add'){ ?>
   <div class="container">
+    <h3>旅行記写真追加</h3>
     <form method="POST" action="" enctype="multipart/form-data">
       <div class="low">
-        <div class="parent" style="margin: 50px;">
+        <div class="parent" style="margin: 30px;">
           <p><i class="fa fa-camera-retro"></i>旅の写真を選んでください</p>
           <div class="field">        
             <input type="file" style="margin: auto;" name="pic_name0" accept="image/*">
@@ -213,7 +216,7 @@
           </div>
         </div> 
         <!-- class=parentの外にボタンを出しておく -->
-        <button type="button" class="btn bg-white mt10 miw100 add_btn" ><p class="btn btn-info">写真・旅行記を追加する</p></button>
+        <button type="button" class="btn bg-white mt10 miw100 add_btn" ><p>写真を追加する</p></button>
         <br>
         <input type="hidden" name="add" value="add">
         <input type="submit" value="追加確認へ" class="btn btn-info">
