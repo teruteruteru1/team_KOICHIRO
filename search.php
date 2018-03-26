@@ -2,10 +2,10 @@
     session_start();
     require('dbconnect.php');
 
-    echo '<pre>';
-    echo '$_POST = ';
-    var_dump($_POST);
-    echo '</pre>';
+    // echo '<pre>';
+    // echo '$_POST = ';
+    // var_dump($_POST);
+    // echo '</pre>';
 
 
     $query = '';
@@ -32,7 +32,7 @@
 
     if (!empty($_POST['city'])) {
         $query = $query . ' AND ';
-        $query = $query . 'city=?';
+        $query = $query . 'area_name=?';
         $data[] = $_POST['city'];
     }
 
@@ -85,7 +85,7 @@
 
     // POST送信で絞り込み検索を行なった場合
     if($search_check == 'selected') {
-        $sql = 'SELECT d.*, a.area_name, t.tag_id,c.country_name FROM ( ( ( ( ( dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id ) INNER JOIN areas AS a ON ad.area_id = a.area_id ) INNER JOIN dialies_tags AS dt ON d.dialy_id = dt.dialy_id ) INNER JOIN tags AS t ON dt.tag_id = t.tag_id )INNER JOIN countries AS c ON a.country_id=c.country_id )WHERE 1 ';
+        $sql = 'SELECT d.*, a.area_name,a.area_name_jp, t.tag_id,c.country_name,c.country_name_jp FROM dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id INNER JOIN areas AS a ON ad.area_id = a.area_id INNER JOIN dialies_tags AS dt ON d.dialy_id = dt.dialy_id INNER JOIN tags AS t ON dt.tag_id = t.tag_id INNER JOIN countries AS c ON a.country_id=c.country_id WHERE 1 ';
         $sql = $sql . $budget_sql;
         $sql = $sql . $query;
         $sql = $sql . ' ORDER BY d.created DESC ';
@@ -96,12 +96,13 @@
         $stmt = $dbh->prepare($sql);
         $stmt->execute($data);
 
+
     // POST送信でワード検索を送った場合
     }elseif($search_check == 'word'){
         $word_data = array();
 
         $text1 = $_POST['search_term'];
-        $sql = 'SELECT d.*, a.area_name,t.tag_id,c.country_name,p.comment FROM dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id INNER JOIN areas AS a ON ad.area_id = a.area_id INNER JOIN dialies_tags AS dt ON d.dialy_id = dt.dialy_id  INNER JOIN tags AS t ON dt.tag_id = t.tag_id INNER JOIN countries AS c ON a.country_id=c.country_id INNER JOIN pictures AS p ON d.dialy_id = p.dialy_id ';
+        $sql = 'SELECT d.*, a.area_name,a.area_name_jp,t.tag_id,c.country_name,c.country_name_jp,p.comment FROM dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id INNER JOIN areas AS a ON ad.area_id = a.area_id INNER JOIN dialies_tags AS dt ON d.dialy_id = dt.dialy_id  INNER JOIN tags AS t ON dt.tag_id = t.tag_id INNER JOIN countries AS c ON a.country_id=c.country_id INNER JOIN pictures AS p ON d.dialy_id = p.dialy_id ';
 
         // $sql = "SELECT d.*, a.area_name,t.tag_id,c.country_name,co.comment FROM dialies AS d INNER JOIN areas_dialies AS ad ON d.dialy_id = ad.dialies_id INNER JOIN areas AS a ON ad.area_id = a.area_id INNER JOIN dialies_tags AS dt ON d.dialy_id = dt.dialy_id INNER JOIN tags AS t ON dt.tag_id = t.tag_id INNER JOIN countries AS c ON a.country_id=c.country_id INNER JOIN comments AS co ON d.dialy_id = co.dialy_id WHERE ((d.title_comment LIKE '%旅行%') OR (co.comment LIKE '%旅行%')) AND ((d.title_comment LIKE '%写真%') OR (co.comment LIKE '%写真%'))";
 
@@ -119,7 +120,11 @@
 
             // SQLインジェクション対策で?を使う
             for($i = 0; $i <count($array);$i++){
-                $where = $where . "( d.title_comment LIKE ? OR p.comment LIKE ?) " ;
+                $where = $where . "( d.title_comment LIKE ? OR p.comment LIKE ? OR a.area_name LIKE ? OR a.area_name_jp LIKE ? OR c.country_name LIKE ? OR c.country_name_jp LIKE ?) " ;
+                $word_data[] = '%' . $array[$i] . '%';
+                $word_data[] = '%' . $array[$i] . '%';
+                $word_data[] = '%' . $array[$i] . '%';
+                $word_data[] = '%' . $array[$i] . '%';
                 $word_data[] = '%' . $array[$i] . '%';
                 $word_data[] = '%' . $array[$i] . '%';
 
@@ -223,7 +228,7 @@
             </div>
             <div class="col-sm-6">
                 <h3><?php echo htmlspecialchars($dialies[$i]['title']); ?></h3>
-                <h4> 国: <?php echo htmlspecialchars($dialies[$i]['country_name']); ?> エリア: <?php echo htmlspecialchars($dialies[$i]['area_name']); ?> 時期: 予算: <?php echo htmlspecialchars($dialies[$i]['budget']); ?></h4>
+                <h4> 国: <?php echo htmlspecialchars($dialies[$i]['country_name_jp']); ?> エリア: <?php echo htmlspecialchars($dialies[$i]['area_name_jp']); ?> 時期: 予算: <?php echo htmlspecialchars($dialies[$i]['budget']); ?></h4>
                 <p><?php echo htmlspecialchars($dialies[$i]['title_comment']); ?></p>
                 <a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[$i]['dialy_id']); ?>" class="btn btn-read-more">続きを読む</a>
             </div>

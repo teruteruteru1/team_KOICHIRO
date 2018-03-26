@@ -32,37 +32,34 @@
 
  ?>
 
-
 <br>
 <div class="container" id="wrap">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
+      <h2>旅行記検索</h2>
 			<form action="search.php" method="post" accept-charset="utf-8" class="form" role="form">
-			  <h2>旅行記検索</h2>
+			  <h3>ワード検索</h3>
         <input type="hidden" name="action" value="word">
     		<div class="input-group">
 				  <input type="text" class="form-control" placeholder="複数ワードでも検索可能です" name="search_term" id="search_term" size=45>
-          <!-- <?php if(isset($errors['search_term'])){ ?>
-            <span style="color: red;">検索ワードを入力して下さい</span><br>
-          <?php } ?> -->
           <button class="btn btn-md btn-primary btn-block signup-btn" type="submit">ワード検索</button>
 			  </div>
       </form>
 			<br>
 
       <form action="search.php" method="post" accept-charset="utf-8" class="form" role="form">
-        <h2>詳細検索</h2>
+        <h3>詳細検索</h3>
         <input type="hidden" name="action" value="selected">
 
         <div class="row">
-          <div class="col-xs-5 col-md-5">               
+          <div class="col-xs-5 col-md-5">
 			      <select name="country" value="" class="form-control input-md" >
 			      	<option value="0" selected="selected" class="msg">国を選択して下さい</option>
                 <?php for($i=0; $i<$count_country ; $i++){ ?>
-                 <option value="<?php echo $countries[$i]['country_name']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
+                 <option value="<?php echo $countries[$i]['country_name']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name_jp']; ?></option>
                 <?php } ?>
 				    </select>
-              
+
 			  </div>
 
 			    <div class="col-xs-5 col-md-5">
@@ -71,7 +68,7 @@
   				    <select name="city" value="" class="form-control input-md" >
   				    	<option value="0" selected="selected" class="msg">地域を選択して下さい</option>
                 <?php for($i=0; $i<$count_area ; $i++){ ?>
-                  <option value="<?php echo $areas[$i]['area_name']; ?>" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $areas[$i]['area_name']; ?></option>
+                  <option value="<?php echo $areas[$i]['area_name']; ?>" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $areas[$i]['area_name_jp']; ?></option>
                 <?php } ?>
   				    </select>
             </div>
@@ -96,7 +93,7 @@
 
         <div class="col-xs-9 col-md-9">
           <!-- <div style="display:inline-flex"> -->
-            予算     
+            予算
   	        <select name="budget" class="form-control input-md">
   				    <option value="" selected="selected" class="msg">予算を選択して下さい</option>
   				      <?php for($i=0; $i<$c_pricing_lists ; $i++) { ?>
@@ -112,7 +109,7 @@
 
         <div class="col-xs-9 col-md-9">
           <!-- <div style="display:inline-flex"> -->
-            テーマ     
+            テーマ
             <select name="theme" class="form-control input-md">
                 <option value="" selected="selected" class="msg">テーマを選択して下さい</option>
                   <?php for($i=0; $i<$count_tag ; $i++){ ?>
