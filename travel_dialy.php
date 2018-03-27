@@ -199,7 +199,7 @@
           <div class="col-sm-3">
             <div class="span3">
               <p><strong>名前</strong></p>
-              <h4><?php echo $dialy['user_name']; ?></h4>
+              <h4><a href="own_posts.php?user_id=<?php echo $signin_user['user_id']; ?>"><?php echo $dialy['user_name']; ?></a></h4>
             </div>
           </div>
           

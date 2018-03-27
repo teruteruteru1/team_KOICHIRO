@@ -101,7 +101,7 @@
     // $_POSTの数を数える
     // 各for文に対して、上限をこの変数に設定する  
     $count_post = count($_POST);
-    echo $count_post;    
+    //echo $count_post;    
 
     if(!empty($_POST)){
         echo '送信完了<br>';
