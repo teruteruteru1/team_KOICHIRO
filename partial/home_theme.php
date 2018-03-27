@@ -31,7 +31,7 @@
               <div class="project-title">
                 <form method="POST" action="search.php" class="form">
                   <input type="hidden" name="action" value="selected">
-                  <input type="hidden" name="theme" value="1">
+                  <input type="hidden" name="theme" value="2">
                   <button type="submit" class="btn btn-info">観光</button>
                 </form>
               </div>
@@ -44,7 +44,7 @@
               <div class="project-title">
                 <form method="POST" action="search.php" class="form">
                   <input type="hidden" name="action" value="selected">
-                  <input type="hidden" name="theme" value="1">
+                  <input type="hidden" name="theme" value="3">
                   <button type="submit" class="btn btn-info btn-lg">ショッピング</button>
                 </form>
               </div>
@@ -57,7 +57,7 @@
               <div class="project-title">
                 <form method="POST" action="search.php" class="form">
                   <input type="hidden" name="action" value="selected">
-                  <input type="hidden" name="theme" value="1">
+                  <input type="hidden" name="theme" value="4">
                   <button type="submit" class="btn btn-info btn-lg">スポーツ・アウトドア</button>
                 </form>
               </div>
@@ -70,7 +70,7 @@
               <div class="project-title">
                 <form method="POST" action="search.php" class="form">
                   <input type="hidden" name="action" value="selected">
-                  <input type="hidden" name="theme" value="1">
+                  <input type="hidden" name="theme" value="5">
                   <button type="submit" class="btn btn-info btn-lg">ホテル</button>
                 </form>
               </div>
@@ -83,7 +83,7 @@
               <div class="project-title">
                 <form method="POST" action="search.php" class="form">
                   <input type="hidden" name="action" value="selected">
-                  <input type="hidden" name="theme" value="1">
+                  <input type="hidden" name="theme" value="6">
                   <button type="submit" class="btn btn-info btn-lg">リラクゼーション</button>
                 </form>
               </div>
@@ -96,7 +96,7 @@
               <div class="project-title">
                 <form method="POST" action="search.php" class="form">
                   <input type="hidden" name="action" value="selected">
-                  <input type="hidden" name="theme" value="1">
+                  <input type="hidden" name="theme" value="7">
                   <button type="submit" class="btn btn-info btn-lg">リゾート</button>
                 </form>
               </div>
@@ -109,7 +109,7 @@
               <div class="project-title">
                 <form method="POST" action="search.php" class="form">
                   <input type="hidden" name="action" value="selected">
-                  <input type="hidden" name="theme" value="1">
+                  <input type="hidden" name="theme" value="8">
                   <button type="submit" class="btn btn-info btn-lg">その他</button>
                 </form>
               </div>
