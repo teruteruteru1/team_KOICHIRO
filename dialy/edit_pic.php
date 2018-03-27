@@ -187,7 +187,7 @@
     <div class="container">
       <form method="POST" action="" enctype="multipart/form-data">
         <div class="row">
-          <p>編集</p>
+          <p style="margin-top: 50px">編集</p>
           <img src="../pictures/<?php echo $picture['pic_name']; ?>" alt="" style="display: block; width: 200px;" width="200" border="0" alt="" />
           <br>
           <input type="file" style="margin: auto;" name="pic_name" accept="image/*">
@@ -204,7 +204,7 @@
   <!-- 写真を追加する場合 -->
   <?php if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'add'){ ?>
   <div class="container">
-    <h3>旅行記写真追加</h3>
+    <h3 style="margin-top: 50px">旅行記写真追加</h3>
     <form method="POST" action="" enctype="multipart/form-data">
       <div class="low">
         <div class="parent" style="margin: 30px;">

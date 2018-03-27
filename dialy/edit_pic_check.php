@@ -4,15 +4,15 @@
     require ('../assets/functions.php');
 
 
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<pre>'; 
-    echo '$_SESSION = ';
-    var_dump($_SESSION);
-    echo '</pre>'; 
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<pre>'; 
+    // echo '$_SESSION = ';
+    // var_dump($_SESSION);
+    // echo '</pre>'; 
     // echo '<pre>'; 
     // echo '$_SESSION = ';
     // var_dump($_SESSION);
@@ -126,10 +126,10 @@
   </header>
 
   <!-- 個別に写真を編集する場合 -->
-  <div class="container">
+  <div class="container" >
     <form method="POST" action="">
       <div class="row">
-        <p>確認</p>
+        <p style="margin-top: 50px">確認</p>
         <?php if(isset($submit_file_name)){ ?>
             <!-- 変更したら変更したファイルを表示 -->
             <img src="../pictures/<?php echo h($submit_file_name); ?>" width="300">

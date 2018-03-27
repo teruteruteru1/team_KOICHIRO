@@ -4,15 +4,15 @@
     require ('../assets/functions.php');
 
 
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<pre>'; 
-    echo '$_SESSION = ';
-    var_dump($_SESSION);
-    echo '</pre>'; 
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<br>';
+    // echo '<pre>'; 
+    // echo '$_SESSION = ';
+    // var_dump($_SESSION);
+    // echo '</pre>'; 
     // echo '<pre>'; 
     // echo '$_SESSION = ';
     // var_dump($_SESSION);
@@ -35,10 +35,7 @@
             $comments[] = $_SESSION['add'][$comment];
         }
     }
-    echo '<pre>'; 
-    echo '$comments = ';
-    var_dump($comments);
-    echo '</pre>'; 
+    
     // 自分にPOST送信して
     // INSERT開始
     if (!empty($_POST)) {
@@ -115,7 +112,7 @@
   <div class="container">
     <form method="POST" action="">
       <div class="row">
-        <p style="color: blue;">写真とコメント</p> 
+        <p style="color: blue;" style="margin-top: 50px">写真とコメント</p> 
           <?php 
             $count_comments = count($comments);
             for($z=0;$z<$count_comments;$z++){ ?>
