@@ -127,7 +127,7 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="about-image wow fadeInLeft">
-							<img src="pictures/<?php echo htmlspecialchars($dialies[1]['title_img_name']); ?>" alt="Single Blog1" width="600" height="400"/>
+							<img src="title_img/<?php echo htmlspecialchars($dialies[1]['title_img_name']); ?>" alt="Single Blog1" width="600" height="400"/>
 						</div>
 					</div>
 					<div class="col-sm-6">
@@ -158,7 +158,7 @@
 					<!-- Single Blog2 -->
 					<div class="col-sm-4">
 						<div class="single-blog search_result">
-							<img src="pictures/<?php echo htmlspecialchars($dialies[2]['title_img_name']); ?>" alt="Single Blog2" width="400" height="270"/>
+							<img src="title_img/<?php echo htmlspecialchars($dialies[2]['title_img_name']); ?>" alt="Single Blog2" width="400" height="270"/>
 							<h4><a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[2]['dialy_id']); ?>"><?php echo htmlspecialchars($dialies[2]['title']); ?></a></h4>
 							<p><?php echo htmlspecialchars($dialies[2]['title_comment']); ?></p>
 							<a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[2]['dialy_id']); ?>">続きを読む>></a>
@@ -169,7 +169,7 @@
 					<!-- Single Blog3 -->
 					<div class="col-sm-4">
 						<div class="single-blog search_result">
-							<img src="pictures/<?php echo htmlspecialchars($dialies[3]['title_img_name']); ?>" alt="Single Blog3" width="400" height="270"/>
+							<img src="title_img/<?php echo htmlspecialchars($dialies[3]['title_img_name']); ?>" alt="Single Blog3" width="400" height="270"/>
 							<h4><a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[3]['dialy_id']); ?>"><?php echo htmlspecialchars($dialies[3]['title']); ?></a></h4>
 							<p><?php echo htmlspecialchars($dialies[3]['title_comment']); ?></p>
 							<a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[3]['dialy_id']); ?>">続きを読む>></a>
@@ -180,7 +180,7 @@
 					<!-- Single Blog4 -->
 					<div class="col-sm-4">
 						<div class="single-blog search_result">
-							<img src="pictures/<?php echo htmlspecialchars($dialies[4]['title_img_name']); ?>" alt="Single Blog4" width="400" height="270"/>
+							<img src="title_img/<?php echo htmlspecialchars($dialies[4]['title_img_name']); ?>" alt="Single Blog4" width="400" height="270"/>
 							<h4><a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[4]['dialy_id']); ?>"><?php echo htmlspecialchars($dialies[4]['title']); ?></a></h4>
 							<p><?php echo htmlspecialchars($dialies[4]['title_comment']); ?></p>
 							<a href="travel_dialy.php?dialy_id=<?php echo htmlspecialchars($dialies[4]['dialy_id']); ?>">続きを読む>></a>
