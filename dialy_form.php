@@ -19,7 +19,6 @@
     //プルダウン用の準備 
     include('partial/db_for_pulldown.php');  
 
-    echo $countries[4]['country_name_jp'];
 
     // echo '<pre>'; 
     // echo '$countries = ';
@@ -435,7 +434,7 @@
                                 <?php if (isset($_POST['country_id_1']) && $_POST['country_id_1'] == $countries[$i]['country_id']){ ?>
                                   <option value="<?php echo $countries[$i]['country_id']; ?>" selected="selected" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name_jp']; ?></option>                        
                                 <?php }else{ ?>                    
-                                  <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
+                                  <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name_jp']; ?></option>
                                 <?php } ?>
                               <?php } ?>                  
                             </select>
@@ -450,7 +449,7 @@
                               <option value="unselected" selected="selected" class="msg">都市を選択して下さい</option>
                               <?php for($i=0; $i<$count_area ; $i++){ ?>
                                 <?php if (isset($_POST['area_id_1']) && $_POST['area_id_1'] == $areas[$i]['area_id']){ ?>
-                                  <option value="<?php echo $places[$i]['area_id']; ?>" selected="selected" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name']; ?></option>
+                                  <option value="<?php echo $places[$i]['area_id']; ?>" selected="selected" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name_jp']; ?></option>
                                 <?php }else{ ?>
                                   <option value="<?php echo $places[$i]['area_id']; ?>" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name_jp']; ?></option>
                                 <?php } ?>
@@ -469,7 +468,7 @@
                                 <?php if (isset($_POST['country_id_2']) && $_POST['country_id_2'] == $countries[$i]['country_id']){ ?>
                                   <option value="<?php echo $countries[$i]['country_id']; ?>" selected="selected" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name_jp']; ?></option>                        
                                 <?php }else{ ?>                    
-                                  <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
+                                  <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name_jp']; ?></option>
                                 <?php } ?>
                               <?php } ?>                  
                             </select>
@@ -481,7 +480,7 @@
                                 <?php if (isset($_POST['area_id_2']) && $_POST['area_id_2'] == $areas[$i]['area_id']){ ?>
                                   <option value="<?php echo $places[$i]['area_id']; ?>" selected="selected" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name_jp']; ?></option>
                                 <?php }else{ ?>
-                                  <option value="<?php echo $places[$i]['area_id']; ?>" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name']; ?></option>
+                                  <option value="<?php echo $places[$i]['area_id']; ?>" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name_jp']; ?></option>
                                 <?php } ?>
                               <?php } ?>
                             </select>               
@@ -495,7 +494,7 @@
                                 <?php if (isset($_POST['country_id_3']) && $_POST['country_id_3'] == $countries[$i]['country_id']){ ?>
                                   <option value="<?php echo $countries[$i]['country_id']; ?>" selected="selected" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name_jp']; ?></option>                        
                                 <?php }else{ ?>                    
-                                  <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name']; ?></option>
+                                  <option value="<?php echo $countries[$i]['country_id']; ?>" class="<?php echo $countries[$i]['country_name']; ?>"><?php echo $countries[$i]['country_name_jp']; ?></option>
                                 <?php } ?>
                               <?php } ?>                  
                             </select>
@@ -505,7 +504,7 @@
                               <option value="unselected" selected="selected" class="msg">都市を選択して下さい</option>
                               <?php for($i=0; $i<$count_area ; $i++){ ?>
                                 <?php if (isset($_POST['area_id_3']) && $_POST['area_id_3'] == $areas[$i]['area_id']){ ?>
-                                  <option value="<?php echo $places[$i]['area_id']; ?>" selected="selected" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name']; ?></option>
+                                  <option value="<?php echo $places[$i]['area_id']; ?>" selected="selected" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name_jp']; ?></option>
                                 <?php }else{ ?>
                                   <option value="<?php echo $places[$i]['area_id']; ?>" class="<?php echo $places[$i]['country_name']; ?>"><?php echo $places[$i]['area_name_jp']; ?></option>
                                 <?php } ?>

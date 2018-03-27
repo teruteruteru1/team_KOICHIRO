@@ -74,20 +74,23 @@
     //いいね機能 ※learnsnsからほぼコピー
     // いいね！データの取得
     // 下のカウントは本人がいいねしているかどうかの確認のため１or０しか入らない
-    $sql = 'SELECT COUNT(*) AS cnt FROM likes WHERE `user_id`=? AND `dialy_id`=?';
-    $data = array($_SESSION['user']['id'], $dialy_id);
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute($data);
-    $like = $stmt->fetch(PDO::FETCH_ASSOC);
+    if(isset($_SESSION['user']['id'])){
+        $sql = 'SELECT COUNT(*) AS cnt FROM likes WHERE `user_id`=? AND `dialy_id`=?';
+        $data = array($_SESSION['user']['id'], $dialy_id);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($data);
+        $like = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // fav機能 ※likesと全く同じ
-    // favデータの取得
-    // 下のカウントは本人がいいねしているかどうかの確認のため１or０しか入らない
-    $sql = 'SELECT COUNT(*) AS cnt FROM favs WHERE `user_id`=? AND `dialy_id`=?';
-    $data = array($_SESSION['user']['id'], $dialy_id);
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute($data);
-    $fav = $stmt->fetch(PDO::FETCH_ASSOC);
+        // fav機能 ※likesと全く同じ
+        // favデータの取得
+        // 下のカウントは本人がいいねしているかどうかの確認のため１or０しか入らない
+        $sql = 'SELECT COUNT(*) AS cnt FROM favs WHERE `user_id`=? AND `dialy_id`=?';
+        $data = array($_SESSION['user']['id'], $dialy_id);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($data);
+        $fav = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
 
     
     // コメント機能開始
@@ -198,8 +201,8 @@
           </div>
           <div class="col-sm-3">
             <div class="span3">
-              <p><strong>名前</strong></p>
-              <h4><a href="own_posts.php?user_id=<?php echo $signin_user['user_id']; ?>"><?php echo $dialy['user_name']; ?></a></h4>
+              <p><strong>旅行者</strong></p>
+              <h4><a href="own_posts.php?user_id=<?php echo $dialy['user_id']; ?>"><?php echo $dialy['user_name']; ?></a></h4>
             </div>
           </div>
           
@@ -231,6 +234,7 @@
           <div class="like col-sm-12">
             <ul>
 
+              <?php  if(isset($_SESSION['user']['id'])){ ?>
                 <!-- いいね機能 -->
                 <li>
                   <form method="POST" action="dialy/likes.php"> 
@@ -273,6 +277,7 @@
                   </form>
                 </li>
                 <!-- favボタン -->
+                <?php } ?>
             </ul>
           </div>
           <!-- like end -->
