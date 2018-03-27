@@ -509,7 +509,7 @@
                             <img src="user_profile_img/<?php echo $comments[$i]['img_name']; ?> " width="60">
                             <?php echo $comments[$i]['user_name'] ?><br>
                             <br>
-                            <?php echo $comments[$i]['comment'] ?>
+                            <?php echo nl2br($comments[$i]['comment']) ?>
                             <br>
                             <?php if($comments[$i]['user_id'] == $_SESSION['user']['id']){ ?>
                               <a href="dialy/delete_comment.php?comment_id=<?php echo $comments[$i]['comment_id']; ?>&dialy_id=<?php echo $_REQUEST['dialy_id']; ?>" class="btn btn-danger btn-xs">削除</a>
