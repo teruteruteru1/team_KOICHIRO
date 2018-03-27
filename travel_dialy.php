@@ -192,7 +192,7 @@
           <div class="col-sm-3">
               <div class="span4 well">
                   <div class="user_profile">
-                    <a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail" ><img src="user_profile_img/<?php echo $dialy['img_name']; ?> "></a>
+                    <img src="user_profile_img/<?php echo $dialy['img_name']; ?> " width="100">
                   </div>
               </div>
           </div>
