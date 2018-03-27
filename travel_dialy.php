@@ -20,7 +20,7 @@
     // ④areaの取得 ←いらない
     // 他 $_SESSION['user']['id']と$dialy['user_id']を比較して違ったら、機能を変更する
 
-    //dialy idの取得
+    // dialy idの取得
     // dialy/id はパラメーターで飛んでくるため。$_REQUESTで取得
     // そのIDを検索する
     $dialy_id = $_REQUEST['dialy_id'];
@@ -132,7 +132,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>diary</title>
+    <title>dialy</title>
     <meta name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -192,14 +192,14 @@
           <div class="col-sm-3">
               <div class="span4 well">
                   <div class="user_profile">
-                    <a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail" ><img src="user_profile_img/<?php echo $dialy['img_name']; ?> "></a>
+                    <img src="user_profile_img/<?php echo $dialy['img_name']; ?> " width="100">
                   </div>
               </div>
           </div>
           <div class="col-sm-3">
             <div class="span3">
               <p><strong>名前</strong></p>
-              <h4><?php echo $dialy['user_name']; ?></h4>
+              <h4><a href="own_posts.php?user_id=<?php echo $signin_user['user_id']; ?>"><?php echo $dialy['user_name']; ?></a></h4>
             </div>
           </div>
           
@@ -278,7 +278,7 @@
           <!-- like end -->
 
           <!-- tag start -->
-          <!-- tagが未定義んｐ旅行記があるためif追加 -->
+          <!-- tagが未定義の旅行記があるためif追加 -->
           <?php if(!empty($tags)){ ?>
             <div class="tag col-sm-12">
                 <ul>
@@ -358,7 +358,9 @@
                                               <div style="line-height: 26px;">
                                                   <a href="" style="color: #ffffff; text-decoration: none;">SHOP NOW</a>
                                                   <!-- 後でif文追加 -->
-                                                  <a href="dialy/edit_pic.php?picture_id=<?php echo $pictures[$x]['picture_id']; ?>" class="btn btn-info">投稿写真編集</a>
+                                                  <?php if($dialy['user_id'] == $_SESSION['user']['id']){ ?>
+                                                    <a href="dialy/edit_pic.php?picture_id=<?php echo $pictures[$x]['picture_id']; ?>" class="btn btn-info">投稿写真編集</a>
+                                                  <?php } ?>
                                               </div>
                                           </td>
                                       </tr>
@@ -430,7 +432,9 @@
 
                   <!-- 写真編集ボタン -->
                   <li>
-                    <a href="dialy/edit_pic.php?action=add&dialy_id=<?php echo $dialy_id; ?>" class="btn btn-warning">投稿写真追加</a>
+                    <?php if($dialy['user_id'] == $_SESSION['user']['id']){ ?>
+                      <a href="dialy/edit_pic.php?action=add&dialy_id=<?php echo $dialy_id; ?>" class="btn btn-warning">投稿写真追加</a>
+                    <?php } ?>
                   </li>
               </ul>
             </div>
