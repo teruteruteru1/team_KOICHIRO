@@ -352,7 +352,6 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- calender -->
-    <script src="js/jquery-1.9.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
@@ -394,7 +393,6 @@
                             <textarea name="title" cols="100" rows="1" value="<?php echo $title ?>"><?php echo $title; ?></textarea>
                         </div>
                         <!-- カレンダー機能開始 -->
-                        <script type="text/javascript" src="plan_calender.js"></script>
                         <br>
                     
                         旅行予定日時：
