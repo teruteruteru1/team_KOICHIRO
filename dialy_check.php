@@ -53,6 +53,14 @@
     $area_id_2 = $_SESSION['plan']['area_id_2'];
     $area_id_3 = $_SESSION['plan']['area_id_3'];
     
+    $country_id_re1 = $country_id_1 + 1;
+    $country_id_re2 = $country_id_2 + 1;
+    $country_id_re3 = $country_id_3 + 1;
+    $area_id_re1 = $area_id_1 + 1;
+    $area_id_re2 = $area_id_2 + 1;
+    $area_id_re3 = $area_id_3 + 1;
+
+
     // タグはfor文で回す
     $pic_names = array();
     $comments = array();
@@ -157,19 +165,19 @@
             $stmt->execute($date);
         }
 
-        echo '<br>';
-        echo '<pre>'; 
-        echo '$tags = ';
-        var_dump($tags);
-        echo '</pre>';
+        // echo '<br>';
+        // echo '<pre>'; 
+        // echo '$tags = ';
+        // var_dump($tags);
+        // echo '</pre>';
 
         // セッションのplanの初期化
         // SQLを読んだ時点でセッションの中身はいらない
         $_SESSION['plan'] = array();
         unset($_SESSION['plan']);
 
-        // header('Location: travel_dialy.php?dialy_id=' . $dialy_id['dialy_id']);
-        // exit();
+        header('Location: travel_dialy.php?dialy_id=' . $dialy_id['dialy_id']);
+        exit();
         
 
 
@@ -240,32 +248,32 @@
         日数： <?php echo h($number_days); ?>日<br>
 
       <h4 style="color: blue;">国と地域</h4></p> 
-        国  １: <?php echo h($places[$area_id_1]['country_name']);?>
-        都市１: <?php echo h($places[$area_id_1]['area_name']);?><br>
+        国  １: <?php echo h($places[$area_id_re1]['country_name']);?>
+        都市１: <?php echo h($places[$area_id_re1]['area_name']);?><br>
 
         国  ２: 
         <?php if($country_id_2 == 'unselected'){ ?>
           <span style="color: red;">未指定</span>
         <?php }else{ ?>
-          <?php echo h($places[$area_id_2]['country_name']);?>
+          <?php echo h($places[$area_id_re2]['country_name']);?>
         <?php } ?>
         都市 ２: 
         <?php if($area_id_2 == 'unselected'){ ?>
           <span style="color: red;">未指定</span><br>
         <?php }else{ ?>
-          <?php echo h($areas[$area_id_2]['area_name']);?><br>
+          <?php echo h($areas[$area_id_re2]['area_name']);?><br>
         <?php } ?>
         国  ３: 
         <?php if($country_id_3 == 'unselected'){ ?>
           <span style="color: red;">未指定</span>
         <?php }else{ ?>
-          <?php echo h($places[$area_id_3]['country_name']);?>
+          <?php echo h($places[$area_id_re3]['country_name']);?>
         <?php } ?>
         都市 ３: 
         <?php if($area_id_3 == 'unselected'){ ?>
           <span style="color: red;">未指定</span><br>
         <?php }else{ ?>
-          <?php echo h($areas[$area_id_3]['area_name']);?><br>
+          <?php echo h($areas[$area_id_re3]['area_name']);?><br>
         <?php } ?>
 
 

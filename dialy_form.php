@@ -136,7 +136,7 @@
                 if(isset($_FILES['pic_name' . $n]['name'])){
                     $pic_number = $_FILES['pic_name' . $n]['name'];
                     $pic_names[] = $pic_number;
-                    echo $pic_number;
+                    //echo $pic_number;
                 }
                 if(isset($_POST['comment' . $n])){
                     $comment_number = $_POST['comment' . $n];
@@ -259,10 +259,10 @@
 
         
 
-        echo '<pre>'; 
-        echo '$errors = ';
-        var_dump($errors);
-        echo '</pre>';
+        // echo '<pre>'; 
+        // echo '$errors = ';
+        // var_dump($errors);
+        // echo '</pre>';
 
 
 
