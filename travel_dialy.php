@@ -1,13 +1,6 @@
-<?php 
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-    
+<?php
 
-
-    session_start();  
+    session_start();
     require ('dbconnect.php');
     include('assets/functions.php');
     //include('signin_user.php');
@@ -33,10 +26,10 @@
     $stmt->execute($data);
     $dialy = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // echo '<pre>'; 
+    // echo '<pre>';
     // echo '$dialy = ';
     // var_dump($dialy);
-    // echo '</pre>'; 
+    // echo '</pre>';
 
     // ②pictures
     $sql = 'SELECT * FROM pictures WHERE dialy_id=?';
@@ -48,11 +41,11 @@
         $pictures[] = $picture;
     }
     $count_pics = count($pictures);
-    
-    // echo '<pre>'; 
+
+    // echo '<pre>';
     // echo '$pictures = ';
     // var_dump($pictures);
-    // echo '</pre>'; 
+    // echo '</pre>';
 
     // ③タグ
     $sql = 'SELECT `dialies_tags`.*,`tags`.tag_name FROM dialies_tags LEFT JOIN tags ON `dialies_tags`.`tag_id`=`tags`.`tag_id` WHERE `dialies_tags`.`dialy_id`=? ';
@@ -66,11 +59,11 @@
     if(!empty($tags)){
         $count_tags = count($tags);
     }
-    // echo '<pre>'; 
+    // echo '<pre>';
     // echo '$tags = ';
     // var_dump($tags);
-    // echo '</pre>'; 
-    
+    // echo '</pre>';
+
     //いいね機能 ※learnsnsからほぼコピー
     // いいね！データの取得
     // 下のカウントは本人がいいねしているかどうかの確認のため１or０しか入らない
@@ -89,7 +82,7 @@
     $stmt->execute($data);
     $fav = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    
+
     // コメント機能開始
     // 自分のページでPOST送信されたら
     if (!empty($_POST) && isset($_POST['comment'])) {
@@ -117,10 +110,10 @@
         $comments[] = $comment;
     }
     $c_count = count($comments);
-    // echo '<pre>'; 
+    // echo '<pre>';
     // echo '$comments = ';
     // var_dump($comments);
-    // echo '</pre>'; 
+    // echo '</pre>';
 
 
 
@@ -139,10 +132,10 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
-		<!-- Font -->
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-		<!-- Font -->
+    <!-- Font -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- Font -->
 
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/main.css">
@@ -155,38 +148,74 @@
     <link rel="stylesheet" href="assets/css/travel_dialy.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
+
     <!--- Include the above in your HEAD tag -->
-		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-		<!--- Include the above in your HEAD tag -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!--- Include the above in your HEAD tag -->
 
-	</head>
+    <style type="text/css">
+      .tag-btn{
+          /*background-color: #EEEEEE;*/
+          /*height: 40px;*/
+          /*margin: 20px 0px;*/
+          /*margin: 70px 0px;*/
+          border-radius: 10px;
+      }
+      ul{
+          list-style-type: none;
+          margin: 0px;
+          padding: 0px;
+      }
+      ul li{
+          /*float: left;*/
+          display: inline-block;
+          margin:10px;
+          padding: 0px;
+      }
+      ul li button.tag-btn{
+          text-decoration: none;
+          background-color: white;
+          padding: 2px 10px;
+          color: #428bca;
+          border: 2px solid;
+          border-radius: 10px;
+      }
+/*      ul li button{
+        margin: 0;
+        font: inherit;
+        color: #428bca;
+        border: 2px solid;
+      }*/
+    </style>
 
-	<body>
+  </head>
+
+  <body>
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-	<!-- Header start -->
-	<header>
-		<?php Include('partial/header.php'); ?>
-	</header>
+  <!-- Header start -->
+  <header>
+    <?php Include('partial/header.php'); ?>
+  </header>
     <br>
-	<!-- Header end -->
+  <!-- Header end -->
 
-		<!-- Single Blog1 -->
-		<section id="about" class="site-padding">
-			<div class="container ">
-				<div class="row">
+    <!-- Single Blog1 -->
+    <section id="about" class="site-padding">
+      <div class="container ">
+        <div class="row">
           <!-- タイトル -->
-					<div class="col-sm-6 center">
-						<div class="title">
-							<h2> <?php echo $dialy['title']; ?></h2>
+          <div class="col-sm-6 center">
+            <div class="title">
+              <h2> <?php echo $dialy['title']; ?></h2>
               <h4><?php echo $dialy['depart_date']; ?>~<?php echo $dialy['arrival_date']; ?></h4>
               <hr>
-						</div>
-					</div>
+            </div>
+          </div>
           <!-- ユーザー情報 -->
 
           <div class="col-sm-3">
@@ -202,30 +231,29 @@
               <h4><?php echo $dialy['user_name']; ?></h4>
             </div>
           </div>
-          
-				</div>
-			</div>
+        </div>
+      </div>
 
             <!-- 概要 -->
-			<div class="container">
-				<div id="popup-background">
-					<div class="col-sm-6" >
-						<div class="about-image wow fadeInLeft">
-							<img id="lb" src="title_img/<?php echo $dialy['title_img_name']; ?>" alt="Single Blog1" />
-							<!-- ポップアップ用の背景とimg -->
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="about-text wow fadeInRight">
-							<p><?php echo $dialy['title_comment'] ?>
-							</p>
-							<!-- <a href="#" class="btn btn-read-more">続きを読む</a> -->
-						</div>
-					</div>
-				</div>
-			</div>
+      <div class="container">
+        <div id="popup-background">
+          <div class="col-sm-6" >
+            <div class="about-image wow fadeInLeft">
+              <img id="lb" src="title_img/<?php echo $dialy['title_img_name']; ?>" alt="Single Blog1" />
+              <!-- ポップアップ用の背景とimg -->
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="about-text wow fadeInRight">
+              <p><?php echo $dialy['title_comment'] ?>
+              </p>
+              <!-- <a href="#" class="btn btn-read-more">続きを読む</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
             <!-- 概要終了 -->
-		</section>
+    </section>
       <div class="container">
         <div class="row">
           <div class="like col-sm-12">
@@ -249,13 +277,13 @@
                         <span>いいねを取り消す</span></button>
                       <?php } ?>
                     </a>
-                  </form>  
+                  </form>
                 </li>
                 <!-- いいね機能終了 -->
 
                 <!-- favボタン -->
                 <li>
-                  <form method="POST" action="dialy/favs.php"> 
+                  <form method="POST" action="dialy/favs.php">
                   <input type="hidden" name="dialy_id" value="<?php echo $dialy_id ?>">
                     <a href="javascript:void(0)" title="Send this to friends or post it to your timeline">
                       <?php if ($fav['cnt'] == 0) { ?>
@@ -283,9 +311,14 @@
             <div class="tag col-sm-12">
                 <ul>
                   <?php for($y=0;$y<$count_tags;$y++){ ?>
-                    <li><a href="#">＊<?php echo $tags[$y]['tag_name']; ?></a></li>
+                  <form method="POST" action="search.php" class="form" style="display: inline;">
+                    <input type="hidden" name="action" value="selected">
+                    <input type="hidden" name="theme" value="<?php echo $tags[$y]['tag_id']; ?>">
+                    <li><button type="submit" class="tag-btn">＊<?php echo $tags[$y]['tag_name']; ?></button></li>
+                  </form>
+
                   <?php } ?>
-                </ul>  
+                </ul>
             </div>
           <?php } ?>
           <!-- tag end -->
@@ -403,7 +436,7 @@
                           <span>いいねを取り消す</span></button>
                         <?php } ?>
                       </a>
-                    </form>  
+                    </form>
                   </li>
                   <!-- いいね機能終了 -->
 
@@ -438,8 +471,6 @@
         </div>
           <!-- like end -->
 
-
-      
         <div class="contact">
           <div class="container">
             <div class="row">
@@ -455,11 +486,11 @@
                       <br>
                       <p>
                         <button class="btn btn-theme margintop10 " type="submit">コメントする</button>
-                      </p>                      
+                      </p>
                     </div>
                     <!-- コメント表示開始 -->
                     <div class="col-sm-3">
-                      <?php for($i=0;$i<$c_count;$i++){ ?>          
+                      <?php for($i=0;$i<$c_count;$i++){ ?>
                         <div>
                           <h6>コメント<?php echo $i+1 ?> </h6>
                           <img src="user_profile_img/<?php echo $comments[$i]['img_name']; ?> " width="60">
@@ -482,139 +513,133 @@
                 </form>
               </div>
             </div>
-           
           </div>
         </div>
-      
-        
-      
 
-		<!-- search start -->
-		<?php Include('partial/search_bar.php'); ?>
-		<!-- search end -->
+
+    <!-- search start -->
+    <?php Include('partial/search_bar.php'); ?>
+    <!-- search end -->
 
     <?php Include('partial/home_theme.php'); ?>
     <!--  -->
 
-		<!-- Featured Work -->
-		
+    <!-- Featured Work -->
 
-		<!-- Contact -->
-		<section id="contact-us">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="title">
-							<h3>連絡 <span>はこちらへ</span></h3>
-						</div>
-					</div>
-				</div>
-			</div>
-		
-			<div class="map">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14608.272959726353!2d90.38896245!3d23.744945849999997!3m2!1i1024!2i768!4f13.1!4m3!3e1!4m0!4m0!5e0!3m2!1sen!2sbd!4v1465238371126" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
-			</div>
-		
-			<div class="contact">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-12">
-							<h4>どんなことでもお気軽にご連絡ください</strong></h4>
-							<form id="contactform" action="" method="post" class="validateform" name="send-contact">
-								<div class="row">
-									<div class="col-lg-4 field">
-										<input type="text" name="name" placeholder="* お名前" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
-										<div class="validation">
-										</div>
-									</div>
-									<div class="col-lg-4 field">
-										<input type="text" name="email" placeholder="* メールアドレス" data-rule="email" data-msg="Please enter a valid email" />
-										<div class="validation">
-										</div>
-									</div>
-									<div class="col-lg-4 field">
-										<input type="text" name="subject" placeholder="内容について" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
-										<div class="validation">
-										</div>
-									</div>
-									<div class="col-lg-12 margintop10 field">
-										<textarea rows="12" name="message" class="input-block-level" placeholder="* ご用件をこちらへご記入ください" data-rule="required" data-msg="Please write something"></textarea>
-										<div class="validation">
-										</div>
-										<p>
-											<button class="btn btn-theme margintop10 pull-left" type="submit">送信</button>
-											
-										</p>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>		
-		<!-- Contact -->
-		
-		
-		<!-- footer -->
-		
-		<footer>
-			<div class="container">
-				<div class="row">
-				
-					<!-- Single Footer -->
-					<div class="col-sm-6">
-						<div class="single-footer">
-							<div class="footer-logo">
-								<!-- <a href="#" class="mod_dropnavi-brand"><h1>でれっちょ</h1></a> -->
-								<a href="#"><h1>でれっちょ</h1></a>
-									<p>旅行コミュニティサイト(旅行記・旅行SNS)</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-		
-		<!-- Copyright -->
-		<div class="copyright">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-4">
-							<div class="copy-text">
-								<p>All Rights Reserved | Copyright 2016 © <strong><a href="http://www.pfind.com/goodies/bizium/">The Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's Goodies</a></strong></p>
-							</div>
-						</div>
-						<div class="col-sm-5">
-							<div class="footer-menu pull-right">
-								<ul>
-									<li><a href="#">ホーム</a></li>
-									<li><a href="#">チーム概要</a></li>
-									<li><a href="#">サービス</a></li>
-									<li><a href="#">問い合わせ</a></li>
-									<!-- <li><a href="#">Pricing</a></li> -->
-									<!-- <li><a href="#">Blog</a></li> -->
-									<li><a href="#">連絡先</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-sm-3">
-							<div class="social">
-								<ul>
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		
-		<!-- footer -->
-		
-		
-		
+
+    <!-- Contact -->
+    <section id="contact-us">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title">
+              <h3>連絡 <span>はこちらへ</span></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14608.272959726353!2d90.38896245!3d23.744945849999997!3m2!1i1024!2i768!4f13.1!4m3!3e1!4m0!4m0!5e0!3m2!1sen!2sbd!4v1465238371126" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </div>
+
+      <div class="contact">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <h4>どんなことでもお気軽にご連絡ください</strong></h4>
+              <form id="contactform" action="" method="post" class="validateform" name="send-contact">
+                <div class="row">
+                  <div class="col-lg-4 field">
+                    <input type="text" name="name" placeholder="* お名前" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
+                    <div class="validation">
+                    </div>
+                  </div>
+                  <div class="col-lg-4 field">
+                    <input type="text" name="email" placeholder="* メールアドレス" data-rule="email" data-msg="Please enter a valid email" />
+                    <div class="validation">
+                    </div>
+                  </div>
+                  <div class="col-lg-4 field">
+                    <input type="text" name="subject" placeholder="内容について" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
+                    <div class="validation">
+                    </div>
+                  </div>
+                  <div class="col-lg-12 margintop10 field">
+                    <textarea rows="12" name="message" class="input-block-level" placeholder="* ご用件をこちらへご記入ください" data-rule="required" data-msg="Please write something"></textarea>
+                    <div class="validation">
+                    </div>
+                    <p>
+                      <button class="btn btn-theme margintop10 pull-left" type="submit">送信</button>
+
+                    </p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact -->
+
+
+    <!-- footer -->
+
+    <footer>
+      <div class="container">
+        <div class="row">
+
+          <!-- Single Footer -->
+          <div class="col-sm-6">
+            <div class="single-footer">
+              <div class="footer-logo">
+                <!-- <a href="#" class="mod_dropnavi-brand"><h1>でれっちょ</h1></a> -->
+                <a href="#"><h1>でれっちょ</h1></a>
+                  <p>旅行コミュニティサイト(旅行記・旅行SNS)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Copyright -->
+    <div class="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="copy-text">
+                <p>All Rights Reserved | Copyright 2016 © <strong><a href="http://www.pfind.com/goodies/bizium/">The Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's Goodies</a></strong></p>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="footer-menu pull-right">
+                <ul>
+                  <li><a href="#">ホーム</a></li>
+                  <li><a href="#">チーム概要</a></li>
+                  <li><a href="#">サービス</a></li>
+                  <li><a href="#">問い合わせ</a></li>
+                  <!-- <li><a href="#">Pricing</a></li> -->
+                  <!-- <li><a href="#">Blog</a></li> -->
+                  <li><a href="#">連絡先</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="social">
+                <ul>
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                  <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- footer -->
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
@@ -627,24 +652,24 @@
         <script src="assets/js/wow.min.js"></script>
         <script src="assets/js/main.js"></script>
         <script src="assets/js/mochimaru_img.js"></script>
-        
-		
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$('a[href^="#"]').on('click',function (e) {
-					e.preventDefault();
 
-					var target = this.hash;
-					var $target = $(target);
 
-					$('html, body').stop().animate({
-						 'scrollTop': $target.offset().top
-					}, 900, 'swing');
-					});
-			});
-		</script>
-		
-		<script src="assets/js/custom.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('a[href^="#"]').on('click',function (e) {
+          e.preventDefault();
+
+          var target = this.hash;
+          var $target = $(target);
+
+          $('html, body').stop().animate({
+             'scrollTop': $target.offset().top
+          }, 900, 'swing');
+          });
+      });
+    </script>
+
+    <script src="assets/js/custom.js"></script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
