@@ -616,8 +616,8 @@
                   <input type="submit" value="確認画面へ" class="btn btn-primary">            
                 </div>
                 <!-- 仮機能 -->
-                <p>仮のボタン</p>  
-                 <a href="sessiondelete.php">（仮）セッションを消して入力に戻る</a>
+                <!-- <p>仮のボタン</p>  
+                 <a href="sessiondelete.php">（仮）セッションを消して入力に戻る</a> -->
             </form>
         </div>
     </div>

@@ -1,6 +1,7 @@
 <?php
     session_start();
     require('dbconnect.php');
+    include('assets/functions.php');
 
     $sql = 'SELECT d.*,p.pic_name FROM dialies AS d LEFT JOIN pictures AS p ON d.dialy_id = p.dialy_id WHERE 1 ORDER BY d.like_count DESC';
 

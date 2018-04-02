@@ -2,6 +2,7 @@
     session_start();
     require('dbconnect.php');
     require ('signin_user.php');
+    include('assets/functions.php');
 
     $user_id = $_REQUEST['user_id'];
 
@@ -92,7 +93,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
+    <title>My Diaries</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -136,7 +137,7 @@
         <div class="col-sm-3">
             <div class="span4 well">
                 <div class="user_profile">
-                   <img src="user_profile_img/<?php echo htmlspecialchars($user['img_name']); ?>" width="100">
+                   <img src="user_profile_img/<?php echo h($user['img_name']); ?>" width="100">
                 </div>
             </div>
         </div>

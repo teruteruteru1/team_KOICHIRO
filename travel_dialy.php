@@ -242,7 +242,7 @@
         <div id="popup-background">
           <div class="col-sm-6" >
             <div class="about-image wow fadeInLeft">
-              <img id="lb" src="title_img/<?php echo $dialy['title_img_name']; ?>" alt="Single Blog1" />
+              <img id="lb" src="title_img/<?php echo nl2br($dialy['title_img_name']); ?>" alt="Single Blog1" />
               <!-- ポップアップ用の背景とimg -->
             </div>
           </div>
@@ -375,7 +375,7 @@
                                           <td align="center" style="font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
                                               <div style="line-height: 24px">
                                                 <!-- 写真のコメント -->
-                                                <?php echo $pictures[$x]['comment']; ?><br>
+                                                <?php echo nl2br($pictures[$x]['comment']); ?><br>
                                               </div>
                                           </td>
                                       </tr>

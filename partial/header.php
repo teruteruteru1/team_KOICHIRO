@@ -11,6 +11,9 @@
 
 	    $signin_user = $stmt->fetch(PDO::FETCH_ASSOC);
 	}
+
+
+
     
 
 ?>
@@ -47,8 +50,8 @@
 				                <li><a href="own_posts.php?user_id=<?php echo $signin_user['user_id']; ?>">自投稿閲覧</a></li>
 				              </ul>
 		            		</li>
-		            		<li><a style="font-size: 20px"><?php echo $signin_user['user_name']; ?></a></li>
-		            		<!-- <li><a><img src="user_profile_img/<?//php echo $user['img_name']; ?>" width="100" height="100"></a></li> -->
+		            		<li><a style="font-size: 20px"><?php echo h($signin_user['user_name']); ?></a></li>
+		            		<!-- <li><a><img src="user_profile_img/<?//php echo h($signin_user['img_name']); ?>" width="40" height="40"></a></li> -->
 		            	<?php } ?>
          				</ul>
         			</div>
