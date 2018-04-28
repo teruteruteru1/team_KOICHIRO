@@ -119,11 +119,13 @@
             }
         }
 
-
+        // dialy_idは次のページで使う checkページ飛ぶときに必要なわけではない
         header('Location: add_pic_check.php?dialy_id=' . $_REQUEST['dialy_id']);
         exit();
 
-      echo 'addうんこ';
+
+
+      
     }
    
 
@@ -197,6 +199,7 @@
         <input type="hidden" name="edit" value="edit">
         <input type="submit" value="変更確認へ" class="btn btn-info">
         <a href="../travel_dialy.php?dialy_id=<?php echo $picture['dialy_id'] ?>" class="btn btn-primary">旅行記へ戻る</a>
+        <a href="dlete_pic.oho"></a>
       </form>
   	</div>
   <?php } ?>
@@ -385,6 +388,12 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
+
+         <?php foreach($menus as $menu): ?>
+      <h3><?php echo $menu ?></h3>
+      <?php endforeach ?>
+
+      $menus = array('$juice','$coffee','$curry','$pasta');
 
 
 </body>
